@@ -1,0 +1,1120 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../visao_produto/">
+      
+      
+        <link rel="next" href="../processo_desenvolvimento/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Visão Geral do Projeto - AgroRenda</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-visao-geral-do-projeto" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AgroRenda" class="md-header__button md-logo" aria-label="AgroRenda" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AgroRenda
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Visão Geral do Projeto
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AgroRenda" class="md-nav__button md-logo" aria-label="AgroRenda" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AgroRenda
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Documento de visão
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Documento de visão
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visao_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visão Geral do Produto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Visão Geral do Projeto
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visão Geral do Projeto
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Sumário">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sumário
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-ciclo-de-vida-do-projeto-de-desenvolvimento-de-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Ciclo de vida do projeto de desenvolvimento de software
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-organizacao-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Organização do Projeto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-planejamento-das-fases-eou-iteracoes-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Planejamento das Fases e/ou Iterações do Projeto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-matriz-de-comunicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Matriz de comunicação
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-gerenciamento-de-riscos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 Gerenciamento de Riscos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-criterios-de-replanejamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 Critérios de Replanejamento
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../processo_desenvolvimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Processo de Desenvolvimento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../escopo_projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Escopo do Projeto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metricas_medicoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Métricas e Medições
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teste/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Testes de Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Referências
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Atas de reuniões
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Atas de reuniões
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata1_definicoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Documentação e Gestão de Projeto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata2_kickoff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Kick Off
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata3_alinhamento_geral/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alinhamento Geral
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata4_planejamento_backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Planejamento de Funcionalidades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arquitetura
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Sumário">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sumário
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-ciclo-de-vida-do-projeto-de-desenvolvimento-de-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Ciclo de vida do projeto de desenvolvimento de software
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-organizacao-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Organização do Projeto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-planejamento-das-fases-eou-iteracoes-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Planejamento das Fases e/ou Iterações do Projeto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-matriz-de-comunicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Matriz de comunicação
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-gerenciamento-de-riscos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 Gerenciamento de Riscos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-criterios-de-replanejamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 Critérios de Replanejamento
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="2-visao-geral-do-projeto"><strong>2. Visão Geral do Projeto</strong></h1>
+<h2 id="21-ciclo-de-vida-do-projeto-de-desenvolvimento-de-software"><strong>2.1 Ciclo de vida do projeto de desenvolvimento de software</strong></h2>
+<p>Para o desenvolvimento do projeto AgroRenda, será adotada a metodologia ágil adaptada, utilizando uma abordagem híbrida que combina os frameworks Scrum e XP (Extreme Programming). Essa escolha está alinhada com os objetivos do projeto, o perfil da equipe e o contexto social da solução proposta, voltada a pequenos produtores rurais em situação de vulnerabilidade, em consonância com o ODS 2.3 da ONU.</p>
+<p>A aplicação do Scrum permitirá a organização do trabalho em sprints curtos e entregas incrementais, facilitando a adaptação contínua às necessidades dos usuários. Já o XP será incorporado com foco em práticas de engenharia de software que aumentem a qualidade do código e a colaboração da equipe, como pair programming, refatoração contínua, feedback rápido e integração contínua.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Elemento</th>
+<th style="text-align: left;">Descrição aplicada ao projeto AgroRenda</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Metodologia</strong></td>
+<td style="text-align: left;">Metodologia Ágil adaptada com combinação dos frameworks Scrum e XP.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Processo</strong></td>
+<td style="text-align: left;">Sprints com planejamento, execução, revisão e retrospectiva; integração de boas práticas de programação.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Procedimentos</strong></td>
+<td style="text-align: left;">Reuniões semanais, prototipação, testes iterativos, documentação contínua, validação de funcionalidades.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Métodos</strong></td>
+<td style="text-align: left;">Scrum, XP, programação em pares.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ferramentas</strong></td>
+<td style="text-align: left;">GitHub, Visual Studio Code, Google Docs, Microsoft Teams, Notion, WhatsApp</td>
+</tr>
+</tbody>
+</table>
+<p>A combinação entre Scrum e XP proporciona uma base sólida para o desenvolvimento ágil, garantindo entregas frequentes, envolvimento ativo dos membros da equipe e foco contínuo na qualidade técnica do produto. Dessa forma, o projeto <em>AgroRenda</em> poderá evoluir de forma estruturada, participativa e alinhada com os objetivos sociais propostos.</p>
+<h2 id="22-organizacao-do-projeto"><strong>2.2 Organização do Projeto</strong></h2>
+<p>A organização do projeto AgroRenda foi estruturada com base em uma divisão clara de papéis e responsabilidades, sem qualquer relação de hierarquia entre os membros. Todos os integrantes são considerados igualmente importantes para o sucesso do projeto e contribuem conforme suas habilidades técnicas, experiência e disponibilidade.</p>
+<p>A equipe foi distribuída em áreas funcionais (backend, frontend, banco de dados, testes e gestão), promovendo a colaboração entre os setores, especialmente entre backend e banco de dados, que compartilham a responsabilidade de integração entre lógica de negócio e persistência de dados. As funções de liderança e validação estão centradas nas figuras do Scrum Master e Product Owner, garantindo a fluidez do processo e o alinhamento com os objetivos do ODS 2.3.</p>
+<p>Distribuição de papéis e responsabilidades</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Papel</th>
+<th style="text-align: left;">Atribuições</th>
+<th style="text-align: left;">Responsável</th>
+<th style="text-align: left;">Participantes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Scrum Master</td>
+<td style="text-align: left;">Facilitar o processo ágil,organizar reuniões,remover impedimentos, revisar entregas</td>
+<td style="text-align: left;">Renan Reis</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Product Owner</td>
+<td style="text-align: left;">Definir e priorizar o backlog,validar entregas,representar o cliente e garantir o foco no ODS</td>
+<td style="text-align: left;">Davi do Egito</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Dev.Backend</td>
+<td style="text-align: left;">Implementar regras de negócio,criar e integrar APIs,colaborar com o banco de dados</td>
+<td style="text-align: left;">Marcos Vinícius</td>
+<td style="text-align: left;">Carlos Henrique, Yogi Nam, Marcos Vinícius, Rafael Magalhães, Arthur Moreira</td>
+</tr>
+<tr>
+<td style="text-align: left;">Banco deDados</td>
+<td style="text-align: left;">Modelagem de dadosqueries,persistência e integração com backend</td>
+<td style="text-align: left;">Pedro Teixeira</td>
+<td style="text-align: left;">Pedro Teixeira, Davi Leite</td>
+</tr>
+<tr>
+<td style="text-align: left;">Dev.Frontend</td>
+<td style="text-align: left;">Criar interfaces acessíveis, responsivas e centradas no usuário final (pequeno produtor)</td>
+<td style="text-align: left;">Geovanna Umbelino</td>
+<td style="text-align: left;">Geovanna Umbelino, Luísa Ferreira, Camila Cavalcante</td>
+</tr>
+<tr>
+<td style="text-align: left;">Testes e Qualidade</td>
+<td style="text-align: left;">Garantir funcionamento do sistema,criar e executar testes,validar critérios de aceitação</td>
+<td style="text-align: left;">Milena Simões</td>
+<td style="text-align: left;">Milena Simões, Renan Reis, Davi do Egito</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_1"></h2>
+<h2 id="23-planejamento-das-fases-eou-iteracoes-do-projeto"><strong>2.3 Planejamento das Fases e/ou Iterações do Projeto</strong></h2>
+<p>O desenvolvimento do projeto AgroRenda será estruturado em sprints, com entregas incrementais e foco contínuo na geração de valor ao usuário final. Cada sprint contempla entregáveis específicos, prazos definidos e responsáveis atribuídos, de acordo com o progresso do projeto e as prioridades definidas pelo Product Owner.</p>
+<p>O planejamento será atualizado ao longo do desenvolvimento, conforme surgirem novas necessidades, validações e riscos. A seguir, apresenta-se a previsão inicial das sprints do projeto:</p>
+<table>
+<thead>
+<tr>
+<th>Sprint</th>
+<th>Produto (Entrega)</th>
+<th>Data Início</th>
+<th>Data Fim</th>
+<th>Entregável(eis)</th>
+<th>Responsáveis</th>
+<th>% conclusão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sprint 1</td>
+<td>Definição do Produto</td>
+<td>15/05/25</td>
+<td>21/05/25</td>
+<td>Documento de visão revisado e completo</td>
+<td>Todos os integrantes</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>Sprint 2</td>
+<td>MVP e Planejamento do Projeto</td>
+<td>dd/mm/aaaa</td>
+<td>dd/mm/aaaa</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Sprint 3</td>
+<td>Funcionalidades A, B, C, D</td>
+<td>dd/mm/aaaa</td>
+<td>dd/mm/aaaa</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Sprint 4</td>
+<td>Funcionalidades E, F e G</td>
+<td>dd/mm/aaaa</td>
+<td>dd/mm/aaaa</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="24-matriz-de-comunicacao"><strong>2.4 Matriz de comunicação</strong></h2>
+<p>A comunicação do projeto AgroRenda será organizada de forma clara e periódica, com foco em garantir alinhamento entre os membros da equipe, acompanhamento das atividades, detecção de riscos e validação das entregas. Todas as interações seguirão os princípios da transparência e colaboração previstos nas metodologias ágeis utilizadas.</p>
+<p>A equipe realizará uma reunião geral semanal, com presença obrigatória de todos os integrantes, incluindo Scrum Master, Product Owner, QA e desenvolvedores. Outras comunicações ocorrerão conforme necessidade, utilizando canais como WhatsApp, Notion, Google Docs, Microsoft Teams e GitHub.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Descrição</th>
+<th style="text-align: left;">Área/ Envolvidos</th>
+<th style="text-align: left;">Periodicidade</th>
+<th style="text-align: left;">Produtos Gerados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Reunião geral de acompanhamento</td>
+<td style="text-align: left;">Toda a equipe</td>
+<td style="text-align: left;">Semanal</td>
+<td style="text-align: left;">Ata de reunião, atualização do status</td>
+</tr>
+<tr>
+<td style="text-align: left;">Comunicação com o monitor</td>
+<td style="text-align: left;">Scrum Master, PO</td>
+<td style="text-align: left;">Conforme necessidade</td>
+<td style="text-align: left;">Relatório de status do projeto e esclarecimento de impedimentos</td>
+</tr>
+<tr>
+<td style="text-align: left;">Alinhamento sobre critérios de aceite</td>
+<td style="text-align: left;">PO, QA, desenvolvedores</td>
+<td style="text-align: left;">Ao final de cada sprint</td>
+<td style="text-align: left;">Critérios definidos e documentados</td>
+</tr>
+<tr>
+<td style="text-align: left;">Atualizações internas rápidas</td>
+<td style="text-align: left;">Toda a equipe</td>
+<td style="text-align: left;">Contínua (WhatsApp)</td>
+<td style="text-align: left;">Notificações, lembretes, decisões rápidas</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2"></h2>
+<h2 id="25-gerenciamento-de-riscos"><strong>2.5 Gerenciamento de Riscos</strong></h2>
+<p>O gerenciamento de riscos do projeto AgroRenda tem como objetivo identificar com antecedência possíveis situações que possam comprometer o andamento do projeto, a qualidade das entregas ou a experiência do usuário final. A equipe adotou uma abordagem preventiva, mapeando os principais riscos e propondo estratégias de mitigação (para evitar que aconteçam) e de contingência (caso venham a se concretizar).</p>
+<p>A seguir, apresenta-se a tabela com os riscos mais relevantes para o contexto do projeto:</p>
+<p>Principais riscos identificados e estratégias associadas</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Risco</th>
+<th style="text-align: left;">Grau</th>
+<th style="text-align: left;">Mitigação (Plano A)</th>
+<th style="text-align: left;">Contingência (Plano B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Falta de engajamento de membros</td>
+<td style="text-align: left;">Médio</td>
+<td style="text-align: left;">Cobrança clara, divisão justa, planilha de controle</td>
+<td style="text-align: left;">Redistribuir tarefas entre os membros ativos</td>
+</tr>
+<tr>
+<td style="text-align: left;">Falta de comunicação entre áreas</td>
+<td style="text-align: left;">Médio</td>
+<td style="text-align: left;">Reuniões semanais, uso de grupo no WhatsApp, ata de reunião</td>
+<td style="text-align: left;">Intervenção do Scrum Master para realinhar equipes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Alterações tardias no escopo pelo PO</td>
+<td style="text-align: left;">Baixo</td>
+<td style="text-align: left;">Backlog priorizado antes da sprint, reuniões de refinamento</td>
+<td style="text-align: left;">Repriorizar backlog junto ao PO e negociar o escopo</td>
+</tr>
+<tr>
+<td style="text-align: left;">Atraso na entrega do backend</td>
+<td style="text-align: left;">Alto</td>
+<td style="text-align: left;">Divisão clara por partes, versionamento incremental</td>
+<td style="text-align: left;">Reduzir escopo ou mover funcionalidades para sprint futura</td>
+</tr>
+</tbody>
+</table>
+<p>Observação: A avaliação de riscos é contínua e será reavaliada a cada sprint, com foco na antecipação de problemas e preservação da qualidade do produto e da organização do time.</p>
+<h2 id="26-criterios-de-replanejamento"><strong>2.6 Critérios de Replanejamento</strong></h2>
+<p>O replanejamento no projeto AgroRenda será realizado sempre que houver fatores que comprometam o andamento da sprint, a qualidade das entregas ou a aderência aos objetivos definidos no backlog. A equipe utilizará como base o acompanhamento semanal, as revisões de sprint e a análise dos riscos para identificar a necessidade de ajustes.</p>
+<p>A seguir, são definidos os principais critérios que podem justificar um replanejamento:</p>
+<ul>
+<li>
+<p>Baixo engajamento ou indisponibilidade de membros-chave, impactando diretamente a execução das tarefas planejadas.</p>
+</li>
+<li>
+<p>Atrasos críticos na entrega de funcionalidades prioritárias, especialmente aquelas que impactam outras partes do sistema.</p>
+</li>
+<li>
+<p>Mudanças significativas no escopo, propostas pelo Product Owner, que afetem entregas em andamento ou já definidas para a sprint atual.</p>
+</li>
+<li>
+<p>Problemas técnicos ou de integração que impeçam o avanço do desenvolvimento conforme previsto.</p>
+</li>
+<li>
+<p>Validações negativas durante testes, indicando que funcionalidades entregues não atendem aos critérios de aceite definidos.</p>
+</li>
+</ul>
+<p>Nesses casos, o Scrum Master convocará uma reunião extraordinária com o Product Owner e os membros técnicos envolvidos para reavaliar o backlog, reorganizar as sprints e documentar as decisões tomadas.</p>
+<p>O objetivo do replanejamento é manter o foco nas entregas de valor, garantindo flexibilidade sem comprometer a organização e a previsibilidade do projeto.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
