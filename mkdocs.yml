@@ -1,0 +1,59 @@
+site_name: AgroRenda
+
+theme: 
+  name: material
+
+nav:
+  - Home: index.md
+  - Documento de visão:
+    - Visão Geral do Produto: visao/visao_produto.md
+    - Visão Geral do Projeto: visao/visao_projeto.md
+    - Processo de Desenvolvimento: visao/processo_desenvolvimento.md
+    - Escopo do Projeto: visao/escopo_projeto.md
+    - Métricas e Medições: visao/metricas_medicoes.md
+    - Testes de Software: visao/teste.md
+    - Referências: visao/referencias.md
+
+  - Atas de reuniões:
+    - Documentação e Gestão de Projeto: atas/ata1_definicoes.md
+    - Kick Off: atas/ata2_kickoff.md
+    - Alinhamento Geral: atas/ata3_alinhamento_geral.md
+    - Planejamento de Funcionalidades: atas/ata4_planejamento_backlog.md
+
+
+  
+  - Arquitetura: arquitetura/index.md
+
+markdown_extensions:
+  - toc:
+      title: Sumário
+
+plugins:
+  - search
+  - macros
+extra:
+  team:
+    - name: Camila Silva
+      username: CamilaSilvaC
+    - name: Carlos Henrique
+      username: Carlos-UCH
+    - name: Davi Leite
+      username: WithyS2
+    - name: Davi do Egito
+      username: davi-egito
+    - name: Geovanna Umbelino
+      username: GeovannaUmbelino
+    - name: Luísa de Souza
+      username: luisa12ll
+    - name: Marcos Vinícius
+      username: MarcosViniciusG
+    - name: Milena Marques
+      username: milenamso
+    - name: Pedro Teixeira
+      username: PedroDev-sketch
+    - name: Rafael Magalhães
+      username: Leafare
+    - name: Renan Pereira
+      username: renanpr7
+    - name: Yogi Nam 
+      username: euyogi
