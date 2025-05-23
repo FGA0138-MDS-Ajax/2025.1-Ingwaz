@@ -7,11 +7,12 @@
 Na barra lateral, você encontra a documentação e outras informações relevantes para o desenvolvimento da aplicação, isso inclui: visão geral do produto, arquitetura, atas de reuniões e etc.
 
 # Membros
-<div>
-{% for member in team %}
-  <a class="team-card" href="https://github.com/{{ member.username }}" target="_blank">
-    <p>{{member.name}}</p>
-    <img style="border-radius: 60%;" width="100px;"  src="https://avatars.githubusercontent.com/{{ member.username }}?s=120" alt="{{ member.name }}" />
-  </a>
-{% endfor %}
+
+<div class="team-container">
+  {% for member in extra.team %}
+    <a class="team-card" href="https://github.com/{{ member.username }}" target="_blank" rel="noopener">
+      <img src="https://avatars.githubusercontent.com/{{ member.username }}?s=120" alt="{{ member.name }}">
+      <p>{{ member.name }}</p>
+    </a>
+  {% endfor %}
 </div>

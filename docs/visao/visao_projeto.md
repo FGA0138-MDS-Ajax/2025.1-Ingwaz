@@ -6,6 +6,8 @@ Para o desenvolvimento do projeto AgroRenda, será adotada a metodologia ágil a
 
 A aplicação do Scrum permitirá a organização do trabalho em sprints curtos e entregas incrementais, facilitando a adaptação contínua às necessidades dos usuários. Já o XP será incorporado com foco em práticas de engenharia de software que aumentem a qualidade do código e a colaboração da equipe, como pair programming, refatoração contínua, feedback rápido e integração contínua.
 
+<div class="centered-text"><b>Tabela 2 - Elementos do processo de desenvolvimento adotado no projeto AgroRenda</b> </div>
+
 | Elemento | Descrição aplicada ao projeto AgroRenda |
 | :---- | :---- |
 | **Metodologia** | Metodologia Ágil adaptada com combinação dos frameworks Scrum e XP. |
@@ -13,6 +15,8 @@ A aplicação do Scrum permitirá a organização do trabalho em sprints curtos 
 | **Procedimentos** | Reuniões semanais, prototipação, testes iterativos, documentação contínua, validação de funcionalidades. |
 | **Métodos** | Scrum, XP, programação em pares. |
 | **Ferramentas** | GitHub, Visual Studio Code, Google Docs, Microsoft Teams, Notion, WhatsApp |
+
+<div class="centered-text"><b>Fonte: </b> Renan Reis</div>
 
 A combinação entre Scrum e XP proporciona uma base sólida para o desenvolvimento ágil, garantindo entregas frequentes, envolvimento ativo dos membros da equipe e foco contínuo na qualidade técnica do produto. Dessa forma, o projeto *AgroRenda* poderá evoluir de forma estruturada, participativa e alinhada com os objetivos sociais propostos.
 
@@ -24,6 +28,8 @@ A equipe foi distribuída em áreas funcionais (backend, frontend, banco de dado
 
 Distribuição de papéis e responsabilidades
 
+<div class="centered-text"><b>Tabela 3 -  Distribuição de papéis, atribuições e responsabilidades da equipe</b></div>
+
 | Papel | Atribuições | Responsável | Participantes |
 | :---- | :---- | :---- | :---- |
 | Scrum Master | Facilitar o processo ágil,organizar reuniões,remover impedimentos, revisar entregas | Renan Reis |  |
@@ -33,13 +39,16 @@ Distribuição de papéis e responsabilidades
 | Dev.Frontend | Criar interfaces acessíveis, responsivas e centradas no usuário final (pequeno produtor) | Geovanna Umbelino | Geovanna Umbelino, Luísa Ferreira, Camila Cavalcante |
 | Testes e Qualidade | Garantir funcionamento do sistema,criar e executar testes,validar critérios de aceitação | Milena Simões | Milena Simões, Renan Reis, Davi do Egito |
 
-##   
+<div class="centered-text"><b>Fonte: </b> Elaborado Renan Reis</div>   
 
 ## **2.3 Planejamento das Fases e/ou Iterações do Projeto**
 
 O desenvolvimento do projeto AgroRenda será estruturado em sprints, com entregas incrementais e foco contínuo na geração de valor ao usuário final. Cada sprint contempla entregáveis específicos, prazos definidos e responsáveis atribuídos, de acordo com o progresso do projeto e as prioridades definidas pelo Product Owner.
 
 O planejamento será atualizado ao longo do desenvolvimento, conforme surgirem novas necessidades, validações e riscos. A seguir, apresenta-se a previsão inicial das sprints do projeto:
+
+
+<div class="centered-text"><b>Tabela 4 - Planejamento das sprints do projeto AgroRenda </b> </div>
 
 |  Sprint | Produto (Entrega) | Data Início | Data Fim | Entregável(eis) | Responsáveis | % conclusão |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
@@ -49,11 +58,16 @@ O planejamento será atualizado ao longo do desenvolvimento, conforme surgirem n
 | Sprint 4 | Funcionalidades E, F e G | dd/mm/aaaa | dd/mm/aaaa |  |  |  |
 | ... | ... | ... | ... |  |  |  |
 
+<div class="centered-text"><b>Fonte:</b> Elaborado por Renan Reis</div>
+
 ## **2.4 Matriz de comunicação**
 
 A comunicação do projeto AgroRenda será organizada de forma clara e periódica, com foco em garantir alinhamento entre os membros da equipe, acompanhamento das atividades, detecção de riscos e validação das entregas. Todas as interações seguirão os princípios da transparência e colaboração previstos nas metodologias ágeis utilizadas.
 
 A equipe realizará uma reunião geral semanal, com presença obrigatória de todos os integrantes, incluindo Scrum Master, Product Owner, QA e desenvolvedores. Outras comunicações ocorrerão conforme necessidade, utilizando canais como WhatsApp, Notion, Google Docs, Microsoft Teams e GitHub.
+
+<div class="centered-text"><b>Tabela 5 - Matriz de comunicação do projeto</b></div>
+
 
 | Descrição | Área/ Envolvidos | Periodicidade | Produtos Gerados |
 | :---- | :---- | :---- | :---- |
@@ -62,7 +76,11 @@ A equipe realizará uma reunião geral semanal, com presença obrigatória de to
 | Alinhamento sobre critérios de aceite | PO, QA, desenvolvedores | Ao final de cada sprint | Critérios definidos e documentados |
 | Atualizações internas rápidas | Toda a equipe | Contínua (WhatsApp) | Notificações, lembretes, decisões rápidas |
 
-## 
+**Fonte:** Elaborado por Renan Reis
+
+<div class="centered-text"><b>Fonte: </b> Renan Reis</div>
+>
+
 
 ## **2.5 Gerenciamento de Riscos**
 
@@ -72,12 +90,18 @@ A seguir, apresenta-se a tabela com os riscos mais relevantes para o contexto do
 
  Principais riscos identificados e estratégias associadas
 
+
+<div class="centered-text"><b>Tabela 6 - Gerenciamento de riscos do projeto e suas vertentes</b>  </div>
+
 | Risco | Grau | Mitigação (Plano A) | Contingência (Plano B) |
 | :---- | :---- | :---- | :---- |
 | Falta de engajamento de membros | Médio | Cobrança clara, divisão justa, planilha de controle | Redistribuir tarefas entre os membros ativos |
 | Falta de comunicação entre áreas | Médio | Reuniões semanais, uso de grupo no WhatsApp, ata de reunião | Intervenção do Scrum Master para realinhar equipes |
 | Alterações tardias no escopo pelo PO | Baixo | Backlog priorizado antes da sprint, reuniões de refinamento | Repriorizar backlog junto ao PO e negociar o escopo |
 | Atraso na entrega do backend | Alto | Divisão clara por partes, versionamento incremental | Reduzir escopo ou mover funcionalidades para sprint futura |
+
+<div class="centered-text"><b>Fonte:</b> Elaborado por Renan Reis</div>
+
 
 Observação: A avaliação de riscos é contínua e será reavaliada a cada sprint, com foco na antecipação de problemas e preservação da qualidade do produto e da organização do time.
 
