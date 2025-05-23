@@ -19,6 +19,7 @@ nav:
     - Kick Off: atas/ata2_kickoff.md
     - Alinhamento Geral: atas/ata3_alinhamento_geral.md
     - Planejamento de Funcionalidades: atas/ata4_planejamento_backlog.md
+    - Definição final do produto: atas/ata5_documento_final_visao.md
 
 
   
@@ -31,6 +32,10 @@ markdown_extensions:
 plugins:
   - search
   - macros
+
+extra_css:
+  - assets/css/home.css
+  - assets/css/global.css
 extra:
   team:
     - name: Camila Silva

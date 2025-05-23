@@ -9,3 +9,18 @@
 7. CASTELL, M. **A sociedade em rede**. 4\. ed. São Paulo: Paz e Terra, 1999\.  
 8. ORGANIZAÇÃO DAS NAÇÕES UNIDAS – ONU. **Objetivos de Desenvolvimento Sustentável**. ODS 2.3 – Agricultura Sustentável. 2015\. Disponível em: [https://www.odsbrasil.gov.br](https://www.odsbrasil.gov.br)  
 9. ISHIKAWA, Kaoru. **Guia do Controle da Qualidade**. 3\. ed. São Paulo: Blücher, 2005\.
+10. **OWASP FOUNDATION**. *OWASP Mobile Top 10 Risks – 2023*. OWASP Foundation, 2023. Disponível em: [https://owasp.org/www-project-mobile-top-10/](https://owasp.org/www-project-mobile-top-10/).  
+
+11. **FORTINET**. *O que é segurança de aplicativos móveis? Como funciona?* Disponível em: [https://www.fortinet.com/br/resources/cyberglossary/mobile-app-security](https://www.fortinet.com/br/resources/cyberglossary/mobile-app-security). Acesso em: 21 maio 2025.  
+
+12. **VANTICO**. *Top 10 Vulnerabilidades encontradas em Pentest Mobile*. Disponível em: [https://vantico.com.br/top-10-vulnerabilidades-no-pentest-mobile/](https://vantico.com.br/top-10-vulnerabilidades-no-pentest-mobile/). Acesso em: 21 maio 2025.  
+
+13. **SILVA, Fernando**. *Principais mudanças do OWASP API Security Top 10 - 2023*. Medium, 11 ago. 2023. Disponível em: [https://fernando-silva.medium.com/principais-mudan%C3%A7as-do-owasp-api-security-top-10-2023-545356c3b246](https://fernando-silva.medium.com/principais-mudan%C3%A7as-do-owasp-api-security-top-10-2023-545356c3b246). Acesso em: 21 maio 2025.  
+
+14. **ISO/IEC/IEEE**. *ISO/IEC/IEEE 29119: Software and systems engineering – Software testing*. Geneva: International Organization for Standardization, 2013.  
+
+15. **ISO/IEC**. *ISO/IEC 25010: Systems and software engineering – Systems and software Quality Requirements and Evaluation (SQuaRE) – System and software quality models*. Geneva: International Organization for Standardization, 2011.  
+
+16. **SOMMERVILLE, Ian**. *Engenharia de Software*. 9. ed. São Paulo: Pearson Prentice Hall, 2011.  
+
+17. **PRESSMAN, Roger S.; MAXIM, Bruce R**. *Engenharia de Software: uma abordagem profissional*. 9. ed. Porto Alegre: AMGH, 2021.  

@@ -12,7 +12,8 @@
 - Pedro Teixeira Moriel Sanchez  
 - Carlos Henrique Brasil de Souza  
 - Marcos Vinícius Gundel da Silva  
-- Rafael Magalhães Merenciano  
+- Rafael Magalhães Merenciano
+- Yogi Nam de Souza Barbosa  
 
 ---
 

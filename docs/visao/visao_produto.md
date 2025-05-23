@@ -10,10 +10,17 @@ O Objetivo de Desenvolvimento Sustentável (ODS) 2.3, estabelecido pela Organiza
 
 Apesar da sua relevância socioeconômica, muitos pequenos produtores ainda utilizam técnicas rudimentares de cultivo, baseando suas atividades majoritariamente na experiência empírica adquirida ao longo da vida, com pouco ou nenhum acesso à formação técnica ou administrativa (ALVES, 2004; EPAGRI, 2005). Essa realidade está associada a fatores como o baixo nível de escolaridade e a limitada qualificação profissional, que dificultam a adoção de práticas de gestão mais eficazes e o uso de tecnologias voltadas ao aumento da produtividade.  
 A baixa integração dos pequenos produtores com cadeias produtivas e suas dificuldades de acesso a mercados organizados comprometem significativamente o desenvolvimento dos seus empreendimentos. Muitos não possuem capacidade produtiva suficiente para atender à demanda de agroindústrias ou se inserir de forma estruturada em canais de distribuição, como apontam Borges, Guedes e Castro (2015). Além disso, embora existam tecnologias da informação voltadas para a agricultura, sua acessibilidade ainda é dispersa e pouco alinhada às necessidades reais da agricultura familiar, o que limita o uso dessas ferramentas para fins de gestão e obtenção de crédito (DEPONTI, 2014 apud AFFONSO et al., 2015).  
-Embora existam tecnologias e softwares voltados para a agricultura, muitos produtores enfrentam barreiras no acesso e uso dessas soluções, seja por limitações de infraestrutura (como a ausência de computadores pessoais), seja pela falta de familiaridade com programas e equipamentos. Em diversos casos, quando realizam alguma forma de gestão, ela tende a ser simplificada e de baixa efetividade, por falta de monitoramento. Essa realidade reflete a falta de compreensão sobre a importância desses registros, o que impacta diretamente a eficiência gerencial das propriedades (BATALHA; BUAINAIN; SOUZA FILHO, 2005 apud AFFONSO et al., 2015).  
+Embora existam tecnologias e softwares voltados para a agricultura, muitos produtores enfrentam barreiras no acesso e uso dessas soluções, seja por limitações de infraestrutura (como a ausência de computadores pessoais e internet), seja pela falta de familiaridade com programas e equipamentos. Em diversos casos, quando realizam alguma forma de gestão, ela tende a ser simplificada e de baixa efetividade, por falta de monitoramento. Essa realidade reflete a falta de compreensão sobre a importância desses registros, o que impacta diretamente a eficiência gerencial das propriedades (BATALHA; BUAINAIN; SOUZA FILHO, 2005 apud AFFONSO et al., 2015).  
 Embora muitos pequenos produtores enfrentem dificuldades no acesso a tecnologias mais avançadas e softwares específicos, as planilhas eletrônicas são eventualmente mencionadas como uma alternativa viável para o controle básico da propriedade rural. Essa solução se mostra acessível, especialmente por meio de versões open source, e tem potencial para contribuir com a organização das atividades e a redução da assimetria informacional no contexto da agricultura familiar. Como afirmam Affonso, Hashimoto e Sant’Ana (2015), o uso de planilhas apresenta-se como uma opção possível para apoiar a gestão, mesmo diante das barreiras tecnológicas enfrentadas por esses agricultores. Ainda assim, a ausência de uma ferramenta mais completa, apropriada e adaptada às necessidades reais do produtor limita significativamente sua capacidade de comprovar desempenho produtivo e dificulta o acesso a crédito, apoio técnico e programas de fomento.
 
-![imagem](imgs/image1.png)
+
+
+<div class="centered-text"><b>Figura 1 - </b> Diagrama de causa e efeito do problema enfrentado por pequenos produtores </div>
+
+![imagem](../imgs/image1.png)
+
+<div class="centered-text"><b>Fonte:</b> Elaborado por Yogi Nam</div>
+
 
 ### **Necessidade identificada**
 
@@ -45,6 +52,21 @@ A aplicação será construída com uma interface visual intuitiva, portanto, as
 
    O foco da solução está em atender produtores que utilizam métodos empíricos de gestão, geralmente limitados a anotações manuais ou planilhas isoladas, sem integração dos dados ou geração de relatórios estruturados. Como apontam Affonso et al. (2015), o uso de planilhas eletrônicas já representa um avanço importante na organização das atividades rurais, sendo uma alternativa viável à ausência de ferramentas mais sofisticadas. 
 
+   No desenvolvimento, diversos desafios de segurança podem surgir, especialmente
+   devido às particularidades dos dispositivos móveis. Entre os problemas mais relevantes estão
+   o risco de vazamento de dados sensíveis por meio de armazenamento inseguro no aparelho,
+   falhas na autenticação e na gestão de sessões, além da exposição a ataques em redes públicas
+   não seguras (FORTINET, 2024). A má configuração das permissões de acesso aos recursos
+   do dispositivo (como localização e armazenamento interno) também pode abrir brechas para
+   exploração maliciosa (VANTICO, 2024).Esses riscos se tornam ainda mais críticos em
+   ambientes rurais, onde a conexão com a internet pode ser instável, dificultando o uso de
+   mecanismos de proteção em tempo real. De acordo com a OWASP (2023), esses tipos de
+   vulnerabilidades estão entre os dez principais riscos de segurança em aplicações móveis,
+   sendo essenciais para serem considerados desde as etapas iniciais de desenvolvimento.
+   
+   Essas questões, entre outras, demandam especial atenção, uma vez que o contexto
+   mobile apresenta desafios adicionais em comparação com aplicações web ou desktop.
+
    Além disso, a ferramenta será acompanhada de materiais de apoio práticos e de fácil compreensão, como vídeos curtos, tutoriais ilustrados e cartilhas impressas, contribuindo para reduzir a resistência inicial à adoção tecnológica. Essa estratégia dialoga com os princípios da Informática Comunitária, que defende o uso de tecnologias acessíveis como instrumentos de empoderamento e redução da assimetria informacional no meio rural (AFFONSO et al., 2015; CASTELL, 1999).
 
    A proposta prevê também parcerias com instituições de extensão rural, cooperativas e universidades, de forma a viabilizar capacitação continuada dos produtores e integração dos dados coletados pela ferramenta aos processos já existentes de assistência técnica. Isso favorece a articulação entre saber técnico e saber local, ampliando a efetividade do sistema (DEPONTI, 2014).
@@ -57,6 +79,8 @@ A aplicação será construída com uma interface visual intuitiva, portanto, as
 
 ## **1.2 Declaração de posição do produto**
 
+<div class= "centered-text"><b>Tabela 1 – Declaração de posição do produto AgroRenda </b></div>
+
 | Elemento | Declaração |
 | :---- | :---- |
 | **Para:** | Pequenos produtores de alimentos em situação de vulnerabilidade (agricultores familiares, pescadores artesanais, comunidades indígenas e quilombolas). |
@@ -65,6 +89,9 @@ A aplicação será construída com uma interface visual intuitiva, portanto, as
 | **Que:** | Permite aos produtores registrarem sua produção, acompanharem seu desempenho, receberem dicas personalizadas e se conectarem com oportunidades de apoio. |
 | **Ao contrário:** | Da informalidade e da exclusão tecnológica, que dificultam o desenvolvimento sustentável desses produtores. |
 | **Nosso produto:** | É intuitivo, gratuito, sustentável, com foco na inclusão produtiva e na autonomia do produtor. |
+
+<div class="centered-text"><b> Fonte: </b> Elaborado por integrantes.</div>
+
 
 ## **1.3 Objetivos do produto**
 
