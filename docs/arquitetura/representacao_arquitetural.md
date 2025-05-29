@@ -22,7 +22,7 @@ O Controller faz a ponte entre a View e o Model. Toda vez que o usuário realiza
 
 <div class="centered-text"><b>Figura 1 - </b> Representação da Arquitetura do Sistema </div>
 
-![imagem](../imgs/image2.png)
+<img src="../../imgs/image2.png" alt="image" class="centered-img"> 
 
 ## **2.4. Metas e restrições arquiteturais**
 
@@ -43,7 +43,7 @@ Alguns dos requisitos que contribuíram para a escolha da arquitetura MVC foram 
 Outro fator que influenciou na escolha da arquitetura MVC foi a separação da equipe em backend, que usará o Django, e o frontend, que fará as atividades usando o React. A arquitetura MVC também favorece a divisão de responsabilidades e a prática de Extreme Programming, XP, oferece uma proposta que engloba desenvolvimento incremental, testes e refatoração de forma contínua, que cabe bem na organização em camadas do MVC  
 <div class="centered-text"><b>Figura 2 - </b> Diagramas de Casos de Uso </div>
 
-![imagem](../imgs/image3.png) 
+<img src="../../imgs/image3.png" alt="image" class="centered-img"> 
 
 ## **2.6. Visão lógica**
 
@@ -99,15 +99,15 @@ A seguir, temos ilustrado o diagrama de estados da aplicação, que representa o
 
 <div class="centered-text"><b>Figura 3 - </b> Diagrama de Transição de Estados </div>
 
-![imagem](../imgs/image4.png) 
-    
+<img src="../../imgs/image4.png" alt="image" class="centered-img"> 
+
 ### **2.6.4. Diagrama de Atividades**
 
 Complementando a visão geral do sistema, o diagrama de atividades apresentado detalha o fluxo operacional completo da aplicação, demonstrando passo a passo as interações do usuário e as respostas do sistema em cada estágio do processo. O diagrama esclarece tanto o fluxo principal de registro de plantio quanto todos os caminhos alternativos que podem ocorrer durante a utilização da plataforma, incluindo tratamentos de erro, validações automáticas e processos paralelos que garantem o funcionamento integrado do AgroRenda. Através desta representação visual, se torna mais evidente como o sistema se comporta em diferentes cenários de uso, desde condições ideais até situações excepcionais que demandam intervenções específicas.
 
 <div class="centered-text"><b>Figura 4 - </b> Diagrama de Atividades </div>
 
-![imagem](../imgs/image5.png)
+<img src="../../imgs/image5.png" alt="image" class="centered-img"> 
 
 ### **2.6.5. Diagrama de Classes**
 
@@ -116,7 +116,7 @@ O diagrama de classes apresentado a seguir ilustra a estrutura básica do sistem
 	
 <div class="centered-text"><b>Figura 5 - </b> Diagrama de Classes </div>
 
-![imagem](../imgs/image6.png)
+<img src="../../imgs/image6.png" alt="image" class="centered-img"> 
 
 ## 2.7. **Visão de Implementação** 
 
@@ -242,7 +242,7 @@ O Django fornece validações automáticas de tipo e integridade referencial:
 
 <div class="centered-text"><b>Figura 6 - </b> Diagrama de Pacotes </div>
 
-![imagem](../imgs/image7.png)
+<img src="../../imgs/image7.png" alt="image" class="centered-img"> 
 
 ## **2.8. Visão de Implantação** 
 
