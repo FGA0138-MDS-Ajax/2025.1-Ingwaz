@@ -21,9 +21,9 @@ nav:
     - Planejamento de Funcionalidades: atas/ata4_planejamento_backlog.md
     - Definição final do produto: atas/ata5_documento_final_visao.md
 
-
-  
-  - Arquitetura: arquitetura/index.md
+  - Arquitetura:
+    - Introdução: arquitetura/introducao.md
+    - Representação Arquitetural: arquitetura/representacao_arquitetural.md
 
 markdown_extensions:
   - toc:
