@@ -1,7 +1,23 @@
 site_name: AgroRenda
+repo_url: https://github.com/FGA0138-MDS-Ajax/2025.1-Ingwaz/
 
 theme: 
   name: material
+  language: pt-BR
+  palette: 
+    - scheme: default
+      primary: light green
+      accent: light green
+      toggle:
+        icon: material/brightness-7 
+        name: Modo escuro
+
+    - scheme: slate
+      primary: green
+      accent: green
+      toggle:
+        icon: material/brightness-4
+        name: Modo claro
 
 nav:
   - Home: index.md
