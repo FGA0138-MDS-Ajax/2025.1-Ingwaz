@@ -20,6 +20,8 @@ nav:
     - Alinhamento Geral: atas/ata3_alinhamento_geral.md
     - Planejamento de Funcionalidades: atas/ata4_planejamento_backlog.md
     - Definição final do produto: atas/ata5_documento_final_visao.md
+    - Definição da Arquitetura: atas/ata6_definicao_arquitetura.md 
+    - Documentação da Arquitetura: atas/ata7_documentacao_arquitetura.md
 
   - Arquitetura:
     - Introdução: arquitetura/introducao.md
