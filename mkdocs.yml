@@ -42,7 +42,7 @@ nav:
   - Arquitetura:
     - Introdução: arquitetura/introducao.md
     - Representação Arquitetural: arquitetura/representacao_arquitetural.md
-    - Bibliografia: arquitetura/bibliografia.md
+    - Referências: arquitetura/referencias.md
 
 markdown_extensions:
   - toc:
