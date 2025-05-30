@@ -1,7 +1,23 @@
 site_name: AgroRenda
+repo_url: https://github.com/FGA0138-MDS-Ajax/2025.1-Ingwaz/
 
 theme: 
   name: material
+  language: pt-BR
+  palette: 
+    - scheme: default
+      primary: light green
+      accent: light green
+      toggle:
+        icon: material/brightness-7 
+        name: Modo escuro
+
+    - scheme: slate
+      primary: green
+      accent: green
+      toggle:
+        icon: material/brightness-4
+        name: Modo claro
 
 nav:
   - Home: index.md
@@ -20,10 +36,13 @@ nav:
     - Alinhamento Geral: atas/ata3_alinhamento_geral.md
     - Planejamento de Funcionalidades: atas/ata4_planejamento_backlog.md
     - Definição final do produto: atas/ata5_documento_final_visao.md
+    - Definição da Arquitetura: atas/ata6_definicao_arquitetura.md 
+    - Documentação da Arquitetura: atas/ata7_documentacao_arquitetura.md
 
-
-  
-  - Arquitetura: arquitetura/index.md
+  - Arquitetura:
+    - Introdução: arquitetura/introducao.md
+    - Representação Arquitetural: arquitetura/representacao_arquitetural.md
+    - Referências: arquitetura/referencias.md
 
 markdown_extensions:
   - toc:

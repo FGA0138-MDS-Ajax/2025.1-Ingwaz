@@ -17,7 +17,7 @@ Embora muitos pequenos produtores enfrentem dificuldades no acesso a tecnologias
 
 <div class="centered-text"><b>Figura 1 - </b> Diagrama de causa e efeito do problema enfrentado por pequenos produtores </div>
 
-![imagem](../imgs/image1.png)
+<img src="../../imgs/image1.png" alt="image" class="centered-img"> 
 
 <div class="centered-text"><b>Fonte:</b> Elaborado por Yogi Nam</div>
 
