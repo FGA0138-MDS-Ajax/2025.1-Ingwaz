@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="pt" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -26,6 +26,9 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
       
 
 
@@ -43,6 +46,10 @@
       
     
     
+      <link rel="stylesheet" href="../../assets/css/home.css">
+    
+      <link rel="stylesheet" href="../../assets/css/global.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -53,7 +60,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-green">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -63,7 +77,7 @@
       
         
         <a href="#2-visao-geral-do-projeto" class="md-skip">
-          Skip to content
+          Pular para conteúdo
         </a>
       
     </div>
@@ -77,7 +91,7 @@
   
 
 <header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
     <a href="../.." title="AgroRenda" class="md-header__button md-logo" aria-label="AgroRenda" data-md-component="logo">
       
   
@@ -105,6 +119,32 @@
       </div>
     </div>
     
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-green"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
@@ -120,16 +160,16 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="Pesquisar">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -140,7 +180,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            Inicializando busca
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -150,6 +190,18 @@
 </div>
       
     
+    
+      <div class="md-header__source">
+        <a href="https://github.com/FGA0138-MDS-Ajax/2025.1-Ingwaz/" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
     
   </nav>
   
@@ -174,7 +226,7 @@
 
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="AgroRenda" class="md-nav__button md-logo" aria-label="AgroRenda" data-md-component="logo">
       
@@ -184,6 +236,18 @@
     </a>
     AgroRenda
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/FGA0138-MDS-Ajax/2025.1-Ingwaz/" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -349,15 +413,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#23-planejamento-das-fases-eou-iteracoes-do-projeto" class="md-nav__link">
     <span class="md-ellipsis">
       2.3 Planejamento das Fases e/ou Iterações do Projeto
@@ -370,15 +425,6 @@
   <a href="#24-matriz-de-comunicacao" class="md-nav__link">
     <span class="md-ellipsis">
       2.4 Matriz de comunicação
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
     </span>
   </a>
   
@@ -663,6 +709,75 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata5_documento_final_visao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Definição final do produto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata6_definicao_arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Definição da Arquitetura
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata7_documentacao_arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Documentação da Arquitetura
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -676,9 +791,20 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../arquitetura/" class="md-nav__link">
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -687,7 +813,88 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitetura
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/introducao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introdução
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/representacao_arquitetural/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Representação Arquitetural
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Referências
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -739,15 +946,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#23-planejamento-das-fases-eou-iteracoes-do-projeto" class="md-nav__link">
     <span class="md-ellipsis">
       2.3 Planejamento das Fases e/ou Iterações do Projeto
@@ -760,15 +958,6 @@
   <a href="#24-matriz-de-comunicacao" class="md-nav__link">
     <span class="md-ellipsis">
       2.4 Matriz de comunicação
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
     </span>
   </a>
   
@@ -807,11 +996,16 @@
                   
 
 
+  
+  
+
 
 <h1 id="2-visao-geral-do-projeto"><strong>2. Visão Geral do Projeto</strong></h1>
 <h2 id="21-ciclo-de-vida-do-projeto-de-desenvolvimento-de-software"><strong>2.1 Ciclo de vida do projeto de desenvolvimento de software</strong></h2>
 <p>Para o desenvolvimento do projeto AgroRenda, será adotada a metodologia ágil adaptada, utilizando uma abordagem híbrida que combina os frameworks Scrum e XP (Extreme Programming). Essa escolha está alinhada com os objetivos do projeto, o perfil da equipe e o contexto social da solução proposta, voltada a pequenos produtores rurais em situação de vulnerabilidade, em consonância com o ODS 2.3 da ONU.</p>
 <p>A aplicação do Scrum permitirá a organização do trabalho em sprints curtos e entregas incrementais, facilitando a adaptação contínua às necessidades dos usuários. Já o XP será incorporado com foco em práticas de engenharia de software que aumentem a qualidade do código e a colaboração da equipe, como pair programming, refatoração contínua, feedback rápido e integração contínua.</p>
+<div class="centered-text"><b>Tabela 2 - Elementos do processo de desenvolvimento adotado no projeto AgroRenda</b> </div>
+
 <table>
 <thead>
 <tr>
@@ -842,11 +1036,15 @@
 </tr>
 </tbody>
 </table>
+<div class="centered-text"><b>Fonte: </b> Renan Reis</div>
+
 <p>A combinação entre Scrum e XP proporciona uma base sólida para o desenvolvimento ágil, garantindo entregas frequentes, envolvimento ativo dos membros da equipe e foco contínuo na qualidade técnica do produto. Dessa forma, o projeto <em>AgroRenda</em> poderá evoluir de forma estruturada, participativa e alinhada com os objetivos sociais propostos.</p>
 <h2 id="22-organizacao-do-projeto"><strong>2.2 Organização do Projeto</strong></h2>
 <p>A organização do projeto AgroRenda foi estruturada com base em uma divisão clara de papéis e responsabilidades, sem qualquer relação de hierarquia entre os membros. Todos os integrantes são considerados igualmente importantes para o sucesso do projeto e contribuem conforme suas habilidades técnicas, experiência e disponibilidade.</p>
 <p>A equipe foi distribuída em áreas funcionais (backend, frontend, banco de dados, testes e gestão), promovendo a colaboração entre os setores, especialmente entre backend e banco de dados, que compartilham a responsabilidade de integração entre lógica de negócio e persistência de dados. As funções de liderança e validação estão centradas nas figuras do Scrum Master e Product Owner, garantindo a fluidez do processo e o alinhamento com os objetivos do ODS 2.3.</p>
 <p>Distribuição de papéis e responsabilidades</p>
+<div class="centered-text"><b>Tabela 3 -  Distribuição de papéis, atribuições e responsabilidades da equipe</b></div>
+
 <table>
 <thead>
 <tr>
@@ -895,10 +1093,13 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_1"></h2>
+<div class="centered-text"><b>Fonte: </b> Elaborado Renan Reis</div>
+
 <h2 id="23-planejamento-das-fases-eou-iteracoes-do-projeto"><strong>2.3 Planejamento das Fases e/ou Iterações do Projeto</strong></h2>
 <p>O desenvolvimento do projeto AgroRenda será estruturado em sprints, com entregas incrementais e foco contínuo na geração de valor ao usuário final. Cada sprint contempla entregáveis específicos, prazos definidos e responsáveis atribuídos, de acordo com o progresso do projeto e as prioridades definidas pelo Product Owner.</p>
 <p>O planejamento será atualizado ao longo do desenvolvimento, conforme surgirem novas necessidades, validações e riscos. A seguir, apresenta-se a previsão inicial das sprints do projeto:</p>
+<div class="centered-text"><b>Tabela 4 - Planejamento das sprints do projeto AgroRenda </b> </div>
+
 <table>
 <thead>
 <tr>
@@ -959,9 +1160,13 @@
 </tr>
 </tbody>
 </table>
+<div class="centered-text"><b>Fonte:</b> Elaborado por Renan Reis</div>
+
 <h2 id="24-matriz-de-comunicacao"><strong>2.4 Matriz de comunicação</strong></h2>
 <p>A comunicação do projeto AgroRenda será organizada de forma clara e periódica, com foco em garantir alinhamento entre os membros da equipe, acompanhamento das atividades, detecção de riscos e validação das entregas. Todas as interações seguirão os princípios da transparência e colaboração previstos nas metodologias ágeis utilizadas.</p>
 <p>A equipe realizará uma reunião geral semanal, com presença obrigatória de todos os integrantes, incluindo Scrum Master, Product Owner, QA e desenvolvedores. Outras comunicações ocorrerão conforme necessidade, utilizando canais como WhatsApp, Notion, Google Docs, Microsoft Teams e GitHub.</p>
+<div class="centered-text"><b>Tabela 5 - Matriz de comunicação do projeto</b></div>
+
 <table>
 <thead>
 <tr>
@@ -998,11 +1203,15 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_2"></h2>
+<p><strong>Fonte:</strong> Elaborado por Renan Reis</p>
+<div class="centered-text"><b>Fonte: </b> Renan Reis</div>
+<blockquote></blockquote>
 <h2 id="25-gerenciamento-de-riscos"><strong>2.5 Gerenciamento de Riscos</strong></h2>
 <p>O gerenciamento de riscos do projeto AgroRenda tem como objetivo identificar com antecedência possíveis situações que possam comprometer o andamento do projeto, a qualidade das entregas ou a experiência do usuário final. A equipe adotou uma abordagem preventiva, mapeando os principais riscos e propondo estratégias de mitigação (para evitar que aconteçam) e de contingência (caso venham a se concretizar).</p>
 <p>A seguir, apresenta-se a tabela com os riscos mais relevantes para o contexto do projeto:</p>
 <p>Principais riscos identificados e estratégias associadas</p>
+<div class="centered-text"><b>Tabela 6 - Gerenciamento de riscos do projeto e suas vertentes</b>  </div>
+
 <table>
 <thead>
 <tr>
@@ -1039,6 +1248,8 @@
 </tr>
 </tbody>
 </table>
+<div class="centered-text"><b>Fonte:</b> Elaborado por Renan Reis</div>
+
 <p>Observação: A avaliação de riscos é contínua e será reavaliada a cada sprint, com foco na antecipação de problemas e preservação da qualidade do produto e da organização do time.</p>
 <h2 id="26-criterios-de-replanejamento"><strong>2.6 Critérios de Replanejamento</strong></h2>
 <p>O replanejamento no projeto AgroRenda será realizado sempre que houver fatores que comprometam o andamento da sprint, a qualidade das entregas ou a aderência aos objetivos definidos no backlog. A equipe utilizará como base o acompanhamento semanal, as revisões de sprint e a análise dos riscos para identificar a necessidade de ajustes.</p>
@@ -1110,7 +1321,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>

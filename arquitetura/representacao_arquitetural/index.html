@@ -1,0 +1,1882 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../introducao/">
+      
+      
+        <link rel="next" href="../referencias/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Representação Arquitetural - AgroRenda</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/home.css">
+    
+      <link rel="stylesheet" href="../../assets/css/global.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-representacao-arquitetural" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="AgroRenda" class="md-header__button md-logo" aria-label="AgroRenda" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AgroRenda
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Representação Arquitetural
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-green"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/FGA0138-MDS-Ajax/2025.1-Ingwaz/" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AgroRenda" class="md-nav__button md-logo" aria-label="AgroRenda" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AgroRenda
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/FGA0138-MDS-Ajax/2025.1-Ingwaz/" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Documento de visão
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Documento de visão
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao/visao_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visão Geral do Produto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao/visao_projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visão Geral do Projeto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao/processo_desenvolvimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Processo de Desenvolvimento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao/escopo_projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Escopo do Projeto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao/metricas_medicoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Métricas e Medições
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao/teste/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Testes de Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao/referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Referências
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Atas de reuniões
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Atas de reuniões
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata1_definicoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Documentação e Gestão de Projeto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata2_kickoff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Kick Off
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata3_alinhamento_geral/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alinhamento Geral
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata4_planejamento_backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Planejamento de Funcionalidades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata5_documento_final_visao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Definição final do produto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata6_definicao_arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Definição da Arquitetura
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata7_documentacao_arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Documentação da Arquitetura
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Arquitetura
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitetura
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introducao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introdução
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Representação Arquitetural
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Representação Arquitetural
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Sumário">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sumário
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-definicoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Definições
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-justifique-sua-escolha" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Justifique sua escolha.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-detalhamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Detalhamento
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-metas-e-restricoes-arquiteturais" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4. Metas e restrições arquiteturais
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-visao-de-casos-de-uso-escopo-do-produto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5. Visão de Casos de uso (escopo do produto)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-visao-logica" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6. Visão lógica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.6. Visão lógica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#261-modulos-do-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6.1. Módulos do Sistema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#262-comunicacao-entre-modulos-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6.2. Comunicação entre Módulos (Interfaces)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#263-diagrama-de-estados" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6.3. Diagrama de Estados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#264-diagrama-de-atividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6.4. Diagrama de Atividades
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#265-diagrama-de-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6.5. Diagrama de Classes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-visao-de-implementacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7. Visão de Implementação
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.7. Visão de Implementação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#271-camada-de-apresentacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.1. Camada de Apresentação
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.7.1. Camada de Apresentação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2711-estrutura-da-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.1.1. Estrutura da Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2712-comunicacao-com-o-back-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.1.2. Comunicação com o Back-End
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#272-logica-e-regras-de-negocios" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.2. Lógica e Regras de Negócios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.7.2. Lógica e Regras de Negócios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2721-modelos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.2.1. Modelos:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2722-formularios" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.2.2. Formulários:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2723-recuperacao-de-conta" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.2.3. Recuperação de Conta:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2724-controle-de-acesso" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.2.4. Controle de Acesso:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#273-comunicacao-com-o-banco-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.3. Comunicação com o Banco de Dados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.7.3. Comunicação com o Banco de Dados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2731-estrutura-do-banco-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.3.1. Estrutura do Banco de Dados:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2732-operacoes-com-o-banco-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.3.2. Operações com o Banco de Dados:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2733-validacoes-e-integridade" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.3.3. Validações e Integridade:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2734-consultas-simples-e-complexas" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.3.4. Consultas Simples e Complexas:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2735-padrao-de-desenvolvimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.3.5. Padrão de Desenvolvimento:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#28-visao-de-implantacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.8. Visão de Implantação
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29-restricoes-adicionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9. Restrições adicionais
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.9. Restrições adicionais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#291-facilidade-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9.1. Facilidade de uso
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#292-seguranca-dos-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9.2. Segurança dos dados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#293-desempenho-e-funcionamento-offline" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9.3. Desempenho e funcionamento offline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#295-privacidade-e-conformidade-legal" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9.5. Privacidade e conformidade legal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Referências
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Sumário">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sumário
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-definicoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Definições
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-justifique-sua-escolha" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Justifique sua escolha.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-detalhamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Detalhamento
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-metas-e-restricoes-arquiteturais" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4. Metas e restrições arquiteturais
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-visao-de-casos-de-uso-escopo-do-produto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5. Visão de Casos de uso (escopo do produto)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-visao-logica" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6. Visão lógica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.6. Visão lógica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#261-modulos-do-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6.1. Módulos do Sistema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#262-comunicacao-entre-modulos-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6.2. Comunicação entre Módulos (Interfaces)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#263-diagrama-de-estados" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6.3. Diagrama de Estados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#264-diagrama-de-atividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6.4. Diagrama de Atividades
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#265-diagrama-de-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6.5. Diagrama de Classes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-visao-de-implementacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7. Visão de Implementação
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.7. Visão de Implementação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#271-camada-de-apresentacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.1. Camada de Apresentação
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.7.1. Camada de Apresentação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2711-estrutura-da-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.1.1. Estrutura da Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2712-comunicacao-com-o-back-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.1.2. Comunicação com o Back-End
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#272-logica-e-regras-de-negocios" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.2. Lógica e Regras de Negócios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.7.2. Lógica e Regras de Negócios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2721-modelos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.2.1. Modelos:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2722-formularios" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.2.2. Formulários:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2723-recuperacao-de-conta" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.2.3. Recuperação de Conta:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2724-controle-de-acesso" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.2.4. Controle de Acesso:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#273-comunicacao-com-o-banco-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.3. Comunicação com o Banco de Dados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.7.3. Comunicação com o Banco de Dados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2731-estrutura-do-banco-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.3.1. Estrutura do Banco de Dados:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2732-operacoes-com-o-banco-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.3.2. Operações com o Banco de Dados:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2733-validacoes-e-integridade" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.3.3. Validações e Integridade:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2734-consultas-simples-e-complexas" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.3.4. Consultas Simples e Complexas:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2735-padrao-de-desenvolvimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.3.5. Padrão de Desenvolvimento:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#28-visao-de-implantacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.8. Visão de Implantação
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29-restricoes-adicionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9. Restrições adicionais
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.9. Restrições adicionais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#291-facilidade-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9.1. Facilidade de uso
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#292-seguranca-dos-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9.2. Segurança dos dados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#293-desempenho-e-funcionamento-offline" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9.3. Desempenho e funcionamento offline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#295-privacidade-e-conformidade-legal" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9.5. Privacidade e conformidade legal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="2-representacao-arquitetural"><strong>2. Representação Arquitetural</strong></h1>
+<h2 id="21-definicoes"><strong>2.1. Definições</strong></h2>
+<p>O sistema seguirá uma arquitetura MVC (Model-View-Controller).</p>
+<h2 id="22-justifique-sua-escolha"><strong>2.2. Justifique sua escolha.</strong></h2>
+<p>Optamos por uma arquitetura baseada nos princípios do MVC com objetivo de manter nosso projeto devidamente organizado e visando a separação de responsabilidades, pois decidimos dividir nossa equipe em frontend e backend, então uma arquitetura que contribuísse com o sucesso de tal divisão é essencial.</p>
+<p>Além disso, de acordo com as escolhas das tecnologias que vamos utilizar, presentes no tópico 1.4 do documento de visão: principalmente Django e React Native. Primeiro concluímos que como o Django já segue a arquitetura MVT (Model-View-Template), derivada do MVC, poderemos trabalhar com ele facilmente sem mudanças bruscas. Será principalmente por meio do Django que os conceitos de Model e Controller serão implementados. Segundo, concluímos que também conseguiremos aplicar bem essa arquitetura ao trabalhar com o React Native, já que por definição ele já cuida da interface do usuário (View).</p>
+<p>Dessa forma, acreditamos que essa escolha será vantajosa para além da organização e separação, também esperamos que isso facilitará o desenvolvimento, manutenção, testes e possíveis alterações que ocorram no nosso projeto.</p>
+<h2 id="23-detalhamento"><strong>2.3. Detalhamento</strong></h2>
+<p>A arquitetura escolhida para o desenvolvimento é o MVC (Model-View-Controller). O padrão MVC favorece a separação de responsabilidades, permitindo o desenvolvimento de interface, lógica de controle e gestão de dados. Então, assegurando as vantagens destacadas no item 2.2. <br />
+O modelo arquitetural MVC é composto de três componentes principais: Model, View e Controller. Esses elementos possuem papeis específicos, que relacionando com o aplicativo AgroRenda, são instanciados com funções diretamente ligadas às necessidades da ferramenta voltada à gestão de produção de atividades rurais.<br />
+O Model  contém a lógica de negócio e é responsável pelo acesso e manipulação dos dados da aplicação. Ele concentra as regras de negócio e lida com o acesso e a persistência de informações, como registros de plantios, dados de produtividade, relatórios de crédito e dados de usuários.  As requisições vindas do controller são recebidas pela Model gerando respostas a partir destas requisições.<br />
+A View é a camada encarregada da interface com o usuário, e no aplicativo, ela foi projetada com foco total em acessibilidade e usabilidade intuitiva. A interface conta com elementos visuais autoexplicativos, ícones representativos e textos reduzidos, tornando o uso acessível para pessoas com pouca familiaridade com a tecnologia. A View exibe informações de forma clara e simples, permitindo com que todas as funcionalidades sejam encontradas, mas sem executar qualquer lógica de processamento. <br />
+O Controller faz a ponte entre a View e o Model. Toda vez que o usuário realiza uma ação na interface como tocar no botão “Registrar Plantio”, a View encaminha esse evento ao Controller, que interpreta a solicitação, valida os dados, interage com o Model e retorna a resposta apropriada a View.   </p>
+<div class="centered-text"><b>Figura 1 - </b> Representação da Arquitetura do Sistema </div>
+
+<p><img src="../../imgs/image2.png" alt="image" class="centered-img"> </p>
+<h2 id="24-metas-e-restricoes-arquiteturais"><strong>2.4. Metas e restrições arquiteturais</strong></h2>
+<ul>
+<li>Desempenho: O sistema deve processar as principais transações e consultas de forma rápida com um tempo médio inferior a 3 segundos para 90% das requisições sob condições normais de uso.  </li>
+<li>Disponibilidade: O sistema deve visar uma disponibilidade de 99,5%, garantindo que os dados dos usuários estejam seguros, íntegros e acessíveis sempre que necessários.  </li>
+<li>Padrões de codificação: O código deve seguir as melhores práticas de codificação para Python/ Django (<a href="https://peps.python.org/pep-0008/">PEP 8</a>) e JavaScript/ React Native (<a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Code_style_guide/JavaScript">MDN</a>).  </li>
+<li>Manutenibilidade: O sistema deve ser modular e possuir baixo acoplamento entre os componentes em visão de um projeto mais fácil de se manter e realizar alterações.  </li>
+<li>Segurança: As APIs desenvolvidas no backend Django devem seguir as melhores práticas possíveis e passar em testes como aqueles definidos pelo <a href="https://owasp.org/www-project-web-security-testing-guide/stable/">OWASP</a>.  </li>
+<li>
+<p>Versionamento: O padrão usado para realizar mudanças no código e utilizar a ferramenta Git eficientemente será o <a href="https://nvie.com/posts/a-successful-git-branching-model/">Git Flow</a>.</p>
+<p>Todos os elementos supracitados contribuem para um desenvolvimento de software ágil e eficiente, onde todos os membros do projeto estão em sincronia na codificação e nas metas a serem alcançadas. Como objetivo final, essas metas e restrições ajudam a criar um produto final confiável e uma experiência agradável para o usuário.</p>
+</li>
+</ul>
+<h2 id="25-visao-de-casos-de-uso-escopo-do-produto"><strong>2.5. Visão de Casos de uso (escopo do produto)</strong></h2>
+<p>No escopo do projeto AgroRenda, o grupo optou por uma aplicação mobile voltada a atender as necessidades de pequenos produtores rurais para auxílio das atividades cotidianas, incluindo funcionalidades como: um sistema de login, sistema de registro e acompanhamento de atividades de produção; sistema com materiais de apoio; interface gráfica; acessibilidade.<br />
+    Com as funcionalidades escolhidas, houve a criação de perfis e cenários nos moldes do escopo, a fim de corretamente atender às permissões e acessos reservados a cada um dos agentes abrangidos dentro do escopo do projeto, e à ordenação dos Sprints de maneira a facilitar a organização do projeto. Por fim, o grupo optou por incluir requisitos funcionais e não funcionais ao projeto, tendo cada um níveis de prioridade <br />
+Alguns dos requisitos que contribuíram para a escolha da arquitetura MVC foram a necessidade de separação clara entre regras de negócio, interface e manipulação de dados, como evidenciado pela presença de múltiplos perfis de usuários, como agricultor, técnico agrícola, administrador e analista de crédito. Cada um deles têm responsabilidades distintas dentro do sistema e essa divisão de responsabilidades favorece o uso da arquitetura MVC, uma vez que permite modularizar melhor as funcionalidades, garantindo que mudanças na interface não afetem a lógica do sistema.<br />
+Outro fator que influenciou na escolha da arquitetura MVC foi a separação da equipe em backend, que usará o Django, e o frontend, que fará as atividades usando o React. A arquitetura MVC também favorece a divisão de responsabilidades e a prática de Extreme Programming, XP, oferece uma proposta que engloba desenvolvimento incremental, testes e refatoração de forma contínua, que cabe bem na organização em camadas do MVC  </p>
+<div class="centered-text"><b>Figura 2 - </b> Diagramas de Casos de Uso </div>
+
+<p><img src="../../imgs/image3.png" alt="image" class="centered-img"> </p>
+<h2 id="26-visao-logica"><strong>2.6. Visão lógica</strong></h2>
+<p>Como mencionado previamente, o sistema AgroRenda é organizado em módulos seguindo o padrão MVC (Model-View-Controller), com foco em usabilidade para agricultores familiares. Abaixo está a estrutura lógica detalhada:</p>
+<h3 id="261-modulos-do-sistema"><strong>2.6.1. Módulos do Sistema</strong></h3>
+<ul>
+<li>
+<p><strong>A. Módulo de Autenticação</strong>  </p>
+<ul>
+<li><strong>Razão Lógica:</strong> Gerencia cadastro, login e segurança (criptografia de senhas).  </li>
+<li><strong>Componentes:</strong>  <ul>
+<li><strong>Model:</strong> User (dados do usuário).  </li>
+<li><strong>View:</strong> Telas de login/cadastro.  </li>
+<li><strong>Controller:</strong> AuthController (valida credenciais, gerencia sessões).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>B. Módulo de Gestão Agrícola</strong>  </p>
+<ul>
+<li><strong>Razão Lógica:</strong> Permite registrar e acompanhar atividades (plantio, colheita e vendas).  </li>
+<li><strong>Componentes:</strong>  <ul>
+<li><strong>Model:</strong> Production, Crop, Livestock.  </li>
+<li><strong>View:</strong> Telas de formulários e relatórios.  </li>
+<li><strong>Controller:</strong> ProductionController (CRUD de atividades).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>C. Módulo de Crédito Rural</strong>  </p>
+<ul>
+<li><strong>Razão Lógica:</strong> Facilita solicitação e acompanhamento de crédito.  </li>
+<li><strong>Componentes:</strong>  <ul>
+<li><strong>Model:</strong> CreditRequest  </li>
+<li><strong>View:</strong> Formulários de solicitação e status.  </li>
+<li><strong>Controller:</strong> CreditController (integra com APIs de análise).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>D. Módulo de Conteúdo Educacional</strong>  </p>
+<ul>
+<li><strong>Razão Lógica:</strong> Oferece vídeos e FAQs para capacitação.  </li>
+<li><strong>Componentes:</strong>  <ul>
+<li><strong>Model:</strong> EducationalContent  </li>
+<li><strong>View:</strong> Player de vídeos e listagem de FAQs.  </li>
+<li><strong>Controller:</strong> ContentController (gerencia acesso offline).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>E. Módulo de Administração</strong>  </p>
+<ul>
+<li><strong>Razão Lógica:</strong> Gerencia usuários e configurações do sistema.  </li>
+<li><strong>Componentes:</strong>  <ul>
+<li><strong>Model:</strong> AdminSettings  </li>
+<li><strong>View:</strong> Painel de administração.  </li>
+<li><strong>Controller:</strong> AdminController (atribui perfis técnicos/analistas).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="262-comunicacao-entre-modulos-interfaces"><strong>2.6.2. Comunicação entre Módulos (Interfaces)</strong></h3>
+<ul>
+<li><strong>APIs REST:</strong> Backend (Django) expõe endpoints como /api/production para o frontend (React Native).  </li>
+<li><strong>Eventos:</strong> Solicitação de crédito gera notificação para o módulo de administração.  </li>
+<li><strong>Banco de Dados:</strong> PostgreSQL compartilhado entre módulos (como por exemplo: tabela users usada por autenticação e administração).</li>
+</ul>
+<h3 id="263-diagrama-de-estados"><strong>2.6.3. Diagrama de Estados</strong></h3>
+<p>A seguir, temos ilustrado o diagrama de estados da aplicação, que representa o ciclo de vida das solicitações de crédito no sistema AgroRenda. Este diagrama demonstra os diferentes estágios do processo - desde a submissão inicial até a aprovação ou rejeição final - bem como as condições que determinam as transições entre esses estados. Através desta representação visual, é possível compreender o fluxo completo de funcionamento desta funcionalidade central do sistema, incluindo os caminhos alternativos que podem ocorrer durante a análise das solicitações.</p>
+<div class="centered-text"><b>Figura 3 - </b> Diagrama de Transição de Estados </div>
+
+<p><img src="../../imgs/image4.png" alt="image" class="centered-img"> </p>
+<h3 id="264-diagrama-de-atividades"><strong>2.6.4. Diagrama de Atividades</strong></h3>
+<p>Complementando a visão geral do sistema, o diagrama de atividades apresentado detalha o fluxo operacional completo da aplicação, demonstrando passo a passo as interações do usuário e as respostas do sistema em cada estágio do processo. O diagrama esclarece tanto o fluxo principal de registro de plantio quanto todos os caminhos alternativos que podem ocorrer durante a utilização da plataforma, incluindo tratamentos de erro, validações automáticas e processos paralelos que garantem o funcionamento integrado do AgroRenda. Através desta representação visual, se torna mais evidente como o sistema se comporta em diferentes cenários de uso, desde condições ideais até situações excepcionais que demandam intervenções específicas.</p>
+<div class="centered-text"><b>Figura 4 - </b> Diagrama de Atividades </div>
+
+<p><img src="../../imgs/image5.png" alt="image" class="centered-img"> </p>
+<h3 id="265-diagrama-de-classes"><strong>2.6.5. Diagrama de Classes</strong></h3>
+<p>O diagrama de classes apresentado a seguir ilustra a estrutura básica do sistema AgroRenda, mostrando os principais componentes e como eles se relacionam entre si. Essa representação permite visualizar os elementos fundamentais que compõem a aplicação, incluindo as entidades principais, suas características e as conexões existentes.  </p>
+<div class="centered-text"><b>Figura 5 - </b> Diagrama de Classes </div>
+
+<p><img src="../../imgs/image6.png" alt="image" class="centered-img"> </p>
+<h2 id="27-visao-de-implementacao">2.7. <strong>Visão de Implementação</strong></h2>
+<h3 id="271-camada-de-apresentacao"><strong>2.7.1. Camada de Apresentação</strong></h3>
+<p>A camada de apresentação do sistema <strong>AgroRenda</strong> é responsável por garantir a comunicação visual e interativa entre o usuário final, como agricultores familiares, técnicos e analistas, e as funcionalidades oferecidas pela aplicação. O sistema será desenvolvido utilizando <strong>React</strong> com o framework <strong>Expo(javascript)</strong>, proporcionando uma interface moderna, responsiva e voltada para o uso de dispositivos móveis.</p>
+<p>Essa camada será responsável por interagir diretamente com os usuários do sistema, permitindo que agricultores familiares, técnicos e analistas acessem funcionalidades essenciais como autenticação, registro de atividades agrícolas, solicitação de crédito, consulta de informações técnicas e geração de relatórios de produtividade, por meio de uma interface acessível, responsiva e adaptada à realidade digital dos pequenos produtores.</p>
+<p>No projeto, a interface do usuário foi desenvolvida com componentes React, substituindo os templates HTML. Esses componentes, combinados com arquivos de estilo (CSS), scripts em JavaScript e elementos visuais como imagens e ícones, formam a base visual da aplicação, aproveitando os recursos oferecidos pelo Expo para uma integração eficiente e moderna. </p>
+<p>A estrutura da interface foi organizada de maneira modular, com uma divisão clara entre os componentes reutilizáveis, as telas principais, os arquivos estáticos e os serviços de comunicação com o back-end. Essa forma de organizar o código torna o sistema mais limpo, fácil de manter e pronto para crescer com novas funcionalidades no futuro</p>
+<h4 id="2711-estrutura-da-interface"><strong>2.7.1.1. Estrutura da Interface</strong></h4>
+<p>A camada está organizada nos seguintes diretórios principais:</p>
+<ul>
+<li>
+<p>screens/: Contém as <strong>telas funcionais</strong> que representam cada uma das seções do aplicativo, como:</p>
+</li>
+<li>
+<p>HomeScreen.js: Tela inicial com informações introdutórias e tutorial de uso.  </p>
+</li>
+<li>LoginScreen.js, RegisterScreen.js: Telas de autenticação do usuário.  </li>
+<li>RecoverAccountScreen.js: Página para solicitar o envio de um e-mail de recuperação de senha.  </li>
+<li>RedefinePasswordScreen.js: Página para redefinição de senha.  </li>
+<li>DashboardScreen.js: Painel principal para o agricultor acompanhar sua produção.  </li>
+<li>CreditRequestScreen.js: Tela de solicitação e acompanhamento de crédito para o agricultor .  </li>
+<li>ReportsScreen.js: Tela de visualização dos relatórios de produtividade e histórico para o agricultor.  </li>
+<li>TechSupportScreen.js: Canal de contato com suporte técnico.  </li>
+<li>FaqScreen.js: Página de perguntas frequentes.  </li>
+<li>CreditAnalystScreen.js: Tela de análise das solicitações de crédito pelo analista financeiro.   </li>
+<li>
+<p>TechnicalSupportScreen.js: Interface para acompanhamento da produção pelo técnico agrícola.</p>
+</li>
+<li>
+<p>components/: Contém <strong>componentes reutilizáveis</strong> como botões, cards, gráficos, inputs e menus.</p>
+</li>
+<li>
+<p>assets/: Contém <strong>recursos estáticos</strong> como:</p>
+</li>
+<li>
+<p>img/: Ícones, logotipos e ilustrações.  </p>
+</li>
+<li>fonts/: Fontes personalizadas.  </li>
+<li>
+<p>videos/: Tutoriais explicativos.</p>
+</li>
+<li>
+<p>styles/: Contém os <strong>estilos visuais</strong> utilizados pelos componentes e telas.</p>
+</li>
+<li>
+<p>services/: Camada responsável por realizar as <strong>requisições HTTP</strong> à API back-end construída em Django REST Framework, como login, envio de formulários e recuperação de dados.</p>
+</li>
+</ul>
+<h4 id="2712-comunicacao-com-o-back-end"><strong>2.7.1.2. Comunicação com o Back-End</strong></h4>
+<p>A comunicação entre o front-end e o back-end será feita por meio de <strong>requisições HTTP</strong>, garantindo uma integração segura e eficiente com os dados gerenciados pela API do Django. O Django, por sua vez, se conectará a um banco de dados <strong>PostgreSQL</strong>, onde todas as informações da aplicação serão armazenadas e gerenciadas de forma segura e escalável.</p>
+<h3 id="272-logica-e-regras-de-negocios"><strong>2.7.2. Lógica e Regras de Negócios</strong></h3>
+<p>Essa camada é responsável pelas regras que definem como o sistema funciona e como ele se comunica com os usuários e os dados. No AgroRenda, ela abrange as principais funcionalidades que ajudam na gestão da produção agrícola, no acesso ao crédito e no suporte técnico. Também garante que o sistema seja seguro e fácil de usar. As regras de negócio são implementadas nos modelos de dados e nas rotinas que executam as operações do sistema, validando as informações e assegurando que tudo funcione da forma correta.  Abaixo, são detalhadas as principais áreas da lógica de negócios implementadas.</p>
+<h4 id="2721-modelos"><strong>2.7.2.1. Modelos:</strong></h4>
+<ul>
+<li><strong>Usuário (Agricultor, Técnico, Administrador, Analista de Crédito):</strong> A aplicação define perfis distintos, cada um com permissões específicas.  </li>
+<li><strong>Atividades de Produção:</strong> Modelo que armazena informações sobre cultivos, colheitas, vendas e outras atividades relacionadas à produção rural.   </li>
+<li><strong>Solicitações de Crédito:</strong> Estrutura que gerencia os pedidos realizados pelos agricultores, acompanhando o status e permitindo a análise pelo Analista de Crédito.</li>
+</ul>
+<h4 id="2722-formularios"><strong>2.7.2.2. Formulários:</strong></h4>
+<ul>
+<li>
+<p><strong>Cadastro e Login:</strong> A lógica implementa validações de campos obrigatórios, verificação de unicidade por meio do <em>e-mail</em> e segurança por meio de criptografia de senhas.</p>
+</li>
+<li>
+<p><strong>Gestão da Produção:</strong> Formulários intuitivos permitem que agricultores registrem, editem ou excluam atividades produtivas, com campos padronizados para garantir a consistência das informações.</p>
+</li>
+<li>
+<p><strong>Solicitação de Crédito:</strong> Formulário estruturado para envio de informações essenciais ao pedido, como tipo de cultivo, produtividade estimada e necessidade de financiamento.</p>
+</li>
+</ul>
+<h4 id="2723-recuperacao-de-conta"><strong>2.7.2.3. Recuperação de Conta:</strong></h4>
+<ul>
+<li><strong>Fluxo de Recuperação:</strong> Está prevista a possibilidade de redefinição de senha por meio de validação de dados de autenticação.</li>
+</ul>
+<h4 id="2724-controle-de-acesso"><strong>2.7.2.4. Controle de Acesso:</strong></h4>
+<ul>
+<li>
+<p><strong>Permissões de Perfis:</strong> Cada perfil possui permissões definidas:</p>
+</li>
+<li>
+<p>Agricultor: registro e acompanhamento de produção, solicitação de crédito, solicitação de ajuda técnica.</p>
+</li>
+<li>
+<p>Técnico: acesso aos dados dos agricultores para suporte.</p>
+</li>
+<li>
+<p>Administrador: gerenciamento geral do sistema.</p>
+</li>
+<li>
+<p>Analista: análise de solicitações de crédito.</p>
+</li>
+<li>
+<p><strong>Fluxo de Acesso:</strong> Utiliza middleware ou decorators para garantir que o usuário tenha as permissões necessárias para acessar determinadas rotas ou funcionalidades.</p>
+</li>
+</ul>
+<h3 id="273-comunicacao-com-o-banco-de-dados"><strong>2.7.3. Comunicação com o Banco de Dados</strong></h3>
+<p>A comunicação com o banco de dados no sistema AgroRenda é realizada através do <strong>Django ORM</strong>, proporcionando uma interface de alto nível para interação com os dados, sem a necessidade de escrever consultas SQL manualmente.</p>
+<h4 id="2731-estrutura-do-banco-de-dados"><strong>2.7.3.1. Estrutura do Banco de Dados:</strong></h4>
+<p>O banco de dados armazena informações essenciais para a operação da aplicação, com destaque para:</p>
+<ul>
+<li><strong>Usuários e Perfis:</strong> Cada usuário possui atributos como nome, e-mail, e permissões específicas associadas a seu perfil (Agricultor, Técnico, Administrador, Analista).  </li>
+<li><strong>Dados de Produção:</strong> Registros das atividades agrícolas como plantio, colheita, e vendas, permitindo o acompanhamento e a geração de relatórios produtivos.  </li>
+<li><strong>Solicitações de Crédito:</strong> Armazena os dados relacionados às solicitações feitas pelos agricultores e as análises realizadas pelos analistas.</li>
+</ul>
+<p>O Django ORM gerencia automaticamente a criação das tabelas e colunas a partir dos modelos Python definidos, realizando migrações conforme alterações no esquema de dados.</p>
+<h4 id="2732-operacoes-com-o-banco-de-dados"><strong>2.7.3.2. Operações com o Banco de Dados:</strong></h4>
+<ul>
+<li>
+<p><strong>Criação:</strong> Ao registrar um novo usuário ou atividade, os dados são adicionados ao sistema e armazenados no banco de dados por meio dos métodos .add() e .save(), garantindo que as informações sejam armazenadas corretamente.</p>
+</li>
+<li>
+<p><strong>Leitura:</strong> As informações são recuperadas utilizando métodos como .filter(), .get() e .all(), permitindo consultar, por exemplo, todas as atividades de um agricultor ou os pedidos de crédito pendentes.  </p>
+</li>
+<li><strong>Atualização:</strong> Para modificar informações, como atualização de status de uma solicitação de crédito, utiliza-se o método .update() ou atribuições diretas seguidas de .save().  </li>
+<li><strong>Exclusão:</strong> A exclusão de registros pode ser realizada com o método .delete().</li>
+</ul>
+<h4 id="2733-validacoes-e-integridade"><strong>2.7.3.3. Validações e Integridade:</strong></h4>
+<p>O Django fornece validações automáticas de tipo e integridade referencial:</p>
+<ul>
+<li><strong>Validação de campos obrigatórios</strong>: E-mail e senha.  </li>
+<li><strong>Relacionamentos entre modelos</strong>: Um agricultor vinculado a várias Atividades de Produção.  </li>
+<li><strong>Integridade transacional</strong>: Garantir que operações complexas sejam atômicas.</li>
+</ul>
+<h4 id="2734-consultas-simples-e-complexas"><strong>2.7.3.4. Consultas Simples e Complexas:</strong></h4>
+<ul>
+<li><strong>Consultas Simples:</strong> Recuperação, por exemplo, de todas as atividades de um agricultor em determinada safra.  </li>
+<li><strong>Consultas Agregadas:</strong> Cálculo de produtividade média, total de vendas ou volume de crédito solicitado.</li>
+</ul>
+<h4 id="2735-padrao-de-desenvolvimento"><strong>2.7.3.5. Padrão de Desenvolvimento:</strong></h4>
+<ul>
+<li>A lógica de negócio segue o padrão <strong>MTV (Model-Template-View)</strong> do Django, promovendo uma separação clara entre a modelagem de dados, a lógica de aplicação e a interface com o usuário.  </li>
+<li>O banco de dados utilizado será <strong>PostgreSQL</strong>, conforme especificado no documento, garantindo robustez, segurança e suporte a operações complexas como consultas geoespaciais, caso necessário.</li>
+</ul>
+<div class="centered-text"><b>Figura 6 - </b> Diagrama de Pacotes </div>
+
+<p><img src="../../imgs/image7.png" alt="image" class="centered-img"> </p>
+<h2 id="28-visao-de-implantacao"><strong>2.8. Visão de Implantação</strong></h2>
+<p>O software terá um servidor implantado na nuvem [ESPECIFICAR DEPOIS] responsável pelo backend. Como já discutimos em alguns tópicos, serão utilizadas as tecnologias React Native com framework Expo para o desenvolvimento da interface, na linguagem JavaScript, atendendo nossos requisitos para implementação de uma interface para celulares. Para o backend utilizamos Django com Django Rest Framework, na linguagem Python, por meio de APIs RESTful interagimos com a interface e mantemos responsabilidades separadas de acordo com nossa arquitetura. O banco de dados em PostgreeSQL, pois é muito robusto, provendo performances e funcionalidades que atendem nosso projeto. Faremos integração por meio do Django ORM (Object-Relational Mapper), de forma a simplificar interações com o banco de dados. Essas tecnologias e outras menos relevantes também são citadas no nosso documento de visão.</p>
+<h2 id="29-restricoes-adicionais"><strong>2.9. Restrições adicionais</strong></h2>
+<p>Este aplicativo foi projetado para atender a uma série de restrições adicionais que garantem sua qualidade, segurança, facilidade de uso e adequação ao público de pequenos produtores rurais. A seguir, são descritas essas restrições de forma objetiva.</p>
+<h3 id="291-facilidade-de-uso"><strong>2.9.1. Facilidade de uso</strong></h3>
+<p>O aplicativo será utilizado por pequenos produtores, muitos deles com pouca familiaridade com tecnologia. As telas devem ter uma linguagem clara, botões destacados e fluxos de navegação diretos.</p>
+<p>Segundo a norma ISO 9241-210 (INTERNATIONAL ORGANIZATION FOR STANDARDIZATION, 2010), sistemas voltados para usuários não especializados devem priorizar a facilidade de aprendizado e a eficiência no uso. Por isso, o tempo médio para aprender a utilizar o aplicativo deve ser de, no máximo, 30 minutos.</p>
+<h3 id="292-seguranca-dos-dados"><strong>2.9.2. Segurança dos dados</strong></h3>
+<p>Como o aplicativo irá coletar dados das plantações e informações pessoais dos produtores, é essencial proteger essas informações. Todo envio de dados será realizado com conexão segura, utilizando técnicas de criptografia. O acesso será feito mediante senha pessoal, evitando o uso não autorizado.</p>
+<p>Essas medidas seguem boas práticas de segurança recomendadas pela Open Web Application Security Project – OWASP (2023) para aplicativos móveis.</p>
+<h3 id="293-desempenho-e-funcionamento-offline"><strong>2.9.3. Desempenho e funcionamento offline</strong></h3>
+<p>Considerando que muitas áreas rurais podem ter acesso limitado à internet, o aplicativo deverá:</p>
+<ul>
+<li>Permitir que o produtor registre dados mesmo sem conexão à internet;  </li>
+<li>Sincronizar automaticamente com o servidor quando a conexão for restabelecida;  </li>
+<li>Garantir que as funções principais (registro e consulta de dados) funcionem de forma rápida, com respostas em até dois segundos.  </li>
+<li>O software deve ser acessível apenas ao administrador, exigindo login e senha para acesso do usuário, além de exigir o cadastro de atividades.</li>
+</ul>
+<p>Essas restrições garantem que o aplicativo seja útil e confiável no ambiente rural, conforme orientações de desenvolvimento para regiões com infraestrutura limitada.</p>
+<h3 id="295-privacidade-e-conformidade-legal"><strong>2.9.5. Privacidade e conformidade legal</strong></h3>
+<p>O tratamento dos dados coletados pelo aplicativo respeitará as exigências da Lei Geral de Proteção de Dados – LGPD (Lei n.º 13.709, de 14 de agosto de 2018), garantindo:</p>
+<ul>
+<li>Coleta apenas dos dados necessários;  </li>
+<li>Transparência quanto ao uso das informações;  </li>
+<li>Possibilidade de o produtor excluir seus dados, se assim desejar.</li>
+</ul>
+<p>Essa adequação evita riscos legais e protege os direitos dos produtores, conforme recomenda a Agência Nacional de Proteção de Dados – ANPD (2023).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

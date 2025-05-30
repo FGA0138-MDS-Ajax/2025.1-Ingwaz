@@ -1,0 +1,52 @@
+/* --------------- Avatares da Página Home --------------------*/
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--md-default-fg);
+  background-color: var(--md-default-bg);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.team-card:hover {
+  background-color: var(--md-primary-fg);
+  color: var(--md-primary-color);
+  transform: scale(1.05);
+}
+
+.team-card img {
+  border-radius: 60%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.team-card p {
+  margin: 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .team-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .team-container {
+    grid-template-columns: 1fr;
+  }
+}

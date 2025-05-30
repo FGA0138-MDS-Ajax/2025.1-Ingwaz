@@ -1,0 +1,12 @@
+/*Centralizar textos */
+.centered-text {
+  text-align: center;
+}
+
+/*Centralizar imagens */
+.centered-img {
+    display: block;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}

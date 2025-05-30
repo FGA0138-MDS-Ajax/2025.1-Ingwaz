@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="pt" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -26,6 +26,9 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
       
 
 
@@ -43,6 +46,10 @@
       
     
     
+      <link rel="stylesheet" href="../../assets/css/home.css">
+    
+      <link rel="stylesheet" href="../../assets/css/global.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -53,7 +60,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-green">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -63,7 +77,7 @@
       
         
         <a href="#4-declaracao-de-escopo-do-projeto" class="md-skip">
-          Skip to content
+          Pular para conteúdo
         </a>
       
     </div>
@@ -77,7 +91,7 @@
   
 
 <header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
     <a href="../.." title="AgroRenda" class="md-header__button md-logo" aria-label="AgroRenda" data-md-component="logo">
       
   
@@ -105,6 +119,32 @@
       </div>
     </div>
     
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-green"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
@@ -120,16 +160,16 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="Pesquisar">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -140,7 +180,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            Inicializando busca
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -150,6 +190,18 @@
 </div>
       
     
+    
+      <div class="md-header__source">
+        <a href="https://github.com/FGA0138-MDS-Ajax/2025.1-Ingwaz/" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
     
   </nav>
   
@@ -174,7 +226,7 @@
 
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="AgroRenda" class="md-nav__button md-logo" aria-label="AgroRenda" data-md-component="logo">
       
@@ -184,6 +236,18 @@
     </a>
     AgroRenda
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/FGA0138-MDS-Ajax/2025.1-Ingwaz/" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -398,15 +462,6 @@
   <a href="#43-cenarios" class="md-nav__link">
     <span class="md-ellipsis">
       4.3 Cenários
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
     </span>
   </a>
   
@@ -636,6 +691,75 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata5_documento_final_visao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Definição final do produto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata6_definicao_arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Definição da Arquitetura
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/ata7_documentacao_arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Documentação da Arquitetura
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -649,9 +773,20 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../arquitetura/" class="md-nav__link">
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -660,7 +795,88 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitetura
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/introducao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introdução
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/representacao_arquitetural/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Representação Arquitetural
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Referências
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -721,15 +937,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#44-tabela-de-backlog-do-produto" class="md-nav__link">
     <span class="md-ellipsis">
       4.4 Tabela de Backlog do produto
@@ -753,313 +960,411 @@
                   
 
 
+  
+  
+
 
 <h1 id="4-declaracao-de-escopo-do-projeto">4. <strong>Declaração de Escopo do Projeto</strong></h1>
 <h2 id="41-backlog-do-produto"><strong>4.1 Backlog do produto</strong></h2>
-<p><em>Forneça o backlog do produto:</em></p>
-<ul>
-<li>
-<p><em>Sugiro as tabelas, dos itens a seguir organizadas em perfis, cenários, contendo cada um deles, os requisitos obrigatórios (MUST), e desejáveis (Should ou Could). As tabelas que se seguem são sugestões mínimas. Assim sendo elas podem ser modificadas/adaptadas pela equipe de acordo com as necessidades de cada desenvolvimento, desde que justificadas.</em> </p>
-</li>
-<li>
-<p><em>Defina o que cada uma dessas classes representa para o software em desenvolvimento que justifique sua classificação (visão da equipe a ser validada pelo P.O.)</em></p>
-</li>
-<li>
-<p><em>Identifique a forma de obtenção do requisito (elicitação): brainstorm, entrevistas, questionários, etc.</em></p>
-</li>
-</ul>
-<p>[Falar sobre o objetivo principal do projeto e como obtivemos os requisitos]</p>
-<p>As funcionalidades primordiais para o projeto foram realizadas com base na literatura e por meio de [ALGUMA OUTRA COISA]</p>
+<p>O backlog do produto é uma lista de requisitos e funcionalidades, os quais serão
+trabalhados pelo time de desenvolvimento Frontend e Backend, juntamente com o Product
+Owner e o Scrum Master. Os requisitos e funcionalidades deverão, por meio de sprints, serem
+entregues ao cliente, reordenando e atualizando conforme requerido e validado pelo mesmo.</p>
+<p>Tendo em vista que o projeto AgroRenda, baseado na O.D.S 2.3, não possui um
+cliente real, o Product Owner e o Scrum Master desempenham juntos o papel de cliente e
+gerenciam o Backlog se baseando em literatura especializada como os artigos científicos que
+abordam o tema do projeto, e estão disponíveis nas referências bibliográficas.</p>
+<p>Os requisitos se encontram listados na tabela de backlog do produto, subitem 4.4, de
+acordo com sua ordem de importância, o seu tipo, sua priorização, sua descrição breve e as
+histórias de usuários que serão a base do desenvolvimento.</p>
+<div class="centered-text"><b>Tabela 7 - Funcionalidades e descrições</b></div>
+
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Funcionalidade</th>
-<th style="text-align: left;">Descrição</th>
+<th>Funcionalidade</th>
+<th>Descrição</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Sistema de registro e acompanhamento de atividades de produção</td>
-<td style="text-align: left;">Tem por objetivo auxiliar o acompanhamento das atividades de produção e a geração de relatórios.</td>
+<td>Sistema de registro e acompanhamento de atividades de produção</td>
+<td>Tem por objetivo auxiliar o acompanhamento das atividades de produção e a geração de relatórios.</td>
 </tr>
 <tr>
-<td style="text-align: left;">Sistema de login</td>
-<td style="text-align: left;">Tem por objetivo o registro de produtores de alimento, caso a comunidade tenha mais de um chefe de família</td>
+<td>Sistema de login</td>
+<td>Tem por objetivo o registro de produtores de alimento, caso a comunidade tenha mais de um chefe de família.</td>
 </tr>
 <tr>
-<td style="text-align: left;">Sistema com materiais de apoio</td>
-<td style="text-align: left;">Tem por objetivo ajudar na capacitação dos produtores de alimento</td>
+<td>Sistema com materiais de apoio</td>
+<td>Tem por objetivo ajudar na capacitação dos produtores de alimento.</td>
 </tr>
 <tr>
-<td style="text-align: left;">Calendário</td>
-<td style="text-align: left;">Tem por objetivo auxiliar os produtores com o cronograma das safras e colheitas ou coleta</td>
+<td>Calendário</td>
+<td>Tem por objetivo auxiliar os produtores com o cronograma das safras e colheitas ou coleta.</td>
 </tr>
 <tr>
-<td style="text-align: left;">Interface gráfica</td>
-<td style="text-align: left;">Tem por objetivo auxiliar visualmente o usuário por meio de navegação guiada, ícones autoexplicativos e uso reduzido de texto em cada tela</td>
+<td>Interface gráfica</td>
+<td>Tem por objetivo auxiliar visualmente o usuário por meio de navegação guiada, ícones autoexplicativos e uso reduzido de texto em cada tela.</td>
 </tr>
 <tr>
-<td style="text-align: left;">Acessibilidade</td>
-<td style="text-align: left;">Tem por objetivo auxiliar os produtores a utilizarem o produto sem maiores dificuldades, com instruções onde for necessário e uso de linguagem simples</td>
+<td>Acessibilidade</td>
+<td>Tem por objetivo auxiliar os produtores a utilizarem o produto sem maiores dificuldades, com instruções onde for necessário e uso de linguagem simples.</td>
 </tr>
 </tbody>
 </table>
+<div class="centered-text"><b>Fonte: </b> Elaborado por integrantes do projeto</div>
+
 <h2 id="42-perfis"><strong>4.2 Perfis</strong></h2>
-<p><em>Perfis de acesso ao sistema de software podem ser importantes para identificar funcionalidades disponíveis de acordo com tais perfis. Neste sentido eles precisam ser identificados para, mais tarde, serem tratados as limitações de cada um deles. Além disso, é importante, ao cadastrar usuários que tenham permissões de acesso diferenciadas, que elas também sejam identificadas. Para isso é sugerida a seguinte tabela.</em> </p>
 <p>Os perfis de acesso do AgroRenda foram cuidadosamente elaborados para atender às necessidades específicas de cada ator envolvido no ecossistema agrícola, garantindo usabilidade, segurança e eficiência na gestão rural. O sistema foi projetado com três perfis principais, cada um com funções e responsabilidades bem definidas, alinhadas aos objetivos de inclusão digital e apoio à agricultura familiar.</p>
 <p>O Agricultor Familiar é o usuário central, com ferramentas simplificadas para registro e acompanhamento da produção, desenvolvidas especialmente para superar barreiras tecnológicas. O Técnico Agrícola atua como facilitador, utilizando dados consolidados para oferecer suporte personalizado e promover o desenvolvimento sustentável das propriedades. Por fim, o Administrador garante o funcionamento contínuo da plataforma, assegurando que todos os recursos estejam disponíveis e acessíveis.</p>
 <p>Essa estrutura organizada permite que cada usuário interaja com o sistema de forma intuitiva e produtiva, promovendo a gestão eficiente da produção agrícola e o acesso a oportunidades de crédito e assistência técnica. A seguir, os perfis são detalhados em suas características e permissões:</p>
-<p>Tabela : Perfis de acesso</p>
+<div class="centered-text"><b>Tabela 8 - Perfis de acesso e suas características</b></div>
+
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">#</th>
-<th style="text-align: left;">Nome do perfil</th>
-<th style="text-align: left;">Características do perfil</th>
-<th style="text-align: left;">Permissões de acesso</th>
+<th>#</th>
+<th>Nome do Perfil</th>
+<th>Características do Perfil</th>
+<th>Permissões de Acesso</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><em>\&lt;1&gt;</em></td>
-<td style="text-align: left;"><em>\&lt;ex&gt; Administrador</em></td>
-<td style="text-align: left;"><em>Reponsável por manter os perfis de acesso da aplicação, criar novos usuários, alterar usuários já existentes, ou excluir usuários (Manter usuários)</em></td>
-<td style="text-align: left;"><em>Descrever suscintamente as permissões de acesso</em></td>
+<td>1</td>
+<td>Administrador do Sistema</td>
+<td>Responsável pelo sistema, deve garantir funcionamento do app e atualizar conteúdos.</td>
+<td>Gerenciar usuários, ajustar configurações, monitorar uso.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><em>1</em></td>
-<td style="text-align: left;">Administrador do Sistema</td>
-<td style="text-align: left;">Responsável pelo sistema, deve garantir funcionamento do app e atualizar conteúdos.</td>
-<td style="text-align: left;">Gerenciar usuários, ajustar configurações, monitorar uso.</td>
+<td>2</td>
+<td>Técnico Agrícola</td>
+<td>Profissional que auxilia agricultores, acompanha vários produtores, identifica problemas e gera relatórios.</td>
+<td>Ver dados consolidados, enviar orientações.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><em>2</em></td>
-<td style="text-align: left;">Técnico Agrícola</td>
-<td style="text-align: left;">Profissional que auxilia agricultores, ele irá acompanhar vários produtores, identificar problemas, gerar relatórios.</td>
-<td style="text-align: left;">Ver dados consolidados, enviar orientações, validar pedidos de crédito.</td>
+<td>3</td>
+<td>Agricultor Familiar</td>
+<td>Pequeno produtor rural, tem como principal interesse oportunidades financeiras e melhor gestão de seu negócio.</td>
+<td>Cadastrar atividades, ver relatórios, consultar informações, pedir ajuda técnica, solicitar e acompanhar pedidos de crédito.</td>
 </tr>
 <tr>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">Agricultor Familiar</td>
-<td style="text-align: left;">Pequeno produtor rural, baixa escolaridade, pouca experiência com tecnologia.</td>
-<td style="text-align: left;">Cadastrar atividades, ver relatório, consultar informações, pedir ajuda técnica.</td>
+<td>4</td>
+<td>Analista de Crédito</td>
+<td>Profissional responsável pela análise dos pedidos de crédito agrícola.</td>
+<td>Analisar pedidos de crédito dos agricultores familiares.</td>
 </tr>
 </tbody>
 </table>
-<p><em>Perfis diferentes podem usar técnicas diferentes para a elicitação dos requisitos. Descreva e justifique como parte deste item, qual(is) técnicas de elicitação serão usadas (criem tabelas para isso).</em></p>
+<div class="centered-text"><b>Fonte: </b> Elaborado por integrantes do projeto</div>
+
 <h2 id="43-cenarios"><strong>4.3 Cenários</strong></h2>
-<p>Tabela : Cenários funcionais</p>
+<p>Os cenários funcionais definidos para o AgroRenda vão desde o planejamento inicial
+até as operações que cobrem totalmente o suporte ao agricultor. Tudo começa com a escolha
+do que será feito, incluindo o backlog do produto, a criação de uma identidade visual e um
+documento que resume a visão geral do projeto. A partir daí, o MVP é planejado e dividido
+em sprints para fornecer valor de forma contínua.</p>
+<p>Quando os usuários interagem com o sistema, eles encontram funcionalidades como
+cadastro e login, além de interfaces intuitivas, adaptadas para agricultores com diferentes
+níveis de familiaridade com a tecnologia. Operacionalmente, o AgroRenda permite o
+gerenciamento eficiente de dados de produção, consulta de cotações, acesso a informações
+técnicas e gerência de crédito rural.</p>
+<p>Funcionalidades adicionais, como a possibilidade de uso offline, vídeos educacionais
+e uma página de perguntas frequentes, ajudam a promover a acessibilidade, autonomia e
+capacitação dos usuários. Recursos não funcionais, como criptografia de dados e fácil
+usabilidade, garantem que o sistema seja seguro e confiável. Abaixo, disponibilizamos uma
+tabela que resume os principais cenários funcionais mapeados:</p>
+<div class="centered-text"><b>Tabela 9 - Cenários funcionais</b></div>
+
 <table>
-<thead>
-<tr>
-<th style="text-align: center;">Sistema: xxx – Cenários funcionais</th>
-<th style="text-align: center;"></th>
-<th style="text-align: center;"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">Numeração do cenário</td>
-<td style="text-align: center;">Nome do cenário</td>
-<td style="text-align: center;">Sprints</td>
-</tr>
-<tr>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th colspan="3" style="text-align: center;border-bottom: .05rem solid var(--md-typeset-table-color); padding-bottom: 8px;">
+        <h3 style="margin: 0;"><b>Sistema: AgroRenda – Cenários funcionais</b></h3>
+      </th>
+    </tr>
+    <tr>
+      <th>Numeração do cenário</th>
+      <th>Nome do cenário</th>
+      <th>Sprints</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Definição do produto, backlog, identidade visual, documento de visão</td>
+      <td>Definir os principais aspectos do produto, incluindo backlog inicial, identidade visual e documento de visão.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>MVP e planejamento do projeto</td>
+      <td>Planejar o desenvolvimento do MVP e estruturar as entregas ao longo do projeto.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Página inicial</td>
+      <td>O sistema apresenta uma página inicial com informações introdutórias sobre o produto, tutoriais de como usar o produto e ferramentas disponíveis.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Cadastro de Usuário</td>
+      <td>Permitir o registro de novos usuários no sistema, garantindo que o agricultor crie uma conta.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Login de Usuário</td>
+      <td>Implementar a funcionalidade para autenticação de usuários, permitindo acesso seguro ao sistema através de login com credenciais.</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Visualização de Perfil do Usuário</td>
+      <td>Permitir que o usuário visualize seu perfil pessoal no sistema, com informações como dados cadastrais.</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Gestão da Produção</td>
+      <td>O agricultor pode adicionar, editar e excluir dados relacionados a culturas, colheitas, animais e vendas realizadas, facilitando a gestão da produção.</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Consulta de Produtividade</td>
+      <td>O agricultor pode visualizar dados sobre a produtividade da sua produção, como lucros, histórico e expectativas.</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Consulta de Informações Técnicas</td>
+      <td>O agricultor pode consultar informações sobre cultivos e animais, como manejo, doenças, pragas e outras informações técnicas.</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Solicitação de Crédito</td>
+      <td>O agricultor pode solicitar crédito diretamente no sistema e acompanhar o status de suas solicitações.</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Página de Perguntas Frequentes (FAQ)</td>
+      <td>O agricultor pode acessar uma seção de perguntas frequentes para tirar dúvidas comuns relacionadas à produção agrícola.</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Vídeos Educacionais</td>
+      <td>O agricultor pode acessar vídeos técnicos que fornecem orientações sobre práticas agrícolas, como adubação e manejo de culturas.</td>
+    </tr>
+  </tbody>
 </table>
-<p><em>Alternativamente/ ou adicionalmente pode ser usado um mapa hierárquico para representar os cenários e suas Sprints e itens do backlog relacionados.</em></p>
-<h2 id="_1"></h2>
+
+<div class="centered-text"><b>Fonte: </b> Elaborado por integrantes do projeto</div>
+
+<p><br><br></p>
 <h2 id="44-tabela-de-backlog-do-produto"><strong>4.4 Tabela de Backlog do produto</strong></h2>
-<p>Tabela : Backlog do produto</p>
+<div class="centered-text"><b>Tabela 10 - Backlog do produto</b></div>
+
 <table>
 <thead>
 <tr>
-<th>Sistema: xxxx – Backlog do produto</th>
-<th style="text-align: left;"></th>
-<th style="text-align: left;"></th>
-<th style="text-align: left;"></th>
-<th style="text-align: left;"></th>
-<th style="text-align: left;"></th>
-<th></th>
+<th>Numeração</th>
+<th>Sprint</th>
+<th>Nome do requisito</th>
+<th>Tipo de requisito (Funcional / Não Funcional)</th>
+<th>Priorização (Must, Should, Could)</th>
+<th>Descrição sucinta do requisito</th>
+<th>User stories (U.S.) associadas</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Numeração (Cenário / requisito)</td>
-<td style="text-align: left;">Sprint</td>
-<td style="text-align: left;">Nome do requisito</td>
-<td style="text-align: left;">Tipo de requisito (Funcional / Não Funcional)</td>
-<td style="text-align: left;">Priorização do requisito Must, Should, Could</td>
-<td style="text-align: left;">Descrição sucinta do requisito</td>
-<td><strong>User histories (U.S.) associadas</strong> Identifique as U.S. associadas ao requisito</td>
+<td>1</td>
+<td></td>
+<td>Página inicial</td>
+<td>Funcional</td>
+<td>Must</td>
+<td>Onde o usuário é apresentado ao produto e ferramentas</td>
+<td>“Como agricultor, quero ver as funcionalidades disponíveis, para me auxiliarem.”</td>
 </tr>
 <tr>
+<td>2</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Página inicial</td>
-<td style="text-align: left;">Funcional</td>
-<td style="text-align: left;">Could</td>
-<td style="text-align: left;">Onde o usuário é apresentado ao produto e ferramentas</td>
-<td></td>
+<td>Cadastro</td>
+<td>Funcional</td>
+<td>Must</td>
+<td>Registrar o usuário no aplicativo</td>
+<td>“Como novo usuário, quero me cadastrar no aplicativo, para que eu possa acessar as funcionalidades disponíveis.”</td>
 </tr>
 <tr>
+<td>3</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Cadastro</td>
-<td style="text-align: left;">Funcional</td>
-<td style="text-align: left;">Must</td>
-<td style="text-align: left;">Registrar o usuário no aplicativo</td>
-<td></td>
+<td>Login</td>
+<td>Funcional</td>
+<td>Must</td>
+<td>Autenticar o usuário no aplicativo</td>
+<td>“Como usuário registrado, quero fazer login no sistema, para que eu possa acessar as funcionalidades disponíveis.”</td>
 </tr>
 <tr>
+<td>4</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Login</td>
-<td style="text-align: left;">Funcional</td>
-<td style="text-align: left;">Must</td>
-<td style="text-align: left;">Autenticar o usuário no aplicativo</td>
-<td></td>
+<td>Página de gestão da produção</td>
+<td>Funcional</td>
+<td>Must</td>
+<td>Onde o agricultor insere, remove e altera dados de colheitas, cultivos, animais e vendas realizadas</td>
+<td>“Como agricultor, quero poder administrar informações sobre a minha produção, podendo adicionar, editar e excluir elas.”</td>
 </tr>
 <tr>
+<td>5</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Página de gestão da produção</td>
-<td style="text-align: left;">Funcional</td>
-<td style="text-align: left;">Must</td>
-<td style="text-align: left;">Onde o agricultor insere, remove e altera dados de colheitas, cultivos, animais e vendas realizadas</td>
-<td></td>
+<td>Página de checar produtividade</td>
+<td>Funcional</td>
+<td>Must</td>
+<td>Onde o agricultor confere informações pertinentes à sua produção como lucros, expectativas e histórico de desempenho</td>
+<td>“Como agricultor, quero acessar uma página com informações sobre minha produtividade, para que eu possa acompanhar meus lucros, expectativas e histórico de desempenho.”</td>
 </tr>
 <tr>
+<td>6</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Página de checar produtividade</td>
-<td style="text-align: left;">Funcional</td>
-<td style="text-align: left;">Must</td>
-<td style="text-align: left;">Onde o agricultor confere informações pertinentes à sua produção como lucros, expectativas e histórico de desempenho</td>
-<td></td>
+<td>Página de consulta de cotações de cultivos e animais</td>
+<td>Funcional</td>
+<td>Must</td>
+<td>Onde o agricultor busca por cultivos ou animais para consultar a cotação atual na região</td>
+<td>“Como agricultor, quero ver e pesquisar qual o valor atual dos cultivos e animais na minha região para atribuir um preço, para meus produtos.”</td>
 </tr>
 <tr>
+<td>7</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Página de consulta de cotações de cultivos e animais</td>
-<td style="text-align: left;">Funcional</td>
-<td style="text-align: left;">Must</td>
-<td style="text-align: left;">Onde o agricultor busca por cultivos ou animais para consultar a cotação atual na região.</td>
-<td></td>
+<td>Página de consulta de informações sobre cultivos e animais</td>
+<td>Funcional</td>
+<td>Must</td>
+<td>Onde o agricultor busca por cultivos ou animais para se informar sobre doenças, pestes e outras informações pertinentes</td>
+<td>“Como agricultor, quero ver e pesquisar informações sobre doenças, pestes, práticas e dicas sobre cultivos e animais, principalmente com fotos para me informar.”</td>
 </tr>
 <tr>
+<td>8</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Página de consulta de informações sobre cultivos e animais</td>
-<td style="text-align: left;">Funcional</td>
-<td style="text-align: left;">Must</td>
-<td style="text-align: left;">Onde o agricultor busca por cultivos ou animais para se informar sobre doenças, pestes e outras informações pertinentes</td>
-<td></td>
+<td>Página de solicitar e acompanhar pedidos de crédito</td>
+<td>Funcional</td>
+<td>Must</td>
+<td>Onde o agricultor solicita e confere suas solicitações por crédito</td>
+<td>“Como agricultor, quero poder solicitar crédito, para custear novas ferramentas, máquinas ou produtos.”</td>
 </tr>
 <tr>
+<td>9</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Página de solicitar e acompanhar pedidos de crédito</td>
-<td style="text-align: left;">Funcional</td>
-<td style="text-align: left;">Must</td>
-<td style="text-align: left;">Onde o agricultor solicita e confere suas solicitações por crédito</td>
-<td></td>
+<td>Página de perguntas frequentes</td>
+<td>Funcional</td>
+<td>Could</td>
+<td>Onde o agricultor pode buscar por informações comuns que podem o auxiliar</td>
+<td>“Como agricultor, quero poder ver uma lista de perguntas que eu provavelmente posso ter, junto com respostas, para me informar.”</td>
 </tr>
 <tr>
+<td>10</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Página de perguntas frequentes</td>
-<td style="text-align: left;">Funcional</td>
-<td style="text-align: left;">Could</td>
-<td style="text-align: left;">Onde o agricultor pode buscar por informações comuns que podem o auxiliar</td>
-<td></td>
+<td>Página de ajuda técnica</td>
+<td>Funcional</td>
+<td>Could</td>
+<td>Onde o agricultor pode perguntar a um técnico por alguma questão específica</td>
+<td>“Como agricultor, se nenhuma das opções prontas tiverem me atendido, quero poder falar com um técnico, para tirar minhas dúvidas.”</td>
 </tr>
 <tr>
+<td>11</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Página de cartilhas educacionais</td>
-<td style="text-align: left;">Funcional</td>
-<td style="text-align: left;">Could</td>
-<td style="text-align: left;">Onde o agricultor poderia ler cartilhas produzidas por técnicos para auxílio com técnicas e manejos</td>
-<td></td>
+<td>Página de vídeos educacionais</td>
+<td>Funcional</td>
+<td>Could</td>
+<td>Onde o agricultor poderia ver vídeos produzidos por técnicos para auxílio com técnicas e manejos</td>
+<td>“Como agricultor, quero poder ver os vídeos produzidos por técnicos com informações sobre cultivo e manejo, para me auxiliar com técnicas agrícolas.”</td>
 </tr>
 <tr>
+<td>12</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Sincronização optativa offline</td>
-<td style="text-align: left;">Funcional</td>
-<td style="text-align: left;">Must</td>
-<td style="text-align: left;">Tem o objetivo de baixar e sincronizar dados que o agricultor queira ver depois, mesmo que não tenha acesso à internet</td>
-<td></td>
+<td>Página do analista de crédito</td>
+<td>Funcional</td>
+<td>Must</td>
+<td>Onde o analista de crédito poderá receber e consultar as solicitações de crédito</td>
+<td>“Como analista de crédito, quero poder ter acesso aos pedidos de crédito feitos pelo agricultor, para avaliar as informações de produção e portanto aprovar ou não a solicitação.”</td>
 </tr>
 <tr>
+<td>13</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Interface gráfica intuitiva</td>
-<td style="text-align: left;">Não Funcional</td>
-<td style="text-align: left;">Must</td>
-<td style="text-align: left;">Interface que siga padrões de usabilidade e facilidade de uso para agricultores que podem ou não ter dificuldades com tecnologia</td>
-<td></td>
+<td>Página de acompanhamento técnico</td>
+<td>Funcional</td>
+<td>Could</td>
+<td>Onde o técnico acompanha e responde aos agricultores</td>
+<td>“Como técnico agrícola, quero ter acesso aos rendimentos e dúvidas dos agricultores, para gerar relatórios e tirar dúvidas.”</td>
 </tr>
 <tr>
+<td>14</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Cliques</td>
-<td style="text-align: left;">Não Funcional</td>
-<td style="text-align: left;">Could</td>
-<td style="text-align: left;">Quantidade de cliques que o usuário executa para acessar cada página</td>
-<td></td>
+<td>Sincronização optativa offline</td>
+<td>Funcional</td>
+<td>Should</td>
+<td>Tem o objetivo de baixar e sincronizar dados que o agricultor queira ver depois, mesmo que não tenha acesso à internet</td>
+<td>“Como agricultor, quero poder ter a opção de baixar dados necessários para uma funcionalidade funcionar, para utilizá-la no futuro, sem acesso à internet.”</td>
 </tr>
 <tr>
+<td>15</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Criptografia de senha</td>
-<td style="text-align: left;">Não Funcional</td>
-<td style="text-align: left;">Must</td>
-<td style="text-align: left;">Criptografar a senha para manter as informações dos usuários seguras e privadas</td>
-<td></td>
+<td>Instruções para as funcionalidades de cada página</td>
+<td>Funcional</td>
+<td>Must</td>
+<td>Disponibilizar um botão para ativar descrições explicativas dos elementos visíveis na página atual</td>
+<td>“Como agricultor, se eu tiver dúvidas sobre usabilidade na página que estou, quero poder clicar um botão que ativa descrições em áudio ou texto para explicar botões, formulários e os demais elementos na página, para tirar minhas dúvidas.”</td>
 </tr>
 <tr>
+<td>16</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Padronização</td>
-<td style="text-align: left;">Não funcional</td>
-<td style="text-align: left;">Could</td>
-<td style="text-align: left;">Padronização do código escrito a fim de aumentar a organização e manutenibilidade para a equipe de desenvolvimento</td>
-<td></td>
+<td>Tour guiado</td>
+<td>Funcional</td>
+<td>Could</td>
+<td>Apresentação do aplicativo, mostrando suas funcionalidades (tipo uma visualização das user stories)</td>
+<td>“Como agricultor, ao entrar no aplicativo, quero ter uma opção de ver as funcionalidades disponíveis e como chegar nela e utilizá-las, para conhecer o software.”</td>
 </tr>
 <tr>
+<td>17</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Manutenibilidade</td>
-<td style="text-align: left;">Não funcional</td>
-<td style="text-align: left;">Must</td>
-<td style="text-align: left;">Manutenibilidade a fim de garantir a continuidade do software</td>
-<td></td>
+<td>Interface gráfica intuitiva</td>
+<td>Não Funcional</td>
+<td>Must</td>
+<td>Interface que siga padrões de usabilidade e facilidade de uso para agricultores que podem ou não ter dificuldades com tecnologia</td>
+<td>“Como agricultor, quero conseguir acessar todas as funcionalidades do sistema, sem ter que gastar muito tempo procurando elas.”</td>
 </tr>
 <tr>
+<td>18</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td></td>
+<td>Cliques</td>
+<td>Não Funcional</td>
+<td>Could</td>
+<td>Quantidade de cliques que o usuário executa para acessar cada página</td>
+<td>“Como usuário, quero navegar pelo software rapidamente, para utilizar quaisquer funcionalidades.”</td>
 </tr>
 <tr>
+<td>19</td>
 <td></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td>Criptografia de senha</td>
+<td>Não Funcional</td>
+<td>Must</td>
+<td>Criptografar a senha para manter as informações dos usuários seguras e privadas</td>
+<td>“Como desenvolvedor quero que as senhas dos usuários sejam armazenadas de forma criptografada, para que as informações pessoais deles permaneçam seguras e privadas”</td>
+</tr>
+<tr>
+<td>20</td>
 <td></td>
+<td>Padronização</td>
+<td>Não Funcional</td>
+<td>Could</td>
+<td>Padronização do código escrito a fim de aumentar a organização e manutenibilidade para a equipe de desenvolvimento</td>
+<td>“Como desenvolvedor, quero trabalhar num ambiente padronizado e organizado, para ser mais produtivo.”</td>
+</tr>
+<tr>
+<td>21</td>
+<td></td>
+<td>Manutenibilidade</td>
+<td>Não Funcional</td>
+<td>Must</td>
+<td>Manutenibilidade a fim de garantir a continuidade do software</td>
+<td>“Como desenvolvedor, quero que as funcionalidades estejam bem estruturadas, testadas e organizadas, para se houver algum problema eu conseguir corrigir mais facilmente.”</td>
 </tr>
 </tbody>
 </table>
+<div class="centered-text"><b>Fonte: </b> Elaborado por integrantes do projeto</div>
 
 
 
@@ -1108,7 +1413,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
