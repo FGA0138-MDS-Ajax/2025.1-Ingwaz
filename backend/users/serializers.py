@@ -13,9 +13,15 @@ class UserSerializer(serializers.ModelSerializer):
 
     password = serializers.CharField(write_only=True, required=True)
 
+    role = serializers.ChoiceField(
+        choices=User.ROLE_CHOICES,
+        required=True,
+        error_messages={'invalid_choice': 'Escolha uma função válida.'}
+    )
+
     class Meta:
         model = User
-        fields = ('id', 'name', 'email', 'password')
+        fields = ('id', 'name', 'email', 'password', 'role')
         extra_kwargs = {
             'name': {'required': True}
         }
