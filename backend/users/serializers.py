@@ -14,7 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True)
 
     role = serializers.ChoiceField(
-        choices=User.ROLE_CHOICES,
+        choices=User.role_functions,
         required=True,
         error_messages={'invalid_choice': 'Escolha uma função válida.'}
     )
