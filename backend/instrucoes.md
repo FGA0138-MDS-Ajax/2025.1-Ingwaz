@@ -2,9 +2,13 @@
 
     python -m venv venv
     
-## Ativar ambiente virtual (é assim no linux)
+## Ativar ambiente virtual (linux)
 
-    source env/bin/activate
+    source venv/bin/activate
+
+## Ativar ambiente virtual (windows, no terminal cmd)
+
+    venv/Scripts/activate.bat
 
 ## Instalar as bibliotecas necessárias
 
