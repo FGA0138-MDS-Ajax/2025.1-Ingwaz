@@ -6,7 +6,8 @@ def test_usuario_serializer_cria_usuario_valido():
     dados = {
         'name': 'Joao',
         'email': 'joao@example.com',
-        'password': 'senha123'
+        'password': 'senha123',
+        'role': 'analista' 
     }
 
     serializer = UserSerializer(data=dados)
@@ -15,5 +16,5 @@ def test_usuario_serializer_cria_usuario_valido():
     usuario = serializer.save()
     assert usuario.name == 'Joao'
     assert usuario.email == 'joao@example.com'
-    assert usuario.username == 'joao@example.com' 
+    assert usuario.username == 'joao@example.com'
     assert usuario.check_password('senha123')
