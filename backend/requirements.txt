@@ -1,2 +1,5 @@
 Django
 djangorestframework
+requests
+pandas
+openpyxl

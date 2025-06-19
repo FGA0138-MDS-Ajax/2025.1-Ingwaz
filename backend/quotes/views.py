@@ -1,46 +1,58 @@
-from rest_framework import status
+from rest_framework import status, generics
 from rest_framework.views import APIView
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
+from .services import get_all_cepea_quotes, get_all_hfbrasil_quotes
+from .models import Quote
+from .serializers import QuoteSerializer
 
-def get_quotes():
-    # TODO: chamar uma API de verdade.
-    data = {
-        'cafe': 99.99,
-        'soja': 1.99,
-        'milho': 0.99,
-    }
-    return data
+def update_or_create(item):
+    Quote.objects.update_or_create(
+        name=item['name'],
+        defaults={
+            'date': item['date'],
+            'unity': item['unity'],
+            'value': item['value']
+        }
+    )
     
-class QuotesDetailView(APIView):
+class QuoteUpdateView(APIView):
+    """
+    View para atualizar as cotações (só chamar se necessário).
+    """
+    permission_classes = [IsAuthenticated]
+    
+    def post(self, request, format=None):
+        cepea_data, cepea_ok = get_all_cepea_quotes()
+        hfbrasil_data, hfbrasil_ok = get_all_hfbrasil_quotes()
+        if not cepea_ok:
+            return Response({'error': cepea_data}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
+        if not hfbrasil_ok:
+            return Response({'error': cepea_data}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
+        for item in cepea_data:
+            update_or_create(item)
+        for item in hfbrasil_data:
+            update_or_create(item)
+        return Response(status=status.HTTP_200_OK)
+
+class QuoteListFilteredView(generics.ListAPIView):
     """
     View para consultar uma cotação específica.
     """
     permission_classes = [AllowAny]
-  
-    def get(self, request, format=None):
-        name = request.query_params.get('name', None)
-        
-        if name is None:
-            return Response({'error': 'Especifique o nome do produto'}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
-            
-        price = get_quotes().get(name, None)
-        
-        if price is None:
-            return Response({'error': 'Não temos a cotação dessa cultura'}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
-            
-        return Response({'price': price}, status=status.HTTP_200_OK)
-        # return Response({'error': 'Serviço indisponível no momento'}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
+    serializer_class = QuoteSerializer
 
-class QuotesListView(APIView):
+    def get_queryset(self):
+        queryset = Quote.objects.all()
+        name = self.request.query_params.get('name', None)
+        if name is not None:
+            queryset = queryset.filter(name__icontains=name)
+        return queryset
+        
+class QuoteListView(generics.ListAPIView):
     """
     View para listar todas as cotações.
     """
     permission_classes = [AllowAny]
-    
-    def get(self, request, format=None):
-        data = get_quotes()
-        
-        return Response(data, status=status.HTTP_200_OK)
-        # return Response({'error': 'Serviço indisponível no momento'}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
-        
+    queryset = Quote.objects.all()
+    serializer_class = QuoteSerializer
