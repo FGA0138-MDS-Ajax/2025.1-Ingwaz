@@ -3,10 +3,9 @@ from users.models import User
 from .models import Propriedade
 
 class PropriedadeSerializer(serializers.ModelSerializer):
-    
     agricultor = serializers.PrimaryKeyRelatedField(
         queryset=User.objects.filter(role='agricultor'),  
-        required=False  
+        required=False
     )
     
     agricultor_name = serializers.CharField(source='agricultor.name', read_only=True)
@@ -17,7 +16,7 @@ class PropriedadeSerializer(serializers.ModelSerializer):
         model = Propriedade
         fields = [
             'id',
-            'name',
+            'nome',
             'area_total',
             'latitude',
             'longitude',
@@ -34,13 +33,11 @@ class PropriedadeSerializer(serializers.ModelSerializer):
         ]
     
     def validate_area_total(self, value):
-       
         if value <= 0:
             raise serializers.ValidationError("A área total deve ser maior que zero.")
         return value
     
     def validate(self, data):
-       
         latitude = data.get('latitude')
         longitude = data.get('longitude')
         
