@@ -1,10 +1,8 @@
-import requests
-import re
+from django.conf import settings
+import requests, re, json
 import pandas as pd
 from io import BytesIO
 from time import sleep
-import json
-from django.conf import settings
 
 def from_json_to_dict(filename):
     with open(filename, 'r', encoding='utf-8') as arquivo:

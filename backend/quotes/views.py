@@ -6,9 +6,9 @@ from .services import get_all_cepea_quotes, get_all_hfbrasil_quotes
 from .models import Quote
 from .serializers import QuoteSerializer
 
-class QuoteListFilteredView(generics.ListAPIView):
+class QuoteListView(generics.ListAPIView):
     """
-    View para consultar uma cotação específica.
+    View para listar todas as cotações ou filtrar pelo nome.
     """
     permission_classes = [AllowAny]
     serializer_class = QuoteSerializer
@@ -19,15 +19,8 @@ class QuoteListFilteredView(generics.ListAPIView):
         if name is not None:
             queryset = queryset.filter(name__icontains=name)
         return queryset
-        
-class QuoteListView(generics.ListAPIView):
-    """
-    View para listar todas as cotações.
-    """
-    permission_classes = [AllowAny]
-    queryset = Quote.objects.all()
-    serializer_class = QuoteSerializer
     
+# Mantenha sua função update_or_create como está
 def update_or_create(item):
     Quote.objects.update_or_create(
         name=item['name'],
@@ -37,7 +30,7 @@ def update_or_create(item):
             'value': item['value']
         }
     )
-    
+
 class QuoteUpdateView(APIView):
     """
     View para atualizar as cotações (só chamar se necessário).
@@ -45,14 +38,13 @@ class QuoteUpdateView(APIView):
     permission_classes = [IsAuthenticated]
     
     def post(self, request, format=None):
-        cepea_data, cepea_ok = get_all_cepea_quotes()
-        hfbrasil_data, hfbrasil_ok = get_all_hfbrasil_quotes()
-        if not cepea_ok:
-            return Response({'error': cepea_data}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
-        if not hfbrasil_ok:
-            return Response({'error': cepea_data}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
-        for item in cepea_data:
+        sources = [get_all_cepea_quotes, get_all_hfbrasil_quotes]
+        all_data = []
+        for get_data in sources:
+            data, ok = get_data()
+            if not ok:
+                return Response({'error': data}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
+            all_data += data
+        for item in all_data:
             update_or_create(item)
-        for item in hfbrasil_data:
-            update_or_create(item)
-        return Response(status=status.HTTP_200_OK)
+        return Response({'message': 'Cotações atualizadas com sucesso.'}, status=status.HTTP_200_OK)
