@@ -6,6 +6,28 @@ from .services import get_all_cepea_quotes, get_all_hfbrasil_quotes
 from .models import Quote
 from .serializers import QuoteSerializer
 
+class QuoteListFilteredView(generics.ListAPIView):
+    """
+    View para consultar uma cotação específica.
+    """
+    permission_classes = [AllowAny]
+    serializer_class = QuoteSerializer
+
+    def get_queryset(self):
+        queryset = Quote.objects.all()
+        name = self.request.query_params.get('name', None)
+        if name is not None:
+            queryset = queryset.filter(name__icontains=name)
+        return queryset
+        
+class QuoteListView(generics.ListAPIView):
+    """
+    View para listar todas as cotações.
+    """
+    permission_classes = [AllowAny]
+    queryset = Quote.objects.all()
+    serializer_class = QuoteSerializer
+    
 def update_or_create(item):
     Quote.objects.update_or_create(
         name=item['name'],
@@ -34,25 +56,3 @@ class QuoteUpdateView(APIView):
         for item in hfbrasil_data:
             update_or_create(item)
         return Response(status=status.HTTP_200_OK)
-
-class QuoteListFilteredView(generics.ListAPIView):
-    """
-    View para consultar uma cotação específica.
-    """
-    permission_classes = [AllowAny]
-    serializer_class = QuoteSerializer
-
-    def get_queryset(self):
-        queryset = Quote.objects.all()
-        name = self.request.query_params.get('name', None)
-        if name is not None:
-            queryset = queryset.filter(name__icontains=name)
-        return queryset
-        
-class QuoteListView(generics.ListAPIView):
-    """
-    View para listar todas as cotações.
-    """
-    permission_classes = [AllowAny]
-    queryset = Quote.objects.all()
-    serializer_class = QuoteSerializer
