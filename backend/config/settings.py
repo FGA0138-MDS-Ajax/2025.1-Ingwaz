@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'users',
     'propriedade',
-    'plantios'
+    'plantios',
     'weather',
 ]
 

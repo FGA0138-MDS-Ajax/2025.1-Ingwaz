@@ -3,13 +3,14 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from .models import Propriedade
+from propriedade.models import Propriedade
 from .services import get_weather
     
 class WeatherListView(APIView):
     """
     View para listar as previsões da semana para uma propriedade específica.
     """
+
     permission_classes = [IsAuthenticated] # Somente usuários logados podem ver
 
     def get(self, request, propriedade_id, format=None):
