@@ -6,6 +6,7 @@ from rest_framework.validators import UniqueValidator
 
 @pytest.mark.django_db
 def test_usuario_serializer_cria_usuario_valido():
+#verificar se no preenchimento correto dos dados há a criação do usuário
     dados = {
         'name': 'Joao',
         'email': 'joao@uol.com.br',
@@ -23,7 +24,8 @@ def test_usuario_serializer_cria_usuario_valido():
     assert usuario.check_password('senha123')
 
 @pytest.mark.django_db
-def test_usuario_small_password():
+def test_usuario_senha_pequena():
+#verificar se ele cria um usuário com uma senha com menos de 6 caracteres
     dados = {
         'name': 'Davi',
         'email': 'davi@uol.com.br',
@@ -36,7 +38,8 @@ def test_usuario_small_password():
     assert 'password' in serializer.errors
 
 @pytest.mark.django_db
-def test_usuario_same_email():
+def test_usuario_mesmo_email():
+#verifica se ele permite a criação de mais de 1 usuário com o mesmo email
     User.objects.create_user(
         name='Joao',
         email='joao@uol.com.br',
@@ -57,7 +60,8 @@ def test_usuario_same_email():
     assert 'email' in serializer.errors
 
 @pytest.mark.django_db
-def test_user_with_no_credentials():
+def test_usuario_sem_credenciais():
+#verificar se ele aceita a criação de usuário sem qualquer preenchimento
     dados = {
         'name': '',
         'email': '',
@@ -71,5 +75,71 @@ def test_user_with_no_credentials():
     assert 'email' in serializer.errors
     assert 'password' in serializer.errors
     assert 'role' in serializer.errors
+
+@pytest.mark.django_db
+def test_email_invalido():
+#verificar se ele aceita formatos inválidos de email
+    dados = {
+        'name': 'fabio',
+        'email': 'fabio@@uol.com.br',
+        'password': 'senhamedia123',
+        'role': 'analista'
+    }
+
+    serializer = UserSerializer(data=dados)
+    assert not serializer.is_valid()
+    assert 'email' in serializer.errors
+
+@pytest.mark.django_db
+def test_role_invalida():
+#verificar se ele permite a criação com uma role inválida
+    dados = {
+        'name': 'sergio',
+        'email': 'sergio@gmail.com',
+        'password': 'senhamediana12',
+        'role': 'jardineiro'
+    }
+
+    serializer = UserSerializer(data=dados)
+    assert not serializer.is_valid()
+    assert 'role' in serializer.errors
+
+@pytest.mark.django_db
+def test_campo_ausente():
+#verificar se ele cria um usuário sem algum campo, no caso o nome
+    dados = {
+        'email': 'joao321@uol.com.br',
+        'password': 'senhamedia123',
+        'role': 'analista'
+    }
+
+    serializer = UserSerializer(data=dados)
+    assert not serializer.is_valid()
+    assert 'name' in serializer.errors
+
+@pytest.mark.django_db
+def test_senha_hasheada():
+#verificar se ele o campo da senha no banco de dados não é igual ao texto puro digitado
+    dados = {
+        'name': 'davi',
+        'email': 'davi123@hotmail.com',
+        'password': 'senhamediana321',
+        'role': 'analista'
+    }
+
+    serializer = UserSerializer(data=dados)
+    assert serializer.is_valid(), serializer.errors
+
+    usuario = serializer.save()
+    #primeiro assegurar que a senha que está no banco é diferente da que foi digitada
+    assert usuario.password != 'senhamediana321'
+    assert usuario.check_password('senhamediana321')
+
+@pytest.mark.django_db
+def test_string_digitada():
+#verificar se a string digitada pelo usuário como o e-mail está igual ao formato do banco 
+    user = User.objects.create(name='João', email='joaozinho123@uol.com.br')
+    assert str(user) == 'joaozinho123@uol.com.br'
+
 
     
