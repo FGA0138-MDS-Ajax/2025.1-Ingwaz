@@ -28,7 +28,7 @@ class UserRegistrationTest(APITestCase):
       'password' : 'senhadososia'
     }
   
-  def test_if_users_created(self):
+  def test_se_usuario_criado(self):
   #o usuário 1 é o caso de sucesso, então ele tem de constar no banco de dados
     user1_exists = User.objects.filter(email='joao123@uol.com.br').exists()
     self.assertTrue(user1_exists)
@@ -47,7 +47,7 @@ class UserRegistrationTest(APITestCase):
     self.assertEqual(response.status_code,201)
     self.assertEqual(response.data['email'], 'novousuario@uol.com.br')
 
-  def test_register_user_with_empty_fields(self):
+  def test_usuario_sem_campos_cadastrados(self):
   #verificar se o usuário é cadastrado com campos vazios
     data = {'name': "", 'email': "", 'password': "", 'role': ""}
     url = reverse('register')
@@ -55,21 +55,21 @@ class UserRegistrationTest(APITestCase):
     self.assertEqual(response.status_code,400)
     self.assertIn('email', response.data)
 
-  def test_register_user_with_short_password(self):
+  def test_usuario_senha_curta(self):
   #verificar se o usuário é cadastrado quando coloca uma senha curta
     url = reverse('register')
     response = self.client.post(url, self.short_password, format='json')
     self.assertEqual(response.status_code,400)
     self.assertIn('password', response.data)
 
-  def test_register_user_with_invalid_email(self):
+  def test_usuario_com_email_invalido(self):
   #verificar se o usuário é cadastrado com um formato inválido de email
     url = reverse('register')
     response = self.client.post(url, self.invalid_email, format='json')
     self.assertEqual(response.status_code,400)
     self.assertIn('email', response.data)
 
-  def test_register_user_with_already_existing_email(self):
+  def test_usuario_com_email_ja_cadastrado(self):
   #verificar se o usuário pode ser cadastrado com um email que já consta no banco
     url = reverse('register')
     response = self.client.post(url, self.existing_email, format='json')
