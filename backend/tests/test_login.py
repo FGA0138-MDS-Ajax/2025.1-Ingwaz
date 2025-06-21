@@ -71,4 +71,3 @@ def test_login_campo_senha_vazio():
     }, format='json')
 
     assert response.status_code == 403
-
