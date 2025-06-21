@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'users',
     'propriedade',
+    'plantios'
+    'propriedade',
 ]
 
 REST_FRAMEWORK = {
