@@ -13,14 +13,14 @@ class WeatherListView(APIView):
 
     permission_classes = [IsAuthenticated] # somente usuários logados podem ver
 
-    def get(self, request, propriedade_id):
+    def get(self, request, propriedade_id, cache, format=None):
         try:
             propriedade = Propriedade.objects.get(id=propriedade_id, agricultor=request.user)
         except Propriedade.DoesNotExist:
             return Response({'error': 'Propriedade não encontrada ou não pertence a você.'}, status=status.HTTP_404_NOT_FOUND)
         
         service = WeatherService()
-        forecast = service.get_forecast_for_property(propriedade)
+        forecast = service.get_forecast_for_property(propriedade, cache)
 
         if forecast:
             return Response(forecast, status=status.HTTP_200_OK)

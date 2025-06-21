@@ -10,7 +10,7 @@ class WeatherService:
     def __init__(self, client=None):
         self.client = client or OpenMeteoClient()
 
-    def get_forecast_for_property(self, propriedade):
+    def get_forecast_for_property(self, propriedade, cache=True):
         """
         Obtém a previsão do tempo para uma propriedade, usando cache se disponível
         e válido. Caso contrário, busca na API externa e atualiza o cache.
@@ -21,7 +21,7 @@ class WeatherService:
         )
 
         # verifica se o cache está expirado
-        if not created and forecast_obj.data_expiration > timezone.now():
+        if not created and forecast_obj.data_expiration > timezone.now() and cache:
             return forecast_obj.data_forecast
 
         # se o cache não existe ou expirou, busca na API
