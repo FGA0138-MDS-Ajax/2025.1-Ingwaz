@@ -1,8 +1,8 @@
-# Testes Automatizados - Sistema de Autenticação com Django REST
+# Testes automatizados - sistema de autenticação com Django REST
 
 Este repositório contém um conjunto de testes automatizados desenvolvidos para validar funcionalidades de **registro**, **login** e **serialização de usuários** em uma API Django REST.
 
-## Estrutura dos Arquivos de Teste
+## Estrutura dos arquivos de teste
 
 - `test_api.py` → Testes da **API de cadastro**
 - `test_login.py` → Testes da aplicação de login 
