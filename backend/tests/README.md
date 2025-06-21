@@ -1,16 +1,16 @@
-# 🧪 Testes Automatizados - Sistema de Autenticação com Django REST
+# Testes Automatizados - Sistema de Autenticação com Django REST
 
 Este repositório contém um conjunto de testes automatizados desenvolvidos para validar funcionalidades de **registro**, **login** e **serialização de usuários** em uma API Django REST.
 
-## 📁 Estrutura dos Arquivos de Teste
+## Estrutura dos Arquivos de Teste
 
 - `test_api.py` → Testes da **API de cadastro**
-- `test_login.py` → Testes da da aplicação de login 
-- `test_register.py` → 
+- `test_login.py` → Testes da aplicação de login 
+- `test_register.py` → Testes do cadastro do UserSerializer
 
 ---
 
-## ▶️ Como executar os testes
+## Como executar os testes
 
 Certifique-se de que você está com o ambiente virtual ativado e o Django configurado corretamente.
 
@@ -28,7 +28,7 @@ pytest
 
 ---
 
-## ✅ `test_user_registration_api.py` – Testes da API de Cadastro
+## `test_api.py` – testes da API de cadastro
 
 Testa o endpoint `/api/register`.
 
@@ -43,7 +43,7 @@ Testa o endpoint `/api/register`.
 
 ---
 
-## 🔐 `test_user_login_api.py` – Testes da API de Login
+## `test_login.py` – testes da API de login
 
 Testa o endpoint `/api/login`.
 
@@ -57,7 +57,7 @@ Testa o endpoint `/api/login`.
 
 ---
 
-## 🧱 `test_user_serializer.py` – Testes do Serializador
+## `test_register.py` – testes do cadastro
 
 Testa diretamente o `UserSerializer`.
 
@@ -75,7 +75,7 @@ Testa diretamente o `UserSerializer`.
 
 ---
 
-## 💡 Observações
+## Observações
 
 - Esses testes foram feitos com base em um modelo customizado de `User` que herda de `AbstractUser`, onde o campo `email` é usado como identificador.
 - O sistema deve estar com `pytest` e `pytest-django` configurados, e com o banco de dados de testes acessível.
