@@ -1,48 +1,78 @@
-import datetime
-import random
+from datetime import timedelta
+from django.utils import timezone
+from .models import Weather
+from .clients import OpenMeteoClient
 
-def get_weather(latitude: float, longitude: float):
+class WeatherService:
     """
-    Retorna a previsão do tempo de uma semana.
-    Esta função simula os dados que seriam retornados por uma API.
+    Serviço com a lógica de negócio para a previsão do tempo.
     """
+    def __init__(self, client=None):
+        self.client = client or OpenMeteoClient()
 
-    if latitude is None or longitude is None:
-        return None
-    
-    variacao_temp = int(latitude % 4) - 2
+    def get_forecast_for_property(self, propriedade):
+        """
+        Obtém a previsão do tempo para uma propriedade, usando cache se disponível
+        e válido. Caso contrário, busca na API externa e atualiza o cache.
+        """
+        forecast_obj, created = Weather.objects.get_or_create(
+            propriedade=propriedade,
+            defaults={'data_forecast': {}, 'data_expiration': timezone.now()}
+        )
 
-    hoje = datetime.date.today()
-    data = {
-        # Em uma API real, a cidade e o país seriam determinados pelas coordenadas
-        "cidade": f"Propriedade em Lat: {latitude:.2f}",
-        "pais": f"Propriedade em Long: {longitude:.2f}",
-        "atualizado_em": hoje.strftime("%d/%m/%Y %H:%M"),
-        "previsoes": {}
-    }
-    for i in range(7):
-        dia_atual = hoje + datetime.timedelta(days=i)
+        # verifica se o cache está expirado
+        if not created and forecast_obj.data_expiration > timezone.now():
+            return forecast_obj.data_forecast
+
+        # se o cache não existe ou expirou, busca na API
+        coordinates = propriedade.coordinates
+        latitude = coordinates.get('latitude')
+        longitude = coordinates.get('longitude')
         
-        # Lógica de simulação com a variação
-        if i < 3:
-            condicao = "Ensolarado e quente"
-            min_temp = 19 + variacao_temp
-            max_temp = 30 + variacao_temp
-            prob_chuva = 10 + int(longitude % 5) # Longitude afeta a chuva
-        else:
-            condicao = "Parcialmente nublado com chance de chuva isolada"
-            min_temp = 18 + variacao_temp
-            max_temp = 26 + variacao_temp
-            prob_chuva = 40 + int(longitude % 10)
+        if latitude is None or longitude is None:
+            return None
 
-        previsao_dia = {
-            "dia_semana": dia_atual.strftime("%A").capitalize(),
-            "temperatura_min": f"{min_temp + random.randint(-1, 1)}°C",
-            "temperatura_max": f"{max_temp + random.randint(-1, 1)}°C",
-            "condicao": condicao,
-            "probabilidade_chuva": f"{min(95, prob_chuva)}%"
+        novos_dados = self.client.fetch_forecast(latitude, longitude)
+
+        if novos_dados:
+            # atualiza o objeto de previsão com os novos dados e data de expiração
+            forecast_obj.data_forecast = novos_dados
+            forecast_obj.data_expiration = timezone.now() + timedelta(days=14)
+            forecast_obj.save()
+            return novos_dados
+            
+        # retorna dados antigos se a API falhar, ou None se não houver nada
+        return forecast_obj.data_forecast if not created else None
+    
+    def get_daily_forecast_for_property(self, propriedade, requested_date):
+        """
+        Obtém a previsão do tempo para um dia específico para uma dada propriedade.
+        """
+        # reutiliza o método existente para obter a previsão completa (com cache)
+        full_forecast = self.get_forecast_for_property(propriedade)
+
+        if not full_forecast or 'daily' not in full_forecast:
+            return None
+
+        # procura o índice da data solicitada na lista de datas da previsão
+        try:
+            # a API Open-Meteo retorna as datas no formato 'YYYY-MM-DD'
+            date_str = requested_date.strftime('%Y-%m-%d')
+            date_index = full_forecast['daily']['time'].index(date_str)
+        except (ValueError, KeyError):
+            # a data solicitada não foi encontrada na previsão de 14 dias
+            return None
+
+        # monta um dicionário com os dados apenas para o dia solicitado
+        daily_data = {
+            'time': full_forecast['daily']['time'][date_index],
+            'temperature_2m_max': full_forecast['daily']['temperature_2m_max'][date_index],
+            'temperature_2m_min': full_forecast['daily']['temperature_2m_min'][date_index],
+            'precipitation_sum': full_forecast['daily']['precipitation_sum'][date_index],
+            'windspeed_10m_max': full_forecast['daily']['windspeed_10m_max'][date_index],
         }
         
-        data["previsoes"][dia_atual.strftime("%Y-%m-%d")] = previsao_dia
-    
-    return data
+        # inclui as unidades para o frontend saber como exibir os dados
+        daily_units = full_forecast.get('daily_units', {})
+        
+        return {'daily': daily_data, 'daily_units': daily_units}

@@ -1,31 +1,34 @@
-from rest_framework import status
+from datetime import datetime
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-
+from rest_framework import status
 from propriedade.models import Propriedade
-from .services import get_weather
-    
+from .services import WeatherService
+from rest_framework.permissions import IsAuthenticated
+
 class WeatherListView(APIView):
     """
-    View para listar as previsões da semana para uma propriedade específica.
+    View para obter a previsão do tempo dos próximos 14 dias de uma propriedade.
     """
 
-    permission_classes = [IsAuthenticated] # Somente usuários logados podem ver
+    permission_classes = [IsAuthenticated] # somente usuários logados podem ver
 
-    def get(self, request, propriedade_id, format=None):
+    def get(self, request, propriedade_id):
         try:
             propriedade = Propriedade.objects.get(id=propriedade_id, agricultor=request.user)
         except Propriedade.DoesNotExist:
             return Response({'error': 'Propriedade não encontrada ou não pertence a você.'}, status=status.HTTP_404_NOT_FOUND)
-
-        data = get_weather(propriedade.latitude, propriedade.longitude)
         
-        if data is None:
-            return Response({'error': 'Coordenadas não disponíveis para esta propriedade. Serviço indisponível.'}, status=status.HTTP_400_BAD_REQUEST)
-            
-        return Response(data, status=status.HTTP_200_OK)
+        service = WeatherService()
+        forecast = service.get_forecast_for_property(propriedade)
 
+        if forecast:
+            return Response(forecast, status=status.HTTP_200_OK)
+        
+        return Response(
+            {"erro": "Não foi possível obter a previsão do tempo."},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
 
 class WeatherDetailView(APIView):
     """
@@ -33,31 +36,28 @@ class WeatherDetailView(APIView):
     """
     permission_classes = [IsAuthenticated]
 
-    def get(self, request, propriedade_id, format=None):
-        date = request.query_params.get('date', None)
-        if not date:
-            return Response({'error': 'O parâmetro "date" é obrigatório.'}, status=status.HTTP_400_BAD_REQUEST)
-        
+    def get(self, request, propriedade_id, data, format=None):
         try:
             propriedade = Propriedade.objects.get(id=propriedade_id, agricultor=request.user)
         except Propriedade.DoesNotExist:
             return Response({'error': 'Propriedade não encontrada ou não pertence a você.'}, status=status.HTTP_404_NOT_FOUND)
 
-        data = get_weather(propriedade.latitude, propriedade.longitude)
-        
-        if data is None:
-             return Response({'error': 'Coordenadas não disponíveis para esta propriedade. Serviço indisponível.'}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            # converte a string da data (formato YYYY-MM-DD) para um objeto date
+            requested_date = datetime.strptime(data, '%Y-%m-%d').date()
+        except ValueError:
+            return Response(
+                {"erro": "Formato de data inválido. Use AAAA-MM-DD."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
-        forecast = data['previsoes'].get(date)
-        
-        if forecast is None:
-            return Response({'error': 'Previsão do tempo para este dia não está disponível.'}, status=status.HTTP_404_NOT_FOUND)
-            
-        return_data = {
-            "cidade": data['cidade'],
-            "pais": data['pais'],
-            "atualizado_em": data['atualizado_em'],
-            'forecast': forecast
-        }
+        service = WeatherService()
+        daily_forecast = service.get_daily_forecast_for_property(propriedade, requested_date)
 
-        return Response(return_data, status=status.HTTP_200_OK)
+        if daily_forecast:
+            return Response(daily_forecast, status=status.HTTP_200_OK)
+        
+        return Response(
+            {"erro": "Previsão para esta data não disponível."},
+            status=status.HTTP_404_NOT_FOUND
+        )
