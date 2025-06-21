@@ -1,10 +1,10 @@
 ## ✅ O que os testes verificam
 
-- ✅ Login com sucesso
-- ❌ Login com email inválido
-- ❌ Login com senha incorreta
-- ❌ Login com campo de email vazio
-- ❌ Login com campo de senha vazio
+# ✅ Login com sucesso
+# ❌ Login com email inválido
+# ❌ Login com senha incorreta
+# ❌ Login com campo de email vazio
+# ❌ Login com campo de senha vazio
 
 # Importa o framework de testes pytest e o cliente de testes da DRF
 import pytest
