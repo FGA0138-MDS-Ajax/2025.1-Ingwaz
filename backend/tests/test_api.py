@@ -75,3 +75,29 @@ class UserRegistrationTest(APITestCase):
     response = self.client.post(url, self.existing_email, format='json')
     self.assertEqual(response.status_code,400)
     self.assertIn('email', response.data)
+  
+  def test_usuario_com_role_invalida(self):
+  #verificar se o usuário consegue se cadastrar com uma role inválida
+    data = {
+      'name': 'Fabiano',
+      'email': 'fabiano@hotmail.com',
+      'password': 'senhamedia123',
+      'role': 'role inválida'
+    }
+    url = reverse('register')
+    response = self.client.post(url, data, format='json')
+    self.assertEqual(response.status_code, 400)
+    self.assertIn('role', response.data)
+
+  def test_usuario_com_email_em_maiusculo(self):
+  #verifica a case sensitivity, ou seja, se o CAPS faz diferença na hora de digitar o email ou não
+    data = {
+      'name': 'João Silva',
+      'email': 'JOAOSILVA@yahoo.com.br',
+      'password': 'senhadetamanhook123',
+      'role': 'agricultor'
+    }
+    url = reverse('register')
+    response = self.client.post(url, data, format='json')
+    self.assertIn(response.status_code, [400, 201])
+
