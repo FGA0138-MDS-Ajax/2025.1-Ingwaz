@@ -1,7 +1,6 @@
 from django.urls import path
-from .views import RegisterPlantio 
+from .views import PlantioListCreateView
 
 urlpatterns = [
-	path('plantio', RegisterPlantio.as_view(), name='registerplantio'), 
-
+	path('plantios/', PlantioListCreateView.as_view(), name='plantio-list-create'),
 ]

@@ -1,2 +1,6 @@
 Django
 djangorestframework
+requests
+pandas
+openpyxl
+drf-spectacular
