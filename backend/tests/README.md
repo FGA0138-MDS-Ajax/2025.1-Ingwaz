@@ -34,12 +34,12 @@ Testa o endpoint `/api/register`.
 
 | Teste | O que é testado |
 |-------|------------------|
-| `test_if_users_created` | Verifica se um usuário inicial foi corretamente criado no `setUp`. |
+| `test_se_usuario_criado` | Verifica se um usuário inicial foi corretamente criado no `setUp`. |
 | `teste_registro_com_sucesso` | Simula o cadastro de um novo usuário e espera status 201. |
-| `test_register_user_with_empty_fields` | Verifica erro 400 ao enviar campos vazios no registro. |
-| `test_register_user_with_short_password` | Rejeita senhas com menos de 6 caracteres. |
-| `test_register_user_with_invalid_email` | Rejeita e-mails em formato inválido. |
-| `test_register_user_with_already_existing_email` | Rejeita tentativa de registrar um e-mail já existente. |
+| `test_usuario_sem_campos_cadastrados` | Verifica erro 400 ao enviar campos vazios no registro. |
+| `test_usuario_senha_curta` | Rejeita senhas com menos de 6 caracteres. |
+| `test_usuario_com_email_invalido` | Rejeita e-mails em formato inválido. |
+| `test_usuario_com_email_ja_cadastrado` | Rejeita tentativa de registrar um e-mail já existente. |
 
 ---
 
