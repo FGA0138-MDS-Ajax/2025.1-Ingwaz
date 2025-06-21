@@ -26,6 +26,9 @@ class WeatherService:
 
         # se o cache não existe ou expirou, busca na API
         coordinates = propriedade.coordinates
+        if coordinates is None:
+            return None
+
         latitude = coordinates.get('latitude')
         longitude = coordinates.get('longitude')
         
