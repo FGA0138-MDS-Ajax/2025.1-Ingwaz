@@ -1,12 +1,12 @@
 class BoolConverter:
     """
     Este conversor customizado lida com valores booleanos em URLs do Django.
-    Ele permite que a URL aceite 'True', 'False', '1', ou '0' (case-insensitive)
+    Ele permite que a URL aceite algumas variações de true, false, 0 e 1,
     e os converte para um valor booleano Python (True/False) antes de
     passá-los para a view.
     """
 
-    regex = '(?i)(true|false|1|0)'
+    regex = 'true|True|TRUE|false|False|FALSE|1|0'
 
     def to_python(self, value):
         """
