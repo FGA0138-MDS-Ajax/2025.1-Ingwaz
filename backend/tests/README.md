@@ -40,6 +40,8 @@ Testa o endpoint `/api/register`.
 | `test_usuario_senha_curta` | Rejeita senhas com menos de 6 caracteres. |
 | `test_usuario_com_email_invalido` | Rejeita e-mails em formato inválido. |
 | `test_usuario_com_email_ja_cadastrado` | Rejeita tentativa de registrar um e-mail já existente. |
+| 'test_usuario_com_role_invalida' | Rejeita tentativa de registro de usuário com uma role inválida. |
+| 'test_usuario_com_email_em_maiusculo | Verifica se há diferenciação a depender do case, se minúsculo ou maiúsculo. |
 
 ---
 
