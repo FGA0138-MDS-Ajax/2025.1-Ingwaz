@@ -1,3 +1,5 @@
 Django
 djangorestframework
-drf-spectacular
+requests
+pandas
+openpyxldrf-spectacular
