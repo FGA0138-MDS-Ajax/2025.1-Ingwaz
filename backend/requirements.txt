@@ -2,4 +2,5 @@ Django
 djangorestframework
 requests
 pandas
-openpyxldrf-spectacular
+openpyxl
+drf-spectacular
