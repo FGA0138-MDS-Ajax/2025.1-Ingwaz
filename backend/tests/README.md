@@ -4,9 +4,11 @@ Este repositório contém um conjunto de testes automatizados desenvolvidos para
 
 ## Estrutura dos arquivos de teste
 
-- `test_api.py` → Testes da **API de cadastro**
-- `test_login.py` → Testes da aplicação de login 
-- `test_register.py` → Testes do cadastro do UserSerializer
+- 'test_api_autenticacao.py' -> Testes da API de cadastro
+- 'test_login.py' -> Testes da aplicação de login 
+- 'test_register.py' -> Testes do cadastro do UserSerializer
+- 'test_quotes.py' -> Testes relacionados às cotações
+- 'test_api_quotes.py' -> Testes relacionados às APIs das cotações
 
 ---
 
