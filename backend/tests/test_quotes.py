@@ -5,12 +5,14 @@ from quotes.serializers import QuoteSerializer
 
 @pytest.mark.django_db
 def test_criacao_cotacao():
+#verificar se a cotação é criada corretamente com os atributos
     cotacao = Quote.objects.create(name="Milho", value=50.0)
     assert cotacao.name == "Milho"
     assert cotacao.value == 50.0
 
 @pytest.mark.django_db
 def test_string_cotacao():
+#verificar se a string está de acordo com a que está em models.py
     cotacao = Quote.objects.create(
         date='2024-10-17',
         name='Soja',
@@ -21,6 +23,7 @@ def test_string_cotacao():
 
 @pytest.mark.django_db
 def test_campos_vazios():
+#verificar o comportamento quando os campos estão vazios
     dados = {
         'date': '',
         'name': '',
@@ -36,6 +39,7 @@ def test_campos_vazios():
 
 @pytest.mark.django_db
 def test_valor_formato_incorreto():
+#testar uma entrada de valor com 2 casas decimais além do permitido
     dados = {
         'date': '2025-03-04',
         'name': 'arroz',
@@ -48,6 +52,7 @@ def test_valor_formato_incorreto():
 
 @pytest.mark.django_db
 def test_valor_nao_numerico():
+#testar se value aceita strings ao invés de números
     dados = {
         'date': '2025-03-04',
         'name': 'arroz',
@@ -60,6 +65,7 @@ def test_valor_nao_numerico():
 
 @pytest.mark.django_db
 def test_atualizacao_cotacao():
+#verificar se ele consegue obter valores atualizados de uma cotação
     cotacao_antiga = Quote.objects.create(
         date='2024-10-17',
         name='soja',
@@ -77,6 +83,7 @@ def test_atualizacao_cotacao():
 
 @pytest.mark.django_db
 def test_campo_ausente():
+#verificar se ele aceita campo ausente. No caso, sem o valor
     dados = {
         'date': '2025-03-04',
         'name': 'arroz',
