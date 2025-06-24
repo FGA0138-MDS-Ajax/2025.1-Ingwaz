@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'quotes',
     'propriedade',
     'plantios',
+    'credito',
 ]
 
 REST_FRAMEWORK = {
