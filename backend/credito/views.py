@@ -65,7 +65,7 @@ class AvaliarView(APIView):
                 {"detail": "Área total da propriedade inválida para cálculo."},
                 status=status.HTTP_400_BAD_REQUEST
             )
-        gui = pbi / area_total_f
+        gui = float(pbi / area_total_f)
 
         # 4. Define Ground Usage Score (gus)
         gus = 1.0
@@ -76,8 +76,8 @@ class AvaliarView(APIView):
 
         # 5. Potentital Credit Score (pcs)
         #pcs = pbi * gus
+        pcs = float(pbi_normalizado * gus)
 
-        pcs = pbi_normalizado * gus
         # 6. Função sigmoid para normalizar entre 0 e 1
         try:
             sigmoid_denominador = 1 + math.exp(-pcs)
