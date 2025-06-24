@@ -1,13 +1,31 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
+from localflavor.br.models import BRCPFField
+
 
 class User(AbstractUser):
-    name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
-    role_functions = [('agricultor', 'Agricultor'), ('tecnico', 'Técnico'), ('administrador', 'Administrador'), ('analista', 'Analista de crédito')]
-    role = models.CharField(max_length=20, choices=role_functions, default='agricultor')
+    name = models.CharField(max_length=255)
+    cpf = BRCPFField(unique=True)
+
+    role_functions = [
+        ('administrador', 'Administrador'),
+        ('agricultor', 'Agricultor'),
+        ('analista', 'Analista de crédito'),
+        ('tecnico', 'Técnico'),
+    ]
+    role = models.CharField(max_length=20, choices=role_functions)
+
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['name', 'username']
+    REQUIRED_FIELDS = ['username', 'cpf']
 
     def __str__(self):
         return self.email
+
+    def save(self, *args, **kwargs):
+        if not self.is_superuser:
+            if self.role == 'administrador':
+                self.is_staff = True
+            else:
+                self.is_staff = False
+        super().save(*args, **kwargs)
