@@ -1,5 +1,4 @@
 from django.shortcuts import render
-
 import random
 import math
 from rest_framework import status, permissions
@@ -21,10 +20,17 @@ class RegisterView(generics.CreateAPIView):
     permission_classes = [AllowAny]
     queryset = SolicitacaoCredito.objects.all()
     serializer_class = SolicitacaoCreditoSerializer
+    
+    def perform_create(self, serializer):
+        plantio = serializer.validated_data.get('plantio')
+        if plantio:
+            serializer.save(propriedade=plantio.propriedade)
+        else:
+            serializer.save()
 
 class AvaliarView(APIView):
-
     permission_classes = [IsAuthenticated]
+
     def get(self, request, solicitacao_id):
         """
         Endpoint para simular algoritmo de score e atualizar o status da solicitação.
@@ -37,22 +43,53 @@ class AvaliarView(APIView):
                 status=status.HTTP_404_NOT_FOUND
             )
 
-        pbi = Plantio.area # * Plantio.value # Potential Brute Income
-        gui =  Plantio.area / Propriedade.area_total # Ground Usage Index -> Risk Factor associated with the exhaustion of the soil
+        # 1. Recupera valores de instância:
+        # Área do plantio
+        area_plantio = solicitacao.plantio.area  
+        area_total = solicitacao.propriedade.area_total  
 
-        gus = 1 # Ground Usage Score (Low Risk - Default)
-        if gui > 0.7 and gui <= 0.9: # Medium Risk
+        # 2. Calcula pbi (potencial bruto de income). Ajuste conforme necessidade:
+        pbi = float(area_plantio)
+        
+        
+        escalahec = 100.0  
+        pbi_normalizado = pbi / escalahec
+                
+        area_total_f = float(area_total)
+
+        # 3. Calcula gui (índice uso do solo) com verificação de divisão por zero:
+        if area_total is None or area_total == 0:
+            # Tratamento: definir comportamento padrão ou erro
+            # Por exemplo, se não fizer sentido, retorna erro:
+            return Response(
+                {"detail": "Área total da propriedade inválida para cálculo."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        gui = pbi / area_total_f
+
+        # 4. Define Ground Usage Score (gus)
+        gus = 1.0
+        if 0.7 < gui <= 0.9:
             gus = 0.9
-        elif gui > 0.9: # High Risk
+        elif gui > 0.9:
             gus = 0.8
 
-        pcs = pbi * gus # Potentital Credit Score -> PBI is diminished in accordance to risk factors
+        # 5. Potentital Credit Score (pcs)
+        #pcs = pbi * gus
 
-        sigmoid_denominador = 1 + math.e ** (-pcs) # Sigmoid function's denominator
-        score_gerado = 1 / sigmoid_denominador # Normalised Potential Score (0 - 1)
-        #score_gerado = random.randint(0, 1000)
-        score_gerado = 1
+        pcs = pbi_normalizado * gus
+        # 6. Função sigmoid para normalizar entre 0 e 1
+        try:
+            sigmoid_denominador = 1 + math.exp(-pcs)
+            score_gerado = 1 / sigmoid_denominador
+        except OverflowError:
+            # Caso pcs muito grande/pequeno; trate conforme desejado:
+            score_gerado = 0 if pcs < 0 else 1
 
+        # Se quiser forçar um valor fixo para testes:
+        # score_gerado = 1
+
+        # 7. Define novo status
         if score_gerado >= 0.7:
             novo_status = 'aprovado'
         elif 0.5 <= score_gerado < 0.7:
@@ -60,12 +97,12 @@ class AvaliarView(APIView):
         else:
             novo_status = 'rejeitado'
 
+        # 8. Salva na instância
         solicitacao.score = score_gerado
         solicitacao.status = novo_status
         solicitacao.save()
 
         serializer = SolicitacaoCreditoSerializer(solicitacao)
-
         return Response(
             {
                 "message": "Avaliação de crédito realizada com sucesso!",

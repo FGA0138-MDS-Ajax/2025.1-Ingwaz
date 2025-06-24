@@ -1,6 +1,18 @@
 from django.db import models
+from plantios.models import Plantio
+from propriedade.models import Propriedade
 
 class SolicitacaoCredito(models.Model):
+    plantio = models.ForeignKey(Plantio, on_delete=models.CASCADE, related_name="solicitacoes")
+    
+    propriedade = models.ForeignKey(  
+        Propriedade,
+        on_delete=models.CASCADE,
+        related_name="solicitacoes_credito",
+        null=True,
+        blank=True
+    )
+
     score = models.IntegerField(null=True, blank=True)
     status = models.CharField(
         max_length=50,
