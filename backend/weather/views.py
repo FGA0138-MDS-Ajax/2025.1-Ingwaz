@@ -19,6 +19,12 @@ class WeatherListView(APIView):
         except Propriedade.DoesNotExist:
             return Response({'error': 'Propriedade não encontrada ou não pertence a você.'}, status=status.HTTP_404_NOT_FOUND)
         
+        if propriedade.coordinates is None:
+            return Response(
+                {"error": "Propriedade não tem as coordenadas de localização."},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
         service = WeatherService()
         forecast = service.get_forecast_for_property(propriedade, cache)
 
@@ -26,7 +32,7 @@ class WeatherListView(APIView):
             return Response(forecast, status=status.HTTP_200_OK)
         
         return Response(
-            {"erro": "Não foi possível obter a previsão do tempo."},
+            {"error": "Não foi possível obter a previsão do tempo."},
             status=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
 
