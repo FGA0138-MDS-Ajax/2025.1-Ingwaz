@@ -25,3 +25,19 @@ export async function loginUser(data) {
   console.log('Resultado do login:', json); // opcional
   return json;
 }
+
+export async function getQuotes() {
+  try {
+    console.log(`${API_BASE}/quotes/`);
+    const response = await fetch(`${API_BASE}/quotes/`)
+    const data = await response.json();
+    if (!response.ok) {
+      console.error("Erro API:", data);
+      return null;
+    }
+    return data;
+  } catch (e) {
+    console.error("Erro servidor:", e.message);
+    return null;
+  }
+}
