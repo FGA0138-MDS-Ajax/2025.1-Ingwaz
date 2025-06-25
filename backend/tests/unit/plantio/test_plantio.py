@@ -13,7 +13,8 @@ def test_criacao_plantio_sucesso():
         name='Joao',
         email='joao@example.com',
         password='senha123',
-        role='agricultor'
+        role='agricultor',
+        cpf='123.456.789-09'
     )
     propriedade = Propriedade.objects.create(
         nome='Fazenda A',
@@ -79,14 +80,16 @@ def test_plantio_em_propriedade_de_outro_usuario():
         name='Lucas',
         email='lucas@example.com',
         password='senha123',
-        role='agricultor'
+        role='agricultor',
+        cpf='123.456.789-09'
     )
     user2 = User.objects.create_user(
         username='maria123',
         name='Maria',
         email='maria@example.com',
         password='senha123',
-        role='agricultor'
+        role='agricultor',
+        cpf='987.654.321-00'
     )
     propriedade = Propriedade.objects.create(
         nome='Chácara Maria',
