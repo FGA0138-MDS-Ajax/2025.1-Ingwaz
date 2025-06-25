@@ -25,10 +25,9 @@ SECRET_KEY = 'django-insecure-n@+0-@n3x-#q!3ccrqs7@!q*#avsc+y*0x+616#(x8(%q#(n&+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '10.0.2.2',
-    '127.0.0.1',
-]
+ALLOWED_HOSTS = ['*']  # PERMITE TODOS — usar só em ambiente de desenvolvimento!
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 
 # Application definition
@@ -47,6 +46,7 @@ INSTALLED_APPS = [
     'quotes',
     'propriedade',
     'plantios',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -71,6 +71,7 @@ SPECTACULAR_SETTINGS = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
