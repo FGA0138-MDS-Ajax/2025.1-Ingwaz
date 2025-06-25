@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   View,
   Text,
@@ -11,39 +11,70 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AuthContext } from '../../navigation/AuthContext';
 
 export default function Cadastro() {
   const navigation = useNavigation();
+  const { setUser } = useContext(AuthContext);
 
   const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
   const [usuario, setUsuario] = useState('');
-  const [userType, setUserType] = useState(''); 
+  const [userType, setUserType] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
   const [aceitaTermos, setAceitaTermos] = useState(false);
   const [aceitaSugestoes, setAceitaSugestoes] = useState(false);
 
-  const handleCadastro = () => {
+  const handleCadastro = async () => {
     if (!nome || !cpf || !usuario || !senha || !confirmarSenha || !userType) {
       return Alert.alert('Erro', 'Preencha todos os campos.');
     }
+
     if (senha !== confirmarSenha) {
       return Alert.alert('Erro', 'As senhas não coincidem.');
     }
+
     if (!aceitaTermos) {
       return Alert.alert('Erro', 'Você precisa aceitar os termos do aplicativo.');
     }
 
-    Alert.alert('Sucesso', `Bem-vindo, ${nome}!`);
+    try {
+      const response = await fetch('http://SEU_BACKEND_URL/api/cadastro/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome,
+          cpf,
+          usuario,
+          senha,
+          tipo: userType,
+          receberSugestoes: aceitaSugestoes,
+        }),
+      });
 
-    // Aqui você pode fazer a lógica de envio para o backend
+      if (!response.ok) {
+        const erro = await response.json();
+        Alert.alert('Erro ao cadastrar', erro.message || 'Verifique os dados informados.');
+        return;
+      }
 
-    // E redirecionar com base no tipo
-    // Exemplo:
-    // if (userType === 'agricultor') navigation.navigate('HomeAgricultor');
+      const data = await response.json();
+      const { token, usuario: usuarioCadastrado } = data;
 
-    navigation.navigate('Drawer'); // você pode mudar isso conforme o tipo
+      // Armazenar token
+      await AsyncStorage.setItem('authToken', token);
+
+      // Atualizar contexto do usuário
+      setUser(usuarioCadastrado);
+
+      // Redirecionar
+      navigation.replace('Drawer');
+    } catch (err) {
+      console.error(err);
+      Alert.alert('Erro', 'Erro ao se conectar com o servidor.');
+    }
   };
 
   return (
@@ -84,7 +115,7 @@ export default function Cadastro() {
       />
 
       <View style={styles.selecione}>
-        <Text style={styles.label}>Selecione o tipo de usuário: </Text>
+        <Text style={styles.label}>Tipo de usuário</Text>
         <Picker
           selectedValue={userType}
           onValueChange={(itemValue) => setUserType(itemValue)}
@@ -125,9 +156,7 @@ export default function Cadastro() {
             color="#66E266"
           />
         </TouchableOpacity>
-        <Text style={styles.checkboxLabel}>
-          Estou de acordo com os termos do aplicativo
-        </Text>
+        <Text style={styles.checkboxLabel}>Estou de acordo com os termos</Text>
       </View>
 
       <View style={styles.checkboxContainer}>
@@ -138,9 +167,7 @@ export default function Cadastro() {
             color="#66E266"
           />
         </TouchableOpacity>
-        <Text style={styles.checkboxLabel}>
-          Aceito receber sugestões por email
-        </Text>
+        <Text style={styles.checkboxLabel}>Aceito receber sugestões por email</Text>
       </View>
 
       <TouchableOpacity style={styles.botaoCriar} onPress={handleCadastro}>
@@ -153,75 +180,3 @@ export default function Cadastro() {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 24,
-    backgroundColor: '#fff',
-    flexGrow: 1,
-    justifyContent: 'center',
-  },
-  voltar: {
-    position: 'absolute',
-    top: 40,
-    left: 16,
-  },
-  seta: {
-    fontSize: 24,
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 24,
-  },
-  selecione: {
-    padding: 16,
-  },
-  picker: {
-    height: 60,
-    width: '100%',
-  },
-  label: {
-    marginBottom: 4,
-    fontWeight: '500',
-  },
-  input: {
-    borderBottomWidth: 1,
-    borderColor: '#aaa',
-    marginBottom: 16,
-    paddingVertical: 6,
-    fontSize: 16,
-  },
-  checkboxContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 12,
-  },
-  checkboxLabel: {
-    marginLeft: 8,
-    fontSize: 14,
-    color: '#333',
-    flex: 1,
-    flexWrap: 'wrap',
-  },
-  botaoCriar: {
-    backgroundColor: '#66E266',
-    padding: 12,
-    borderRadius: 6,
-    alignItems: 'center',
-    marginTop: 12,
-    marginBottom: 16,
-  },
-  botaoTexto: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-  loginLink: {
-    textAlign: 'center',
-    color: '#007AFF',
-    fontSize: 14,
-    textDecorationLine: 'underline',
-  },
-});

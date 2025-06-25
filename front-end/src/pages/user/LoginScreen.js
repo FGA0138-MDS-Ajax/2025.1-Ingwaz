@@ -1,57 +1,64 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { MaterialIcons } from '@expo/vector-icons';
-import { AuthContext } from '../../navigation/AuthContext'; 
 
-export default function Login() {
+export default function RedefinirSenha() {
   const navigation = useNavigation();
-  const { setUser } = useContext(AuthContext);
 
-  const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [lembrar, setLembrar] = useState(false);
+  const [confirmarSenha, setConfirmarSenha] = useState('');
   const [mostrarSenha, setMostrarSenha] = useState(false);
+  const [mostrarConfirmar, setMostrarConfirmar] = useState(false);
 
-  const handleLogin = () => {
-  if (!email || !senha) {
-    Alert.alert('Erro', 'Preencha todos os campos.');
-    return;
-  }
-  setUser({
-    nome: 'Maria',
-    tipo: 'agricultor',
-    email,
-  });
+  const handleAtualizarSenha = async () => {
+    if (!senha || !confirmarSenha) {
+      Alert.alert('Erro', 'Preencha os dois campos de senha.');
+      return;
+    }
+    if (senha !== confirmarSenha) {
+      Alert.alert('Erro', 'As senhas não coincidem.');
+      return;
+    }
 
-  console.log("Navegando para Drawer");
-  navigation.replace('Drawer');
-};
+    try {
+      // Exemplo de chamada de API fictícia — substitua pela sua URL real
+      /*
+      const resposta = await fetch('http://localhost:8000/api/reset-password/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ senha }),
+      });
 
+      const resultado = await resposta.json();
+
+      if (!resposta.ok) {
+        throw new Error(resultado.detail || 'Erro ao atualizar a senha.');
+      }
+      */
+
+      // Simulação de sucesso:
+      Alert.alert('Sucesso', 'Sua senha foi atualizada com sucesso!');
+      navigation.replace('Login');
+    } catch (erro) {
+      Alert.alert('Erro', erro.message || 'Erro inesperado ao redefinir senha.');
+    }
+  };
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.voltar} onPress={() => navigation.navigate('Welcome')}>
+      <TouchableOpacity style={styles.voltar} onPress={() => navigation.navigate('RecuperarSenha')}>
         <Text style={styles.seta}>{'←'}</Text>
       </TouchableOpacity>
 
-      <Text style={styles.title}>Faça o Login</Text>
-      <Text style={styles.subTitle}>Veja o que está acontecendo no seu negócio</Text>
-
-      <Text style={styles.label}>Email</Text>
-      <TextInput
-        style={styles.input}
-        value={email}
-        onChangeText={setEmail}
-        placeholder="seu@email.com"
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
+      <Text style={styles.title}>Defina uma nova senha</Text>
+      <Text style={styles.subTitle}>
+        Crie uma nova senha. Certifique-se de que ela seja diferente das anteriores para sua segurança.
+      </Text>
 
       <Text style={styles.label}>Senha</Text>
       <View style={styles.inputContainer}>
         <TextInput
-          style={styles.inputInterno}
+          style={styles.input}
           secureTextEntry={!mostrarSenha}
           value={senha}
           onChangeText={setSenha}
@@ -62,120 +69,23 @@ export default function Login() {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.checkboxContainer}>
-        <TouchableOpacity onPress={() => setLembrar(!lembrar)}>
-          <MaterialIcons
-            name={lembrar ? 'check-box' : 'check-box-outline-blank'}
-            size={24}
-            color="#66E266"
-          />
+      <Text style={styles.label}>Confirme sua senha</Text>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          secureTextEntry={!mostrarConfirmar}
+          value={confirmarSenha}
+          onChangeText={setConfirmarSenha}
+          placeholder="********"
+        />
+        <TouchableOpacity onPress={() => setMostrarConfirmar(!mostrarConfirmar)}>
+          <Text style={styles.olho}>{mostrarConfirmar ? '🙈' : '👁️'}</Text>
         </TouchableOpacity>
-        <Text style={styles.checkboxLabel}>Lembre-me</Text>
       </View>
 
-      <TouchableOpacity style={styles.botao} onPress={handleLogin}>
-        <Text style={styles.botaoTexto}>Entrar</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => navigation.navigate('RecuperarSenha')} style={styles.button}>
-        <Text style={styles.linkVerde}>Esqueceu sua senha?</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => navigation.navigate('Cadastro')} style={styles.button}>
-        <Text style={styles.linkPreto}>Ainda não tenho conta?</Text>
+      <TouchableOpacity style={styles.botao} onPress={handleAtualizarSenha}>
+        <Text style={styles.botaoTexto}>Atualizar senha</Text>
       </TouchableOpacity>
     </View>
   );
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 24,
-    backgroundColor: '#fff',
-    flex: 1,
-    justifyContent: 'center',
-  },
-  voltar: {
-    position: 'absolute',
-    top: 40,
-    left: 16,
-  },
-  seta: {
-    fontSize: 24,
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginBottom: 6,
-    textAlign: 'center',
-  },
-  subTitle: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 24,
-    textAlign: 'center',
-  },
-  label: {
-    fontWeight: '500',
-    marginBottom: 6,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    marginBottom: 16,
-    fontSize: 16,
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    paddingHorizontal: 12,
-    marginBottom: 16,
-  },
-  inputInterno: {
-    flex: 1,
-    height: 48,
-  },
-  olho: {
-    fontSize: 18,
-    marginLeft: 8,
-  },
-  checkboxContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 24,
-  },
-  checkboxLabel: {
-    marginLeft: 8,
-    fontSize: 14,
-  },
-  botao: {
-    backgroundColor: '#66E266',
-    paddingVertical: 12,
-    borderRadius: 6,
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  botaoTexto: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-  linkVerde: {
-    color: '#66E266',
-    textAlign: 'center',
-    marginBottom: 8,
-    textDecorationLine: 'underline',
-  },
-  linkPreto: {
-    textAlign: 'center',
-    color: '#333',
-    textDecorationLine: 'underline',
-  },
-});
