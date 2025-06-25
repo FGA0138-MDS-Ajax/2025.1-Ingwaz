@@ -5,7 +5,7 @@ import { AuthProvider } from './src/navigation/AuthContext'; // ⬅️ novo impo
 
 export default function App() {
   return (
-    <AuthProvider> {/* ⬅️ envolve tudo */}
+    <AuthProvider>
       <NavigationContainer>
         <Routes />
       </NavigationContainer>
