@@ -86,6 +86,7 @@ def test_criacao_sem_score():
 
 @pytest.mark.django_db
 def test_credito_status_invalido():
+#verificar se ocorre a criação de uma solicitação com status inválido
   usuario1 = User.objects.create_user(
       username = 'joao123', 
       name = 'Joao', 
@@ -190,3 +191,37 @@ def test_atualizacao_score():
   solicitacao1.score = 1.0
   solicitacao1.save()
   assert solicitacao1.score == 1.0
+
+@pytest.mark.django_db
+def test_solicitacao_sem_usuario():
+#verificar se é possível criar solicitação sem usuário associado
+  usuario1 = User.objects.create_user(
+      username = 'joao123', 
+      name = 'Joao', 
+      email = 'joao@uol.com.br',
+      password = 'senha123', 
+      role = 'agricultor', 
+      cpf = '123.456.789-09'
+  )
+  propriedade1 = Propriedade.objects.create(
+      nome = 'Chácara feliz', 
+      area_total = 450, 
+      latitude = -15.6, 
+      longitude = -46.6, 
+      agricultor = usuario1
+  )
+  plantio1 = Plantio.objects.create(
+      cultura = 'Soja', 
+      area = 30, 
+      data = date.today(), 
+      estimativa_colheita = date.today(), 
+      propriedade = propriedade1
+  )
+  with pytest.raises(Exception):
+    SolicitacaoCredito.objects.create(
+    user = None,
+    plantio = plantio1,
+    propriedade = propriedade1,
+    score = 1.0,
+    status = 'aprovado'
+  )
