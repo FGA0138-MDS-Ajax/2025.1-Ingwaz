@@ -34,5 +34,5 @@
 
 ## Iniciar server EXPO (FRONT)
 
-    npx expo start 
+    npx expo start --clear
 
