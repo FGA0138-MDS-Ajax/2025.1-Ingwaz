@@ -10,22 +10,26 @@ class UserRegistrationTest(APITestCase):
       name='João da Silva',
       username='joao123@uol.com.br',
       email='joao123@uol.com.br',
-      password='senhaexistente'
+      password='senhaexistente',
+      cpf = '123.456.789-09'
     )
     self.short_password = {
       'name' : 'João da Silva',
       'email' : 'joao123@uol.com.br',
-      'password' : '123'
+      'password' : '123',
+      'cpf': '123.456.789-09'
     }
     self.invalid_email = {
       'name' : 'Davi',
       'email' : 'davi@@gmail.com',
-      'password' : 'davioie1234'
+      'password' : 'davioie1234',
+      'cpf': '123.456.789-09'
     }
     self.existing_email = {
       'name' : 'Sósia da Silva',
       'email' : 'joao123@uol.com.br',
-      'password' : 'senhadososia'
+      'password' : 'senhadososia',
+      'cpf': '123.456.789-09'
     }
   
   def test_se_usuario_criado(self):
@@ -36,10 +40,12 @@ class UserRegistrationTest(APITestCase):
   def teste_registro_com_sucesso(self):
   #verificação se o usuário é registrado com sucesso
     data = {
+      'username': 'novousuario@uol.com.br',
       'name': 'usuario novo',
       'email': 'novousuario@uol.com.br',
       'password': 'senhamedia123',
-      'role': 'analista'
+      'role': 'analista',
+      'cpf': '12345678909'
     }
     
     url = reverse('register')
@@ -82,7 +88,36 @@ class UserRegistrationTest(APITestCase):
       'name': 'Fabiano',
       'email': 'fabiano@hotmail.com',
       'password': 'senhamedia123',
-      'role': 'role inválida'
+      'role': 'role inválida',
+      'cpf': '123.456.789-09'
+    }
+    url = reverse('register')
+    response = self.client.post(url, data, format='json')
+    self.assertEqual(response.status_code, 400)
+    self.assertIn('role', response.data)
+
+  def test_usuario_cpf_invalido(self):
+  #verificar se o usuário consegue se cadastrar com um CPF inválido
+    data = {
+      'name': 'Fabiano',
+      'email': 'fabiano@hotmail.com',
+      'password': 'senhamedia123',
+      'role': 'role inválida',
+      'cpf': '123.456.789-10'
+    }
+    url = reverse('register')
+    response = self.client.post(url, data, format='json')
+    self.assertEqual(response.status_code, 400)
+    self.assertIn('cpf', response.data)
+
+  def test_usuario_cpf_sem_formatacao(self):
+  #verificar se o usuário consegue se cadastrar com um formato inválido de CPF
+    data = {
+      'name': 'Fabiano',
+      'email': 'fabiano@hotmail.com',
+      'password': 'senhamedia123',
+      'role': 'role inválida',
+      'cpf': '12-345-6789.09'
     }
     url = reverse('register')
     response = self.client.post(url, data, format='json')
@@ -95,7 +130,8 @@ class UserRegistrationTest(APITestCase):
       'name': 'João Silva',
       'email': 'JOAOSILVA@yahoo.com.br',
       'password': 'senhadetamanhook123',
-      'role': 'agricultor'
+      'role': 'agricultor',
+      'cpf': '123.456.789-09'
     }
     url = reverse('register')
     response = self.client.post(url, data, format='json')

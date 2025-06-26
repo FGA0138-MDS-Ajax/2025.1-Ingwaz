@@ -10,6 +10,8 @@
 import pytest
 from rest_framework.test import APIClient
 from users.models import User
+from django.urls import reverse
+from rest_framework import status
 
 # Marca o teste como sendo dependente do banco de dados do Django
 @pytest.mark.django_db
@@ -20,14 +22,16 @@ def test_login_sucesso():
         name='Joao',                # nome do usuário (campo personalizado)
         email='joao@example.com',   # email utilizado no login
         password='senha123',        # senha que será testada
-        role='administrador'        # papel (role) do usuário
+        role='administrador',        # papel (role) do usuário
+        cpf='123.456.789-09'
     )
 
     # Cria um cliente de teste para simular requisições HTTP
     client = APIClient()
 
     # Envia uma requisição POST para o endpoint de login com dados válidos
-    response = client.post('/api/login', {
+    url = reverse('login')
+    response = client.post(url, {
         'email': 'joao@example.com',
         'password': 'senha123'
     }, format='json')
@@ -43,7 +47,8 @@ def test_login_sucesso():
 def test_login_email_invalido():
     # Simula uma tentativa de login com email que não existe
     client = APIClient()
-    response = client.post('/api/login', {
+    url = reverse('login')
+    response = client.post(url, {
         'email': 'naoexiste@example.com',
         'password': 'qualquer'
     }, format='json')
@@ -65,7 +70,8 @@ def test_login_senha_errada():
 
     # Simula uma tentativa de login com senha errada
     client = APIClient()
-    response = client.post('/api/login', {
+    url = reverse('login')
+    response = client.post(url, {
         'email': 'joao@example.com',
         'password': 'senha_errada'
     }, format='json')
@@ -78,7 +84,8 @@ def test_login_senha_errada():
 def test_login_campo_email_vazio():
     # Simula uma tentativa de login com campo de email vazio
     client = APIClient()
-    response = client.post('/api/login', {
+    url = reverse('login')
+    response = client.post(url, {
         'email': '',
         'password': 'senha123'
     }, format='json')
@@ -91,7 +98,8 @@ def test_login_campo_email_vazio():
 def test_login_campo_senha_vazio():
     # Simula uma tentativa de login com campo de senha vazio
     client = APIClient()
-    response = client.post('/api/login', {
+    url = reverse('login')
+    response = client.post(url, {
         'email': 'joao@example.com',
         'password': ''
     }, format='json')
