@@ -1,40 +1,68 @@
+# credito/views.py
 from django.shortcuts import render
 import random
 import math
 from rest_framework import status, permissions
+from rest_framework import serializers
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.exceptions import PermissionDenied
 from rest_framework import generics, status
-from rest_framework.generics import RetrieveUpdateDestroyAPIView # Importe se for usar a classe base
-from .models import SolicitacaoCredito
-from plantios.models import Plantio
-from propriedade.models import Propriedade
-from .serializers import SolicitacaoCreditoSerializer
+
+from plantios.models import Plantio # Import Plantio model
+from propriedade.models import Propriedade # Import Propriedade model
+from .models import SolicitacaoCredito # Import SolicitacaoCredito model from current app
+from .serializers import SolicitacaoCreditoSerializer, SolicitacaoCreditoCreateSerializer # Import SolicitacaoCreditoSerializer from current app
+from .permissions import IsOwnerOrAnalyst, IsOwnerOrAnalystForList # Import your new custom permissions
 
 class RegisterView(generics.CreateAPIView):
     """
-    View para registrar um usuario.
+    View para registrar uma nova solicitação de crédito.
     """
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     queryset = SolicitacaoCredito.objects.all()
-    serializer_class = SolicitacaoCreditoSerializer
-    
+    serializer_class = SolicitacaoCreditoCreateSerializer 
+
+    def get_serializer(self, *args, **kwargs):
+        data = self.request.data.copy()
+        plantio_id = data.get('plantio')
+
+        if not plantio_id:
+            return super().get_serializer(*args, **kwargs) 
+        
+        try:
+            plantio = Plantio.objects.get(id=plantio_id)
+        except Plantio.DoesNotExist:
+            raise serializers.ValidationError({"plantio": f"Plantio com ID {plantio_id} não encontrado."})
+
+        if plantio.propriedade.agricultor != self.request.user:
+            raise PermissionDenied(
+                detail="Você só pode criar solicitações para plantios que pertencem às suas propriedades."
+            )
+
+        data['propriedade'] = plantio.propriedade.id 
+        data['user'] = self.request.user.id 
+
+        kwargs['data'] = data
+        return super().get_serializer(*args, **kwargs)
+
     def perform_create(self, serializer):
-        plantio = serializer.validated_data.get('plantio')
-        if plantio:
-            serializer.save(propriedade=plantio.propriedade)
-        else:
-            serializer.save()
+        plantio = serializer.validated_data.get('plantio') 
+
+        user = self.request.user
+
+        propriedade = plantio.propriedade
+        serializer.save(user=user, propriedade=propriedade)
 
 class AvaliarView(APIView):
-    permission_classes = [IsAuthenticated]
+    """
+    Endpoint para simular algoritmo de score e atualizar o status da solicitação.
+    """
+    permission_classes = [IsAuthenticated, IsOwnerOrAnalyst]
 
-    def get(self, request, solicitacao_id):
-        """
-        Endpoint para simular algoritmo de score e atualizar o status da solicitação.
-        """
+    def get(self, request, solicitacao_id): 
         try:
             solicitacao = SolicitacaoCredito.objects.get(id=solicitacao_id)
         except SolicitacaoCredito.DoesNotExist:
@@ -43,53 +71,42 @@ class AvaliarView(APIView):
                 status=status.HTTP_404_NOT_FOUND
             )
 
-        # 1. Recupera valores de instância:
-        # Área do plantio
+        self.check_object_permissions(request, solicitacao) 
+
         area_plantio = solicitacao.plantio.area  
         area_total = solicitacao.propriedade.area_total  
 
-        # 2. Calcula pbi (potencial bruto de income). Ajuste conforme necessidade:
-        pbi = float(area_plantio)
+        pbi = float(area_plantio) # Potential Brute Income
         
-        
-        escalahec = 100.0  
+        escalahec = 100.0  # Constant for normalization
         pbi_normalizado = pbi / escalahec
                 
         area_total_f = float(area_total)
 
-        # 3. Calcula gui (índice uso do solo) com verificação de divisão por zero:
-        if area_total is None or area_total == 0:
-            # Tratamento: definir comportamento padrão ou erro
-            # Por exemplo, se não fizer sentido, retorna erro:
+        if area_total_f is None or area_total_f == 0:
             return Response(
-                {"detail": "Área total da propriedade inválida para cálculo."},
+                {"detail": "Área total da propriedade inválida para cálculo (divisão por zero)."},
                 status=status.HTTP_400_BAD_REQUEST
             )
-        gui = float(pbi / area_total_f)
+        
+        gui = float(pbi / area_total_f) # Ground Usage Index -> meant to see what percentage of the property is being used for farming.
 
-        # 4. Define Ground Usage Score (gus)
-        gus = 1.0
+        gus = 1.0 # Ground Usage Score -> meant to detract score from the user if their GUI is too high
         if 0.7 < gui <= 0.9:
             gus = 0.9
         elif gui > 0.9:
             gus = 0.8
 
-        # 5. Potentital Credit Score (pcs)
-        #pcs = pbi * gus
-        pcs = float(pbi_normalizado * gus)
+        pcs = float(pbi_normalizado * gus) # Pre Normalisation score
 
-        # 6. Função sigmoid para normalizar entre 0 e 1
-        try:
+        try: # Sigmoid function in order to normalise the score in the range 0-1
             sigmoid_denominador = 1 + math.exp(-pcs)
             score_gerado = 1 / sigmoid_denominador
         except OverflowError:
-            # Caso pcs muito grande/pequeno; trate conforme desejado:
-            score_gerado = 0 if pcs < 0 else 1
+            # Handle very large/small pcs values that cause overflow in math.exp
+            score_gerado = 0.0 if pcs < 0 else 1.0 # Ensure it's still a float
 
-        # Se quiser forçar um valor fixo para testes:
-        # score_gerado = 1
-
-        # 7. Define novo status
+        # Define new status based on generated score
         if score_gerado >= 0.7:
             novo_status = 'aprovado'
         elif 0.5 <= score_gerado < 0.7:
@@ -97,7 +114,6 @@ class AvaliarView(APIView):
         else:
             novo_status = 'rejeitado'
 
-        # 8. Salva na instância
         solicitacao.score = score_gerado
         solicitacao.status = novo_status
         solicitacao.save()
@@ -107,8 +123,24 @@ class AvaliarView(APIView):
             {
                 "message": "Avaliação de crédito realizada com sucesso!",
                 "solicitacao": serializer.data,
-                "score_gerado": score_gerado,
+                "score_gerado": score_gerado, 
                 "novo_status": novo_status
             },
             status=status.HTTP_200_OK
         )
+
+class SolicitacaoCreditoListView(generics.ListAPIView):
+    """
+    Endpoint para listar solicitações de crédito.
+    """
+    permission_classes = [IsAuthenticated, IsOwnerOrAnalystForList]
+    serializer_class = SolicitacaoCreditoSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        # If the user's role is 'analista', return all requests
+        if hasattr(user, 'role') and user.role == 'analista':
+            return SolicitacaoCredito.objects.all().order_by('-created_at')
+        
+        # Otherwise, return only the requests belonging to the current user
+        return SolicitacaoCredito.objects.filter(user=user).order_by('-created_at')

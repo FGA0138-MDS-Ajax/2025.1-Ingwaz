@@ -1,7 +1,9 @@
+# credito/urls.py
 from django.urls import path
-from .views import AvaliarView, RegisterView
+from .views import RegisterView, AvaliarView, SolicitacaoCreditoListView
 
 urlpatterns = [
-    path('credito/avaliar/<int:solicitacao_id>/', AvaliarView.as_view(), name='avaliar_credito'),
-    path('credito/avaliar/', RegisterView.as_view(), name='registrar_solicitacao'),
+    path('solicitacoes/register/', RegisterView.as_view(), name='solicitacao-register'),
+    path('solicitacoes/<int:solicitacao_id>/avaliar/', AvaliarView.as_view(), name='solicitacao-avaliar'),
+    path('solicitacoes/', SolicitacaoCreditoListView.as_view(), name='solicitacao-list'),
 ]
