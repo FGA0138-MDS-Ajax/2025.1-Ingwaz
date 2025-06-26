@@ -5,3 +5,5 @@ requests
 pandas
 openpyxl
 drf-spectacular
+django-cors-headers
+pytest
