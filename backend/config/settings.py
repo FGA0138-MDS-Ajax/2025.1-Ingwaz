@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'quotes',
     'propriedade',
     'plantios',
+    'weather',
 ]
 
 REST_FRAMEWORK = {
