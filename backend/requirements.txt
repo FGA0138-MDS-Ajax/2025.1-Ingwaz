@@ -1,7 +1,2 @@
 Django
 djangorestframework
-django-localflavor
-requests
-pandas
-openpyxl
-drf-spectacular

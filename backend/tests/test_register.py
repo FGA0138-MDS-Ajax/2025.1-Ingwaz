@@ -11,8 +11,7 @@ def test_usuario_serializer_cria_usuario_valido():
         'name': 'Joao',
         'email': 'joao@uol.com.br',
         'password': 'senha123',
-        'role': 'analista',
-        'cpf': '123.456.789-09' 
+        'role': 'analista' 
     }
 
     serializer = UserSerializer(data=dados)
@@ -23,7 +22,6 @@ def test_usuario_serializer_cria_usuario_valido():
     assert usuario.email == 'joao@uol.com.br'
     assert usuario.username == 'joao@uol.com.br'
     assert usuario.check_password('senha123')
-    assert usuario.cpf == '123.456.789-09'
 
 @pytest.mark.django_db
 def test_usuario_senha_pequena():
@@ -54,8 +52,7 @@ def test_usuario_mesmo_email():
         'name': 'Pedro',
         'email': 'joao@uol.com.br',
         'password': 'senha123',
-        'role': 'analista',
-        'cpf': '123.456.789-09'
+        'role': 'analista'
     }
 
     serializer = UserSerializer(data=dados)
@@ -69,8 +66,7 @@ def test_usuario_sem_credenciais():
         'name': '',
         'email': '',
         'password': '',
-        'role': '',
-        'cpf': ''
+        'role': ''
     }
 
     serializer = UserSerializer(data=dados)
@@ -79,7 +75,6 @@ def test_usuario_sem_credenciais():
     assert 'email' in serializer.errors
     assert 'password' in serializer.errors
     assert 'role' in serializer.errors
-    assert 'cpf' in serializer.errors
 
 @pytest.mark.django_db
 def test_email_invalido():
@@ -88,8 +83,7 @@ def test_email_invalido():
         'name': 'fabio',
         'email': 'fabio@@uol.com.br',
         'password': 'senhamedia123',
-        'role': 'analista',
-        'cpf': '123.456.789-09'
+        'role': 'analista'
     }
 
     serializer = UserSerializer(data=dados)
@@ -103,8 +97,7 @@ def test_role_invalida():
         'name': 'sergio',
         'email': 'sergio@gmail.com',
         'password': 'senhamediana12',
-        'role': 'jardineiro',
-        'cpf': '123.456.789-09'
+        'role': 'jardineiro'
     }
 
     serializer = UserSerializer(data=dados)
@@ -112,38 +105,8 @@ def test_role_invalida():
     assert 'role' in serializer.errors
 
 @pytest.mark.django_db
-def test_cpf_invalido():
-#verificar se ele permite a criação com um cpf de dígito verificador inválido
-    dados = {
-        'name': 'sergio',
-        'email': 'sergio@gmail.com',
-        'password': 'senhamediana12',
-        'role': 'jardineiro',
-        'cpf': '123.456.789-10'
-    }
-
-    serializer = UserSerializer(data=dados)
-    assert not serializer.is_valid()
-    assert 'cpf' in serializer.errors
-
-@pytest.mark.django_db
-def test_cpf_desformatado():
-#verificar se ele permite a criação de um cpf sem o formato correto
-    dados = {
-        'name': 'sergio',
-        'email': 'sergio@gmail.com',
-        'password': 'senhamediana12',
-        'role': 'jardineiro',
-        'cpf': '123-45-6789-09'
-    }
-
-    serializer = UserSerializer(data=dados)
-    assert not serializer.is_valid()
-    assert 'cpf' in serializer.errors
-
-@pytest.mark.django_db
 def test_campo_ausente():
-#verificar se ele cria um usuário sem algum campo, no caso sem o nome nem CPF
+#verificar se ele cria um usuário sem algum campo, no caso o nome
     dados = {
         'email': 'joao321@uol.com.br',
         'password': 'senhamedia123',
@@ -161,8 +124,7 @@ def test_senha_hasheada():
         'name': 'davi',
         'email': 'davi123@hotmail.com',
         'password': 'senhamediana321',
-        'role': 'analista',
-        'cpf': '123.456.789-09'
+        'role': 'analista'
     }
 
     serializer = UserSerializer(data=dados)
@@ -176,7 +138,7 @@ def test_senha_hasheada():
 @pytest.mark.django_db
 def test_string_digitada():
 #verificar se a string digitada pelo usuário como o e-mail está igual ao formato do banco 
-    user = User.objects.create(name='João', email='joaozinho123@uol.com.br', cpf='123.456.789-09')
+    user = User.objects.create(name='João', email='joaozinho123@uol.com.br')
     assert str(user) == 'joaozinho123@uol.com.br'
 
 
