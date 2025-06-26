@@ -1,4 +1,6 @@
-const API_BASE = 'http://192.168.15.10:8000/api';
+import { API_URL } from '@env';
+
+const API_BASE = `${API_URL}/api`;
 
 export async function registerUser(data) {
   const response = await fetch(`${API_BASE}/users/register/`, {
