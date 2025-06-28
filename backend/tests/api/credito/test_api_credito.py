@@ -326,3 +326,59 @@ def test_api_filtro(django_user_model):
   data = response.json()
   assert len(data) == 1
   assert data[0]['user'] == usuario2.id
+
+@pytest.mark.django_db
+def test_avaliacao_solicitacao_pelo_analista(django_user_model):
+#verificar se o analista pode acessar e avaliar solicitações
+  analista = django_user_model.objects.create_user(
+        username='fabio123',
+        email='fabio@gmail.com.br',
+        password='senha123',
+        role='analista',
+        cpf='123.456.789-09'
+  )  
+  agricultor = django_user_model.objects.create_user(
+        username='joao123',
+        email='joao@gmail.com.br',
+        password='senhamedia123',
+        role='agricultor',
+        cpf='987.654.321-00'
+  )  
+
+  propriedade1 = Propriedade.objects.create(
+    nome = 'chácara raiz',
+    area_total = 320,
+    latitude=-16.6,
+    longitude=-45.6,
+    agricultor = agricultor
+  )
+
+  plantio1 = Plantio.objects.create(
+    cultura = 'Milho',
+    area = 35,
+    data = str(date.today()),
+    estimativa_colheita = str(date.today()),
+    propriedade = propriedade1
+  ) 
+    
+  solicitacao1 = SolicitacaoCredito.objects.create(
+    user = agricultor,
+    plantio = plantio1,
+    propriedade = propriedade1,
+    score = 0.9,
+    status = 'pendente',
+    created_at = str(date.today()),
+    updated_at = str(date.today())
+  )  
+
+  token = Token.objects.create(user=analista)
+  client = APIClient()
+  client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+  url = reverse('solicitacao-avaliar', kwargs={'solicitacao_id': solicitacao1.id})
+  response = client.get(url)
+  assert response.status_code == 200
+  data = response.json()
+  assert data['solicitacao']['id'] == solicitacao1.id
+  assert data['novo_status'] in ['aprovado', 'analise', 'rejeitado']
+  solicitacao1.refresh_from_db()
+  assert solicitacao1.status == data['novo_status']

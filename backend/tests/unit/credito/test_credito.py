@@ -7,6 +7,7 @@ from users.models import User
 from propriedade.models import Propriedade
 from plantios.models import Plantio
 from datetime import date, timedelta, datetime
+from credito.views import SolicitacaoCreditoListView
 
 @pytest.mark.django_db
 def test_criacao_credito():
@@ -225,3 +226,50 @@ def test_solicitacao_sem_usuario():
     score = 1.0,
     status = 'aprovado'
   )
+
+@pytest.mark.django_db
+def test_analista_acessando_solicitacao(django_user_model):
+#verificar se analista consegue acessar solicitações
+  analista = django_user_model.objects.create_user(
+      username = 'joao123', 
+      name = 'Joao', 
+      email = 'joao@uol.com.br',
+      password = 'senha123', 
+      role = 'analista', 
+      cpf = '123.456.789-09'
+  )
+  agricultor = django_user_model.objects.create_user(
+      username = 'fabio123', 
+      name = 'Fabio', 
+      email = 'fabio@hotmail.com.br',
+      password = 'senhaok123', 
+      role = 'agricultor', 
+      cpf = '987.654.321-00'
+  )
+  propriedade1 = Propriedade.objects.create(
+      nome = 'Chácara feliz', 
+      area_total = 450, 
+      latitude = -15.6, 
+      longitude = -46.6, 
+      agricultor = agricultor
+  )
+  plantio1 = Plantio.objects.create(
+      cultura = 'Soja', 
+      area = 30, 
+      data = date.today(), 
+      estimativa_colheita = date.today(), 
+      propriedade = propriedade1
+  )
+  solicitacao1 = SolicitacaoCredito.objects.create(
+    user = agricultor,
+    plantio = plantio1,
+    propriedade = propriedade1,
+    score = 1.0,
+    status = 'pendente'
+  )
+  class SimulacaoAnalise:
+    user = analista
+  view = SolicitacaoCreditoListView()
+  view.request = SimulacaoAnalise()
+  queryset = view.get_queryset()
+  assert solicitacao1 in queryset
