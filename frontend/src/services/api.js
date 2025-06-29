@@ -1,4 +1,4 @@
-import { API_URL, API_EMBRAPA_KEY } from "@env";
+import { API_URL, API_EMBRAPA_URL, API_EMBRAPA_KEY } from "@env";
 
 const API_BASE = `${API_URL}/api`;
 
@@ -53,7 +53,7 @@ export async function getPerguntas(pergunta) {
       }
     };
     const response = await fetch(
-      "https://api.cnptia.embrapa.br/respondeagro/v1/_search/template", {
+      API_EMBRAPA_URL, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${API_EMBRAPA_KEY}`,
