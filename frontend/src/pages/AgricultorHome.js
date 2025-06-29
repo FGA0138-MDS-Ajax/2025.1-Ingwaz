@@ -45,7 +45,7 @@ export default function AgricultorHome () {
     },
     {
       label: 'Previsão do Tempo',
-      icon: <MaterialIcons name="clear-day" size={45} color="#2e5339" />,
+      icon: <Ionicons name="partly-sunny-outline" size={45} color="#2e5339" />,
       route: 'Previsão do Tempo',
     },
   ];

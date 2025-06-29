@@ -42,8 +42,7 @@ export const getProperties = async () => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        // O backend espera um token para autenticação
-        'Authorization': `Token ${token}`, // ou 'Bearer ' dependendo da sua config
+        'Authorization': `Token ${token}`,
       },
     });
 
@@ -63,8 +62,19 @@ export const getProperties = async () => {
 };
 
 export const getWeatherList = async (propriedadeId, useCache) => {
+  const token = await getAuthToken();
+  if (!token) {
+      return { error: "Usuário não autenticado." };
+  }
+
   try {
-    const response = await fetch(`${API_BASE}/weather/${propriedadeId}/${useCache}/`);
+    const response = await fetch(`${API_BASE}/weather/${propriedadeId}/${useCache}/`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`,
+      },
+    });
     if (!response.ok) {
       throw new Error(`Erro na API: ${response.statusText}`);
     }
@@ -76,10 +86,21 @@ export const getWeatherList = async (propriedadeId, useCache) => {
 };
 
 export const getWeatherDetail = async (propriedadeId, date) => {
+  const token = await getAuthToken();
+  if (!token) {
+      return { error: "Usuário não autenticado." };
+  }
+
   console.log(`Buscando detalhe para propriedade ${propriedadeId} na data ${date}`);
   
   try {
-    const response = await fetch(`${API_BASE}/weather/${propriedadeId}/${date}/`);
+    const response = await fetch(`${API_BASE}/weather/${propriedadeId}/${date}/`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`,
+      },
+    });
     if (!response.ok) {
       throw new Error(`Erro na API: ${response.statusText}`);
     }

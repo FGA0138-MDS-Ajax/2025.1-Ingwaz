@@ -59,7 +59,6 @@ export default function EscolhaPropriedadeScreen() {
 
   const handleSelectProperty = (propriedade) => {
     // Navega para a tela de previsão do tempo com o ID da propriedade
-    console.log("something1");
     navigation.navigate("Previsões", { propriedadeId: propriedade.id });
   };
 
@@ -69,7 +68,7 @@ export default function EscolhaPropriedadeScreen() {
       onPress={() => handleSelectProperty(item)}
     >
       <View style={styles.iconContainer}>
-        <Ionicons name="business-outline" size={24} color="#2c6e49" />
+        <Ionicons name="home-outline" size={45} color="#2e5339" />
       </View>
       <View style={styles.cardTextContainer}>
         {/* Assumindo que o serializer da API retorna 'nome' e 'localizacao' */}
