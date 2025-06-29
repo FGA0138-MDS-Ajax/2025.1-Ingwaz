@@ -12,13 +12,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Quote',
+            name='SolicitacaoCredito',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date', models.CharField(max_length=255)),
-                ('name', models.CharField(db_index=True, max_length=255, unique=True)),
-                ('unity', models.CharField(max_length=255)),
-                ('value', models.DecimalField(decimal_places=2, max_digits=10)),
+                ('score', models.IntegerField(blank=True, null=True)),
+                ('status', models.CharField(choices=[('pendente', 'Pendente'), ('aprovado', 'Aprovado'), ('rejeitado', 'Rejeitado'), ('analise', 'Em Análise')], default='pendente', max_length=50)),
             ],
         ),
     ]
