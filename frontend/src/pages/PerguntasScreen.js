@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
   Image,
   useWindowDimensions,
+  TouchableOpacity,
 } from "react-native";
 import RenderHTML from "react-native-render-html";
 import { useNavigation } from "@react-navigation/native";
@@ -15,9 +16,11 @@ import { getPerguntas } from "../services/api";
 
 const renderersProps = {
   img: {
-    enableExperimentalPercentWidth: true
-  }
+    enableExperimentalPercentWidth: true,
+  },
 };
+
+const SUGESTOES = ["arroz", "plantio", "colheita", "pragas"];
 
 export default function PerguntasScreen() {
   const navigation = useNavigation();
@@ -60,14 +63,16 @@ export default function PerguntasScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.banner}>
-        <Image
-          source={{
-            uri: "https://i.postimg.cc/rs8x2VYX/Captura-de-tela-2025-06-22-235024.png",
-          }}
-          style={styles.bannerImage}
-        />
-      </View>
+      {busca === "" && (
+        <View style={styles.banner}>
+          <Image
+            source={{
+              uri: "https://i.postimg.cc/rs8x2VYX/Captura-de-tela-2025-06-22-235024.png",
+            }}
+            style={styles.bannerImage}
+          />
+        </View>
+      )}
 
       <TextInput
         placeholder="Clique aqui para pesquisar uma pergunta."
@@ -75,6 +80,18 @@ export default function PerguntasScreen() {
         onChangeText={setBusca}
         style={styles.busca}
       />
+
+      <View style={styles.sugestoesContainer}>
+        {SUGESTOES.map((item) => (
+          <TouchableOpacity
+            key={item}
+            style={styles.sugestaoChip}
+            onPress={() => setBusca(item)}
+          >
+            <Text style={styles.sugestaoTexto}>{item}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
 
       {carregando ? (
         <ActivityIndicator size="large" color="#000" />
@@ -84,7 +101,11 @@ export default function PerguntasScreen() {
           keyExtractor={(item) => item["_id"]}
           renderItem={renderItem}
           ListEmptyComponent={
-            <Text style={styles.emptyMessage}>Nenhuma pergunta disponível.</Text>
+            <Text style={styles.emptyMessage}>
+              {(busca === "" &&
+                "Use a barra de pesquisa ou clique em uma sugestão acima.") ||
+                "Nenhuma pergunta encontrada, tente usar termos simples."}
+            </Text>
           }
         />
       )}
@@ -112,27 +133,12 @@ const tagsStyles = {
 };
 
 const styles = StyleSheet.create({
-  banner: {
-    width: "100%",
-    height: 170,
-    marginBottom: 30,
-    borderRadius: 10,
-    overflow: "hidden",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  bannerImage: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "contain",
-  },
   busca: {
     borderWidth: 1,
     borderColor: "#ccc",
     paddingHorizontal: 12,
+    paddingVertical: 10,
     borderRadius: 8,
-    marginTop: 10,
-    marginBottom: 24,
   },
   container: {
     flex: 1,
@@ -153,5 +159,37 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontStyle: "italic",
     color: "#888",
+  },
+  banner: {
+    width: "100%",
+    height: 170,
+    marginBottom: 20,
+    borderRadius: 10,
+    overflow: "hidden",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  bannerImage: {
+    width: "100%",
+    height: "100%",
+    resizeMode: "contain",
+  },
+  sugestoesContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    marginTop: 8,
+    marginBottom: 24,
+  },
+  sugestaoChip: {
+    backgroundColor: "#e0e0e0",
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 15,
+    margin: 4,
+  },
+  sugestaoTexto: {
+    fontSize: 14,
+    color: "#333",
   },
 });

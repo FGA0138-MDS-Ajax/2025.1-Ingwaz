@@ -49,7 +49,7 @@ export async function getPerguntas(pergunta) {
       "params": {
         "query_string": pergunta,
         "from": 0,
-        "size": 1000
+        "size": 100
       }
     };
     const response = await fetch(
