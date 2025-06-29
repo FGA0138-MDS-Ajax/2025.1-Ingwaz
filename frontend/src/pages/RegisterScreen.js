@@ -12,8 +12,12 @@ import { useNavigation } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 import { registerUser, loginUser } from '../services/api';
+import { useContext } from 'react';
+import { AuthContext } from '../navigation/AuthContext';
+
 
 export default function RegisterScreen() {
+  const { setUser } = useContext(AuthContext);
   const navigation = useNavigation();
 
   const [nome, setNome] = useState('');
@@ -39,7 +43,7 @@ export default function RegisterScreen() {
 
     const cpfNumerico = cpf.replace(/\D/g, '');
 
-    
+
     const result = await registerUser({
       name: nome,
       email,
@@ -52,9 +56,15 @@ export default function RegisterScreen() {
       const loginResult = await loginUser({ email, password: senha });
 
       if (loginResult.token) {
+        setUser({
+          token: loginResult.token,
+          tipo: loginResult.tipo || loginResult.role,
+        });
+
         Alert.alert('Sucesso', 'Usuário registrado e logado com sucesso!');
-        navigation.reset({ index: 0, routes: [{ name: 'Dashboard' }] });
-      } else {
+        navigation.reset({ index: 0, routes: [{ name: 'Home' }] });
+      }
+      else {
         Alert.alert('Atenção', 'Usuário criado, mas erro ao logar. Faça login manualmente.');
         navigation.navigate('Login');
       }
