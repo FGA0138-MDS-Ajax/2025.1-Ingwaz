@@ -15,12 +15,11 @@ import { getQuotes } from "../services/api";
 export default function CotacoesScreen() {
   const navigation = useNavigation();
   const [cotacoes, setCotacoes] = useState([]);
-  const [carregando, setCarregando] = useState(false);
+  const [carregando, setCarregando] = useState(true);
   const [busca, setBusca] = useState("");
 
   useEffect(() => {
     async function fetchOnce() {
-      setCarregando(true);
       try {
         const quotes = await getQuotes();
         setCotacoes(quotes || []);

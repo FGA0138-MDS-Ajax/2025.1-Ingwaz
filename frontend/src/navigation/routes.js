@@ -5,6 +5,7 @@ import RegisterScreen from '../pages/RegisterScreen';
 import DashboardScreen from '../pages/DashboardScreen';
 import Home from '../pages/Home';
 import CotacoesScreen from '../pages/CotacoesScreen'
+import PerguntasScreen from '../pages/PerguntasScreen'
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ export default function Routes() {
       <Stack.Screen name="Dashboard" component={DashboardScreen} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Preços de Produtos Rurais" component={CotacoesScreen} />
+      <Stack.Screen name="Perguntas Agrícolas" component={PerguntasScreen} />
     </Stack.Navigator>
   );
 }
