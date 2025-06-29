@@ -18,30 +18,18 @@ export default function CotacoesScreen() {
   const [carregando, setCarregando] = useState(false);
   const [busca, setBusca] = useState("");
 
-  const buscarCotacoes = useCallback(async () => {
-    console.log("buscando cotacoes...");
-    setCarregando(true);
-    try {
-      const quotes = await getQuotes();
-      setCotacoes(quotes || []);
-    } finally {
-      setCarregando(false);
-    }
-  }, []);
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <TouchableOpacity onPress={buscarCotacoes}>
-          <Ionicons name="refresh" size={24} color="black" />
-        </TouchableOpacity>
-      ),
-    });
-  }, [navigation, buscarCotacoes]);
-
   useEffect(() => {
-    buscarCotacoes();
-  }, [buscarCotacoes]);
+    async function fetchOnce() {
+      setCarregando(true);
+      try {
+        const quotes = await getQuotes();
+        setCotacoes(quotes || []);
+      } finally {
+        setCarregando(false);
+      }
+    }
+    fetchOnce();
+  }, []);
 
   const cotacoesFiltradas = useMemo(() => {
     if (!cotacoes) return [];

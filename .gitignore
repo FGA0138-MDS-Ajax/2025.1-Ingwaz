@@ -1,5 +1,4 @@
 venv/
 __pycache__/
 node_modules/
-.expo/
-.expo-shared/
+android

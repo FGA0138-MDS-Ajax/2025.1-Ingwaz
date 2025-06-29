@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from .services import get_all_cepea_quotes, get_all_hfbrasil_quotes
 from .models import Quote
 from .serializers import QuoteSerializer
+import operator
 
 
 class QuoteListView(generics.ListAPIView):
@@ -45,6 +46,7 @@ class QuoteUpdateView(APIView):
             if not ok:
                 return Response({'error': data}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
             all_data += data
+        all_data.sort(key=operator.itemgetter('name'))
         for item in all_data:
             update_or_create(item)
         return Response({'message': 'Cotações atualizadas com sucesso.'}, status=status.HTTP_200_OK)
