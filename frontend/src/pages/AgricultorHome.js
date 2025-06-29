@@ -29,9 +29,9 @@ export default function AgricultorHome () {
       route: 'Chat',
     },
     {
-      label: 'Lucros e Vendas',
+      label: 'Preços de Produtos Rurais',
       icon: <MaterialIcons name="show-chart" size={45} color="#2e5339" />,
-      route: 'Lucros e Vendas',
+      route: 'Preços de Produtos Rurais',
     },
     {
       label: 'Produção Atual',

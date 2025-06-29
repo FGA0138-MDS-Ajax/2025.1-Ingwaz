@@ -10,13 +10,12 @@ const Stack = createNativeStackNavigator();
 
 export default function Routes() {
   return (
-    // <Stack.Navigator initialRouteName="Login">
-    <Stack.Navigator initialRouteName="Cotações de produtos">
+    <Stack.Navigator initialRouteName="Login">
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen name="Dashboard" component={DashboardScreen} />
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Cotações de produtos" component={CotacoesScreen} />
+      <Stack.Screen name="Preços de Produtos Rurais" component={CotacoesScreen} />
     </Stack.Navigator>
   );
 }
