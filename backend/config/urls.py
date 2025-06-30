@@ -22,9 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('users.urls')),
     path('api/', include('quotes.urls')),
-    path('api/', include('propriedade.urls')),
+    path('api/', include('weather.urls')),
     path('api/', include('plantios.urls')),
     path('api/', include('propriedade.urls')),
+    path('api/', include('credito.urls')),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]

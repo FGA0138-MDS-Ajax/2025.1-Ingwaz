@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'propriedade',
     'plantios',
     'corsheaders',
+    'credito',
+    'weather',
 ]
 
 REST_FRAMEWORK = {
