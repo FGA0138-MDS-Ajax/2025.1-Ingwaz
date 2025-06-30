@@ -8,21 +8,28 @@ import { AuthContext } from '../navigation/AuthContext';
 
 export default function AnalistaHome() {
   const navigation = useNavigation();
+  const { setUser } = useContext(AuthContext);
+
+  const handleLogout = async () => {
+    setUser(null);
+    navigation.reset({ index: 0, routes: [{ name: 'Login' }] });
+  };
+
   const { user } = useContext(AuthContext);
   const nome = user?.nome || '';
 
- const buttons = [
-  {
-    label: 'Pedido de Crédito',
-    icon: <FontAwesome6 name="sack-dollar" size={45} color="black" />,
-    route: 'Pedido de Crédito',
-  },
-  {
-    label: 'Lucros e Vendas',
-    icon: <MaterialIcons name="show-chart" size={45} color="#2e5339" />,
-    route: 'Lucros e Vendas', 
-  },
-];
+  const buttons = [
+    {
+      label: 'Pedido de Crédito',
+      icon: <FontAwesome6 name="sack-dollar" size={45} color="black" />,
+      route: 'Pedido de Crédito',
+    },
+    {
+      label: 'Lucros e Vendas',
+      icon: <MaterialIcons name="show-chart" size={45} color="#2e5339" />,
+      route: 'Lucros e Vendas',
+    },
+  ];
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -44,7 +51,9 @@ export default function AnalistaHome() {
             </TouchableOpacity>
           ))}
         </View>
-
+        <TouchableOpacity onPress={handleLogout} style={styles.botaoSair}>
+          <Text style={styles.textoBotaoSair}>Sair</Text>
+        </TouchableOpacity>
         <TouchableOpacity
           style={styles.relatorioButton}
           onPress={() => navigation.navigate('Relatorio')}
@@ -112,4 +121,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#000000',
   },
+  botaoSair: {
+    backgroundColor: '#E55',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    alignSelf: 'center',
+    marginTop: 24,
+  },
+
+  textoBotaoSair: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
+  }
+
 });
