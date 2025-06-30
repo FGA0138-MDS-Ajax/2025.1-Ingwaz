@@ -2,16 +2,6 @@
 
 Este repositório contém um conjunto de testes automatizados desenvolvidos para validar funcionalidades de **registro**, **login** e **serialização de usuários** em uma API Django REST.
 
-## Estrutura dos arquivos de teste
-
-- 'test_api_autenticacao.py' -> Testes da API de cadastro
-- 'test_login.py' -> Testes da aplicação de login 
-- 'test_register.py' -> Testes do cadastro do UserSerializer
-- 'test_quotes.py' -> Testes relacionados às cotações
-- 'test_api_quotes.py' -> Testes relacionados às APIs das cotações
-
----
-
 ## Como executar os testes
 
 Certifique-se de que você está com o ambiente virtual ativado e o Django configurado corretamente.
