@@ -4,6 +4,10 @@ import LoginScreen from '../pages/LoginScreen';
 import RegisterScreen from '../pages/RegisterScreen';
 import DashboardScreen from '../pages/DashboardScreen';
 import Home from '../pages/Home';
+import CultivosECriacoes from '../pages/CultivosECriacoes';
+import RegistrarPlantio from '../pages/RegistrarPlantio';
+
+
 
 
 const Stack = createNativeStackNavigator();
@@ -15,6 +19,8 @@ export default function Routes() {
       <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen name="Dashboard" component={DashboardScreen} />
       <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Cultivo e Criações" component={CultivosECriacoes} />
+      <Stack.Screen name="RegistrarPlantio" component={RegistrarPlantio} /> 
     </Stack.Navigator>
   );
 }
