@@ -49,6 +49,11 @@ Testa o endpoint /api/solicitacoes.
 | `test_avaliacao_solicitacao_pelo_analista` | Verifica se o analista pode avaliar solicitações com sucesso. |
 
 ---
+## `test_password.py`
+
+| Teste                        | O que é testado                                                                                         |
+|-----------------------------|----------------------------------------------------------------------------------------------------------|
+| `test_fluxo_redefinicao_senha` | Valida o fluxo completo de redefinição de senha: envio de email + CPF, atualização de senha e novo login. |
 
 ### `test_api_propriedade.py` - testes da API da propriedade
 
