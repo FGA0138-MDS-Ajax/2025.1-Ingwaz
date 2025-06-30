@@ -155,7 +155,7 @@ Testa diretamente o `QuoteSerializer`.
 
 ---
 
-### `test_register.py´ – testes do cadastro
+### `test_register.py` – testes do cadastro
 
 Testa diretamente o `UserSerializer`.
 
