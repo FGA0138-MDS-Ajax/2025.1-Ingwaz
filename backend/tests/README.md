@@ -30,24 +30,74 @@ pytest
 
 ---
 
-## `test_api.py` – testes da API de cadastro
+## Testes de API
 
-Testa o endpoint `/api/register`.
+---
+
+### `test_api_credito.py` – testes da API de crédito
+
+Testa o endpoint /api/solicitacoes.
 
 | Teste | O que é testado |
 |-------|------------------|
-| `test_se_usuario_criado` | Verifica se um usuário inicial foi corretamente criado no `setUp`. |
-| `teste_registro_com_sucesso` | Simula o cadastro de um novo usuário e espera status 201. |
+| `test_api_criacao_credito` | Verifica a criação de uma solicitação válida pela API. |
+| `test_api_dados_invalidos` | Rejeita com erro 400 a criação de uma solicitação com dados inválidos. |
+| `test_api_lista_solicitacoes` | Verifica se um analista consegue listar as solicitações com sucesso. |
+| `test_api_permissao_sem_autenticacao` | Rejeita requisições se não houver autenticação. |
+| `test_api_atualizacao_status` | Verifica se o status é corretamente atualizado na view. |
+| `test_api_filtro` | Rejeita tentativa de agricultor de acessar todas as solicitações e garante que o analista consiga ter esse acesso. |
+| `test_avaliacao_solicitacao_pelo_analista` | Verifica se o analista pode avaliar solicitações com sucesso. |
+
+---
+
+### `test_api_propriedade.py` - testes da API da propriedade
+
+...
+
+---
+
+### `test_api_quotes.py` – testes da API das cotações
+
+Testa o endpoint /api/quotes.
+
+| Teste | O que é testado |
+|-------|------------------|
+| `test_lista_vazia_cotacoes` | Verifica se é retornada uma lista vazia quando não há cotações no banco. |
+| `test_acesso_nao_autenticado` | Verifica se qualquer pessoa possa consultar as cotações sem precisar de login. (São informações públicas, então sem problemas) |
+| `test_filtro_nome_API` | Verifica se é possível pesquisar o nome de uma cultura específica |
+| `test_atualizacao_sem_autenticacao` | Rejeita a atualização do lote sem autenticação. |
+| `test_atualizacao_em_lote_com_autenticacao` | Verifica se o programa permite um usuário com status de administrador atualizar um lote de cotações. |
+
+---
+
+### `test_api_autenticacao.py` – testes da API de cadastro
+
+Testa o endpoint /api/register.
+
+| Teste | O que é testado |
+|-------|------------------|
+| `test_se_usuario_criado` | Verifica se um usuário inicial foi corretamente criado no setUp. |
+| `test_registro_com_sucesso` | Simula o cadastro de um novo usuário e espera status 201. |
 | `test_usuario_sem_campos_cadastrados` | Verifica erro 400 ao enviar campos vazios no registro. |
 | `test_usuario_senha_curta` | Rejeita senhas com menos de 6 caracteres. |
 | `test_usuario_com_email_invalido` | Rejeita e-mails em formato inválido. |
 | `test_usuario_com_email_ja_cadastrado` | Rejeita tentativa de registrar um e-mail já existente. |
-| 'test_usuario_com_role_invalida' | Rejeita tentativa de registro de usuário com uma role inválida. |
-| 'test_usuario_com_email_em_maiusculo | Verifica se há diferenciação a depender do case, se minúsculo ou maiúsculo. |
+| `test_usuario_com_role_invalida` | Rejeita tentativa de registro de usuário com uma role inválida. |
+| `test_usuario_cpf_invalido` | Rejeita tentativa de registro de usuário com um CPF inválido. |
+| `test_usuario_cpf_sem_formatacao` | Rejeita tentativa de registro de usuário com um CPF de formato inválido. |
+| `test_usuario_com_email_em_maiusculo` | Verifica se há diferenciação a depender do case, se minúsculo ou maiúsculo. |
 
 ---
 
-## `test_login.py` – testes da API de login
+### `test_weather_api.py` - testes da API do clima
+
+---
+
+## Testes de integração
+
+---
+
+### `test_login.py` – testes da API de login
 
 Testa o endpoint `/api/login`.
 
@@ -61,7 +111,51 @@ Testa o endpoint `/api/login`.
 
 ---
 
-## `test_register.py` – testes do cadastro
+## Testes unitários
+
+---
+
+### `test_credito.py` – testes das solicitações de crédito
+
+Testa diretamente o `SolicitacaoCreditoSerializer` e o `SolicitacaoCreditoCreateSerializer`.
+
+| Teste | O que é testado |
+|-------|------------------|
+| `test_criacao_credito` | Verifica se uma solicitação de crédito é criada com preenchimento total e correto dos campos. |
+| `test_criacao_sem_score` | Verifica se um usuário consegue fazer a solicitação sem o preenchimento de um campo **optativo**. |
+| `test_credito_status_invalido` | Rejeita uma solicitação de teste com um status inválido. |
+| `test_str_solicitacao` | Testa se a string está igual à presente no arquivo models dos créditos. |
+| `test_atualizacao_score` | Verifica se o status consegue ser devidamente atualizado. |
+| `test_solicitacao_sem_usuario` | Rejeita a criação de solicitações de crédito sem usuário associado. |
+| `test_analista_acessando_solicitacao` | Verifica se o analista pode visualizar todas as solicitações feitas. |
+
+---
+
+### `test_plantio.py` - testes do plantio
+
+---
+
+### `test_propriedade_uni.py` - testes da propriedade
+
+---
+
+### `test_quotes.py` - testes das cotações
+
+Testa diretamente o `QuoteSerializer`.
+
+| Teste | O que é testado |
+|-------|------------------|
+| `test_criacao_cotacao` | Verifica se a cotação é criada corretamente com atributos válidos. |
+| `test_string_cotacao` | Verifica se a string de cotação retorna o mesmo que a string que está em modelos. |
+| `test_campos_vazios` | Rejeita a criação de uma cotação com campos vazios. |
+| `test_valor_formato_incorreto` | Rejeita a criação com valor numérico em formato string(incorreto). |
+| `test_valor_nao_numerico` | Rejeita a criação com valor composto de uma string. |
+| `test_atualizacao_cotacao` | Testa se um valor e um nome de cultura pode ser alterado. |
+| `test_campo_ausente` | Rejeita um campo ausente. |
+
+---
+
+### `test_register.py´ – testes do cadastro
 
 Testa diretamente o `UserSerializer`.
 
@@ -76,6 +170,10 @@ Testa diretamente o `UserSerializer`.
 | `test_campo_ausente` | Rejeita criação se o campo `name` estiver ausente. |
 | `test_senha_hasheada` | Garante que a senha não é salva em texto puro. |
 | `test_string_digitada` | Verifica se a representação textual do usuário (str) é o e-mail. |
+
+---
+
+### `test_weather_uni.py` - testes do clima
 
 ---
 
