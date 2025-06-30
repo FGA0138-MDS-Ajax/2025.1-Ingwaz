@@ -53,6 +53,14 @@ Testa o endpoint /api/solicitacoes.
 ### `test_api_propriedade.py` - testes da API da propriedade
 
 ...
+| Teste                          | O que é testado                                                                 |
+|-------------------------------|----------------------------------------------------------------------------------|
+| `test_criacao_sucesso`        | Verifica se um agricultor consegue criar uma propriedade com dados válidos.     |
+| `test_area_total_negativa`    | Garante que não é possível criar propriedade com área total negativa.           |
+| `test_latitude_sem_longitude`| Valida que, ao informar latitude sem longitude, ocorre erro de validação.       |
+| `test_tecnico_nao_pode_criar`| Assegura que um usuário com papel de técnico não pode criar propriedades.       |
+| `test_edicao_por_dono`        | Verifica se o agricultor dono da propriedade consegue editá-la com sucesso.     |
+| `test_listagem_filtrada_agricultor` | Garante que um agricultor só vê propriedades criadas por ele mesmo.    |
 
 ---
 
@@ -90,6 +98,12 @@ Testa o endpoint /api/register.
 ---
 
 ### `test_weather_api.py` - testes da API do clima
+
+---
+| Teste                                   | O que é testado                                                                                     |
+|----------------------------------------|------------------------------------------------------------------------------------------------------|
+| `test_weather_list_view_com_cache`     | Verifica se a visualização de clima por propriedade funciona com cache, mesmo com possível falha no serviço externo. |
+| `test_weather_detail_view_data_invalida` | Garante que a API retorna erro 400 ao receber uma data inválida na URL de previsão do tempo.         |
 
 ---
 
@@ -132,10 +146,25 @@ Testa diretamente o `SolicitacaoCreditoSerializer` e o `SolicitacaoCreditoCreate
 ---
 
 ### `test_plantio.py` - testes do plantio
+---
+
+| Teste                                       | O que é testado                                                                                          |
+|--------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| `test_criacao_plantio_sucesso`             | Verifica se um agricultor autenticado consegue criar um plantio com dados válidos.                        |
+| `test_plantio_com_data_invalida`           | Garante que a API rejeita um plantio com estimativa de colheita anterior à data de plantio.              |
+| `test_plantio_com_area_invalida`           | Verifica se o campo `area` do plantio valida corretamente entradas não numéricas.                        |
+| `test_plantio_com_troca_entre_area_e_cultura` | Testa se a API identifica trocas de tipo entre os campos `cultura` e `area`, retornando erro.         |
+| `test_plantio_em_propriedade_de_outro_usuario` | Garante que um agricultor não pode registrar plantios em propriedades de outro usuário.              |
+| `test_listar_plantios_usuario_autenticado` | Verifica se um agricultor autenticado consegue listar os próprios plantios corretamente.                 |
+| `test_plantio_sem_autenticacao`            | Assegura que a listagem de plantios não está acessível para usuários não autenticados.                   |
 
 ---
 
 ### `test_propriedade_uni.py` - testes da propriedade
+---
+| Teste                           | O que é testado                                                                                   |
+|--------------------------------|----------------------------------------------------------------------------------------------------|
+| `test_area_total_negativa`     | Verifica se o serializer bloqueia a criação de uma propriedade com `area_total` negativa.         |
 
 ---
 
@@ -174,6 +203,10 @@ Testa diretamente o `UserSerializer`.
 ---
 
 ### `test_weather_uni.py` - testes do clima
+---
+| Teste               | O que é testado                                                                                   |
+|--------------------|----------------------------------------------------------------------------------------------------|
+| `test_criacao_weather` | Verifica se é possível criar corretamente uma instância de previsão do tempo (`Weather`) associada a uma propriedade. |
 
 ---
 
