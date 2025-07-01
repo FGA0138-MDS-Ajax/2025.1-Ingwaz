@@ -7,7 +7,7 @@ from .models import User
 class UserSerializer(serializers.ModelSerializer):
     """Serializador para criar e listar objetos de Usuario."""
 
-    password = serializers.CharField(write_only=True, required=True)
+    password = serializers.CharField(write_only=True, required=True, min_length=6)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -18,27 +18,22 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'name', 'email', 'password', 'cpf', 'role']
 
-    def validate_password(self, value):
-        if len(value) < 6:
-            msg = 'A senha deve ter no mínimo 6 caracteres.'
-            raise serializers.ValidationError(msg)
-        return value
+    def to_internal_value(self, data):
+        value = data.copy()
+        if 'cpf' in value:
+            value['cpf'] = value['cpf'].replace('-', '').replace('.', '')
+        return super().to_internal_value(value)
+
+    def validate(self, attrs):
+        if 'email' in attrs:
+            attrs['username'] = attrs['email']
+        return super().validate(attrs)
 
     def create(self, validated_data):
-        password = validated_data.pop('password')
-        user = User.objects.create_user(
-            username=validated_data['email'],
-            password=password,
-            **validated_data,
-        )
-        return user
+        return User.objects.create_user(**validated_data)
 
     def update(self, instance, validated_data):
-        if 'email' in validated_data:
-            validated_data['username'] = validated_data['email']
-
         password = validated_data.pop('password', None)
-
         user = super().update(instance, validated_data)
 
         if password:
