@@ -1,23 +1,54 @@
 import React from 'react';
+import { Text, StyleSheet } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import LoginScreen from '../pages/LoginScreen';
 import RegisterScreen from '../pages/RegisterScreen';
-import DashboardScreen from '../pages/DashboardScreen';
 import EscolhaPropriedadeScreen from '../pages/EscolhaPropriedade';
 import Home from '../pages/Home';
-import WeatherScreen from '../pages/PrevisaoScreen';
+import WeatherScreen from '../pages/PrevisaoScreen';import CotacoesScreen from '../pages/CotacoesScreen'
+import PerguntasScreen from '../pages/PerguntasScreen'
+import RecuperarSenha from '../pages/RecuperarScreen';
+import RedefinirSenha from '../pages/RedefinirSenha';
 
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Register" component={RegisterScreen} />
-      <Stack.Screen name="Dashboard" component={DashboardScreen} />
       <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen 
+        name="Preços Produtos Rurais" 
+        component={CotacoesScreen}
+        options={{
+          headerRight: () => (
+            <Text style={styles.headerSource}>CEPEA e{'\n'}HFBRASIL</Text>
+          ),
+        }} 
+      />
+      <Stack.Screen 
+        name="Perguntas Agrícolas" 
+        component={PerguntasScreen}
+        options={{
+          headerRight: () => (
+            <Text style={styles.headerSource}>EMBRAPA</Text>
+          ),
+        }} 
+      />
+      <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
+      <Stack.Screen name="RedefinirSenha" component={RedefinirSenha} />
       <Stack.Screen name="Previsão do Tempo" component={EscolhaPropriedadeScreen}/>
       <Stack.Screen name="Previsões" component={WeatherScreen}/>
     </Stack.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  headerSource: {
+    fontSize: 16,
+    fontWeight: "400",
+    color: "#555",
+  },
+});

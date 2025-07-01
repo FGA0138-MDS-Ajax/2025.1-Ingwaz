@@ -1,5 +1,7 @@
 venv/
 __pycache__/
 node_modules/
+android/
 .expo/
 .expo-shared/
+db.sqlite3
