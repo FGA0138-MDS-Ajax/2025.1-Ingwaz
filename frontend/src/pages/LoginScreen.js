@@ -21,7 +21,7 @@ export default function LoginScreen() {
     }
 
     const result = await loginUser({ email, password: senha });
-    console.log(result); // 🔍 DEBUG: veja o retorno completo no console
+    console.log(result); //  DEBUG: veja o retorno completo no console
 
     if (result.token && result.tipo) {
       await AsyncStorage.setItem('token', result.token);

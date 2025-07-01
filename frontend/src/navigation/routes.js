@@ -4,7 +4,7 @@ import LoginScreen from '../pages/LoginScreen';
 import RegisterScreen from '../pages/RegisterScreen';
 import DashboardScreen from '../pages/DashboardScreen';
 import Home from '../pages/Home';
-
+import SolicitarCreditoScreen from '../pages/SolicitarCreditoScreen'
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +15,8 @@ export default function Routes() {
       <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen name="Dashboard" component={DashboardScreen} />
       <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Pedido de Crédito" component={SolicitarCreditoScreen} />
+
     </Stack.Navigator>
   );
 }
