@@ -29,7 +29,13 @@ class LoginView(APIView):
 
         if user is not None:
             token, _created = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key}, status=status.HTTP_200_OK)
+            return Response({
+                'token': token.key,
+                'nome': user.name,
+                'tipo': user.role,
+                'email': user.email,
+            }, status=status.HTTP_200_OK)
+
         return Response({'error': 'Credenciais inválidas'}, status=status.HTTP_403_FORBIDDEN)
 
 
@@ -40,7 +46,7 @@ class PasswordForgotView(APIView):
 
     def post(self, request, format=None):
         email = request.data.get('email')
-        cpf = request.data.get('cpf')
+        cpf = request.data.get('cpf').replace('.', '').replace('-', '')
         user = User.objects.filter(email=email, cpf=cpf).first()
 
         if user is not None:
