@@ -20,7 +20,7 @@ export default function AgricultorHome () {
     },
     {
       label: 'Pedido de Crédito',
-      icon: <FontAwesome6 name="sack-dollar" size={45} color="black" />,
+      icon: <FontAwesome6 name="sack-dollar" size={45} color="#2e5339" />,
       route: 'Pedido de Crédito',
     },
     {
@@ -29,9 +29,9 @@ export default function AgricultorHome () {
       route: 'Chat',
     },
     {
-      label: 'Lucros e Vendas',
+      label: 'Preços Produtos Rurais',
       icon: <MaterialIcons name="show-chart" size={45} color="#2e5339" />,
-      route: 'Lucros e Vendas',
+      route: 'Preços Produtos Rurais',
     },
     {
       label: 'Produção Atual',
@@ -39,9 +39,9 @@ export default function AgricultorHome () {
       route: 'Produção Atual',
     },
     {
-      label: 'Vídeos Educativos',
-      icon: <Ionicons name="videocam-outline" size={45} color="#2e5339" />,
-      route: 'Videos Educacionais',
+      label: 'Perguntas Agrícolas',
+      icon: <Ionicons name="help-outline" size={45} color="#2e5339" />,
+      route: 'Perguntas Agrícolas',
     },
   ];
 
