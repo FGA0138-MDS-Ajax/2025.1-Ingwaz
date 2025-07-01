@@ -9,10 +9,11 @@ import {
   ActivityIndicator,
   SafeAreaView,
   RefreshControl,
+  Alert,
 } from "react-native";
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
-import { getProperties } from "../services/api"; // Importando a função real da API
+import { getProperties } from "../services/api";
 
 export default function EscolhaPropriedadeScreen() {
   const navigation = useNavigation();
@@ -25,7 +26,6 @@ export default function EscolhaPropriedadeScreen() {
     setCarregando(true);
     setErro(null);
     try {
-      // Usando a função real para buscar dados da API
       const data = await getProperties();
       if (data.error) {
         setErro(data.error);
@@ -41,7 +41,6 @@ export default function EscolhaPropriedadeScreen() {
     }
   }, []);
 
-  // useFocusEffect é chamado toda vez que a tela entra em foco
   useFocusEffect(
     useCallback(() => {
       fetchProperties();
@@ -51,7 +50,6 @@ export default function EscolhaPropriedadeScreen() {
   const propriedadesFiltradas = useMemo(() => {
     if (!propriedades) return [];
     const buscaFormatada = busca.toLowerCase();
-    // Assumindo que o serializer retorna 'nome'
     return propriedades.filter((prop) =>
       prop?.nome?.toLowerCase().includes(buscaFormatada)
     );
@@ -59,7 +57,11 @@ export default function EscolhaPropriedadeScreen() {
 
   const handleSelectProperty = (propriedade) => {
     // Navega para a tela de previsão do tempo com o ID da propriedade
-    navigation.navigate("Previsões", { propriedadeId: propriedade.id });
+    // caso tiver coordenadas
+    if (propriedade.coordinates)
+      navigation.navigate("Previsões", { propriedadeId: propriedade.id });
+    else
+      Alert.alert("Aviso", "Não é possível ver a previsão do tempo de uma propriedade sem localização.")
   };
 
   const renderItem = ({ item }) => (
@@ -71,9 +73,11 @@ export default function EscolhaPropriedadeScreen() {
         <Ionicons name="home-outline" size={45} color="#2e5339" />
       </View>
       <View style={styles.cardTextContainer}>
-        {/* Assumindo que o serializer da API retorna 'nome' e 'localizacao' */}
         <Text style={styles.propriedadeNome}>{item.nome}</Text>
-        <Text style={styles.propriedadeLocal}>{item.localizacao || 'Localização não informada'}</Text>
+        <Text style={styles.propriedadeLocal}>
+          {item.coordinates ? 
+          item.coordinates.latitude + " " + item.coordinates.longitude : "Localização não informada"}
+        </Text>
       </View>
       <Ionicons name="chevron-forward-outline" size={22} color="#ccc" />
     </TouchableOpacity>
