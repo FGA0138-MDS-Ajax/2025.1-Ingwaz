@@ -31,6 +31,7 @@ export default function SolicitarCreditoScreen() {
   const [carregando, setCarregando] = useState(false);
 
     const handleSolicitar = async () => {
+    console.log("▶️ handleSolicitar disparado! plantioId =", plantioId);
     if (!plantioId) {
       Alert.alert("Atenção", "Todos os campos são obrigatórios.");
       return;

@@ -1,4 +1,6 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_URL } from '@env';
+
 
 const API_BASE = `${API_URL}/api`;
 
@@ -28,7 +30,8 @@ export async function loginUser(data) {
 
 export async function solicitarCredito(dadosSolicitacao) {
   const token = await AsyncStorage.getItem('token');
-  console.log("a")
+  console.log("Token usado:", token);
+
   const response = await fetch(`${API_BASE}/solicitacoes/register/`, {
     method: 'POST',
     headers: {
@@ -39,9 +42,15 @@ export async function solicitarCredito(dadosSolicitacao) {
   });
 
   const json = await response.json();
-  console.log('Resultado do envio de solicitação:', json);
+  console.log('Resposta completa da API:', json);
+
+  if (!response.ok) {
+    throw new Error(JSON.stringify(json));
+  }
+
   return json;
 }
+
 
 /**
  * Busca as solicitações de crédito.
