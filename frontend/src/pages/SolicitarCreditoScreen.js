@@ -26,12 +26,12 @@ const themeColors = {
 export default function SolicitarCreditoScreen() {
   const navigation = useNavigation();
   const [plantioId, setPlantioId] = useState("");
-  const [finalidade, setFinalidade] = useState("");
-  const [valor, setValor] = useState("");
+  //const [finalidade, setFinalidade] = useState("");
+  //const [valor, setValor] = useState("");
   const [carregando, setCarregando] = useState(false);
 
     const handleSolicitar = async () => {
-    if (!plantioId || !finalidade || !valor) {
+    if (!plantioId) {
       Alert.alert("Atenção", "Todos os campos são obrigatórios.");
       return;
     }
@@ -39,13 +39,13 @@ export default function SolicitarCreditoScreen() {
     try {
       const dados = {
         plantio: parseInt(plantioId, 10),
-        finalidade,
-        valor_solicitado: parseFloat(valor),
+       // finalidade,
+      //  valor_solicitado: parseFloat(valor),
       };
 
-        console.log(dados);
+      
       const result = await solicitarCredito(dados);
-      console.log(dados);
+     
 
       Alert.alert("Sucesso!", "Sua solicitação foi enviada com sucesso.", [
         { text: "OK", onPress: () => navigation.goBack() },
@@ -54,6 +54,7 @@ export default function SolicitarCreditoScreen() {
     } catch (err) {
       const errorMessage = err.detail || (err.plantio && err.plantio[0]) || "Não foi possível enviar a solicitação.";
       Alert.alert("Erro na Solicitação", errorMessage);
+      
 
     } finally {
       setCarregando(false);
@@ -74,26 +75,6 @@ export default function SolicitarCreditoScreen() {
           onChangeText={setPlantioId}
           placeholderTextColor={themeColors.placeholder}
         />
-
-        <Text style={styles.label}>Finalidade do Crédito</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Ex: Compra de fertilizantes"
-          value={finalidade}
-          onChangeText={setFinalidade}
-          placeholderTextColor={themeColors.placeholder}
-        />
-
-        <Text style={styles.label}>Valor Solicitado (R$)</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Ex: 5000.00"
-          keyboardType="numeric"
-          value={valor}
-          onChangeText={setValor}
-          placeholderTextColor={themeColors.placeholder}
-        />
-
         {carregando ? (
           <ActivityIndicator size="large" color={themeColors.accent} style={{ marginTop: 20 }}/>
         ) : (
