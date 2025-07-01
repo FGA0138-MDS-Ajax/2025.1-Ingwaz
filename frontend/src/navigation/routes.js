@@ -1,21 +1,22 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import LoginScreen from '../pages/LoginScreen';
 import RegisterScreen from '../pages/RegisterScreen';
-import DashboardScreen from '../pages/DashboardScreen';
 import Home from '../pages/Home';
 import CotacoesScreen from '../pages/CotacoesScreen'
 import PerguntasScreen from '../pages/PerguntasScreen'
+import RecuperarSenha from '../pages/RecuperarScreen';
+import RedefinirSenha from '../pages/RedefinirSenha';
 
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Register" component={RegisterScreen} />
-      <Stack.Screen name="Dashboard" component={DashboardScreen} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen 
         name="Preços Produtos Rurais" 
@@ -35,6 +36,8 @@ export default function Routes() {
           ),
         }} 
       />
+      <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
+      <Stack.Screen name="RedefinirSenha" component={RedefinirSenha} />
     </Stack.Navigator>
   );
 }
