@@ -56,6 +56,7 @@ export default function RegisterScreen() {
       const loginResult = await loginUser({ email, password: senha });
 
       if (loginResult.token) {
+        await AsyncStorage.setItem('token', result.token);
         setUser({
           token: loginResult.token,
           tipo: loginResult.tipo || loginResult.role,
