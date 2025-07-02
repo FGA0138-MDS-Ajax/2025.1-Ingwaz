@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { API_URL } from '@env';
 
 export default function RegistrarPlantio() {
   const [cultura, setCultura] = useState('');
@@ -10,30 +12,85 @@ export default function RegistrarPlantio() {
   const [propriedade, setPropriedade] = useState('');
   const [propriedades, setPropriedades] = useState([]);
 
+  // Carregar propriedades registradas da API
   useEffect(() => {
-    // Mock de propriedades — substituir pela chamada GET /api/propriedade/ depois
-    setPropriedades([
-      { id: 1, nome: 'Sítio Santa Clara' },
-      { id: 2, nome: 'Fazenda Esperança' },
-    ]);
+    const fetchPropriedades = async () => {
+      const token = await AsyncStorage.getItem('token');
+      try {
+        const response = await fetch(`${API_URL}/api/propriedade/`, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Token ${token}`,
+          },
+        });
+
+        const data = await response.json();
+        setPropriedades(data);  // Preenche as propriedades com dados da API
+      } catch (error) {
+        console.error('Erro ao carregar propriedades:', error);
+        Alert.alert('Erro', 'Não foi possível carregar as propriedades.');
+      }
+    };
+
+    fetchPropriedades();
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!cultura || !area || !data || !estimativaColheita || !propriedade) {
       Alert.alert('Erro', 'Preencha todos os campos.');
       return;
     }
 
+    const token = await AsyncStorage.getItem('token');
     const payload = {
       cultura,
       area: parseFloat(area),
       data,
       estimativa_colheita: estimativaColheita,
-      propriedade: parseInt(propriedade),
+      propriedade: parseInt(propriedade),  // Envia o ID da propriedade selecionada
     };
 
-    console.log('Dados do plantio:', payload);
-    Alert.alert('Atenção', 'Integração ainda será feita. Veja console.');
+    const API_BASE = `${API_URL}/api`;
+
+    try {
+      const response = await fetch(`${API_BASE}/plantios/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Token ${token}`,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const textResponse = await response.text();
+      console.log('Resposta da API (como texto):', textResponse);
+
+      let responseData;
+      try {
+        responseData = JSON.parse(textResponse);  // Tenta converter a resposta para JSON
+      } catch (error) {
+        console.error('Erro ao parsear JSON:', error);
+        Alert.alert('Erro', 'A resposta do servidor não é válida.');
+        return;
+      }
+
+      if (!response.ok) {
+        throw new Error('Falha ao registrar plantio');
+      }
+
+      console.log('Resposta da API (JSON):', responseData);
+      Alert.alert('Sucesso', 'Plantio registrado com sucesso!');
+      
+      // Limpar os campos após o sucesso
+      setCultura('');
+      setArea('');
+      setData('');
+      setEstimativaColheita('');
+      setPropriedade('');
+    } catch (error) {
+      console.error('Erro ao enviar dados:', error);
+      Alert.alert('Erro', 'Não foi possível registrar o plantio.');
+    }
   };
 
   return (
