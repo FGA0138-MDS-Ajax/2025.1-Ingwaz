@@ -2,25 +2,31 @@ import React, { useContext } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons, FontAwesome5, MaterialIcons, Entypo, FontAwesome6 } from '@expo/vector-icons';
-import { AuthContext } from '../navigation/AuthContext'; 
+import { AuthContext } from '../navigation/AuthContext';
 
 
-export default function AgricultorHome () {
+export default function AgricultorHome() {
   const navigation = useNavigation();
   const { user } = useContext(AuthContext);
 
-  
+
   const nome = user?.nome || '';
 
   const buttons = [
     {
-        label: 'Cultivo e Criações',
+      label: 'Cultivo e Criações',
       icon: <FontAwesome5 name="seedling" size={45} color="#2e5339" />,
       route: 'Cultivo e Criações',
     },
     {
+      label: 'Registrar Propriedade',
+      icon: <FontAwesome5 name="home" size={45} color="#2e5339" />, 
+      route: 'RegistrarPropriedade', 
+    },
+
+    {
       label: 'Pedido de Crédito',
-      icon: <FontAwesome6 name="sack-dollar" size={45} color="black" />,
+      icon: <FontAwesome6 name="sack-dollar" size={45} color="#2e5339" />,
       route: 'Pedido de Crédito',
     },
     {
@@ -29,9 +35,9 @@ export default function AgricultorHome () {
       route: 'Chat',
     },
     {
-      label: 'Lucros e Vendas',
+      label: 'Preços Produtos Rurais',
       icon: <MaterialIcons name="show-chart" size={45} color="#2e5339" />,
-      route: 'Lucros e Vendas',
+      route: 'Preços Produtos Rurais',
     },
     {
       label: 'Produção Atual',
@@ -39,9 +45,9 @@ export default function AgricultorHome () {
       route: 'Produção Atual',
     },
     {
-      label: 'Vídeos Educativos',
-      icon: <Ionicons name="videocam-outline" size={45} color="#2e5339" />,
-      route: 'Videos Educacionais',
+      label: 'Perguntas Agrícolas',
+      icon: <Ionicons name="help-outline" size={45} color="#2e5339" />,
+      route: 'Perguntas Agrícolas',
     },
   ];
 
@@ -55,13 +61,13 @@ export default function AgricultorHome () {
         />
       </View>
 
-    
+
 
       {/* Saudação */}
       <Text style={styles.greeting}>{`OLÁ ${nome.toUpperCase()}!`}</Text>
       <Text style={styles.subGreeting}>Veja o que está acontecendo na sua produção hoje.</Text>
 
-      <View style={styles.grid}>   
+      <View style={styles.grid}>
         {buttons.map((btn, index) => (
           <TouchableOpacity
             key={index}

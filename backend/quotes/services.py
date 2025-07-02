@@ -4,10 +4,12 @@ import pandas as pd
 from io import BytesIO
 from time import sleep
 
+
 def from_json_to_dict(filename):
     with open(filename, 'r', encoding='utf-8') as arquivo:
         return json.load(arquivo)
-        
+
+
 # essa consulta no banco de dados não dá a unidade :(
 # url = f'https://www.cepea.org.br/br/consultas-ao-banco-de-dados-do-site.aspx?tabela_id={id}&data_inicial=01/01/2025&data_final=01/01/2026&periodicidade=4'
 # pegando do widget:
@@ -16,7 +18,7 @@ hfbrasil_url = 'https://www.hfbrasil.org.br/br/estatistica/preco/exportar.aspx?&
 products_path = str(settings.BASE_DIR) + '/quotes/products/'
 cepea_products = from_json_to_dict(products_path + 'cepea.json')
 hfbrasil_products = from_json_to_dict(products_path + 'hfbrasil.json')
-    
+
 pattern = re.compile(
     r'<td>(.*?)</td>'
     r'.*?'
@@ -25,12 +27,13 @@ pattern = re.compile(
     r'<span class="unidade">(.*?)</span>'
     r'.*?'
     r'R\$\s*<span class="maior">(.*?)</span>',
-    re.DOTALL
+    re.DOTALL,
 )
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
 }
+
 
 def get_cepea_data(url):
     try:
@@ -47,14 +50,15 @@ def get_cepea_data(url):
                 'date': date.strip(),
                 'name': name.strip(),
                 'unity': unity.strip(),
-                'value': float(price_str.strip().replace('.', '').replace(',', '.'))
+                'value': float(price_str.strip().replace('.', '').replace(',', '.')),
             }
             data.append(item)
         return data
     except Exception as e:
         print(f'error: {e}')
         return None
-      
+
+
 def get_hfbrasil_data(url):
     try:
         response = requests.get(url, headers=headers)
@@ -65,7 +69,7 @@ def get_hfbrasil_data(url):
         df = df.rename(columns={
             'Ano': 'date',
             'Unidade': 'unity',
-            'Preço': 'value'
+            'Preço': 'value',
         })
         df['date'] = df['date'].astype(int)
         df = df[['date', 'name', 'unity', 'value']]
@@ -75,6 +79,7 @@ def get_hfbrasil_data(url):
         print(f'error: {e}')
         return None
 
+
 def get_regions_ids(id):
     try:
         url = 'https://www.hfbrasil.org.br/index.php?idioma=br&rota=estatistica/regiao'
@@ -83,12 +88,13 @@ def get_regions_ids(id):
         regions = response.json()
         data = []
         for region in regions:
-            id, name = region.values()
-            data.append(id)
+            region_id, name = region.values()
+            data.append(region_id)
         return data
     except Exception as e:
         print(f'error: {e}')
         return None
+
 
 def get_all_cepea_quotes():
     url = cepea_url
@@ -98,15 +104,16 @@ def get_all_cepea_quotes():
     if data is not None:
         return (data, True)
     return ('Serviço indisponível no momento', False)
-    
+
+
 def get_all_hfbrasil_quotes():
     all_data = []
     for product_name in hfbrasil_products:
         url = hfbrasil_url + '&produto=' + hfbrasil_products[product_name]
-        ids = get_regions_ids(hfbrasil_products[product_name])
-        if ids is not None:
-            for id in ids:
-                url += '&regiao[]=' + id
+        region_ids = get_regions_ids(hfbrasil_products[product_name])
+        if region_ids is not None:
+            for region_id in region_ids:
+                url += '&regiao[]=' + region_id
             data = get_hfbrasil_data(url)
             if data is not None:
                 for item in data:
@@ -116,7 +123,6 @@ def get_all_hfbrasil_quotes():
             else:
                 return ('Serviço indisponível no momento', False)
         sleep(1)
-        print("saving...")
+        print('saving...')
     print('done')
     return (all_data, True)
-    
