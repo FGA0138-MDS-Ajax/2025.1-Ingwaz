@@ -9,6 +9,7 @@ import CotacoesScreen from '../pages/CotacoesScreen'
 import PerguntasScreen from '../pages/PerguntasScreen'
 import RecuperarSenha from '../pages/RecuperarScreen';
 import RedefinirSenha from '../pages/RedefinirSenha';
+import RegistrarPropriedade from '../pages/RegistrarPropriedade';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,7 @@ export default function Routes() {
       />
       <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
       <Stack.Screen name="RedefinirSenha" component={RedefinirSenha} />
+      <Stack.Screen name="RegistrarPropriedade" component={RegistrarPropriedade} />
     </Stack.Navigator>
   );
 }
