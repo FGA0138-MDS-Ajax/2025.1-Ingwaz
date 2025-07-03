@@ -226,3 +226,39 @@ export async function avaliarCredito(solicitacaoId) {
     console.log(`Resultado da avaliação da solicitação #${solicitacaoId}:`, json);
     return json;
 }
+
+export async function aprovarSolicitacao(solicitacaoId) {
+  const token = await AsyncStorage.getItem('token');
+  const response = await fetch(`${API_BASE}/solicitacoes/${solicitacaoId}/aprovar/`, {
+    method: 'POST', // Usamos POST para indicar uma ação que modifica o estado do recurso
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`,
+    },
+  });
+
+  const json = await response.json();
+  if (!response.ok) {
+    // Lança o erro para ser apanhado pelo bloco catch no ecrã
+    throw json;
+  }
+  return json;
+}
+
+export async function rejeitarSolicitacao(solicitacaoId) {
+  const token = await AsyncStorage.getItem('token');
+  const response = await fetch(`${API_BASE}/solicitacoes/${solicitacaoId}/rejeitar/`, {
+    method: 'POST', // Usamos POST para indicar uma ação que modifica o estado do recurso
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`,
+    },
+  });
+
+  const json = await response.json();
+  if (!response.ok) {
+    // Lança o erro para ser apanhado pelo bloco catch no ecrã
+    throw json;
+  }
+  return json;
+}

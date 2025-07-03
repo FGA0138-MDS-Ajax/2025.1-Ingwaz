@@ -140,6 +140,46 @@ class AvaliarView(APIView):
             },
             status=status.HTTP_200_OK
         )
+    
+
+# Recent Additions - Prone to errors
+class AprovarSolicitacaoView(APIView):
+    permission_classes = [IsAuthenticated, IsOwnerOrAnalyst]
+
+    def post(self, request, solicitacao_id):
+        try:
+            solicitacao = SolicitacaoCredito.objects.get(id=solicitacao_id)
+            self.check_object_permissions(request, solicitacao)
+            
+            if solicitacao.status != 'analise':
+                return Response({"detail": "Apenas solicitações 'Em Análise' podem ser aprovadas."}, status=status.HTTP_400_BAD_REQUEST)
+
+            solicitacao.status = 'aprovado'
+            solicitacao.save()
+            serializer = SolicitacaoCreditoSerializer(solicitacao)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except SolicitacaoCredito.DoesNotExist:
+            return Response({"detail": "Solicitação não encontrada."}, status=status.HTTP_404_NOT_FOUND)
+
+# Recent Additions - Prone to errors
+class RejeitarSolicitacaoView(APIView):
+    permission_classes = [IsAuthenticated, IsOwnerOrAnalyst]
+
+    def post(self, request, solicitacao_id):
+        try:
+            solicitacao = SolicitacaoCredito.objects.get(id=solicitacao_id)
+            self.check_object_permissions(request, solicitacao)
+
+            if solicitacao.status != 'analise':
+                return Response({"detail": "Apenas solicitações 'Em Análise' podem ser rejeitadas."}, status=status.HTTP_400_BAD_REQUEST)
+
+            solicitacao.status = 'rejeitado'
+            solicitacao.save()
+            serializer = SolicitacaoCreditoSerializer(solicitacao)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except SolicitacaoCredito.DoesNotExist:
+            return Response({"detail": "Solicitação não encontrada."}, status=status.HTTP_404_NOT_FOUND)
+
 
 class SolicitacaoCreditoListView(generics.ListAPIView):
     """

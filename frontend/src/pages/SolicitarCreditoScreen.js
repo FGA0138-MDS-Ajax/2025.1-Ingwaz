@@ -73,9 +73,9 @@ export default function SolicitarCreditoScreen() {
       }
 
 
-      Alert.alert("Sucesso!", "Sua solicitação foi enviada com sucesso.", [
+      /* Alert.alert("Sucesso!", "Sua solicitação foi enviada com sucesso.", [
         { text: "OK", onPress: () => navigation.goBack() },
-      ]);
+      ]); */
 
     } catch (err) {
       const errorMessage = err.detail || (err.plantio && err.plantio[0]) || "Não foi possível enviar a solicitação.";

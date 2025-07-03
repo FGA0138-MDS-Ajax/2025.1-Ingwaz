@@ -6,4 +6,6 @@ urlpatterns = [
     path('solicitacoes/register/', RegisterView.as_view(), name='solicitacao-register'),
     path('solicitacoes/<int:solicitacao_id>/avaliar/', AvaliarView.as_view(), name='solicitacao-avaliar'),
     path('solicitacoes/', SolicitacaoCreditoListView.as_view(), name='solicitacao-list'),
+    path('solicitacoes/<int:solicitacao_id>/aprovar/', SolicitacaoCreditoListView.as_view(), name='solicitacao-list'),
+    path('solicitacoes/<int:solicitacao_id>/reprovar/', SolicitacaoCreditoListView.as_view(), name='solicitacao-list'),
 ]
