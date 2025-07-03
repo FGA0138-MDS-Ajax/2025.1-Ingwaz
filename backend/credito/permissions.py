@@ -1,4 +1,3 @@
-# credito/permissions.py
 from rest_framework import permissions
 
 class IsOwnerOrAnalyst(permissions.BasePermission):

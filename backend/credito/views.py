@@ -1,4 +1,3 @@
-# credito/views.py
 from django.shortcuts import render
 import random
 import math
@@ -11,11 +10,11 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.exceptions import PermissionDenied
 from rest_framework import generics, status
 
-from plantios.models import Plantio # Import Plantio model
-from propriedade.models import Propriedade # Import Propriedade model
-from .models import SolicitacaoCredito # Import SolicitacaoCredito model from current app
-from .serializers import SolicitacaoCreditoSerializer, SolicitacaoCreditoCreateSerializer # Import SolicitacaoCreditoSerializer from current app
-from .permissions import IsOwnerOrAnalyst, IsOwnerOrAnalystForList # Import your new custom permissions
+from plantios.models import Plantio 
+from propriedade.models import Propriedade 
+from .models import SolicitacaoCredito 
+from .serializers import SolicitacaoCreditoSerializer, SolicitacaoCreditoCreateSerializer 
+from .permissions import IsOwnerOrAnalyst, IsOwnerOrAnalystForList 
 
 class RegisterView(generics.CreateAPIView):
     """
