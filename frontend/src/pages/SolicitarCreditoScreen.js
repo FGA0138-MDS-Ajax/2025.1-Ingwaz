@@ -65,17 +65,11 @@ export default function SolicitarCreditoScreen() {
         Alert.alert(
           "Solicitação Processada!",
           `A sua solicitação foi enviada e o resultado da análise é: ${statusFinal.toUpperCase()}`,
-          [{ text: "OK", onPress: () => navigation.goBack() }]
+          [{ text: "OK", onPress: () => navigation.navigate('AgricultorSolicitacoes')}]
         );
-
       } else {
         throw new Error("A resposta da criação da solicitação não continha um ID válido.");
       }
-
-
-      Alert.alert("Sucesso!", "Sua solicitação foi enviada com sucesso.", [
-        { text: "OK", onPress: () => navigation.goBack() },
-      ]);
 
     } catch (err) {
       const errorMessage = err.detail || (err.plantio && err.plantio[0]) || "Não foi possível enviar a solicitação.";
