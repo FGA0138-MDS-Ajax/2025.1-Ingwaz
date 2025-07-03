@@ -105,7 +105,6 @@ export default function WeatherScreen() {
   const ListHeader = () => (
      <>
         <View style={styles.header}>
-            <Text style={styles.title}>Previsão do Tempo</Text>
             <View style={styles.switchContainer}>
             <Text style={styles.cacheLabel}>Usar Cache</Text>
             <Switch
