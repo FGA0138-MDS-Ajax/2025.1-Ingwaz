@@ -9,14 +9,14 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('plantios', '0001_initial'),
+        ('credito', '0002_initial'),
         ('propriedade', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='plantio',
+            model_name='solicitacaocredito',
             name='propriedade',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='plantios', to='propriedade.propriedade'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='solicitacoes_credito', to='propriedade.propriedade'),
         ),
     ]

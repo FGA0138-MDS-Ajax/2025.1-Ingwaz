@@ -13,7 +13,8 @@ def test_criacao_plantio_sucesso():
         name='Joao',
         email='joao@example.com',
         password='senha123',
-        role='agricultor'
+        role='agricultor',
+        cpf='123.456.789-09'
     )
     propriedade = Propriedade.objects.create(
         nome='Fazenda A',
@@ -71,6 +72,69 @@ def test_plantio_com_data_invalida():
     assert response.status_code == 400
     assert 'non_field_errors' in response.data
 
+@pytest.mark.django_db
+def test_plantio_com_area_invalida():
+    user = User.objects.create_user(
+        username='ana123',
+        name='Ana',
+        email='ana@example.com',
+        password='senha123',
+        role='agricultor'
+    )
+    propriedade = Propriedade.objects.create(
+        nome='Sítio Ana',
+        area_total=200.00,
+        latitude=-15.8,
+        longitude=-47.9,
+        agricultor=user
+    )
+
+    client = APIClient()
+    token = Token.objects.create(user=user)
+    client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+
+    response = client.post('/api/plantios/', {
+        'cultura': 'Soja',
+        'area': 'muito grande',
+        'data': str(date.today()),
+        'estimativa_colheita': str(date.today() - timedelta(days=5)),
+        'propriedade': propriedade.id
+    }, format='json')
+
+    assert response.status_code == 400
+    assert 'area' in response.data
+
+@pytest.mark.django_db
+def test_plantio_com_troca_entre_area_e_cultura():
+    user = User.objects.create_user(
+        username='ana123',
+        name='Ana',
+        email='ana@example.com',
+        password='senha123',
+        role='agricultor'
+    )
+    propriedade = Propriedade.objects.create(
+        nome='Sítio Ana',
+        area_total=200.00,
+        latitude=-15.8,
+        longitude=-47.9,
+        agricultor=user
+    )
+
+    client = APIClient()
+    token = Token.objects.create(user=user)
+    client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+
+    response = client.post('/api/plantios/', {
+        'cultura': 120.00,
+        'area': 'soja',
+        'data': str(date.today()),
+        'estimativa_colheita': str(date.today() - timedelta(days=5)),
+        'propriedade': propriedade.id
+    }, format='json')
+
+    assert response.status_code == 400
+    assert 'area' in response.data
 
 @pytest.mark.django_db
 def test_plantio_em_propriedade_de_outro_usuario():
@@ -79,14 +143,16 @@ def test_plantio_em_propriedade_de_outro_usuario():
         name='Lucas',
         email='lucas@example.com',
         password='senha123',
-        role='agricultor'
+        role='agricultor',
+        cpf='123.456.789-09'
     )
     user2 = User.objects.create_user(
         username='maria123',
         name='Maria',
         email='maria@example.com',
         password='senha123',
-        role='agricultor'
+        role='agricultor',
+        cpf='987.654.321-00'
     )
     propriedade = Propriedade.objects.create(
         nome='Chácara Maria',

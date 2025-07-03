@@ -43,6 +43,11 @@ export default function AgricultorHome () {
       icon: <Ionicons name="help-outline" size={45} color="#2e5339" />,
       route: 'Perguntas Agrícolas',
     },
+    {
+      label: 'Previsão do Tempo',
+      icon: <Ionicons name="partly-sunny-outline" size={45} color="#2e5339" />,
+      route: 'Previsão do Tempo',
+    },
   ];
 
   return (
