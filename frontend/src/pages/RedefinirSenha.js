@@ -28,7 +28,7 @@ export default function RedefinirSenha() {
         return;
       }
 
-      const response = await fetch('http://127.0.0.1:8000/api/users/info/', {
+      const response = await fetch('http://X.X.X.X:8000/api/users/info/', {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

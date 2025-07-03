@@ -104,11 +104,19 @@ class AvaliarView(APIView):
         avg_price = 25000 # This is the average price for fully planting crops in a ha (Hectare de assaí ou açaí, não me lembro exatamente) 
 
         try: # Sigmoid function in order to normalise the score in the range 0-1
-            sigmoid_denominador = 1 + math.exp(-k*(pcs - avg_price))
-            score_gerado = 1 / sigmoid_denominador
+            exponent = -k * (pcs - avg_price)
+            
+            if exponent > 700:
+                score_gerado = 0.0
+            elif exponent < -700:
+                score_gerado = 1.0
+            else:
+                sigmoid_denominador = 1 + math.exp(exponent)
+                score_gerado = 1 / sigmoid_denominador
+
         except OverflowError:
             # Handle very large/small pcs values that cause overflow in math.exp
-            score_gerado = 0.0 if pcs < 0 else 1.0 # Ensure it's still a float
+            score_gerado = 0.0 
 
         # Define new status based on generated score
         if score_gerado >= 0.7:

@@ -10,7 +10,7 @@ import {
   ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { solicitarCredito } from "../services/api";
+import { solicitarCredito, avaliarCredito } from "../services/api";
 import { AuthContext } from "../navigation/AuthContext";
 
 // Paleta de Cores (Tema Verde)
@@ -57,10 +57,19 @@ export default function SolicitarCreditoScreen() {
 
       const result = await solicitarCredito(dados);
 
+      /* codigo novo */
+      if (result && result.id) {
+        const resultadoAvaliacao = await avaliarCredito(result.id);
 
-      Alert.alert("Sucesso!", "Sua solicitação foi enviada com sucesso.", [
-        { text: "OK", onPress: () => navigation.goBack() },
-      ]);
+        const statusFinal = resultadoAvaliacao.solicitacao?.status || 'desconhecido';
+        Alert.alert(
+          "Solicitação Processada!",
+          `A sua solicitação foi enviada e o resultado da análise é: ${statusFinal.toUpperCase()}`,
+          [{ text: "OK", onPress: () => navigation.navigate('AgricultorSolicitacoes')}]
+        );
+      } else {
+        throw new Error("A resposta da criação da solicitação não continha um ID válido.");
+      }
 
     } catch (err) {
       const errorMessage = err.detail || (err.plantio && err.plantio[0]) || "Não foi possível enviar a solicitação.";
