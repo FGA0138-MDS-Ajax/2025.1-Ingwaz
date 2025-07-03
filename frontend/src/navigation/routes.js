@@ -5,6 +5,8 @@ import RegisterScreen from '../pages/RegisterScreen';
 import DashboardScreen from '../pages/DashboardScreen';
 import Home from '../pages/Home';
 import SolicitarCreditoScreen from '../pages/SolicitarCreditoScreen'
+import AgricultorSolicitacoesScreen from '../pages/AgricultorSolicitacoesScreen';
+import AnaliseSolicitacoesScreen from '../pages/AnaliseSolicitacoesScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +18,8 @@ export default function Routes() {
       <Stack.Screen name="Dashboard" component={DashboardScreen} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Pedido de Crédito" component={SolicitarCreditoScreen} />
+      <Stack.Screen name="AgricultorSolicitacoes" component={AgricultorSolicitacoesScreen} />
+      <Stack.Screen name="AnaliseSolicitacoes" component={AnaliseSolicitacoesScreen} />
 
     </Stack.Navigator>
   );

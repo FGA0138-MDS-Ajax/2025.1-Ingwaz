@@ -22,6 +22,21 @@ class SolicitacaoCredito(models.Model):
         blank=True
     )
 
+    finalidade = models.CharField(
+        max_length=255, 
+        null=True, 
+        blank=True, 
+        help_text="Finalidade do crédito solicitado."
+    )
+    
+    valor_solicitado = models.DecimalField(
+        max_digits=10, 
+        decimal_places=2, 
+        null=True, 
+        blank=True,
+        help_text="Valor do crédito solicitado."
+    )
+
     score = models.FloatField(null=True, blank=True, help_text="Score de crédito gerado (0.0 a 1.0)")
     
     status = models.CharField(

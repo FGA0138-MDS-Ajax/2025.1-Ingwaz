@@ -1,5 +1,4 @@
-// screens/SolicitarCreditoScreen.js
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   View,
   Text,
@@ -12,6 +11,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { solicitarCredito } from "../services/api";
+import { AuthContext } from "../navigation/AuthContext";
 
 // Paleta de Cores (Tema Verde)
 const themeColors = {
@@ -25,14 +25,24 @@ const themeColors = {
 
 export default function SolicitarCreditoScreen() {
   const navigation = useNavigation();
+  const authContext = useContext(AuthContext);
+  const user = authContext?.user;
+
+  useEffect(() => {
+    console.log(
+      'DADOS DO UTILIZADOR NO CONTEXTO (SolicitarCreditoScreen):', 
+      JSON.stringify(user, null, 2)
+    );
+  }, [user]);
+
   const [plantioId, setPlantioId] = useState("");
-  //const [finalidade, setFinalidade] = useState("");
-  //const [valor, setValor] = useState("");
+  const [finalidade, setFinalidade] = useState("");
+  const [valor, setValor] = useState("");
   const [carregando, setCarregando] = useState(false);
 
-    const handleSolicitar = async () => {
-    console.log("▶️ handleSolicitar disparado! plantioId =", plantioId);
-    if (!plantioId) {
+  const handleSolicitar = async () => {
+    console.log("handleSolicitar disparado! plantioId =", plantioId);
+    if (!plantioId || !finalidade || !valor) {
       Alert.alert("Atenção", "Todos os campos são obrigatórios.");
       return;
     }
@@ -40,13 +50,13 @@ export default function SolicitarCreditoScreen() {
     try {
       const dados = {
         plantio: parseInt(plantioId, 10),
-       // finalidade,
-      //  valor_solicitado: parseFloat(valor),
+        finalidade,
+        valor_solicitado: parseFloat(valor),
       };
 
-      
+
       const result = await solicitarCredito(dados);
-     
+
 
       Alert.alert("Sucesso!", "Sua solicitação foi enviada com sucesso.", [
         { text: "OK", onPress: () => navigation.goBack() },
@@ -55,12 +65,31 @@ export default function SolicitarCreditoScreen() {
     } catch (err) {
       const errorMessage = err.detail || (err.plantio && err.plantio[0]) || "Não foi possível enviar a solicitação.";
       Alert.alert("Erro na Solicitação", errorMessage);
-      
+
 
     } finally {
       setCarregando(false);
     }
   };
+
+  const handleNavigateToList = () => {
+    if (user?.tipo === 'analista') {
+      navigation.navigate('AnaliseSolicitacoes'); 
+    } else {
+      navigation.navigate('AgricultorSolicitacoes');
+    }
+  };
+
+  if (!user) {
+    return (
+        <View style={styles.container}>
+            <ActivityIndicator size="large" color={themeColors.accent} />
+            <Text style={styles.loadingText}>
+                A carregar dados do utilizador...
+            </Text>
+        </View>
+    );
+  }
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
@@ -76,13 +105,39 @@ export default function SolicitarCreditoScreen() {
           onChangeText={setPlantioId}
           placeholderTextColor={themeColors.placeholder}
         />
+
+        <Text style={styles.label}>Finalidade do Crédito</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Ex: Compra de fertilizantes"
+          value={finalidade}
+          onChangeText={setFinalidade}
+          placeholderTextColor={themeColors.placeholder}
+        />
+
+        <Text style={styles.label}>Valor Solicitado (R$)</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Ex: 5000.00"
+          keyboardType="numeric"
+          value={valor}
+          onChangeText={setValor}
+          placeholderTextColor={themeColors.placeholder}
+        />
+
         {carregando ? (
-          <ActivityIndicator size="large" color={themeColors.accent} style={{ marginTop: 20 }}/>
+          <ActivityIndicator size="large" color={themeColors.accent} style={{ marginTop: 20 }} />
         ) : (
           <TouchableOpacity style={styles.button} onPress={handleSolicitar}>
             <Text style={styles.buttonText}>Enviar Solicitação</Text>
           </TouchableOpacity>
         )}
+
+        <TouchableOpacity style={styles.secondaryButton} onPress={handleNavigateToList}>
+            <Text style={styles.secondaryButtonText}>
+                {user?.tipo === 'analista' ? 'Ver Todas as Solicitações' : 'Ver Minhas Solicitações'}
+            </Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -138,5 +193,24 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 18,
     fontWeight: "bold",
+  },
+  secondaryButton: {
+    backgroundColor: 'transparent',
+    borderColor: themeColors.accent,
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingVertical: 14,
+    alignItems: "center",
+    marginTop: 12,
+  },
+  secondaryButtonText: {
+      color: themeColors.accent,
+      fontSize: 16,
+      fontWeight: 'bold',
+  },
+  loadingText: {
+    textAlign: 'center',
+    marginTop: 10, 
+    color: themeColors.textPrimary
   },
 });

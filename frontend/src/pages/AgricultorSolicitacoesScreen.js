@@ -1,4 +1,3 @@
-// screens/MinhasSolicitacoesScreen.js
 import React, { useState, useMemo, useCallback } from "react";
 import {
   View,
@@ -11,16 +10,16 @@ import {
   RefreshControl,
 } from "react-native";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import { getSolicitacoesAgricultor } from "../services/api";
+import { getSolicitacoes } from "../services/api";
 
 // Paleta de Cores (Tema Verde)
 const themeColors = {
-  background: "#F1F8E9", // Um verde bem claro para o fundo
+  background: "#F1F8E9",
   card: "#FFFFFF",
-  textPrimary: "#1B5E20", // Verde escuro para texto principal
+  textPrimary: "#1B5E20",
   textSecondary: "#558B2F",
   placeholder: "#81C784",
-  accent: "#4CAF50", // Verde para botões e destaques
+  accent: "#4CAF50",
   status: {
     aprovado: "#2E7D32",
     rejeitado: "#C62828",
@@ -29,7 +28,7 @@ const themeColors = {
   },
 };
 
-export default function MinhasSolicitacoesScreen() {
+export default function AgricultorSolicitacoesScreen() {
   const navigation = useNavigation();
   const [solicitacoes, setSolicitacoes] = useState([]);
   const [carregando, setCarregando] = useState(true);
@@ -38,18 +37,16 @@ export default function MinhasSolicitacoesScreen() {
 
   const fetchSolicitacoes = useCallback(async () => {
     try {
-      const response = await getSolicitacoesAgricultor();
-      setSolicitacoes(response.data || []);
+      const response = await getSolicitacoes();
+      setSolicitacoes(response || []);
     } catch (error) {
       console.error("Erro ao buscar solicitações:", error);
-      // Opcional: mostrar um alerta para o usuário
     } finally {
       setCarregando(false);
       setIsRefreshing(false);
     }
   }, []);
 
-  // useFocusEffect é como o useEffect, mas roda toda vez que a tela ganha foco
   useFocusEffect(
     useCallback(() => {
       setCarregando(true);
@@ -104,7 +101,7 @@ export default function MinhasSolicitacoesScreen() {
         style={styles.busca}
         placeholderTextColor={themeColors.placeholder}
       />
-       <TouchableOpacity style={styles.newButton} onPress={() => navigation.navigate('SolicitarCredito')}>
+       <TouchableOpacity style={styles.newButton} onPress={() => navigation.navigate('Pedido de Crédito')}>
         <Text style={styles.newButtonText}>+ Nova Solicitação</Text>
       </TouchableOpacity>
 

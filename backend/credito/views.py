@@ -74,12 +74,14 @@ class AvaliarView(APIView):
         self.check_object_permissions(request, solicitacao) 
 
         area_plantio = solicitacao.plantio.area  
-        area_total = solicitacao.propriedade.area_total  
+        area_total = solicitacao.propriedade.area_total 
+        valor_pedido = float(solicitacao.valor_solicitado or 0) # Value requested by the user 
 
         pbi = float(area_plantio) # Potential Brute Income
+        fs = float(valor_pedido/pbi) # FS: Fairness Score, how fair your request is, based on how much land you have to work on
         
-        escalahec = 100.0  # Constant for normalization
-        pbi_normalizado = pbi / escalahec
+        #escalahec = 100.0  # Constant for normalization
+        #pbi_normalizado = pbi / escalahec
                 
         area_total_f = float(area_total)
 
@@ -97,10 +99,12 @@ class AvaliarView(APIView):
         elif gui > 0.9:
             gus = 0.8
 
-        pcs = float(pbi_normalizado * gus) # Pre Normalisation score
+        k = -0.0001999 # This is the 'grading' curve, basically how much a value influences the curvature of the sigmoid function
+        pcs = float(fs * gus) # Pre Normalisation score
+        avg_price = 25000 # This is the average price for fully planting crops in a ha (Hectare de assaí ou açaí, não me lembro exatamente) 
 
         try: # Sigmoid function in order to normalise the score in the range 0-1
-            sigmoid_denominador = 1 + math.exp(-pcs)
+            sigmoid_denominador = 1 + math.exp(-k*(pcs - avg_price))
             score_gerado = 1 / sigmoid_denominador
         except OverflowError:
             # Handle very large/small pcs values that cause overflow in math.exp

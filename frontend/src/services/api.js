@@ -12,7 +12,7 @@ export async function registerUser(data) {
   });
 
   const json = await response.json();
-  console.log('Erro ou sucesso no registro:', json); // 👈 mostra no console
+  console.log('Erro ou sucesso no registro:', json); // mostra no console
   return json;
 }
 

@@ -1,4 +1,3 @@
-// screens/AnaliseSolicitacoesScreen.js
 import React, { useState, useMemo, useCallback } from "react";
 import {
   View,
@@ -9,11 +8,12 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   Alert,
+  RefreshControl, 
 } from "react-native";
-import { useFocusEffect } from "@react-navigation/native";
-import { getTodasSolicitacoes, avaliarCredito } from "../services/api";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { getSolicitacoes, avaliarCredito } from "../services/api";
 
-// Paleta de Cores (Tema Verde) - Consistente com as outras telas
+// Paleta de Cores (Tema Verde)
 const themeColors = {
   background: "#F1F8E9",
   card: "#FFFFFF",
@@ -31,19 +31,23 @@ const themeColors = {
 };
 
 export default function AnaliseSolicitacoesScreen() {
+  const navigation = useNavigation(); 
   const [solicitacoes, setSolicitacoes] = useState([]);
   const [carregando, setCarregando] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false); 
   const [busca, setBusca] = useState("");
   const [evaluatingId, setEvaluatingId] = useState(null);
 
   const fetchSolicitacoes = useCallback(async () => {
     try {
-      const response = await getTodasSolicitacoes();
-      setSolicitacoes(response.data || []);
+      const response = await getSolicitacoes();
+      setSolicitacoes(response || []);
     } catch (error) {
-      console.error("Erro ao buscar solicitações:", error);
+      console.error("Erro ao buscar solicitações para análise:", error);
+      Alert.alert("Erro", "Não foi possível carregar as solicitações.");
     } finally {
       setCarregando(false);
+      setIsRefreshing(false);
     }
   }, []);
 
@@ -53,6 +57,11 @@ export default function AnaliseSolicitacoesScreen() {
       fetchSolicitacoes();
     }, [fetchSolicitacoes])
   );
+  
+  const onRefresh = () => {
+      setIsRefreshing(true);
+      fetchSolicitacoes();
+  };
 
   const solicitacoesFiltradas = useMemo(() => {
     if (!solicitacoes) return [];
@@ -69,7 +78,7 @@ export default function AnaliseSolicitacoesScreen() {
       setEvaluatingId(id);
       try {
           const response = await avaliarCredito(id);
-          const { novo_status, score_gerado } = response.data.solicitacao;
+          const { novo_status, score_gerado } = response.solicitacao;
           
           Alert.alert("Avaliação Concluída", `Status alterado para: ${novo_status}`);
           
@@ -78,7 +87,7 @@ export default function AnaliseSolicitacoesScreen() {
           ));
 
       } catch (err) {
-          const errorMessage = err.response?.data?.detail || "Erro ao processar avaliação.";
+          const errorMessage = err.detail || "Erro ao processar avaliação.";
           Alert.alert("Erro", errorMessage);
       } finally {
           setEvaluatingId(null);
@@ -138,6 +147,9 @@ export default function AnaliseSolicitacoesScreen() {
           renderItem={renderItem}
           ListEmptyComponent={
             <Text style={styles.emptyMessage}>Nenhuma solicitação para análise.</Text>
+          }
+          refreshControl={
+            <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} colors={[themeColors.accent]}/>
           }
         />
       )}
