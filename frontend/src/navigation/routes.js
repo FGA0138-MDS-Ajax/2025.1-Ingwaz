@@ -15,10 +15,12 @@ const Stack = createNativeStackNavigator();
 
 export default function Routes() {
   return (
-    <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Register" component={RegisterScreen} />
-      <Stack.Screen name="Home" component={Home} />
+    <Stack.Navigator initialRouteName="Login">
+      <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} options={{ headerShown: false }} />
+      <Stack.Screen name="RedefinirSenha" component={RedefinirSenha} options={{ headerShown: false }} />
+      <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
       <Stack.Screen 
         name="Preços Produtos Rurais" 
         component={CotacoesScreen}
@@ -37,8 +39,6 @@ export default function Routes() {
           ),
         }} 
       />
-      <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
-      <Stack.Screen name="RedefinirSenha" component={RedefinirSenha} />
       <Stack.Screen name="Previsão do Tempo" component={EscolhaPropriedadeScreen}/>
       <Stack.Screen name="Previsões" component={WeatherScreen}/>
     </Stack.Navigator>
