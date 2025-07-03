@@ -1,6 +1,5 @@
 # 1. **Introdução**
 
-
 ## **1.1 Propósito**
 
 O presente documento tem como propósito descrever a arquitetura de software do sistema AgroRenda, desenvolvido como parte de um projeto acadêmico da disciplina de Desenvolvimento de Software, com foco no cumprimento do Objetivo de Desenvolvimento Sustentável (ODS) 2.3 da ONU.
@@ -22,7 +21,4 @@ O escopo do projeto abrange o desenvolvimento de uma aplicação leve, acessíve
 * A visualização de relatórios e indicadores produtivos,
 
 * A solicitação e o acompanhamento de pedidos de crédito,
-
-* O acesso a materiais técnicos e educacionais,
-
-* A consulta de dados mesmo em ambiente offline, quando possível.  
+ 

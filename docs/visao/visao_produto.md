@@ -4,78 +4,46 @@
 
 **Contexto**
 
-O Objetivo de Desenvolvimento Sustentável (ODS) 2.3, estabelecido pela Organização das Nações Unidas (ONU), visa, até 2030, dobrar a produtividade e a renda dos pequenos produtores de alimentos, especialmente agricultores familiares, mulheres do campo, povos indígenas e pescadores artesanais. Esses produtores enfrentam inúmeros desafios relacionados à falta de acesso à tecnologia, aos insumos, ao crédito e ao conhecimento técnico, o que limita o desenvolvimento sustentável e o crescimento econômico desses grupos.
+A agricultura familiar desempenha um papel central no abastecimento alimentar, na sustentabilidade do meio rural e na geração de renda para milhares de famílias no Brasil. Segundo a FAO (2014), esse setor é responsável pela produção de grande parte dos alimentos consumidos no país, além de exercer influência direta na preservação ambiental e no equilíbrio socioeconômico das zonas rurais.
+
+Apesar de sua relevância, a agricultura familiar enfrenta desafios históricos que afetam sua produtividade, acesso a crédito, organização da produção e inserção em mercados mais amplos. Muitos produtores operam de forma informal, sem o uso sistemático de ferramentas de gestão ou registro de atividades, o que compromete seu planejamento e dificulta a obtenção de apoio técnico ou financeiro.
+
+A crescente digitalização de serviços no campo apresenta oportunidades relevantes, mas também exige soluções que sejam acessíveis, intuitivas e adaptadas à realidade desses produtores. A presença de conectividade limitada, letramento digital variável e recursos financeiros restritos torna essencial o desenvolvimento de ferramentas tecnológicas que respeitem essas condições.
+
+Nesse cenário, torna-se necessário pensar em sistemas que não apenas digitalizem informações, mas que promovam a organização, a autonomia e a profissionalização dos pequenos produtores. O desenvolvimento de soluções com esse foco contribui diretamente para metas sociais mais amplas, como o fortalecimento da agricultura familiar e a redução das desigualdades no meio rural.
+
 
 **Problema**
 
-Apesar da sua relevância socioeconômica, muitos pequenos produtores ainda utilizam técnicas rudimentares de cultivo, baseando suas atividades majoritariamente na experiência empírica adquirida ao longo da vida, com pouco ou nenhum acesso à formação técnica ou administrativa (ALVES, 2004; EPAGRI, 2005). Essa realidade está associada a fatores como o baixo nível de escolaridade e a limitada qualificação profissional, que dificultam a adoção de práticas de gestão mais eficazes e o uso de tecnologias voltadas ao aumento da produtividade.  
-A baixa integração dos pequenos produtores com cadeias produtivas e suas dificuldades de acesso a mercados organizados comprometem significativamente o desenvolvimento dos seus empreendimentos. Muitos não possuem capacidade produtiva suficiente para atender à demanda de agroindústrias ou se inserir de forma estruturada em canais de distribuição, como apontam Borges, Guedes e Castro (2015). Além disso, embora existam tecnologias da informação voltadas para a agricultura, sua acessibilidade ainda é dispersa e pouco alinhada às necessidades reais da agricultura familiar, o que limita o uso dessas ferramentas para fins de gestão e obtenção de crédito (DEPONTI, 2014 apud AFFONSO et al., 2015).  
-Embora existam tecnologias e softwares voltados para a agricultura, muitos produtores enfrentam barreiras no acesso e uso dessas soluções, seja por limitações de infraestrutura (como a ausência de computadores pessoais e internet), seja pela falta de familiaridade com programas e equipamentos. Em diversos casos, quando realizam alguma forma de gestão, ela tende a ser simplificada e de baixa efetividade, por falta de monitoramento. Essa realidade reflete a falta de compreensão sobre a importância desses registros, o que impacta diretamente a eficiência gerencial das propriedades (BATALHA; BUAINAIN; SOUZA FILHO, 2005 apud AFFONSO et al., 2015).  
-Embora muitos pequenos produtores enfrentem dificuldades no acesso a tecnologias mais avançadas e softwares específicos, as planilhas eletrônicas são eventualmente mencionadas como uma alternativa viável para o controle básico da propriedade rural. Essa solução se mostra acessível, especialmente por meio de versões open source, e tem potencial para contribuir com a organização das atividades e a redução da assimetria informacional no contexto da agricultura familiar. Como afirmam Affonso, Hashimoto e Sant’Ana (2015), o uso de planilhas apresenta-se como uma opção possível para apoiar a gestão, mesmo diante das barreiras tecnológicas enfrentadas por esses agricultores. Ainda assim, a ausência de uma ferramenta mais completa, apropriada e adaptada às necessidades reais do produtor limita significativamente sua capacidade de comprovar desempenho produtivo e dificulta o acesso a crédito, apoio técnico e programas de fomento.
+O principal problema identificado é a baixa produtividade agrícola, e consequentemente, a baixa renda dos pequenos produtores de alimentos. Segundo o Jornal USP (2024), a produção de pequeno porte no campo emprega cerca de 70% do total de trabalhadores do campo, mas compõe apenas 23% da receita no campo. Nisso o subproblema que identificamos, para diminuir nosso escopo, foi: a falta de organização, controle e acompanhamento da produção dos pequenos agricultores. Já que muitos pequenos produtores rurais no Brasil enfrentam dificuldades para organizar e acompanhar suas atividades agrícolas de forma estruturada. Segundo o SEBRAE (2019), a ausência de registros técnicos e gerenciais é uma das principais fragilidades da agricultura familiar, prejudicando a capacidade do produtor de planejar, negociar e acessar políticas públicas. Essa informalidade compromete o planejamento das safras, dificulta o acesso a crédito e assistência técnica, e enfraquece a capacidade de comprovar resultados perante instituições financeiras ou programas de apoio governamental. Tudo isso impacta o nosso problema principal.
 
-
+Além disso, embora existam ferramentas digitais disponíveis no mercado, a maioria delas é voltada a produtores de médio e grande porte, exigindo conhecimentos técnicos ou estruturas que não se alinham à realidade da agricultura familiar. Assim, os pequenos produtores permanecem desassistidos por soluções tecnológicas adaptadas ao seu contexto social, econômico e cultural. Assim, a Figura 1 apresenta um diagrama de causa e efeito que sumariza os principais fatores que contribuem para o nosso problema principal.
 
 <div class="centered-text"><b>Figura 1 - </b> Diagrama de causa e efeito do problema enfrentado por pequenos produtores </div>
 
 <img src="../../imgs/image1.png" alt="image" class="centered-img"> 
 
-<div class="centered-text"><b>Fonte:</b> Elaborado por Yogi Nam</div>
+<div class="centered-text"><b>Fonte:</b> Elaborado por Yogi Nam(2025)</div>
 
+Com base nisso, esse cenário reforça a necessidade de iniciativas que promovam o acesso a ferramentas digitais simples e apropriadas à realidade da agricultura familiar, com foco na organização produtiva e no fortalecimento da autonomia desses trabalhadores rurais. 
 
 ### **Necessidade identificada**
 
-Diante das limitações enfrentadas pelos produtores rurais em relação ao uso da tecnologia, torna-se essencial o desenvolvimento de uma ferramenta digital que seja verdadeiramente adaptada à sua realidade. Essa solução deve permitir o registro das atividades no campo, o acompanhamento da produtividade e a geração de dados que possam ser utilizados como suporte na busca por crédito e assistência técnica.   
-Para ser efetiva, a ferramenta precisa superar as barreiras de acesso, como por exemplo, o baixo nível de letramento digital da maioria dos usuários alvo e compreender a resistência inicial ao uso de tecnologia (BORGES; GUEDES; CASTRO, 2015). Além disso, é preciso superar a usabilidade oferecendo uma interface compatível com o nível de familiaridade desses usuários com recursos digitais. Dessa forma, os produtores poderão não apenas controlar e planejar melhor sua produção, mas também contar com informações organizadas e confiáveis, capazes de embasar decisões e facilitar o acesso a oportunidades de apoio institucional. 
+O fortalecimento da agricultura familiar exige não apenas políticas públicas, mas também ferramentas que viabilizem a organização e o controle produtivo de forma acessível. Há uma necessidade evidente de soluções digitais que permitam ao pequeno produtor registrar suas atividades cotidianas — como datas de plantio, colheita, vendas e uso de insumos — com simplicidade e clareza, mesmo em contextos de baixa conectividade e letramento digital limitado.
+
+Nesse contexto, o desenvolvimento de um sistema digital adaptado à realidade desses produtores torna-se essencial para apoiar sua autonomia, melhorar o planejamento de suas atividades e facilitar o acesso a crédito rural, assistência técnica e programas de incentivo. O AgroRenda nasce com esse propósito: preencher essa lacuna por meio de uma solução tecnológica intuitiva, leve e funcional, focada no registro e organização das informações do dia a dia da produção agrícola.
+
+Esse tipo de solução contribui diretamente para o alcance da meta 2.3 dos Objetivos de Desenvolvimento Sustentável (ONU, 2015), que propõe dobrar a produtividade e a renda dos pequenos produtores de alimentos até 2030, especialmente por meio do acesso a recursos, mercados e serviços financeiros.
+
 
 **Solução proposta**
 
-A solução proposta consiste no desenvolvimento de uma ferramenta digital móvel, de baixo custo e alta usabilidade, voltada para a gestão simplificada de propriedades rurais familiares. O sistema será especialmente projetado para pequenos produtores com baixo letramento digital, permitindo o registro cotidiano de atividades agrícolas, o acompanhamento da produtividade e a geração automatizada de relatórios e indicadores úteis para fins de crédito, assistência técnica e apoio à tomada de decisão.  
-A aplicação será construída com uma interface visual intuitiva, portanto, as telas serão projetadas de forma que a navegação, os ícones, os botões e os fluxos de interação sigam a lógica natural do comportamento humano, ou seja, o usuário "sabe o que fazer" apenas olhando a tela uso reduzido de texto, ícones autoexplicativos e navegação guiada, favorecendo seu uso por pessoas com pouca familiaridade com dispositivos eletrônicos, as características: 
+Diante da dificuldade que pequenos produtores enfrentam para registrar e acompanhar suas atividades produtivas, propõe-se o desenvolvimento de um sistema digital simples, funcional e acessível, capaz de organizar informações básicas do dia a dia agrícola. O AgroRenda tem como objetivo central permitir que esses agricultores registrem dados essenciais — como datas de plantio e colheita, tipos de cultura, áreas cultivadas, produção obtida — de forma prática, mesmo com pouco domínio tecnológico.
 
-1. Organização clara: os elementos são dispostos de forma lógica (ex: menus bem posicionados, agrupamento por função);
+O sistema será construído com base em uma interface intuitiva e minimalista, voltada para usuários com pouca familiaridade com tecnologia. A navegação será orientada por etapas simples, com formulários curtos e foco em registros rápidos. Além disso, a aplicação será otimizada para dispositivos móveis, considerando que muitos produtores utilizam smartphones como principal meio de acesso à internet.
 
-2. Ícones e rótulos auto explicativos: o que aparece na tela já comunica sua função (ex: ícone de “lixeira” para apagar, “lápis” para editar);
+Com os dados registrados, o sistema permitirá ao produtor consultar um histórico básico de suas atividades e organizar informações que poderão ser utilizadas em planejamentos futuros ou apresentados a técnicos agrícolas, cooperativas e instituições de crédito. Dessa forma, a solução busca fortalecer a autonomia do agricultor familiar, promover a organização de sua produção e viabilizar avanços rumo à formalização e à sustentabilidade econômica.
 
-3. Consistência visual: cores, botões e fontes seguem o mesmo padrão em todas as telas;
-
-4. Feedback imediato: ao clicar, o sistema responde rapidamente com uma mensagem ou animação (ex: “Salvo com sucesso”);
-
-5. Fluxo natural de tarefas: o usuário consegue completar uma ação sem ficar perdido ou precisar de ajuda externa;
-
-6. Minimiza texto e complexidade: usa linguagem simples e, quando possível, imagens ou ilustrações.
-
-   
-
-   Um exemplo prático de interface visual intuitiva pode ser observado quando um agricultor abre a distribuição web e se depara com três botões grandes, cada um acompanhado de um ícone representativo e de um texto direto: "Registrar plantio", "Ver produtividade" e "Relatório de crédito". Mesmo sem familiaridade com tecnologia, ele consegue compreender rapidamente a função de cada botão, pois o tamanho favorece a visualização e o toque, os ícones ilustram claramente a ação correspondente, os textos são objetivos e a disposição dos elementos segue uma ordem lógica de uso, alinhada ao fluxo das atividades agrícolas. Essa organização reduz a necessidade de instruções e torna a navegação mais natural e acessível. 
-
-   Essa abordagem é fundamental diante da constatação de que muitos agricultores familiares não compreendem a utilidade dos registros das atividades rurais e apresentam dificuldades com o uso de sistemas digitais complexos (BORGES; GUEDES; CASTRO, 2015; DEPONTI, 2014). 
-
-   O foco da solução está em atender produtores que utilizam métodos empíricos de gestão, geralmente limitados a anotações manuais ou planilhas isoladas, sem integração dos dados ou geração de relatórios estruturados. Como apontam Affonso et al. (2015), o uso de planilhas eletrônicas já representa um avanço importante na organização das atividades rurais, sendo uma alternativa viável à ausência de ferramentas mais sofisticadas. 
-
-   No desenvolvimento, diversos desafios de segurança podem surgir, especialmente
-   devido às particularidades dos dispositivos móveis. Entre os problemas mais relevantes estão
-   o risco de vazamento de dados sensíveis por meio de armazenamento inseguro no aparelho,
-   falhas na autenticação e na gestão de sessões, além da exposição a ataques em redes públicas
-   não seguras (FORTINET, 2024). A má configuração das permissões de acesso aos recursos
-   do dispositivo (como localização e armazenamento interno) também pode abrir brechas para
-   exploração maliciosa (VANTICO, 2024).Esses riscos se tornam ainda mais críticos em
-   ambientes rurais, onde a conexão com a internet pode ser instável, dificultando o uso de
-   mecanismos de proteção em tempo real. De acordo com a OWASP (2023), esses tipos de
-   vulnerabilidades estão entre os dez principais riscos de segurança em aplicações móveis,
-   sendo essenciais para serem considerados desde as etapas iniciais de desenvolvimento.
-   
-   Essas questões, entre outras, demandam especial atenção, uma vez que o contexto
-   mobile apresenta desafios adicionais em comparação com aplicações web ou desktop.
-
-   Além disso, a ferramenta será acompanhada de materiais de apoio práticos e de fácil compreensão, como vídeos curtos, tutoriais ilustrados e cartilhas impressas, contribuindo para reduzir a resistência inicial à adoção tecnológica. Essa estratégia dialoga com os princípios da Informática Comunitária, que defende o uso de tecnologias acessíveis como instrumentos de empoderamento e redução da assimetria informacional no meio rural (AFFONSO et al., 2015; CASTELL, 1999).
-
-   A proposta prevê também parcerias com instituições de extensão rural, cooperativas e universidades, de forma a viabilizar capacitação continuada dos produtores e integração dos dados coletados pela ferramenta aos processos já existentes de assistência técnica. Isso favorece a articulação entre saber técnico e saber local, ampliando a efetividade do sistema (DEPONTI, 2014).
-
-   Com essa solução, espera-se contribuir de forma direta para:
-
-1) A redução da exclusão digital no campo;  
-2) O fortalecimento da gestão e da organização da produção agrícola familiar;  
-3) O avanço rumo ao cumprimento da meta do Objetivo de Desenvolvimento Sustentável (ODS) 2.3, ao oferecer meios concretos para o aumento da produtividade e da renda dos pequenos produtores (ONU, 2015).
 
 ## **1.2 Declaração de posição do produto**
 
@@ -85,45 +53,46 @@ A aplicação será construída com uma interface visual intuitiva, portanto, as
 | :---- | :---- |
 | **Para:** | Pequenos produtores de alimentos em situação de vulnerabilidade (agricultores familiares, pescadores artesanais, comunidades indígenas e quilombolas). |
 | **Necessidade:** | Ferramenta de gestão da produção, de forma acessível, para melhorar a renda e produtividade. |
-| **O produto:** | *AgroRenda* é uma aplicação web responsiva. |
-| **Que:** | Permite aos produtores registrarem sua produção, acompanharem seu desempenho, receberem dicas personalizadas e se conectarem com oportunidades de apoio. |
+| **O produto:** | *AgroRenda* AgroRenda é uma aplicação mobile responsiva. |
+| **Que:** | Permite aos produtores registrarem sua produção e acompanharem seu desempenho ao longo do tempo, de forma simples, organizada e acessível. |
 | **Ao contrário:** | Da informalidade e da exclusão tecnológica, que dificultam o desenvolvimento sustentável desses produtores. |
 | **Nosso produto:** | É intuitivo, gratuito, sustentável, com foco na inclusão produtiva e na autonomia do produtor. |
 
-<div class="centered-text"><b> Fonte: </b> Elaborado por integrantes.</div>
+<div class="centered-text"><b> Fonte: </b> Elaborado por integrantes(2025)</div>
 
 
 ## **1.3 Objetivos do produto**
 
 ## **Objetivo principal**
 
-Desenvolver uma solução tecnológica acessível que promova o aumento da produtividade e da renda dos pequenos produtores, com base no ODS 2.3, por meio da inclusão digital e do acompanhamento sistemático da produção agrícola.
+O principal objetivo do sistema AgroRenda é permitir que pequenos produtores rurais registrem e acompanhem suas atividades produtivas agrícolas de forma simples, estruturada e acessível, contribuindo para a organização da produção, o planejamento das safras e a geração de indicadores úteis ao controle da propriedade.
+
 
 ## **Objetivos secundários**
 
-* Facilitar o registro e o acompanhamento da produção agrícola ao longo do tempo;  
-* Estimular a adoção de boas práticas produtivas;  
-* Possibilitar o acesso a relatórios e históricos úteis para obtenção de crédito ou apoio técnico;  
-* Garantir usabilidade mesmo para produtores com baixa familiaridade com tecnologia;  
-* Fortalecer o vínculo entre o produtor e iniciativas de apoio, como cooperativas, programas governamentais e ONGs.
+* Permitir o registro estruturado de atividades agrícolas, como plantios, colheitas e vendas realizadas;
+* Permitir que o agricultor tenha acesso a dados como a previsão do tempo; 
+* Apresentar indicadores de acompanhamento produtivo, como volumes produzidos e frequência de plantios;  
+* Operar de forma simples e acessível, com foco na usabilidade para agricultores com baixo letramento digital.
 
 ## **1.4 Tecnologias a serem utilizadas**
 
 **Front-end:**
 
-* React (JavaScript)
+* React Native com o framework Expo (JavaScript)
 
 **Back-end:**
 
-* Python com o framework Django
+* Python com o framework Django Rest Framework
 
 **Banco de dados:**
 
-* PostgreSQL
+* SQLite
 
 **Ambiente de desenvolvimento:**
 
 * VSCode (Visual Studio Code)
+* Zed
 
 **Métodos:**
 
@@ -143,3 +112,4 @@ Desenvolver uma solução tecnológica acessível que promova o aumento da produ
 * Microsoft Teams  
 * Notion   
 * Discord
+* Insomnia

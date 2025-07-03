@@ -31,13 +31,22 @@ nav:
     - Referências: visao/referencias.md
 
   - Atas de reuniões:
-    - Documentação e Gestão de Projeto: atas/ata1_definicoes.md
+    - Documentação e gestão de projeto: atas/ata1_definicoes.md
     - Kick Off: atas/ata2_kickoff.md
-    - Alinhamento Geral: atas/ata3_alinhamento_geral.md
-    - Planejamento de Funcionalidades: atas/ata4_planejamento_backlog.md
+    - Alinhamento geral: atas/ata3_alinhamento_geral.md
+    - Planejamento de funcionalidades: atas/ata4_planejamento_backlog.md
     - Definição final do produto: atas/ata5_documento_final_visao.md
-    - Definição da Arquitetura: atas/ata6_definicao_arquitetura.md 
-    - Documentação da Arquitetura: atas/ata7_documentacao_arquitetura.md
+    - Definição da arquitetura: atas/ata6_definicao_arq.md 
+    - Documentação da arquitetura: atas/ata7_documentacao_arq.md
+    
+    - Atualização da documentação: atas/ata7.md
+    - Acertos e correções de entregas: atas/ata8.md
+    - Discussão sobre arquitetura: atas/ata9.md
+    - Alinhamento: atas/ata10.md
+    - Inicio da sprint 3: atas/ata11.md
+    - Revisão da produção: atas/ata12.md 
+    - Alinhamento de temas: atas/ata13.md
+    - Atualização de novas sprints: atas/ata14.md
 
   - Arquitetura:
     - Introdução: arquitetura/introducao.md
@@ -57,6 +66,8 @@ extra_css:
   - assets/css/global.css
 extra:
   team:
+    - name: Arthur Moreira
+      username: arthuurms
     - name: Camila Silva
       username: CamilaSilvaC
     - name: Carlos Henrique
@@ -75,8 +86,6 @@ extra:
       username: milenamso
     - name: Pedro Teixeira
       username: PedroDev-sketch
-    - name: Rafael Magalhães
-      username: Leafare
     - name: Renan Pereira
       username: renanpr7
     - name: Yogi Nam 

@@ -1,145 +1,105 @@
 # **6. Testes de Software**
 
-O plano de testes do projeto AgroRenda incluirá a estratégia empregada e o roteiro
-dos testes de maneira a subsidiar o funcionamento da aplicação ao usuário final e validar o
-atendimento a requisitos funcionais e não funcionais do sistema.
+O plano de testes do projeto AgroRenda incluirá a estratégia empregada e o roteiro dos testes de maneira a subsidiar o funcionamento da aplicação ao usuário final e validar o atendimento a requisitos funcionais e não funcionais do sistema.
 
-**Estratégias de testes**
+## **6.1 Estratégias de testes**
 
-A estratégia de testes adotada para o projeto AgroRenda visa garantir a qualidade
-funcional e a usabilidade da aplicação em diferentes contextos de uso. O roteiro elaborado
-contempla cenários reais do usuário, baseados nas principais funcionalidades do sistema. A
-seguir, estão descritas as abordagens utilizadas:
+A estratégia de testes do projeto AgroRenda visa garantir que as funcionalidades do sistema estejam corretas, seguras e em conformidade com os requisitos definidos. Serão utilizados diferentes níveis de teste para verificar desde componentes isolados (como modelos e validadores) até o comportamento completo da API, simulando interações reais com o sistema. As abordagens adotadas incluem:
 
-**Nível de teste**
+* Organização dos testes em três níveis: unitário, integração e API (sistema);
+* Validação com dados válidos e inválido;
+* Coleta de evidências com logs, prints e relatórios de cobertura;
+* Retestes após correções para assegurar estabilidade.
 
-Todos os testes previstos são de nível de sistema, com foco na verificação do
-comportamento do sistema como um todo. Os testes consideram a integração entre
-componentes e a interface final com o usuário.
 
-**Tipo de teste**
+## **6.2 Nível de teste**
 
-- Funcionais: Verificam se os requisitos funcionais estão sendo corretamente
-implementados (ex: login, cadastro, envio de formulários).
-- Validação de regras de negócio: Inclusão de testes negativos (ex: login com dados
-inválidos).
-- Navegação e UX: Garantem a acessibilidade e coerência de navegação entre telas.
-- UI/UX: teste de responsividade para garantir uso adequado em dispositivos móveis.
-Os testes do sistema AgroRenda serão realizados em múltiplos ambientes, com o
-objetivo de assegurar a qualidade, compatibilidade e robustez da aplicação em diversos
-contextos de uso. A seguir, descrevem-se os ambientes de teste previstos.
+### **6.2.1 Testes Unitários**
 
-**Ambiente de teste**
+Validam partes isoladas do sistema, como métodos de modelos ou validações em serializers. São executados com unittest ou pytest e não envolvem requisições HTTP
 
-O Ambiente de Desenvolvimento é utilizado para validação preliminar de
-funcionalidades, possibilitando correções rápidas durante o processo de codificação. Nesse
-ambiente, são utilizados dados fictícios, com configurações específicas que permitem
-depuração e testes de unidade. As alterações podem ser realizadas diretamente, sem a
-necessidade de processos formais de implantação (SOMMERVILLE, 2011).
+Exemplos:
+* Verificar se um campo obrigatório está sendo validado
+* Testar a lógica de um método customizado do modelo
 
-O Ambiente de Homologação é destinado à execução de testes de integração e de
-sistema, simulando as condições reais do ambiente de produção. Nele, são realizados testes
-completos das funcionalidades, utilizando dados de teste que representam cenários típicos de
-uso do sistema. Esse ambiente possibilita que a equipe de Garantia da Qualidade (Quality
-Assurance) e as partes interessadas validem a aplicação antes de sua liberação para os
-usuários finais (PRESSMAN; MAXIM, 2021).
+### **6.2.2 Testes de Integração**
+Avaliaram se diferentes partes do sistema interagem corretamente. Simulam o fluxo entre serializers, views e banco de dados, usando o cliente de teste do Django (APIClient).
 
-O Ambiente de Produção corresponde ao ambiente real em que o sistema será
-disponibilizado aos usuários finais. Nesse contexto, são realizados testes de verificação após
-a implantação, com foco no monitoramento de desempenho e estabilidade. As atividades de
-teste nesse ambiente são restritas, de modo a evitar impactos negativos sobre a operação do
-sistema ou prejuízos aos usuários (ISO/IEC/IEEE, 2013).
+Exemplos:
 
-Além desses, o sistema será validado em diferentes plataformas para assegurar a sua
-compatibilidade e responsividade. Os testes contemplarão múltiplos navegadores, tais como
-Google Chrome, Mozilla Firefox, Microsoft Edge e Safari, bem como sistemas operacionais
-variados, incluindo Windows, Linux e macOS. Também serão realizados testes em
-dispositivos móveis, abrangendo sistemas Android (a partir da versão 10) e iOS (a partir da
-versão 14), utilizando navegadores nativos e o Google Chrome.
+* Testar o processo de cadastro de usuário completo
+* Verificar se o token é gerado corretamente após login
 
-Adicionalmente, serão considerados aspectos relacionados à infraestrutura de banco
-de dados e à comunicação com serviços externos. O banco de dados, baseado em sistemas
-relacionais como MySQL ou PostgreSQL, será avaliado quanto à integridade e consistência
-das informações, sob diferentes volumes e cargas. As interfaces de comunicação com APIs e
-serviços externos também serão testadas, de modo a garantir que eventuais falhas ou
-indisponibilidades não comprometam o funcionamento da aplicação (ISO/IEC 25010, 2011).
+### **6.2.3 Testes de API (nível de sistema)**
+Simulam chamadas reais à API, testando o sistema como um todo por meio de requisições HTTP. Garantem que os endpoints estão funcionando conforme esperado.
 
-Dessa forma, a realização de testes em múltiplos ambientes e plataformas visa
-assegurar que o sistema AgroRenda opere de forma eficiente, segura e estável em diversos
-cenários de uso.
+Exemplos:
 
-**Formas de análise**
+* Enviar uma requisição POST para login com credenciais válidas
+* Testar o endpoint de criação de produção com token de autenticação
 
-A análise dos testes será conduzida de maneira qualitativa e quantitativa, com o
-objetivo de assegurar que todos os requisitos funcionais e não funcionais do sistema foram
-devidamente atendidos (ISO/IEC/IEEE, 2013). Diversas abordagens serão empregadas para
-garantir a confiabilidade dos resultados e a adequação do sistema às expectativas dos usuários
-e às especificações técnicas.
 
-Inicialmente, será realizada a comparação entre os resultados obtidos e os resultados
-esperados. Cada caso de teste contará com critérios objetivos de aceitação, permitindo uma
-avaliação precisa da conformidade do sistema. O comportamento observado será analisado
-frente ao comportamento previsto, e, em caso de divergências, as inconsistências serão
-devidamente registradas (PRESSMAN; MAXIM, 2021).
+### **6.2.4 Tipo de teste**
 
-Além disso, será efetuada a análise de logs, a qual consiste na verificação dos
-registros gerados pelo sistema durante a execução dos testes. Essa prática possibilita a
-identificação de falhas que não são perceptíveis diretamente pela interface do usuário, mas
-que podem comprometer o funcionamento interno da aplicação (SOMMERVILLE, 2011).
+* Funcionais: validam o comportamento esperado do sistema
+* Negativos: testam situações inválidas (ex: dados incorretos)
+* Segurança: verificam autenticação e proteção contra acessos indevidos
+* Usabilidade técnica: verificam mensagens de erro, respostas claras e feedback do sistema
 
-Os relatórios de erros também serão utilizados como uma ferramenta essencial para o
-registro sistemático das falhas encontradas. Tais relatórios incluirão a descrição detalhada dos
-problemas, os passos necessários para a sua reprodução, bem como evidências objetivas, tais
-como capturas de tela e registros de logs (ISO/IEC/IEEE, 2013).
 
-Quando pertinente, será coletado o feedback de usuários por meio de sessões de testes
-orientadas à avaliação da usabilidade, da navegabilidade e da aderência do sistema aos
-requisitos previamente estabelecidos. Essa abordagem visa garantir que a experiência do
-usuário final seja satisfatória e que o sistema atenda às suas necessidades de forma eficaz
-(ISO/IEC 25010, 2011).
+### **6.2.5 Ambiente de teste**
 
-Por fim, serão realizados ciclos de reteste após cada correção implementada. Esses
-ciclos são fundamentais para garantir que as falhas identificadas foram, de fato, resolvidas,
-além de assegurar que as modificações realizadas não introduziram novos defeitos, por meio
-da execução de testes de regressão (SOMMERVILLE, 2011). Dessa forma, busca-se a
-entrega de um produto robusto, confiável e alinhado às expectativas e necessidades dos
-usuários.
+* Desenvolvimento: usado para testes unitários e ajustes locais
+* Homologação: simula o ambiente real, usado para testes de integração e API
+* Produção: restrito a verificações não invasivas, apenas para validação pós-deploy
+
+As execuções serão feitas com pytest e coverage.py para gerar relatórios de cobertura e logs. O banco de dados utilizado nos testes será isolado do ambiente de produção (por padrão, SQLite em memória).
+
+
+## **6.3 Roteiro de testes**
+
+Dentro do plano de testes, os testes realizados abarcarão diferentes tipos e níveis dentro de um escopo comum, sendo alguns dos testes replicados em mais de uma funcionalidade para garantir a maior quantidade possível de cobertura e garantir o funcionamento adequado das funcionalidades e recursos do projeto AgroRenda. Segue nas tabelas abaixo os testes a serem realizados e as condições para aceitação dos devidos testes.
+
 
 
 <div class="centered-text"><b> Tabela 11 - Testes de software</b></div>
 
 
-| Código do teste | Nome do teste | Objetivo | Nível do teste | Tipo de teste | Pré-condições |
-|-----------------|---------------|----------|----------------|---------------|----------------|
-| TC001 | Validação da página inicial | Verificar se a página inicial carrega corretamente com os elementos esperados | Sistema | Funcional | Aplicativo instalado e em execução |
-| TC002 | Login com credenciais válidas | Garantir que o usuário consegue acessar o sistema com credenciais válidas | Sistema | Funcional | Usuário já cadastrado no sistema |
-| TC003 | Login com credenciais inválidas | Verificar a tipagem de credenciais inválidas no login | Sistema | Funcional | Usuário deve estar desconectado |
-| TC004 | Cadastro de novo usuário | Validar o cadastro de novos usuários no sistema | Sistema | Funcional | Acesso à tela de cadastro |
-| TC005 | Envio de formulário vazio | Verificar a validação de campos obrigatórios no formulário | Sistema | Funcional | Formulário deve estar acessível |
-| TC006 | Logout do sistema | Confirmar que o logout encerra corretamente a sessão do usuário | Sistema | Funcional | Usuário logado no sistema |
-| TC007 | Pesquisa de produto existente | Verificar a exibição de resultados para um produto existente | Sistema | Funcional | Produto cadastrado no sistema |
-| TC008 | Pesquisa de produto inexistente | Verificar a resposta para um produto não cadastrado | Sistema | Funcional | Sistema acessível |
-| TC009 | Navegação por menu | Testar se os itens do menu redirecionam para as telas corretas | Sistema | Navegação | Sistema inicializado |
-| TC010 | Responsividade em celular | Validar se a interface se adapta corretamente a resoluções móveis | Interface | UI/UX | Acesso via navegador móvel |
+| Código do teste | Nome do teste | Tipo | Nível| Pré-condição |
+|-----------------|---------------|----------|----------------|---------------|
+| TU001 | Validação de CPF no serializer | Funcional | Unitário | Nenhum | 
+| TU002 | Validação de campos obrigatórios | Negativo| Unitário | Nenhum |
+| TU003 | Verificação de senha mínima | Funcional | Unitário | Nenhum | 
+| TU004 | Método __str__ no model | Funcional | Unitário | Objeto instanciado |
+| TI001 | Cadastro com dados válidos | Funcional | Integração | Nenhum | 
+| TI002 | Cadastro com campos vazios | Negativo | Integração | Nenhum |
+| TI003 | Login com credenciais válidas | Funcional | Integração | Usuário já cadastrado | 
+| TI004 | Login com credenciais inválidas | Negativo | Integração | Usuário inexistente ou senha errada |
+| TI005 | Geração e uso de token | Segurança | Integração | Login realizado | 
+| TA001 | Envio de produção com token válido | Funcional | API (Sistema) | Usuário autenticado |
+| TA002 | Envio de produção com token inválido | Segurança | API (Sistema) | Token expirado ou inválido | 
+| TA003 | Listagem de atividades do usuário | Funcional | API (Sistema)| Produções cadastradas | 
 
-<div class="centered-text"><b> Fonte: </b> Elaborado por Milena e Davi do Egito</div>
+<div class="centered-text"><b> Fonte: </b> Elaborado por Milena, Davi do Egito e Renan Reis(2025)</div>
 
 
 <br><br>
 
-<div class="centered-text"><b> Tabela 12 - Critérios de Aceitação, Reparos e Evidências </b></div>
+<div class="centered-text"><b> Tabela 12 - Critérios de Aceitação dos testes </b></div>
 
-| Código do teste | Nome do teste | Critérios de aceitação | Resultado esperado | Evidências | Retestes executados | Ciclos de teste |
-|-----------------|---------------|------------------------|---------------------|------------|----------------------|----------------|
-| TC001 | Validação da página inicial | Todos os elementos visuais devem estar visíveis e funcionais | Página inicial exibida corretamente com todos os elementos interativos | Captura de tela da página inicial | Nenhum | 1 |
-| TC002 | Login com credenciais válidas | Acesso autorizado e redirecionamento para a tela principal | Login efetuado com sucesso e redirecionamento | Captura de tela da tela principal após login | Nenhum | 1 |
-| TC003 | Login com credenciais inválidas | Mensagem de erro clara e impedimento de acesso | Login recusado e mensagem de erro exibida | Captura de tela da mensagem de erro | Nenhum | 1 |
-| TC004 | Cadastro de novo usuário | Usuário deve ser registrado e redirecionado com sucesso | Cadastro realizado com sucesso | Captura de tela de confirmação de cadastro | Nenhum | 1 |
-| TC005 | Envio de formulário vazio | Erro deve ser exibido para cada campo obrigatório não preenchido | Mensagem de erro nos campos vazios | Captura de tela das mensagens de erro | Nenhum | 1 |
-| TC006 | Logout do sistema | Sessão finalizada e redirecionamento para a tela de login | Usuário deslogado com sucesso | Captura de tela da tela de login | Nenhum | 1 |
-| TC007 | Pesquisa de produto existente | Produto deve aparecer na lista de resultados | Produto encontrado e exibido corretamente | Captura de tela dos resultados | Nenhum | 1 |
-| TC008 | Pesquisa de produto inexistente | Mensagem informando ausência de resultados | Nenhum resultado encontrado e exibição da mensagem apropriada | Captura de tela da mensagem de 'produto não encontrado' | Nenhum | 1 |
-| TC009 | Navegação por menu | Todas as opções devem funcionar conforme esperado | Cada item redireciona corretamente para sua respectiva função | Capturas de tela das telas acessadas | Nenhum | 1 |
-| TC010 | Responsividade em celular | Todos os elementos devem se ajustar corretamente ao layout mobile | Layout ajustado e funcional em celular | Captura de tela do celular | Nenhum | 1 |
+| Código do Teste | Funcionalidade Associada          | Critério de Aceitação                                                                 |
+|-----------------|-----------------------------------|----------------------------------------------------------------------------------------|
+| TU001           | Validação de CPF                  | O CPF deve ser válido segundo a regra oficial. Em caso de erro, o sistema deve rejeitar. |
+| TU002           | Campos obrigatórios               | Todos os campos obrigatórios devem disparar erro se vazios.                           |
+| TU003           | Validação de senha                | A senha deve conter no mínimo 8 caracteres.                                           |
+| TU004           | Exibição de dados                 | O método `__str__()` deve retornar uma string coerente com os dados do objeto.        |
+| TI001           | Cadastro de usuário               | O cadastro deve ser bem-sucedido com dados válidos e salvar no banco.                 |
+| TI002           | Cadastro incompleto               | O sistema deve rejeitar cadastro com campos obrigatórios vazios.                      |
+| TI003           | Login com credenciais válidas     | O sistema deve autenticar e retornar token.                                           |
+| TI004           | Login inválido                    | O sistema deve rejeitar o login e retornar erro com mensagem clara.                   |
+| TI005           | Token de autenticação             | O token gerado deve ser válido e funcionar em endpoints protegidos.                   |
+| TA001           | Envio de produção                 | A produção deve ser registrada com sucesso se o token for válido.                     |
+| TA002           | Envio com token inválido          | O sistema deve rejeitar a requisição e retornar erro de autenticação.                 |
+| TA003           | Listagem de atividades            | O usuário autenticado deve conseguir visualizar apenas suas próprias produções.       |
 
-<div class="centered-text"><b>Fonte: </b> Elaborado por Milena e Davi do Egito </div>
+<div class="centered-text"><b>Fonte: </b> Elaborado por Milena, Davi do Egito e Renan Reis(2025)</div>
