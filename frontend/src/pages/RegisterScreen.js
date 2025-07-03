@@ -14,6 +14,7 @@ import { Picker } from '@react-native-picker/picker';
 import { registerUser, loginUser } from '../services/api';
 import { useContext } from 'react';
 import { AuthContext } from '../navigation/AuthContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function RegisterScreen() {
@@ -56,7 +57,7 @@ export default function RegisterScreen() {
       const loginResult = await loginUser({ email, password: senha });
 
       if (loginResult.token) {
-        await AsyncStorage.setItem('token', result.token);
+        await AsyncStorage.setItem('token', loginResult.token);
         setUser({
           token: loginResult.token,
           tipo: loginResult.tipo || loginResult.role,
