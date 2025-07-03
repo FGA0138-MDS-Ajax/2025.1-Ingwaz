@@ -10,7 +10,7 @@ import {
   ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { solicitarCredito } from "../services/api";
+import { solicitarCredito, avaliarCredito } from "../services/api";
 import { AuthContext } from "../navigation/AuthContext";
 
 // Paleta de Cores (Tema Verde)
@@ -56,6 +56,20 @@ export default function SolicitarCreditoScreen() {
 
 
       const result = await solicitarCredito(dados);
+
+      if (result && result.id) {
+        const resultadoAvaliacao = await avaliarCredito(result.id);
+
+        const statusFinal = resultadoAvaliacao.solicitacao?.status || 'desconhecido';
+        Alert.alert(
+          "Solicitação Processada!",
+          `A sua solicitação foi enviada e o resultado da análise é: ${statusFinal.toUpperCase()}`,
+          [{ text: "OK", onPress: () => navigation.goBack() }]
+        );
+
+      } else {
+        throw new Error("A resposta da criação da solicitação não continha um ID válido.");
+      }
 
 
       Alert.alert("Sucesso!", "Sua solicitação foi enviada com sucesso.", [
