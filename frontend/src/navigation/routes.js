@@ -9,7 +9,9 @@ import Home from '../pages/Home';
 import WeatherScreen from '../pages/PrevisaoScreen';import CotacoesScreen from '../pages/CotacoesScreen'
 import PerguntasScreen from '../pages/PerguntasScreen'
 import RecuperarSenha from '../pages/RecuperarScreen';
-import RedefinirSenha from '../pages/RedefinirSenha';
+import RedefinirSenha from '../pages/RedefinirSenha';import SolicitarCreditoScreen from '../pages/SolicitarCreditoScreen'
+import AgricultorSolicitacoesScreen from '../pages/AgricultorSolicitacoesScreen';
+import AnaliseSolicitacoesScreen from '../pages/AnaliseSolicitacoesScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -41,6 +43,10 @@ export default function Routes() {
       />
       <Stack.Screen name="Previsão do Tempo" component={EscolhaPropriedadeScreen}/>
       <Stack.Screen name="Previsões" component={WeatherScreen}/>
+      <Stack.Screen name="Pedido de Crédito" component={SolicitarCreditoScreen} />
+      <Stack.Screen name="AgricultorSolicitacoes" component={AgricultorSolicitacoesScreen} />
+      <Stack.Screen name="AnaliseSolicitacoes" component={AnaliseSolicitacoesScreen} />
+
     </Stack.Navigator>
   );
 }

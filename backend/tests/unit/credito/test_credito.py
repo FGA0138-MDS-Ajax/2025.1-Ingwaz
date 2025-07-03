@@ -158,7 +158,7 @@ def test_str_solicitacao():
 
 @pytest.mark.django_db
 def test_atualizacao_score():
-#verificar se a string retorna a mesma que está em credito.models
+#verificar se o status é corretamente atualizado
   user = User.objects.create_user(
       username = 'joao123', 
       name = 'Joao', 
