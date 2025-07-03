@@ -57,6 +57,7 @@ export default function SolicitarCreditoScreen() {
 
       const result = await solicitarCredito(dados);
 
+      /* codigo novo */
       if (result && result.id) {
         const resultadoAvaliacao = await avaliarCredito(result.id);
 
