@@ -30,9 +30,10 @@ class LoginView(APIView):
         if user is not None:
             token, _created = Token.objects.get_or_create(user=user)
             return Response({
+                'id': user.id,
                 'token': token.key,
-                'nome': user.name,       # <-- CORRETO
-                'tipo': user.role,       # <-- CORRETO
+                'nome': user.name,       
+                'tipo': user.role,       
                 'email': user.email,
             }, status=status.HTTP_200_OK)
 

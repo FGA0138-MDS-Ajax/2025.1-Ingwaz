@@ -3,11 +3,19 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'rea
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons, FontAwesome5, MaterialIcons, Entypo, FontAwesome6 } from '@expo/vector-icons';
 import { AuthContext } from '../navigation/AuthContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function AgricultorHome() {
   const navigation = useNavigation();
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
+  const handleLogout = async () => {
+    await AsyncStorage.removeItem('token');
+    await AsyncStorage.removeItem('userId');
+    setUser(null);
+  };
+
+
 
 
   const nome = user?.nome || '';
@@ -20,8 +28,8 @@ export default function AgricultorHome() {
     },
     {
       label: 'Registrar Propriedade',
-      icon: <FontAwesome5 name="home" size={45} color="#2e5339" />, 
-      route: 'RegistrarPropriedade', 
+      icon: <FontAwesome5 name="home" size={45} color="#2e5339" />,
+      route: 'RegistrarPropriedade',
     },
 
     {
@@ -88,6 +96,11 @@ export default function AgricultorHome() {
         <Ionicons name="document-text-outline" size={40} color="#2e5339" />
         <Text style={styles.relatorioText}>Relatórios</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+        <Text style={styles.logoutText}>Sair</Text>
+      </TouchableOpacity>
+
     </ScrollView>
   );
 }
@@ -157,5 +170,19 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     fontSize: 16,
     color: '#00000',
+  },
+
+  logoutButton: {
+    marginTop: 20,
+    padding: 12,
+    backgroundColor: '#ff4d4d',
+    borderRadius: 8,
+    alignItems: 'center',
+    width: '100%',
+  },
+  logoutText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
