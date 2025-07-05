@@ -37,6 +37,7 @@ Testa o endpoint /api/solicitacoes.
 | `test_api_atualizacao_status` | Verifica se o status é corretamente atualizado na view. |
 | `test_api_filtro` | Rejeita tentativa de agricultor de acessar todas as solicitações e garante que o analista consiga ter esse acesso. |
 | `test_avaliacao_solicitacao_pelo_analista` | Verifica se o analista pode avaliar solicitações com sucesso. |
+| `test_api_agricultor_nao_cria_registro_pro_outro` | Verifica se um agricultor pode criar solicitação pro plantio de outro agricultor. |
 
 ---
 ## `test_password.py`
@@ -69,7 +70,7 @@ Testa o endpoint /api/quotes.
 | `test_acesso_nao_autenticado` | Verifica se qualquer pessoa possa consultar as cotações sem precisar de login. (São informações públicas, então sem problemas) |
 | `test_filtro_nome_API` | Verifica se é possível pesquisar o nome de uma cultura específica |
 | `test_atualizacao_sem_autenticacao` | Rejeita a atualização do lote sem autenticação. |
-| `test_atualizacao_em_lote_com_autenticacao` | Verifica se o programa permite um usuário com status de administrador atualizar um lote de cotações. |
+
 
 ---
 

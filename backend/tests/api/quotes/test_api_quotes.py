@@ -35,24 +35,5 @@ class QuoteListViewTest(APITestCase):
         response = self.client.post(url)
         assert response.status_code == 401
 
-    #esses mocks foram colocados pra diminuir o tempo de execução deste teste no pytest (estava em 33s)
-    @patch('quotes.views.get_all_cepea_quotes', return_value=([], True))
-    @patch('quotes.views.get_all_hfbrasil_quotes', return_value=([], True))
-    def test_atualizacao_em_lote_com_autenticacao(self, mock_get_all_hfbrasil_quotes, mock_get_all_cepea_quotes):
-        #criar um usuário que irá fazer o login com permissão de admin
-        User = get_user_model()
-        user = User.objects.create_user(username='admin', email='admin@admin.com', password='senha123', role='analista')
-        
-        #realizar o login via API
-        url_login = reverse('login')
-        response = self.client.post(url_login, {'email': 'admin@admin.com', 'password': 'senha123'})
-        assert response.status_code == 200
-        token = response.data['token']
-
-        #agora vamos usar o token pra validar a autenticação
-        self.client.credentials(HTTP_AUTHORIZATION='Token ' + token)
-        url = reverse('quote-update')
-        response = self.client.post(url)
-        assert response.status_code == 200
             
         

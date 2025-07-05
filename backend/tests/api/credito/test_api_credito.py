@@ -382,3 +382,51 @@ def test_avaliacao_solicitacao_pelo_analista(django_user_model):
   assert data['novo_status'] in ['aprovado', 'analise', 'rejeitado']
   solicitacao1.refresh_from_db()
   assert solicitacao1.status == data['novo_status']
+
+@pytest.mark.django_db
+def test_api_agricultor_nao_cria_registro_pro_outro(django_user_model):
+#verificar se um agricultor pode criar solicitação pro plantio de outro
+  agricultor1 = django_user_model.objects.create_user(
+        username='joao123',
+        email='joao@gmail.com.br',
+        password='senhamedia123',
+        role='agricultor',
+        cpf='987.654.321-00'
+  )  
+
+  agricultor2 = django_user_model.objects.create_user(
+        username='fabio321',
+        email='fabinho@uol.com.br',
+        password='senhaok321',
+        role='agricultor',
+        cpf='123.456.789-09'
+  )
+
+  propriedade = Propriedade.objects.create(
+    nome = 'chácara raiz',
+    area_total = 320,
+    latitude=-16.6,
+    longitude=-45.6,
+    agricultor = agricultor2 # O segundo é o dono
+  )
+
+  plantio = Plantio.objects.create(
+    cultura = 'Milho',
+    area = 35,
+    data = str(date.today()),
+    estimativa_colheita = str(date.today()),
+    propriedade = propriedade
+  ) 
+
+  token = Token.objects.create(user=agricultor1) #o primeiro vai solicitar crédito pra plantio alheio
+  client = APIClient()
+  client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+  dados = {
+          'plantio': plantio.id,
+          'propriedade': propriedade.id,
+          'valor_solicitado': 500,
+          'status': 'pendente'
+      }
+  url = reverse('solicitacao-register')
+  response = client.post(url, dados)
+  assert response.status_code == 403
