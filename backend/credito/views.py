@@ -76,6 +76,9 @@ class AvaliarView(APIView):
         area_total = solicitacao.propriedade.area_total 
         valor_pedido = float(solicitacao.valor_solicitado or 0) # Value requested by the user 
 
+        if valor_pedido < 0:
+            valor_pedido *= -1
+
         pbi = float(area_plantio) # Potential Brute Income
         fs = float(valor_pedido/pbi) # FS: Fairness Score, how fair your request is, based on how much land you have to work on
         
