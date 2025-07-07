@@ -18,6 +18,7 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-native": "0.79.4",
+    "react-native-config": "^1.5.5",
     "react-native-dotenv": "^3.4.11",
     "react-native-gesture-handler": "~2.24.0",
     "react-native-reanimated": "~3.17.4",
@@ -27,7 +28,8 @@
     "react-native-web": "~0.20.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.27.7"
+    "@babel/core": "^7.27.7",
+    "@react-native-community/cli": "^18.0.0"
   },
   "private": true
 }

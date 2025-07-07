@@ -1,3 +1,9 @@
+import React, { useContext } from 'react';
+import { View, ActivityIndicator } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { AuthContext } from './AuthContext';
+import AuthRoutes from './AuthRoutes';
+import AppRoutes from './AppRoutes';
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -16,6 +22,20 @@ import AnaliseSolicitacoesScreen from '../pages/AnaliseSolicitacoesScreen';
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {
+  const { user, isLoading } = useContext(AuthContext);
+
+  if (isLoading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+
+  return user ? <AppRoutes /> : <AuthRoutes />;
+
+}
+
   return (
     <Stack.Navigator initialRouteName="Login">
       <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
