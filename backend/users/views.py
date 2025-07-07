@@ -30,13 +30,15 @@ class LoginView(APIView):
         if user is not None:
             token, _created = Token.objects.get_or_create(user=user)
             return Response({
+                'id': user.id,
                 'token': token.key,
-                'nome': user.name,
-                'tipo': user.role,
+                'nome': user.name,       
+                'tipo': user.role,       
                 'email': user.email,
             }, status=status.HTTP_200_OK)
 
         return Response({'error': 'Credenciais inválidas'}, status=status.HTTP_403_FORBIDDEN)
+
 
 
 class PasswordForgotView(APIView):
