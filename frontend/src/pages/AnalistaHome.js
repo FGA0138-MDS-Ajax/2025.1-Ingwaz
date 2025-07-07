@@ -21,8 +21,8 @@ export default function AnalistaHome() {
   const buttons = [
     {
       label: 'Pedido de Crédito',
-      icon: <FontAwesome6 name="sack-dollar" size={45} color="black" />,
-      route: 'Pedido de Crédito',
+      icon: <FontAwesome6 name="sack-dollar" size={45} color="#2e5339" />,
+      route: 'AnaliseSolicitacoes',
     },
     {
       label: 'Lucros e Vendas',

@@ -101,7 +101,8 @@ export default function AgricultorSolicitacoesScreen() {
         style={styles.busca}
         placeholderTextColor={themeColors.placeholder}
       />
-       <TouchableOpacity style={styles.newButton} onPress={() => navigation.navigate('Pedido de Crédito')}>
+       <TouchableOpacity style={styles.newButton} onPress={() => navigation.goBack()}>
+       {/*  navigation.navigate('Pedido de Crédito') -> virou navigation.goBack(), caso acabe dando ruim nos testes no mobile, deletar botão */}
         <Text style={styles.newButtonText}>+ Nova Solicitação</Text>
       </TouchableOpacity>
 

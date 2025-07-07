@@ -71,6 +71,11 @@ export default function SolicitarCreditoScreen() {
         throw new Error("A resposta da criação da solicitação não continha um ID válido.");
       }
 
+
+      /* Alert.alert("Sucesso!", "Sua solicitação foi enviada com sucesso.", [
+        { text: "OK", onPress: () => navigation.goBack() },
+      ]); */
+
     } catch (err) {
       const errorMessage = err.detail || (err.plantio && err.plantio[0]) || "Não foi possível enviar a solicitação.";
       Alert.alert("Erro na Solicitação", errorMessage);

@@ -8,10 +8,10 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   Alert,
-  RefreshControl, 
+  RefreshControl,
 } from "react-native";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import { getSolicitacoes, avaliarCredito } from "../services/api";
+import { getSolicitacoes, avaliarCredito, aprovarSolicitacao, rejeitarSolicitacao } from "../services/api";
 
 // Paleta de Cores (Tema Verde)
 const themeColors = {
@@ -22,19 +22,15 @@ const themeColors = {
   placeholder: "#81C784",
   accent: "#4CAF50",
   buttonDisabled: "#A5D6A7",
-  status: {
-    aprovado: "#2E7D32",
-    rejeitado: "#C62828",
-    analise: "#F9A825",
-    pendente: "#757575",
-  },
+  approve: '#2E7D32', reject: '#C62828',
+  status: { aprovado: "#2E7D32", rejeitado: "#C62828", analise: "#F9A825", pendente: "#757575" },
 };
 
 export default function AnaliseSolicitacoesScreen() {
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
   const [solicitacoes, setSolicitacoes] = useState([]);
   const [carregando, setCarregando] = useState(true);
-  const [isRefreshing, setIsRefreshing] = useState(false); 
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [busca, setBusca] = useState("");
   const [evaluatingId, setEvaluatingId] = useState(null);
 
@@ -57,10 +53,10 @@ export default function AnaliseSolicitacoesScreen() {
       fetchSolicitacoes();
     }, [fetchSolicitacoes])
   );
-  
+
   const onRefresh = () => {
-      setIsRefreshing(true);
-      fetchSolicitacoes();
+    setIsRefreshing(true);
+    fetchSolicitacoes();
   };
 
   const solicitacoesFiltradas = useMemo(() => {
@@ -73,27 +69,43 @@ export default function AnaliseSolicitacoesScreen() {
         s?.status?.toLowerCase().includes(buscaFormatada)
     );
   }, [solicitacoes, busca]);
-  
-  const handleAvaliar = async (id) => {
-      setEvaluatingId(id);
-      try {
-          const response = await avaliarCredito(id);
-          const { novo_status, score_gerado } = response.solicitacao;
-          
-          Alert.alert("Avaliação Concluída", `Status alterado para: ${novo_status}`);
-          
-          setSolicitacoes(prev => prev.map(sol => 
-              sol.id === id ? { ...sol, status: novo_status, score: score_gerado } : sol
-          ));
 
-      } catch (err) {
-          const errorMessage = err.detail || "Erro ao processar avaliação.";
-          Alert.alert("Erro", errorMessage);
-      } finally {
-          setEvaluatingId(null);
-      }
+  const handleUpdateStatus = async (id, action) => {
+    setEvaluatingId(id);
+    try {
+      const updatedSolicitacao = action === 'aprovar'
+        ? await aprovarSolicitacao(id)
+        : await rejeitarSolicitacao(id);
+
+      Alert.alert("Sucesso", `Solicitação #${id} foi atualizada para '${updatedSolicitacao.status}'.`);
+      setSolicitacoes(prev => prev.map(sol => (sol.id === updatedSolicitacao.id ? updatedSolicitacao : sol)));
+    } catch (err) {
+      Alert.alert("Erro", err.detail || "Não foi possível atualizar o status.");
+    } finally {
+      setEvaluatingId(null);
+    }
   };
-  
+
+  const handleAvaliar = async (id) => {
+    setEvaluatingId(id);
+    try {
+      const response = await avaliarCredito(id);
+      const { novo_status, score_gerado } = response.solicitacao;
+
+      Alert.alert("Avaliação Concluída", `Status alterado para: ${novo_status}`);
+
+      setSolicitacoes(prev => prev.map(sol =>
+        sol.id === id ? { ...sol, status: novo_status, score: score_gerado } : sol
+      ));
+
+    } catch (err) {
+      const errorMessage = err.detail || "Erro ao processar avaliação.";
+      Alert.alert("Erro", errorMessage);
+    } finally {
+      setEvaluatingId(null);
+    }
+  };
+
   const getStatusStyle = (status) => {
     const color = themeColors.status[status] || themeColors.status.pendente;
     return { color, fontWeight: 'bold' };
@@ -110,19 +122,28 @@ export default function AnaliseSolicitacoesScreen() {
       <View style={styles.statusContainer}>
         <Text style={styles.cardInfo}>Status:</Text>
         <Text style={getStatusStyle(item.status)}> {item.status?.toUpperCase()}</Text>
-      </View>
-      
+      </View> 
+
       <View style={styles.buttonWrapper}>
-        {evaluatingId === item.id ? (
-            <ActivityIndicator color={themeColors.accent} />
-        ) : (
-            <TouchableOpacity 
-                style={[styles.actionButton, item.status !== 'pendente' && styles.buttonDisabled]}
-                onPress={() => handleAvaliar(item.id)}
-                disabled={item.status !== 'pendente'}
-            >
-                <Text style={styles.actionButtonText}>Avaliar Crédito</Text>
-            </TouchableOpacity>
+        {evaluatingId === item.id ? <ActivityIndicator color={themeColors.accent} /> : (
+          <>
+            {item.status === 'pendente' && (
+              <TouchableOpacity style={styles.actionButton} onPress={() => handleAvaliar(item.id)}>
+                <Text style={styles.actionButtonText}>Avaliar Crédito (Auto)</Text>
+              </TouchableOpacity>
+            )}
+
+            {item.status === 'analise' && (
+              <View style={styles.decisionButtonsContainer}>
+                <TouchableOpacity style={[styles.decisionButton, styles.approveButton]} onPress={() => handleUpdateStatus(item.id, 'aprovar')}>
+                  <Text style={styles.decisionButtonText}>Aprovar</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.decisionButton, styles.rejectButton]} onPress={() => handleUpdateStatus(item.id, 'rejeitar')}>
+                  <Text style={styles.decisionButtonText}>Rejeitar</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+          </>
         )}
       </View>
     </View>
@@ -149,7 +170,7 @@ export default function AnaliseSolicitacoesScreen() {
             <Text style={styles.emptyMessage}>Nenhuma solicitação para análise.</Text>
           }
           refreshControl={
-            <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} colors={[themeColors.accent]}/>
+            <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} colors={[themeColors.accent]} />
           }
         />
       )}
@@ -203,34 +224,63 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
   statusContainer: {
-      flexDirection: 'row',
-      alignItems: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   buttonWrapper: {
-      marginTop: 16,
-      paddingTop: 12,
-      borderTopWidth: 1,
-      borderTopColor: '#E8F5E9',
-      alignItems: 'center',
+    marginTop: 16,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: '#E8F5E9',
+    alignItems: 'center',
   },
   actionButton: {
-      backgroundColor: themeColors.accent,
-      paddingVertical: 10,
-      paddingHorizontal: 20,
-      borderRadius: 8,
+    backgroundColor: themeColors.accent,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
   },
   buttonDisabled: {
-      backgroundColor: themeColors.buttonDisabled,
+    backgroundColor: themeColors.buttonDisabled,
   },
   actionButtonText: {
-      color: 'white',
-      fontWeight: 'bold',
-      fontSize: 16,
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
   emptyMessage: {
     textAlign: "center",
     fontStyle: "italic",
     color: "#666",
     marginTop: 40,
+  },
+  decisionButtonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+  },
+  decisionButton: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    borderRadius: 8,
+    marginHorizontal: 8,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2, },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
+  },
+  approveButton: {
+    backgroundColor: themeColors.approve,
+  },
+  rejectButton: {
+    backgroundColor: themeColors.reject,
+  },
+  decisionButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });

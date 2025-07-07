@@ -1,4 +1,3 @@
-# credito/views.py
 from django.shortcuts import render
 import random
 import math
@@ -11,11 +10,11 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.exceptions import PermissionDenied
 from rest_framework import generics, status
 
-from plantios.models import Plantio # Import Plantio model
-from propriedade.models import Propriedade # Import Propriedade model
-from .models import SolicitacaoCredito # Import SolicitacaoCredito model from current app
-from .serializers import SolicitacaoCreditoSerializer, SolicitacaoCreditoCreateSerializer # Import SolicitacaoCreditoSerializer from current app
-from .permissions import IsOwnerOrAnalyst, IsOwnerOrAnalystForList # Import your new custom permissions
+from plantios.models import Plantio 
+from propriedade.models import Propriedade 
+from .models import SolicitacaoCredito 
+from .serializers import SolicitacaoCreditoSerializer, SolicitacaoCreditoCreateSerializer 
+from .permissions import IsOwnerOrAnalyst, IsOwnerOrAnalystForList 
 
 class RegisterView(generics.CreateAPIView):
     """
@@ -76,6 +75,9 @@ class AvaliarView(APIView):
         area_plantio = solicitacao.plantio.area  
         area_total = solicitacao.propriedade.area_total 
         valor_pedido = float(solicitacao.valor_solicitado or 0) # Value requested by the user 
+
+        if valor_pedido < 0:
+            valor_pedido *= -1
 
         pbi = float(area_plantio) # Potential Brute Income
         fs = float(valor_pedido/pbi) # FS: Fairness Score, how fair your request is, based on how much land you have to work on
@@ -140,6 +142,46 @@ class AvaliarView(APIView):
             },
             status=status.HTTP_200_OK
         )
+    
+
+# Recent Additions - Prone to errors
+class AprovarSolicitacaoView(APIView):
+    permission_classes = [IsAuthenticated, IsOwnerOrAnalyst]
+
+    def post(self, request, solicitacao_id):
+        try:
+            solicitacao = SolicitacaoCredito.objects.get(id=solicitacao_id)
+            self.check_object_permissions(request, solicitacao)
+            
+            if solicitacao.status != 'analise':
+                return Response({"detail": "Apenas solicitações 'Em Análise' podem ser aprovadas."}, status=status.HTTP_400_BAD_REQUEST)
+
+            solicitacao.status = 'aprovado'
+            solicitacao.save()
+            serializer = SolicitacaoCreditoSerializer(solicitacao)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except SolicitacaoCredito.DoesNotExist:
+            return Response({"detail": "Solicitação não encontrada."}, status=status.HTTP_404_NOT_FOUND)
+
+# Recent Additions - Prone to errors
+class RejeitarSolicitacaoView(APIView):
+    permission_classes = [IsAuthenticated, IsOwnerOrAnalyst]
+
+    def post(self, request, solicitacao_id):
+        try:
+            solicitacao = SolicitacaoCredito.objects.get(id=solicitacao_id)
+            self.check_object_permissions(request, solicitacao)
+
+            if solicitacao.status != 'analise':
+                return Response({"detail": "Apenas solicitações 'Em Análise' podem ser rejeitadas."}, status=status.HTTP_400_BAD_REQUEST)
+
+            solicitacao.status = 'rejeitado'
+            solicitacao.save()
+            serializer = SolicitacaoCreditoSerializer(solicitacao)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except SolicitacaoCredito.DoesNotExist:
+            return Response({"detail": "Solicitação não encontrada."}, status=status.HTTP_404_NOT_FOUND)
+
 
 class SolicitacaoCreditoListView(generics.ListAPIView):
     """

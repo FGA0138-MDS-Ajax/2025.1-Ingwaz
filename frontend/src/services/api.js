@@ -182,14 +182,6 @@ export async function solicitarCredito(dadosSolicitacao) {
   return json;
 }
 
-
-/**
- * Busca as solicitações de crédito.
- * - Para analistas, retorna todas.
- * - Para agricultores, retorna apenas as suas.
- * Requer autenticação.
- * @returns {Promise<any>} O JSON de resposta da API.
- */
 export async function getSolicitacoes() {
   const token = await AsyncStorage.getItem('token');
   const response = await fetch(`${API_BASE}/solicitacoes/`, {
@@ -201,21 +193,13 @@ export async function getSolicitacoes() {
   });
 
   const json = await response.json();
-  // Não vamos logar aqui para não poluir o console com listas grandes
   return json;
 }
 
-
-/**
- * Dispara a avaliação de uma solicitação de crédito específica.
- * Requer autenticação (geralmente de um analista).
- * @param {number} solicitacaoId - O ID da solicitação a ser avaliada.
- * @returns {Promise<any>} O JSON de resposta da API.
- */
 export async function avaliarCredito(solicitacaoId) {
     const token = await AsyncStorage.getItem('token');
     const response = await fetch(`${API_BASE}/solicitacoes/${solicitacaoId}/avaliar/`, {
-        method: 'GET', // A view Django espera um GET para esta ação
+        method: 'GET', 
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Token ${token}`,
@@ -225,4 +209,38 @@ export async function avaliarCredito(solicitacaoId) {
     const json = await response.json();
     console.log(`Resultado da avaliação da solicitação #${solicitacaoId}:`, json);
     return json;
+}
+
+export async function aprovarSolicitacao(solicitacaoId) {
+  const token = await AsyncStorage.getItem('token');
+  const response = await fetch(`${API_BASE}/solicitacoes/${solicitacaoId}/aprovar/`, {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`,
+    },
+  });
+
+  const json = await response.json();
+  if (!response.ok) {
+    throw json;
+  }
+  return json;
+}
+
+export async function rejeitarSolicitacao(solicitacaoId) {
+  const token = await AsyncStorage.getItem('token');
+  const response = await fetch(`${API_BASE}/solicitacoes/${solicitacaoId}/rejeitar/`, {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`,
+    },
+  });
+
+  const json = await response.json();
+  if (!response.ok) {
+    throw json;
+  }
+  return json;
 }
