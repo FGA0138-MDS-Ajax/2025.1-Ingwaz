@@ -123,7 +123,6 @@ export default function RegisterScreen() {
         >
           <Picker.Item label="Selecione..." value="" />
           <Picker.Item label="Agricultor" value="agricultor" />
-          <Picker.Item label="Técnico" value="tecnico" />
           <Picker.Item label="Analista" value="analista" />
         </Picker>
       </View>

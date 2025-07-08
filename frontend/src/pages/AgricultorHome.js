@@ -6,6 +6,7 @@ import { AuthContext } from '../navigation/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
+
 export default function AgricultorHome() {
   const navigation = useNavigation();
   const { user, setUser } = useContext(AuthContext);
@@ -13,9 +14,8 @@ export default function AgricultorHome() {
     await AsyncStorage.removeItem('token');
     await AsyncStorage.removeItem('userId');
     setUser(null);
+    navigation.replace('Login');
   };
-
-
 
 
   const nome = user?.nome || '';
@@ -37,16 +37,12 @@ export default function AgricultorHome() {
       icon: <FontAwesome6 name="sack-dollar" size={45} color="#2e5339" />,
       route: 'Pedido de Crédito',
     },
-    {
-      label: 'Falar com Técnico',
-      icon: <FontAwesome5 name="user-tie" size={45} color="#2e5339" />,
-      route: 'Chat',
-    },
-    {
-      label: 'Preços Produtos Rurais',
-      icon: <MaterialIcons name="show-chart" size={45} color="#2e5339" />,
-      route: 'Preços Produtos Rurais',
-    },
+    
+   // {
+  //    label: 'Preços Produtos Rurais',
+    //  icon: <MaterialIcons name="show-chart" size={45} color="#2e5339" />,
+      //route: 'Preços Produtos Rurais',
+    //},
     {
       label: 'Produção Atual',
       icon: <Entypo name="leaf" size={45} color="#2e5339" />,

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import {View, Text, TextInput, TouchableOpacity, StyleSheet, Alert,} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { API_URL } from '@env'; 
+
+const API_BASE = `${API_URL}/api`;
 
 export default function RedefinirSenha() {
   const navigation = useNavigation();
@@ -28,7 +31,7 @@ export default function RedefinirSenha() {
         return;
       }
 
-      const response = await fetch('http://X.X.X.X:8000/api/users/info/', {
+      const response = await fetch(`${API_BASE}/users/info/`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

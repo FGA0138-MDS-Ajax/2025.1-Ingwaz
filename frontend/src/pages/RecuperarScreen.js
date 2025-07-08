@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { API_URL } from '@env'; 
+
+const API_BASE = `${API_URL}/api`;
+
+
 
 export default function RecuperarSenha() {
   const navigation = useNavigation();
@@ -15,7 +20,7 @@ export default function RecuperarSenha() {
     }
 
     try {
-      const response = await fetch('http://X.X.X.X:8000/api/users/forgot/', {
+      const response = await fetch(`${API_BASE}/users/forgot/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, cpf }),

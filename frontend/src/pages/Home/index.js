@@ -19,8 +19,6 @@ export default function Home() {
   switch (user.tipo) {
     case 'agricultor':
       return <AgricultorHome />;
-    case 'tecnico':
-      return <TecnicoHome />;
     case 'analista':
       return <AnalistaHome />;
     default:
