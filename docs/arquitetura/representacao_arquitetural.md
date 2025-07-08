@@ -121,7 +121,7 @@ Complementando a visão geral do sistema, o diagrama de atividades apresentado d
 
 <div class="centered-text"><b>Figura 4 - </b> Diagrama de Atividades </div>
 
-<img src="../../imgs/image5.png" alt="image" class="centered-img"> 
+<img src="../../imgs/image5.jpeg" alt="image" class="centered-img"> 
 
 <div class="centered-text"><b>Fonte: </b> Elaborado por Davi Coelho(2025)</div>
 
@@ -257,7 +257,7 @@ O Django fornece validações automáticas de tipo e integridade referencial:
 
 <div class="centered-text"><b>Figura 6 - </b> Diagrama de Banco de Dados </div>
 
-<img src="../../imgs/image3A.png" alt="image" class="centered-img"> 
+<img src="../../imgs/image3A.jpeg" alt="image" class="centered-img"> 
 
 
 <div class="centered-text"><b>Fonte: </b> Elaborado por Davi Leite(2025) </div>
