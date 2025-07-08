@@ -13,7 +13,9 @@ import RecuperarSenha from '../pages/RecuperarScreen';
 import RedefinirSenha from '../pages/RedefinirSenha';
 import CultivoCriacao from '../pages/CultivosECriacoes';
 import PedirCredito from '../pages/SolicitarCreditoScreen';
+import RegistrarPlantio from '../pages/RegistrarPlantio';
 import AnaliseSolicitacoes from '../pages/AnaliseSolicitacoesScreen';
+import AgricultorSolicitacoes from '../pages/AgricultorSolicitacoesScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -22,14 +24,15 @@ export default function Routes() {
   return (
     <Stack.Navigator initialRouteName="Login">
       <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="RegistrarPlantio" component={RegistrarPlantio} options={{ headerShown: false }} />
       <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
       <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} options={{ headerShown: false }} />
       <Stack.Screen name="RedefinirSenha" component={RedefinirSenha} options={{ headerShown: false }} />
       <Stack.Screen name="Pedido de Crédito" component={PedirCredito} options={{ headerShown: false }} />
       <Stack.Screen name="Cultivo e Criações" component={CultivoCriacao} options={{ headerShown: false }} />
       <Stack.Screen name="RegistrarPropriedade" component={RegistrarPropriedade} options={{ headerShown: false }} />
-      <Stack.Screen name="Lucros e Vendas" component={LucrosVendas} options={{ headerShown: false }} />
 
+      <Stack.Screen name="AgricultorSolicitacoes" component={AgricultorSolicitacoes} options={{ headerShown: false }} />
       <Stack.Screen name="AnaliseSolicitacoes" component={AnaliseSolicitacoes} options={{ headerShown: false }} />
 
       <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />

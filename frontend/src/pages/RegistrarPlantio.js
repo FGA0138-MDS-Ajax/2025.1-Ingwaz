@@ -14,10 +14,8 @@ export default function RegistrarPlantio() {
 
   // Carregar propriedades registradas da API
   useEffect(() => {
-    const fetchPropriedades = async () => {
+  const fetchPropriedades = async () => {
       const token = await AsyncStorage.getItem('token');
-      const userId = await AsyncStorage.getItem('userId');  // Aqui você pega o userId
-
       try {
         const response = await fetch(`${API_URL}/api/propriedade/`, {
           headers: {
@@ -27,10 +25,7 @@ export default function RegistrarPlantio() {
         });
 
         const data = await response.json();
-
-        // Filtrando as propriedades que pertencem ao usuário autenticado
-        const propriedadesUsuario = data.filter(p => p.agricultor === parseInt(userId));  // Filtrando com o ID do agricultor
-        setPropriedades(propriedadesUsuario);
+        setPropriedades(data);  // Preenche as propriedades com dados da API
       } catch (error) {
         console.error('Erro ao carregar propriedades:', error);
         Alert.alert('Erro', 'Não foi possível carregar as propriedades.');

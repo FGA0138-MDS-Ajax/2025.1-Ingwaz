@@ -20,15 +20,27 @@ export default function LoginScreen() {
       return;
     }
 
-    const result = await loginUser({ email, password: senha });
-    console.log(result); // 🔍 DEBUG: veja o retorno completo no console
+    try {
+      const result = await loginUser({ email, password: senha });
+      console.log(result); // 🔍 DEBUG: veja o retorno completo no console
 
-    if (result.token && result.tipo) {
-      await AsyncStorage.setItem('token', result.token);
-      setUser(result);
-      navigation.reset({ index: 0, routes: [{ name: 'Home' }] });
-    } else {
-      Alert.alert('Erro', 'Login inválido ou dados incompletos.');
+      if (result.token && result.tipo) {
+        await AsyncStorage.setItem('token', result.token);
+        setUser(result);
+        navigation.reset({ index: 0, routes: [{ name: 'Home' }] });
+      } else if (result?.token && result?.id && result?.tipo && result?.nome) {
+        await AsyncStorage.setItem('userId', result.id.toString());
+        await AsyncStorage.setItem('token', result.token);
+        await AsyncStorage.setItem('userTipo', result.tipo);
+        await AsyncStorage.setItem('userNome', result.nome);
+
+        setUser(result);
+      } else {
+        Alert.alert('Erro', 'Credenciais inválidas ou resposta incompleta.');
+      }
+    } catch (error) {
+      console.error('Erro no login:', error);
+      Alert.alert('Erro', 'Ocorreu um erro ao tentar fazer login.');
     }
   };
 
