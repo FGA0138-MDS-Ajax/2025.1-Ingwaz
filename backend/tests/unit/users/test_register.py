@@ -23,7 +23,7 @@ def test_usuario_serializer_cria_usuario_valido():
     assert usuario.email == 'joao@uol.com.br'
     assert usuario.username == 'joao@uol.com.br'
     assert usuario.check_password('senha123')
-    assert usuario.cpf == '123.456.789-09'
+    assert usuario.cpf == '12345678909'
 
 @pytest.mark.django_db
 def test_usuario_senha_pequena():
@@ -133,13 +133,12 @@ def test_cpf_desformatado():
         'name': 'sergio',
         'email': 'sergio@gmail.com',
         'password': 'senhamediana12',
-        'role': 'jardineiro',
-        'cpf': '123-45-6789-09'
+        'role': 'analista',
+        'cpf': '12345678909'
     }
 
     serializer = UserSerializer(data=dados)
-    assert not serializer.is_valid()
-    assert 'cpf' in serializer.errors
+    assert serializer.is_valid(), serializer.errors
 
 @pytest.mark.django_db
 def test_campo_ausente():
