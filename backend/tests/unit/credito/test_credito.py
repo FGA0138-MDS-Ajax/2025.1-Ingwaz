@@ -8,6 +8,7 @@ from propriedade.models import Propriedade
 from plantios.models import Plantio
 from datetime import date, timedelta, datetime
 from credito.views import SolicitacaoCreditoListView
+from django.utils import timezone
 
 @pytest.mark.django_db
 def test_criacao_credito():
@@ -49,8 +50,9 @@ def test_criacao_credito():
 
   assert solicitacao1.score == 1.0
   assert solicitacao1.status == 'aprovado'
-  assert solicitacao1.created_at.strftime("%Y-%m-%d %H:%M:%S") == str(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-  assert solicitacao1.updated_at.strftime("%Y-%m-%d %H:%M:%S") == str(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+  assert abs((solicitacao1.created_at - timezone.now()).total_seconds()) < 5
+  # Permite diferença de até 5 segundos para evitar falha por milissegundos/UTC
+  assert abs((solicitacao1.updated_at - timezone.now()).total_seconds()) < 5
 
 @pytest.mark.django_db
 def test_criacao_sem_score():
