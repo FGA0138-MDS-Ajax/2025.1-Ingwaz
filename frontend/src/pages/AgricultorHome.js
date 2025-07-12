@@ -17,6 +17,7 @@ import {
 } from "@expo/vector-icons";
 import { AuthContext } from "../navigation/AuthContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import GridMenu from "../components/GridMenu";
 
 export default function AgricultorHome() {
   const navigation = useNavigation();
@@ -56,11 +57,6 @@ export default function AgricultorHome() {
       icon: <MaterialIcons name="show-chart" size={45} color="#2e5339" />,
       route: "Preços Produtos Rurais",
     },
-    // { parece que mudou pra dentro de cultivo e criações
-    //   label: "Produção Atual",
-    //   icon: <Entypo name="leaf" size={45} color="#2e5339" />,
-    //   route: "Produção Atual",
-    // },
     {
       label: "Perguntas Agrícolas",
       icon: <Ionicons name="help-outline" size={45} color="#2e5339" />,
@@ -70,32 +66,12 @@ export default function AgricultorHome() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* Tutorial */}
-      <View style={styles.banner}>
-        <Image
-          source={{ uri: "https://via.placeholder.com/300x150?text=Como+usar+o+App" }}
-          style={styles.bannerImage}
-        />
-      </View>
-
-      {/* Saudação */}
       <Text style={styles.greeting}>{`OLÁ ${nome.toUpperCase()}!`}</Text>
       <Text style={styles.subGreeting}>
         Veja o que está acontecendo na sua produção hoje.
       </Text>
 
-      <View style={styles.grid}>
-        {buttons.map((btn, index) => (
-          <TouchableOpacity
-            key={index}
-            style={styles.button}
-            onPress={() => navigation.navigate(btn.route)}
-          >
-            {btn.icon}
-            <Text style={styles.buttonText}>{btn.label}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
+      <GridMenu items={buttons} />
 
       {/* Botão relatorio*/}
       <TouchableOpacity
@@ -119,18 +95,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
   },
-  banner: {
-    width: "100%",
-    height: 150,
-    marginBottom: 20,
-    borderRadius: 10,
-    overflow: "hidden",
-  },
-  bannerImage: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "cover",
-  },
   greeting: {
     fontSize: 20,
     fontWeight: "bold",
@@ -142,27 +106,6 @@ const styles = StyleSheet.create({
     color: "#666",
     alignSelf: "flex-start",
     marginBottom: 16,
-  },
-  grid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-  },
-  button: {
-    width: "47%",
-    height: 145,
-    backgroundColor: "#CEEBAF",
-    borderRadius: 12,
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: 16,
-    padding: 12,
-  },
-  buttonText: {
-    marginTop: 8,
-    textAlign: "center",
-    fontSize: 15,
-    color: "#00000",
   },
   relatorioButton: {
     flexDirection: "row",
