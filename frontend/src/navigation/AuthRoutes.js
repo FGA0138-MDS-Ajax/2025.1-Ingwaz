@@ -9,11 +9,11 @@ const Stack = createNativeStackNavigator();
 
 export default function AuthRoutes() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Register" component={RegisterScreen} />
-      <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
-      <Stack.Screen name="RedefinirSenha" component={RedefinirSenha} />
+    <Stack.Navigator>
+      <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Criar Conta" component={RegisterScreen} />
+      <Stack.Screen name="Recuperar Senha" component={RecuperarSenha} />
+      <Stack.Screen name="Redefinir Senha" component={RedefinirSenha} />
     </Stack.Navigator>
   );
 }

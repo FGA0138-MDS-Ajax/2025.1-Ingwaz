@@ -1,23 +1,11 @@
 import React, { useContext } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  Image,
-} from "react-native";
+import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import {
-  Ionicons,
-  FontAwesome5,
-  MaterialIcons,
-  Entypo,
-  FontAwesome6,
-} from "@expo/vector-icons";
+import { Ionicons, FontAwesome5, MaterialIcons, FontAwesome6 } from "@expo/vector-icons";
 import { AuthContext } from "../navigation/AuthContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import GridMenu from "../components/GridMenu";
+import ScreenLayout from "../components/ScreenLayout";
 
 export default function AgricultorHome() {
   const navigation = useNavigation();
@@ -32,25 +20,24 @@ export default function AgricultorHome() {
 
   const buttons = [
     {
-      label: "Cultivo e Criações",
-      icon: <FontAwesome5 name="seedling" size={45} color="#2e5339" />,
-      route: "Cultivo e Criações",
-    },
-    {
-      label: "Registrar Propriedade",
+      label: "Registrar Propriedades",
       icon: <FontAwesome5 name="home" size={45} color="#2e5339" />,
-      route: "RegistrarPropriedade",
+      route: "Registrar Propriedades",
     },
-
     {
-      label: "Pedido de Crédito",
+      label: "Registrar Plantios",
+      icon: <FontAwesome5 name="seedling" size={45} color="#2e5339" />,
+      route: "Registrar Plantios",
+    },
+    {
+      label: "Produção Atual",
+      icon: <MaterialIcons name="agriculture" size={45} color="#2e5339" />,
+      route: "Produção Atual",
+    },
+    {
+      label: "Solicitar Crédito",
       icon: <FontAwesome6 name="sack-dollar" size={45} color="#2e5339" />,
-      route: "Pedido de Crédito",
-    },
-    {
-      label: "Falar com Técnico",
-      icon: <FontAwesome5 name="user-tie" size={45} color="#2e5339" />,
-      route: "Chat",
+      route: "Solicitar Crédito",
     },
     {
       label: "Preços Produtos Rurais",
@@ -62,10 +49,15 @@ export default function AgricultorHome() {
       icon: <Ionicons name="help-outline" size={45} color="#2e5339" />,
       route: "Perguntas Agrícolas",
     },
+    {
+      label: "Previsão do Tempo",
+      icon: <Ionicons name="partly-sunny-outline" size={45} color="#2e5339" />,
+      route: "Previsão do Tempo",
+    },
   ];
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScreenLayout isScrollable={true}>
       <Text style={styles.greeting}>{`OLÁ ${nome.toUpperCase()}!`}</Text>
       <Text style={styles.subGreeting}>
         Veja o que está acontecendo na sua produção hoje.
@@ -73,7 +65,6 @@ export default function AgricultorHome() {
 
       <GridMenu items={buttons} />
 
-      {/* Botão relatorio*/}
       <TouchableOpacity
         style={styles.relatorioButton}
         onPress={() => navigation.navigate("Relatório")}
@@ -85,16 +76,11 @@ export default function AgricultorHome() {
       <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
         <Text style={styles.logoutText}>Sair</Text>
       </TouchableOpacity>
-    </ScrollView>
+    </ScreenLayout>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-    backgroundColor: "#fff",
-    alignItems: "center",
-  },
   greeting: {
     fontSize: 20,
     fontWeight: "bold",
@@ -122,7 +108,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#00000",
   },
-
   logoutButton: {
     marginTop: 20,
     padding: 12,

@@ -11,7 +11,14 @@ import {
   RefreshControl,
 } from "react-native";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import { getSolicitacoes, avaliarCredito, aprovarSolicitacao, rejeitarSolicitacao } from "../services/api";
+
+import {
+  getSolicitacoes,
+  avaliarCredito,
+  aprovarSolicitacao,
+  rejeitarSolicitacao,
+} from "../services/api";
+import ScreenLayout from "../components/ScreenLayout";
 
 // Paleta de Cores (Tema Verde)
 const themeColors = {
@@ -22,8 +29,14 @@ const themeColors = {
   placeholder: "#81C784",
   accent: "#4CAF50",
   buttonDisabled: "#A5D6A7",
-  approve: '#2E7D32', reject: '#C62828',
-  status: { aprovado: "#2E7D32", rejeitado: "#C62828", analise: "#F9A825", pendente: "#757575" },
+  approve: "#2E7D32",
+  reject: "#C62828",
+  status: {
+    aprovado: "#2E7D32",
+    rejeitado: "#C62828",
+    analise: "#F9A825",
+    pendente: "#757575",
+  },
 };
 
 export default function AnaliseSolicitacoesScreen() {
@@ -51,7 +64,7 @@ export default function AnaliseSolicitacoesScreen() {
     useCallback(() => {
       setCarregando(true);
       fetchSolicitacoes();
-    }, [fetchSolicitacoes])
+    }, [fetchSolicitacoes]),
   );
 
   const onRefresh = () => {
@@ -66,19 +79,25 @@ export default function AnaliseSolicitacoesScreen() {
       (s) =>
         s?.user?.toString().includes(buscaFormatada) ||
         s?.finalidade?.toLowerCase().includes(buscaFormatada) ||
-        s?.status?.toLowerCase().includes(buscaFormatada)
+        s?.status?.toLowerCase().includes(buscaFormatada),
     );
   }, [solicitacoes, busca]);
 
   const handleUpdateStatus = async (id, action) => {
     setEvaluatingId(id);
     try {
-      const updatedSolicitacao = action === 'aprovar'
-        ? await aprovarSolicitacao(id)
-        : await rejeitarSolicitacao(id);
+      const updatedSolicitacao =
+        action === "aprovar"
+          ? await aprovarSolicitacao(id)
+          : await rejeitarSolicitacao(id);
 
-      Alert.alert("Sucesso", `Solicitação #${id} foi atualizada para '${updatedSolicitacao.status}'.`);
-      setSolicitacoes(prev => prev.map(sol => (sol.id === updatedSolicitacao.id ? updatedSolicitacao : sol)));
+      Alert.alert(
+        "Sucesso",
+        `Solicitação #${id} foi atualizada para '${updatedSolicitacao.status}'.`,
+      );
+      setSolicitacoes((prev) =>
+        prev.map((sol) => (sol.id === updatedSolicitacao.id ? updatedSolicitacao : sol)),
+      );
     } catch (err) {
       Alert.alert("Erro", err.detail || "Não foi possível atualizar o status.");
     } finally {
@@ -94,10 +113,11 @@ export default function AnaliseSolicitacoesScreen() {
 
       Alert.alert("Avaliação Concluída", `Status alterado para: ${novo_status}`);
 
-      setSolicitacoes(prev => prev.map(sol =>
-        sol.id === id ? { ...sol, status: novo_status, score: score_gerado } : sol
-      ));
-
+      setSolicitacoes((prev) =>
+        prev.map((sol) =>
+          sol.id === id ? { ...sol, status: novo_status, score: score_gerado } : sol,
+        ),
+      );
     } catch (err) {
       const errorMessage = err.detail || "Erro ao processar avaliação.";
       Alert.alert("Erro", errorMessage);
@@ -108,37 +128,50 @@ export default function AnaliseSolicitacoesScreen() {
 
   const getStatusStyle = (status) => {
     const color = themeColors.status[status] || themeColors.status.pendente;
-    return { color, fontWeight: 'bold' };
+    return { color, fontWeight: "bold" };
   };
 
   const renderItem = ({ item }) => (
     <View style={styles.card}>
       <View style={styles.cardHeader}>
         <Text style={styles.cardTitle}>Solicitação #{item.id}</Text>
-        <Text style={styles.preco}>R$ {parseFloat(item.valor_solicitado).toFixed(2)}</Text>
+        <Text style={styles.preco}>
+          R$ {parseFloat(item.valor_solicitado).toFixed(2)}
+        </Text>
       </View>
       <Text style={styles.cardInfo}>Usuário ID: {item.user}</Text>
       <Text style={styles.cardInfo}>Finalidade: {item.finalidade}</Text>
       <View style={styles.statusContainer}>
         <Text style={styles.cardInfo}>Status:</Text>
         <Text style={getStatusStyle(item.status)}> {item.status?.toUpperCase()}</Text>
-      </View> 
+      </View>
 
       <View style={styles.buttonWrapper}>
-        {evaluatingId === item.id ? <ActivityIndicator color={themeColors.accent} /> : (
+        {evaluatingId === item.id ? (
+          <ActivityIndicator color={themeColors.accent} />
+        ) : (
           <>
-            {item.status === 'pendente' && (
-              <TouchableOpacity style={styles.actionButton} onPress={() => handleAvaliar(item.id)}>
+            {item.status === "pendente" && (
+              <TouchableOpacity
+                style={styles.actionButton}
+                onPress={() => handleAvaliar(item.id)}
+              >
                 <Text style={styles.actionButtonText}>Avaliar Crédito (Auto)</Text>
               </TouchableOpacity>
             )}
 
-            {item.status === 'analise' && (
+            {item.status === "analise" && (
               <View style={styles.decisionButtonsContainer}>
-                <TouchableOpacity style={[styles.decisionButton, styles.approveButton]} onPress={() => handleUpdateStatus(item.id, 'aprovar')}>
+                <TouchableOpacity
+                  style={[styles.decisionButton, styles.approveButton]}
+                  onPress={() => handleUpdateStatus(item.id, "aprovar")}
+                >
                   <Text style={styles.decisionButtonText}>Aprovar</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.decisionButton, styles.rejectButton]} onPress={() => handleUpdateStatus(item.id, 'rejeitar')}>
+                <TouchableOpacity
+                  style={[styles.decisionButton, styles.rejectButton]}
+                  onPress={() => handleUpdateStatus(item.id, "rejeitar")}
+                >
                   <Text style={styles.decisionButtonText}>Rejeitar</Text>
                 </TouchableOpacity>
               </View>
@@ -150,7 +183,7 @@ export default function AnaliseSolicitacoesScreen() {
   );
 
   return (
-    <View style={styles.container}>
+    <ScreenLayout hasHeader={true}>
       <TextInput
         placeholder="Buscar por usuário, finalidade ou status..."
         value={busca}
@@ -170,11 +203,15 @@ export default function AnaliseSolicitacoesScreen() {
             <Text style={styles.emptyMessage}>Nenhuma solicitação para análise.</Text>
           }
           refreshControl={
-            <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} colors={[themeColors.accent]} />
+            <RefreshControl
+              refreshing={isRefreshing}
+              onRefresh={onRefresh}
+              colors={[themeColors.accent]}
+            />
           }
         />
       )}
-    </View>
+    </ScreenLayout>
   );
 }
 
@@ -204,8 +241,8 @@ const styles = StyleSheet.create({
     borderColor: "#DCEDC8",
   },
   cardHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginBottom: 8,
   },
   cardTitle: {
@@ -224,15 +261,15 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
   statusContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   buttonWrapper: {
     marginTop: 16,
     paddingTop: 12,
     borderTopWidth: 1,
-    borderTopColor: '#E8F5E9',
-    alignItems: 'center',
+    borderTopColor: "#E8F5E9",
+    alignItems: "center",
   },
   actionButton: {
     backgroundColor: themeColors.accent,
@@ -244,8 +281,8 @@ const styles = StyleSheet.create({
     backgroundColor: themeColors.buttonDisabled,
   },
   actionButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: "white",
+    fontWeight: "bold",
     fontSize: 16,
   },
   emptyMessage: {
@@ -255,19 +292,19 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   decisionButtonsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "100%",
   },
   decisionButton: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     paddingVertical: 12,
     borderRadius: 8,
     marginHorizontal: 8,
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2, },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.23,
     shadowRadius: 2.62,
     elevation: 4,
@@ -279,8 +316,8 @@ const styles = StyleSheet.create({
     backgroundColor: themeColors.reject,
   },
   decisionButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: "white",
+    fontWeight: "bold",
     fontSize: 16,
   },
 });

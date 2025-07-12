@@ -8,7 +8,6 @@ import Home from "../pages/Home";
 import WeatherScreen from "../pages/PrevisaoScreen";
 import CotacoesScreen from "../pages/CotacoesScreen";
 import PerguntasScreen from "../pages/PerguntasScreen";
-import CultivoCriacao from "../pages/CultivosECriacoes";
 import PedirCredito from "../pages/SolicitarCreditoScreen";
 import RegistrarPlantio from "../pages/RegistrarPlantio";
 import AnaliseSolicitacoes from "../pages/AnaliseSolicitacoesScreen";
@@ -20,12 +19,12 @@ export default function Routes() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
-      <Stack.Screen name="RegistrarPlantio" component={RegistrarPlantio} />
-      <Stack.Screen name="Pedido de Crédito" component={PedirCredito} />
-      <Stack.Screen name="Cultivo e Criações" component={CultivoCriacao} />
-      <Stack.Screen name="RegistrarPropriedade" component={RegistrarPropriedade} />
-      <Stack.Screen name="AgricultorSolicitacoes" component={AgricultorSolicitacoes} />
-      <Stack.Screen name="AnaliseSolicitacoes" component={AnaliseSolicitacoes} />
+      <Stack.Screen name="Registrar Propriedades" component={RegistrarPropriedade} />
+      <Stack.Screen name="Registrar Plantios" component={RegistrarPlantio} />
+      {/* <Stack.Screen name="Produção Atual" component={...} /> */}
+      <Stack.Screen name="Solicitar Crédito" component={PedirCredito} />
+      <Stack.Screen name="Solicitações de Crédito" component={AgricultorSolicitacoes} />
+      <Stack.Screen name="Analisar Solicitações de Crédito" component={AnaliseSolicitacoes} />
       <Stack.Screen
         name="Preços Produtos Rurais"
         component={CotacoesScreen}

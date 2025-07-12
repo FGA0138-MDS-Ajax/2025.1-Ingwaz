@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { Ionicons, MaterialIcons, FontAwesome6 } from '@expo/vector-icons';
-import { AuthContext } from '../navigation/AuthContext';
+import React, { useContext } from "react";
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { Ionicons, MaterialIcons, FontAwesome6 } from "@expo/vector-icons";
 
-
+import { AuthContext } from "../navigation/AuthContext";
+import ScreenLayout from "../components/ScreenLayout";
+import GridMenu from "../components/GridMenu";
 
 export default function AnalistaHome() {
   const navigation = useNavigation();
@@ -12,64 +13,55 @@ export default function AnalistaHome() {
 
   const handleLogout = async () => {
     setUser(null);
-    navigation.reset({ index: 0, routes: [{ name: 'Login' }] });
+    navigation.reset({ index: 0, routes: [{ name: "Login" }] });
   };
 
   const { user } = useContext(AuthContext);
-  const nome = user?.nome || '';
+  const nome = user?.nome || "";
 
   const buttons = [
     {
-      label: 'Pedido de Crédito',
+      label: "Analisar Solicitações de Crédito",
       icon: <FontAwesome6 name="sack-dollar" size={45} color="#2e5339" />,
-      route: 'AnaliseSolicitacoes',
+      route: "Analisar Solicitações de Crédito",
     },
     {
-      label: 'Lucros e Vendas',
+      label: "Lucros e Vendas",
       icon: <MaterialIcons name="show-chart" size={45} color="#2e5339" />,
-      route: 'Lucros e Vendas',
+      route: "Lucros e Vendas",
     },
   ];
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
+    <ScreenLayout isScrollable={true}>
       <View style={styles.container}>
         <Text style={styles.greeting}>{`OLÁ ${nome.toUpperCase()}!`}</Text>
         <Text style={styles.subGreeting}>
           Transforme propostas em oportunidades para quem produz.
         </Text>
 
-        <View style={styles.grid}>
-          {buttons.map((btn, index) => (
-            <TouchableOpacity
-              key={index}
-              style={styles.button}
-              onPress={() => navigation.navigate(btn.route)}
-            >
-              {btn.icon}
-              <Text style={styles.buttonText}>{btn.label}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-        <TouchableOpacity onPress={handleLogout} style={styles.botaoSair}>
-          <Text style={styles.textoBotaoSair}>Sair</Text>
-        </TouchableOpacity>
+        <GridMenu items={buttons} />
+
         <TouchableOpacity
           style={styles.relatorioButton}
-          onPress={() => navigation.navigate('Relatorio')}
+          onPress={() => navigation.navigate("Relatório")}
         >
           <Ionicons name="document-text-outline" size={40} color="#2e5339" />
           <Text style={styles.relatorioText}>Relatórios</Text>
         </TouchableOpacity>
+        
+        <TouchableOpacity onPress={handleLogout} style={styles.botaoSair}>
+          <Text style={styles.textoBotaoSair}>Sair</Text>
+        </TouchableOpacity>
       </View>
-    </ScrollView>
+    </ScreenLayout>
   );
 }
 
 const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     padding: 16,
   },
   container: {
@@ -77,63 +69,62 @@ const styles = StyleSheet.create({
   },
   greeting: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 4,
   },
   subGreeting: {
     fontSize: 14,
-    color: '#666',
+    color: "#666",
     marginBottom: 16,
   },
   grid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    width: '100%',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    width: "100%",
   },
   button: {
-    width: '48%',
+    width: "48%",
     height: 145,
-    backgroundColor: '#CEEBAF',
+    backgroundColor: "#CEEBAF",
     borderRadius: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginBottom: 16,
     padding: 12,
   },
   buttonText: {
     marginTop: 8,
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 15,
-    color: '#000000',
+    color: "#000000",
   },
   relatorioButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#CEEBAF',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#CEEBAF",
     borderRadius: 10,
     padding: 20,
     marginTop: 10,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   relatorioText: {
     marginLeft: 8,
     fontSize: 16,
-    color: '#000000',
+    color: "#000000",
   },
   botaoSair: {
-    backgroundColor: '#E55',
+    backgroundColor: "#E55",
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 8,
-    alignSelf: 'center',
+    alignSelf: "center",
     marginTop: 24,
   },
 
   textoBotaoSair: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
     fontSize: 16,
-  }
-
+  },
 });

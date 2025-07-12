@@ -10,7 +10,9 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+
 import { getQuotes } from "../services/api";
+import ScreenLayout from "../components/ScreenLayout";
 
 export default function CotacoesScreen() {
   const navigation = useNavigation();
@@ -48,7 +50,7 @@ export default function CotacoesScreen() {
   );
 
   return (
-    <View style={styles.container}>
+    <ScreenLayout hasHeader={true}>
       <TextInput
         placeholder="Clique aqui para pesquisar um produto específico."
         value={busca}
@@ -68,7 +70,7 @@ export default function CotacoesScreen() {
           }
         />
       )}
-    </View>
+    </ScreenLayout>
   );
 }
 

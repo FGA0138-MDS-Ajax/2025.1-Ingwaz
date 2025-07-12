@@ -1,51 +1,46 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { API_URL } from '@env'; 
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import ScreenLayout from "../components/ScreenLayout";
+
+import { API_URL } from "@env";
 const API_BASE = `${API_URL}/api`;
-
-
 
 export default function RecuperarSenha() {
   const navigation = useNavigation();
-  const [email, setEmail] = useState('');
-  const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState("");
+  const [cpf, setCpf] = useState("");
 
   const handleRedefinirSenha = async () => {
     if (!email || !cpf) {
-      Alert.alert('Erro', 'Preencha os campos de e-mail e CPF.');
+      Alert.alert("Erro", "Preencha os campos de e-mail e CPF.");
       return;
     }
 
     try {
       const response = await fetch(`${API_BASE}/users/forgot/`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, cpf }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        await AsyncStorage.setItem('tempToken', data.token);
-        navigation.navigate('RedefinirSenha');
+        await AsyncStorage.setItem("tempToken", data.token);
+        navigation.navigate("Redefinir Senha");
       } else {
-        Alert.alert('Erro', data.error || 'Não foi possível recuperar a senha.');
+        Alert.alert("Erro", data.error || "Não foi possível recuperar a senha.");
       }
     } catch (error) {
-      Alert.alert('Erro', 'Falha na comunicação com o servidor.');
+      Alert.alert("Erro", "Falha na comunicação com o servidor.");
     }
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.voltar}>
-        <Text style={styles.seta}>{'←'}</Text>
-      </TouchableOpacity>
-
-      <Text style={styles.title}>Recuperar Senha</Text>
+    <ScreenLayout style={styles.container}>
       <Text style={styles.subTitle}>Informe seu e-mail e CPF</Text>
 
       <Text style={styles.label}>Email</Text>
@@ -70,19 +65,19 @@ export default function RecuperarSenha() {
       <TouchableOpacity style={styles.botao} onPress={handleRedefinirSenha}>
         <Text style={styles.botaoTexto}>Enviar</Text>
       </TouchableOpacity>
-    </View>
+    </ScreenLayout>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     padding: 24,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   voltar: {
-    position: 'absolute',
+    position: "absolute",
     top: 40,
     left: 16,
   },
@@ -91,21 +86,21 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 4,
   },
   subTitle: {
     fontSize: 14,
-    color: '#555',
+    color: "#555",
     marginBottom: 24,
   },
   label: {
     marginBottom: 4,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderRadius: 8,
     paddingVertical: 10,
     paddingHorizontal: 12,
@@ -113,15 +108,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   botao: {
-    backgroundColor: '#66E266',
+    backgroundColor: "#66E266",
     paddingVertical: 12,
     borderRadius: 6,
-    alignItems: 'center',
+    alignItems: "center",
   },
   botaoTexto: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
     fontSize: 16,
   },
 });
-

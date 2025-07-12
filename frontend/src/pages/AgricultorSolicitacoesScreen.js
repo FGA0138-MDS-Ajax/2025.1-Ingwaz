@@ -10,7 +10,9 @@ import {
   RefreshControl,
 } from "react-native";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
+
 import { getSolicitacoes } from "../services/api";
+import ScreenLayout from "../components/ScreenLayout";
 
 // Paleta de Cores (Tema Verde)
 const themeColors = {
@@ -51,12 +53,12 @@ export default function AgricultorSolicitacoesScreen() {
     useCallback(() => {
       setCarregando(true);
       fetchSolicitacoes();
-    }, [fetchSolicitacoes])
+    }, [fetchSolicitacoes]),
   );
-  
+
   const onRefresh = () => {
-      setIsRefreshing(true);
-      fetchSolicitacoes();
+    setIsRefreshing(true);
+    fetchSolicitacoes();
   };
 
   const solicitacoesFiltradas = useMemo(() => {
@@ -65,13 +67,13 @@ export default function AgricultorSolicitacoesScreen() {
     return solicitacoes.filter(
       (s) =>
         s?.finalidade?.toLowerCase().includes(buscaFormatada) ||
-        s?.status?.toLowerCase().includes(buscaFormatada)
+        s?.status?.toLowerCase().includes(buscaFormatada),
     );
   }, [solicitacoes, busca]);
-  
+
   const getStatusStyle = (status) => {
     const color = themeColors.status[status] || themeColors.status.pendente;
-    return { color, fontWeight: 'bold' };
+    return { color, fontWeight: "bold" };
   };
 
   const renderItem = ({ item }) => (
@@ -93,7 +95,7 @@ export default function AgricultorSolicitacoesScreen() {
   );
 
   return (
-    <View style={styles.container}>
+    <ScreenLayout hasHeader={true}>
       <TextInput
         placeholder="Buscar por finalidade ou status..."
         value={busca}
@@ -101,13 +103,17 @@ export default function AgricultorSolicitacoesScreen() {
         style={styles.busca}
         placeholderTextColor={themeColors.placeholder}
       />
-       <TouchableOpacity style={styles.newButton} onPress={() => navigation.goBack()}>
-       {/*  navigation.navigate('Pedido de Crédito') -> virou navigation.goBack(), caso acabe dando ruim nos testes no mobile, deletar botão */}
+      <TouchableOpacity style={styles.newButton} onPress={() => navigation.goBack()}>
+        {/*  navigation.navigate('Pedido de Crédito') -> virou navigation.goBack(), caso acabe dando ruim nos testes no mobile, deletar botão */}
         <Text style={styles.newButtonText}>+ Nova Solicitação</Text>
       </TouchableOpacity>
 
       {carregando ? (
-        <ActivityIndicator size="large" color={themeColors.accent} style={{ marginTop: 20 }}/>
+        <ActivityIndicator
+          size="large"
+          color={themeColors.accent}
+          style={{ marginTop: 20 }}
+        />
       ) : (
         <FlatList
           data={solicitacoesFiltradas}
@@ -117,11 +123,15 @@ export default function AgricultorSolicitacoesScreen() {
             <Text style={styles.emptyMessage}>Nenhuma solicitação encontrada.</Text>
           }
           refreshControl={
-            <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} colors={[themeColors.accent]}/>
+            <RefreshControl
+              refreshing={isRefreshing}
+              onRefresh={onRefresh}
+              colors={[themeColors.accent]}
+            />
           }
         />
       )}
-    </View>
+    </ScreenLayout>
   );
 }
 
@@ -146,17 +156,17 @@ const styles = StyleSheet.create({
     backgroundColor: themeColors.accent,
     borderRadius: 10,
     paddingVertical: 12,
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: 20,
     elevation: 2,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 4,
   },
   newButtonText: {
-    color: 'white',
+    color: "white",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   card: {
     backgroundColor: themeColors.card,
@@ -183,12 +193,12 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   cardInfo: {
-      fontSize: 14,
-      color: '#757575',
-      marginTop: 8,
+    fontSize: 14,
+    color: "#757575",
+    marginTop: 8,
   },
   cardRight: {
-      alignItems: 'flex-end',
+    alignItems: "flex-end",
   },
   preco: {
     fontSize: 18,

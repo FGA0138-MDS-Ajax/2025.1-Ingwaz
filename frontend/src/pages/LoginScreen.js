@@ -10,8 +10,10 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import { loginUser } from "../services/api";
 import { AuthContext } from "../navigation/AuthContext";
+import ScreenLayout from "../components/ScreenLayout";
 
 export default function LoginScreen() {
   const navigation = useNavigation();
@@ -46,7 +48,7 @@ export default function LoginScreen() {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScreenLayout style={styles.container}>
       <Text style={styles.title}>Entrar</Text>
 
       <Text style={styles.label}>Email</Text>
@@ -74,14 +76,14 @@ export default function LoginScreen() {
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Criar Conta")}>
         <Text style={styles.link}>Ainda não tem conta? Cadastre-se</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate("RecuperarSenha")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Recuperar Senha")}>
         <Text style={styles.link}>Esqueci minha senha</Text>
       </TouchableOpacity>
-    </ScrollView>
+    </ScreenLayout>
   );
 }
 

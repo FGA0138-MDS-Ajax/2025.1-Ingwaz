@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../navigation/AuthContext'; // corrigido
 import AgricultorHome from '../AgricultorHome';
-import TecnicoHome from '../TecnicoHome';
 import AnalistaHome from '../AnalistaHome';
 import { View, Text } from 'react-native';
 

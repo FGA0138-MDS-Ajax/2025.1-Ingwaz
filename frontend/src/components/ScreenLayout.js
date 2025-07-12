@@ -1,15 +1,20 @@
 import React from "react";
-import { StyleSheet, SafeAreaView, ScrollView, View } from "react-native";
+import { StyleSheet, ScrollView, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function ScreenLayout({ children, style, isScrollable = false }) {
+export default function ScreenLayout({ children, style, isScrollable = false, hasHeader = false }) {
   const Container = isScrollable ? ScrollView : View;
 
   const containerProps = isScrollable
     ? { contentContainerStyle: [styles.innerContainer, style] }
     : { style: [styles.innerContainer, style] };
-
+  
+  const header_edges = ["bottom", "left", "right"]
+  const no_header_edges = ["top", "bottom", "left", "right"]
+  const edges = hasHeader ? header_edges : no_header_edges;
+  
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={styles.safeArea} edges={edges}>
       <Container {...containerProps}>{children}</Container>
     </SafeAreaView>
   );

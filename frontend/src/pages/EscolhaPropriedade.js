@@ -13,7 +13,9 @@ import {
 } from "react-native";
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
+
 import { getProperties } from "../services/api";
+import ScreenLayout from "../components/ScreenLayout";
 
 export default function EscolhaPropriedadeScreen() {
   const navigation = useNavigation();
@@ -44,14 +46,14 @@ export default function EscolhaPropriedadeScreen() {
   useFocusEffect(
     useCallback(() => {
       fetchProperties();
-    }, [fetchProperties])
+    }, [fetchProperties]),
   );
 
   const propriedadesFiltradas = useMemo(() => {
     if (!propriedades) return [];
     const buscaFormatada = busca.toLowerCase();
     return propriedades.filter((prop) =>
-      prop?.nome?.toLowerCase().includes(buscaFormatada)
+      prop?.nome?.toLowerCase().includes(buscaFormatada),
     );
   }, [propriedades, busca]);
 
@@ -61,22 +63,23 @@ export default function EscolhaPropriedadeScreen() {
     if (propriedade.coordinates)
       navigation.navigate("Previsões", { propriedadeId: propriedade.id });
     else
-      Alert.alert("Aviso", "Não é possível ver a previsão do tempo de uma propriedade sem localização.")
+      Alert.alert(
+        "Aviso",
+        "Não é possível ver a previsão do tempo de uma propriedade sem localização.",
+      );
   };
 
   const renderItem = ({ item }) => (
-    <TouchableOpacity
-      style={styles.card}
-      onPress={() => handleSelectProperty(item)}
-    >
+    <TouchableOpacity style={styles.card} onPress={() => handleSelectProperty(item)}>
       <View style={styles.iconContainer}>
         <Ionicons name="home-outline" size={45} color="#2e5339" />
       </View>
       <View style={styles.cardTextContainer}>
         <Text style={styles.propriedadeNome}>{item.nome}</Text>
         <Text style={styles.propriedadeLocal}>
-          {item.coordinates ? 
-          item.coordinates.latitude + " " + item.coordinates.longitude : "Localização não informada"}
+          {item.coordinates
+            ? item.coordinates.latitude + " " + item.coordinates.longitude
+            : "Localização não informada"}
         </Text>
       </View>
       <Ionicons name="chevron-forward-outline" size={22} color="#ccc" />
@@ -84,7 +87,7 @@ export default function EscolhaPropriedadeScreen() {
   );
 
   const ListHeader = () => (
-     <View>
+    <View>
       <Text style={styles.title}>Minhas Propriedades</Text>
       <View style={styles.buscaContainer}>
         <Ionicons name="search-outline" size={20} color="#888" style={styles.buscaIcon} />
@@ -99,15 +102,15 @@ export default function EscolhaPropriedadeScreen() {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ScreenLayout hasHeader={true}>
       {carregando && !propriedades.length ? (
         <ActivityIndicator size="large" color="#2c6e49" style={styles.loader} />
       ) : erro ? (
         <View style={styles.emptyContainer}>
-            <Text style={styles.emptyMessage}>{erro}</Text>
-            <TouchableOpacity onPress={fetchProperties} style={styles.retryButton}>
-                <Text style={styles.retryButtonText}>Tentar Novamente</Text>
-            </TouchableOpacity>
+          <Text style={styles.emptyMessage}>{erro}</Text>
+          <TouchableOpacity onPress={fetchProperties} style={styles.retryButton}>
+            <Text style={styles.retryButtonText}>Tentar Novamente</Text>
+          </TouchableOpacity>
         </View>
       ) : (
         <FlatList
@@ -129,7 +132,7 @@ export default function EscolhaPropriedadeScreen() {
           }
         />
       )}
-    </SafeAreaView>
+    </ScreenLayout>
   );
 }
 
@@ -140,8 +143,8 @@ const styles = StyleSheet.create({
   },
   loader: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   title: {
     fontSize: 28,
@@ -152,15 +155,15 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
   },
   buscaContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff",
     borderRadius: 12,
     marginHorizontal: 16,
     marginTop: 10,
     marginBottom: 16,
     elevation: 2,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
@@ -172,7 +175,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 48,
     fontSize: 16,
-    color: '#333',
+    color: "#333",
   },
   card: {
     backgroundColor: "#fff",
@@ -183,18 +186,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     elevation: 2,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
   },
   iconContainer: {
-    backgroundColor: '#e8f5e9',
+    backgroundColor: "#e8f5e9",
     borderRadius: 25,
     width: 50,
     height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginRight: 16,
   },
   cardTextContainer: {
@@ -212,8 +215,8 @@ const styles = StyleSheet.create({
   },
   emptyContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
   emptyMessage: {
@@ -222,15 +225,15 @@ const styles = StyleSheet.create({
     color: "#888",
   },
   retryButton: {
-      marginTop: 16,
-      backgroundColor: '#2c6e49',
-      paddingVertical: 10,
-      paddingHorizontal: 20,
-      borderRadius: 8,
+    marginTop: 16,
+    backgroundColor: "#2c6e49",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
   },
   retryButtonText: {
-      color: '#fff',
-      fontSize: 16,
-      fontWeight: 'bold',
-  }
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
 });

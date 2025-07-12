@@ -1,69 +1,62 @@
-import React, { useState } from 'react';
-import {View, Text, TextInput, TouchableOpacity, StyleSheet, Alert,} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { API_URL } from '@env'; 
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import ScreenLayout from "../components/ScreenLayout";
 
+import { API_URL } from "@env";
 const API_BASE = `${API_URL}/api`;
 
 export default function RedefinirSenha() {
   const navigation = useNavigation();
-  const [senha, setSenha] = useState('');
-  const [confirmarSenha, setConfirmarSenha] = useState('');
-  const [mostrarSenha, setMostrarSenha] = useState('');
-  const [mostrarConfirmar, setMostrarConfirmar] = useState('');
+  const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
+  const [mostrarSenha, setMostrarSenha] = useState("");
+  const [mostrarConfirmar, setMostrarConfirmar] = useState("");
 
   const handleAtualizarSenha = async () => {
     if (!senha || !confirmarSenha) {
-      Alert.alert('Erro', 'Preencha os dois campos de senha.');
+      Alert.alert("Erro", "Preencha os dois campos de senha.");
       return;
     }
 
     if (senha !== confirmarSenha) {
-      Alert.alert('Erro', 'As senhas não coincidem.');
+      Alert.alert("Erro", "As senhas não coincidem.");
       return;
     }
 
     try {
-      const token = await AsyncStorage.getItem('tempToken');
+      const token = await AsyncStorage.getItem("tempToken");
       if (!token) {
-        Alert.alert('Erro', 'Token de recuperação não encontrado.');
+        Alert.alert("Erro", "Token de recuperação não encontrado.");
         return;
       }
 
       const response = await fetch(`${API_BASE}/users/info/`, {
-        method: 'PATCH',
+        method: "PATCH",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `Token ${token}`,
         },
         body: JSON.stringify({ password: senha }),
       });
 
       if (response.ok) {
-        Alert.alert('Sucesso', 'Senha atualizada com sucesso!');
-        await AsyncStorage.removeItem('tempToken');
-        navigation.navigate('Login');
+        Alert.alert("Sucesso", "Senha atualizada com sucesso!");
+        await AsyncStorage.removeItem("tempToken");
+        navigation.navigate("Login");
       } else {
         const data = await response.json();
-        Alert.alert('Erro', data.error || 'Não foi possível atualizar a senha.');
+        Alert.alert("Erro", data.error || "Não foi possível atualizar a senha.");
       }
     } catch (error) {
-      console.error('Erro ao atualizar senha:', error);
-      Alert.alert('Erro', 'Erro ao tentar atualizar a senha.');
+      console.error("Erro ao atualizar senha:", error);
+      Alert.alert("Erro", "Erro ao tentar atualizar a senha.");
     }
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('RecuperarSenha')}
-        style={styles.voltar}
-      >
-        <Text style={styles.seta}>{'←'}</Text>
-      </TouchableOpacity>
-
-      <Text style={styles.title}>Redefinir Senha</Text>
+    <ScreenLayout>
       <Text style={styles.subTitle}>
         Crie uma nova senha. Certifique-se de que ela seja diferente das anteriores.
       </Text>
@@ -78,7 +71,7 @@ export default function RedefinirSenha() {
           placeholder="********"
         />
         <TouchableOpacity onPress={() => setMostrarSenha(!mostrarSenha)}>
-          <Text style={styles.olho}>{mostrarSenha ? '🙈' : '👁️'}</Text>
+          <Text style={styles.olho}>{mostrarSenha ? "🙈" : "👁️"}</Text>
         </TouchableOpacity>
       </View>
 
@@ -92,26 +85,26 @@ export default function RedefinirSenha() {
           placeholder="********"
         />
         <TouchableOpacity onPress={() => setMostrarConfirmar(!mostrarConfirmar)}>
-          <Text style={styles.olho}>{mostrarConfirmar ? '🙈' : '👁️'}</Text>
+          <Text style={styles.olho}>{mostrarConfirmar ? "🙈" : "👁️"}</Text>
         </TouchableOpacity>
       </View>
 
       <TouchableOpacity style={styles.botao} onPress={handleAtualizarSenha}>
         <Text style={styles.botaoTexto}>Atualizar Senha</Text>
       </TouchableOpacity>
-    </View>
+    </ScreenLayout>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     padding: 24,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   voltar: {
-    position: 'absolute',
+    position: "absolute",
     top: 40,
     left: 16,
   },
@@ -120,23 +113,23 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 4,
   },
   subTitle: {
     fontSize: 14,
-    color: '#555',
+    color: "#555",
     marginBottom: 24,
   },
   label: {
     marginBottom: 4,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderRadius: 8,
     paddingHorizontal: 12,
     marginBottom: 24,
@@ -151,14 +144,14 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   botao: {
-    backgroundColor: '#66E266',
+    backgroundColor: "#66E266",
     paddingVertical: 12,
     borderRadius: 6,
-    alignItems: 'center',
+    alignItems: "center",
   },
   botaoTexto: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
     fontSize: 16,
   },
 });

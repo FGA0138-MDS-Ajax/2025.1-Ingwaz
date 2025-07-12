@@ -12,7 +12,9 @@ import {
 } from "react-native";
 import RenderHTML from "react-native-render-html";
 import { useNavigation } from "@react-navigation/native";
+
 import { getPerguntas } from "../services/api";
+import ScreenLayout from "../components/ScreenLayout";
 
 const renderersProps = {
   img: {
@@ -62,7 +64,7 @@ export default function PerguntasScreen() {
   );
 
   return (
-    <View style={styles.container}>
+    <ScreenLayout hasHeader={true}>
       {busca === "" && (
         <View style={styles.banner}>
           <Image
@@ -109,7 +111,7 @@ export default function PerguntasScreen() {
           }
         />
       )}
-    </View>
+    </ScreenLayout>
   );
 }
 
@@ -122,8 +124,8 @@ const tagsStyles = {
     margin: 0,
     padding: 0,
   },
-  img:{
-    "width": "50%",
+  img: {
+    width: "50%",
   },
   li: {
     fontSize: 16,
