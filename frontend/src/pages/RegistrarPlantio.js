@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  ScrollView,
-  Alert,
-} from "react-native";
+import { Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { API_URL } from "@env";
@@ -22,7 +14,6 @@ export default function RegistrarPlantio() {
   const [propriedade, setPropriedade] = useState("");
   const [propriedades, setPropriedades] = useState([]);
 
-  // Carregar propriedades registradas da API
   useEffect(() => {
     const fetchPropriedades = async () => {
       const token = await AsyncStorage.getItem("token");
@@ -35,7 +26,7 @@ export default function RegistrarPlantio() {
         });
 
         const data = await response.json();
-        setPropriedades(data); // Preenche as propriedades com dados da API
+        setPropriedades(data);
       } catch (error) {
         console.error("Erro ao carregar propriedades:", error);
         Alert.alert("Erro", "Não foi possível carregar as propriedades.");
@@ -57,7 +48,7 @@ export default function RegistrarPlantio() {
       area: parseFloat(area),
       data,
       estimativa_colheita: estimativaColheita,
-      propriedade: parseInt(propriedade), // Envia o ID da propriedade selecionada
+      propriedade: parseInt(propriedade),
     };
 
     const API_BASE = `${API_URL}/api`;
@@ -77,7 +68,7 @@ export default function RegistrarPlantio() {
 
       let responseData;
       try {
-        responseData = JSON.parse(textResponse); // Tenta converter a resposta para JSON
+        responseData = JSON.parse(textResponse);
       } catch (error) {
         console.error("Erro ao parsear JSON:", error);
         Alert.alert("Erro", "A resposta do servidor não é válida.");
@@ -91,7 +82,6 @@ export default function RegistrarPlantio() {
       console.log("Resposta da API (JSON):", responseData);
       Alert.alert("Sucesso", "Plantio registrado com sucesso!");
 
-      // Limpar os campos após o sucesso
       setCultura("");
       setArea("");
       setData("");

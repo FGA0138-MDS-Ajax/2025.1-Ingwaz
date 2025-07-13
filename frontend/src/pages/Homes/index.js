@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../navigation/AuthContext'; // corrigido
-import AgricultorHome from '../AgricultorHome';
-import AnalistaHome from '../AnalistaHome';
-import { View, Text } from 'react-native';
+import React, { useContext } from "react";
+import { AuthContext } from "../../navigation/AuthContext";
+import AgricultorHome from "./AgricultorHome";
+import AnalistaHome from "./AnalistaHome";
+import { View, Text } from "react-native";
 
 export default function Home() {
   const { user } = useContext(AuthContext);
@@ -16,9 +16,9 @@ export default function Home() {
   }
 
   switch (user.tipo) {
-    case 'agricultor':
+    case "agricultor":
       return <AgricultorHome />;
-    case 'analista':
+    case "analista":
       return <AnalistaHome />;
     default:
       return (

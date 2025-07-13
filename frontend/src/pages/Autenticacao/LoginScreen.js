@@ -1,19 +1,11 @@
 import React, { useState, useContext } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  Alert,
-  ScrollView,
-} from "react-native";
+import { Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { loginUser } from "../services/api";
-import { AuthContext } from "../navigation/AuthContext";
-import ScreenLayout from "../components/ScreenLayout";
+import { loginUser } from "../../services/api";
+import { AuthContext } from "../../navigation/AuthContext";
+import ScreenLayout from "../../components/ScreenLayout";
 
 export default function LoginScreen() {
   const navigation = useNavigation();

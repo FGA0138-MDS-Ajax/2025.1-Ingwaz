@@ -17,10 +17,9 @@ import {
   avaliarCredito,
   aprovarSolicitacao,
   rejeitarSolicitacao,
-} from "../services/api";
-import ScreenLayout from "../components/ScreenLayout";
+} from "../../services/api";
+import ScreenLayout from "../../components/ScreenLayout";
 
-// Paleta de Cores (Tema Verde)
 const themeColors = {
   background: "#F1F8E9",
   card: "#FFFFFF",

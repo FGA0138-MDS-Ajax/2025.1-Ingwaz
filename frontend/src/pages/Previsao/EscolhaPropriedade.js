@@ -7,15 +7,14 @@ import {
   FlatList,
   TouchableOpacity,
   ActivityIndicator,
-  SafeAreaView,
   RefreshControl,
   Alert,
 } from "react-native";
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
-import { getProperties } from "../services/api";
-import ScreenLayout from "../components/ScreenLayout";
+import { getProperties } from "../../services/api";
+import ScreenLayout from "../../components/ScreenLayout";
 
 export default function EscolhaPropriedadeScreen() {
   const navigation = useNavigation();
@@ -58,8 +57,6 @@ export default function EscolhaPropriedadeScreen() {
   }, [propriedades, busca]);
 
   const handleSelectProperty = (propriedade) => {
-    // Navega para a tela de previsão do tempo com o ID da propriedade
-    // caso tiver coordenadas
     if (propriedade.coordinates)
       navigation.navigate("Previsões", { propriedadeId: propriedade.id });
     else

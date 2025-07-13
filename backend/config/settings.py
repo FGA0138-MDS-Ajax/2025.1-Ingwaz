@@ -29,7 +29,6 @@ ALLOWED_HOSTS = ['*']  # PERMITE TODOS — usar só em ambiente de desenvolvimen
 CORS_ALLOW_ALL_ORIGINS = True
 
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -49,6 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'credito',
     'weather',
+    'calendario',
 ]
 
 REST_FRAMEWORK = {
@@ -69,7 +69,7 @@ SPECTACULAR_SETTINGS = {
 
     'REDOC_UI_SETTINGS': {
         'expandResponses': '200,201',
-    }
+    },
 }
 
 MIDDLEWARE = [
@@ -110,7 +110,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
 }
 
 

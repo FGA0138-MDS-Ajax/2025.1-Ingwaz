@@ -25,7 +25,6 @@ const renderersProps = {
 const SUGESTOES = ["arroz", "plantio", "colheita", "pragas"];
 
 export default function PerguntasScreen() {
-  const navigation = useNavigation();
   const [perguntas, setPerguntas] = useState([]);
   const [busca, setBusca] = useState("");
   const [carregando, setCarregando] = useState(false);

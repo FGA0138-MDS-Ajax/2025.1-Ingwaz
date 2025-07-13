@@ -7,15 +7,13 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   Alert,
-  ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import { solicitarCredito, avaliarCredito } from "../services/api";
-import { AuthContext } from "../navigation/AuthContext";
-import ScreenLayout from "../components/ScreenLayout";
+import { solicitarCredito, avaliarCredito } from "../../services/api";
+import { AuthContext } from "../../navigation/AuthContext";
+import ScreenLayout from "../../components/ScreenLayout";
 
-// Paleta de Cores (Tema Verde)
 const themeColors = {
   background: "#F1F8E9",
   card: "#FFFFFF",
@@ -58,7 +56,6 @@ export default function SolicitarCreditoScreen() {
 
       const result = await solicitarCredito(dados);
 
-      /* codigo novo */
       if (result && result.id) {
         const resultadoAvaliacao = await avaliarCredito(result.id);
 
@@ -73,10 +70,6 @@ export default function SolicitarCreditoScreen() {
           "A resposta da criação da solicitação não continha um ID válido.",
         );
       }
-
-      /* Alert.alert("Sucesso!", "Sua solicitação foi enviada com sucesso.", [
-        { text: "OK", onPress: () => navigation.goBack() },
-      ]); */
     } catch (err) {
       const errorMessage =
         err.detail ||

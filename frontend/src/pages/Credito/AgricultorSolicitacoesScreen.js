@@ -11,10 +11,9 @@ import {
 } from "react-native";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 
-import { getSolicitacoes } from "../services/api";
-import ScreenLayout from "../components/ScreenLayout";
+import { getSolicitacoes } from "../../services/api";
+import ScreenLayout from "../../components/ScreenLayout";
 
-// Paleta de Cores (Tema Verde)
 const themeColors = {
   background: "#F1F8E9",
   card: "#FFFFFF",
@@ -104,7 +103,6 @@ export default function AgricultorSolicitacoesScreen() {
         placeholderTextColor={themeColors.placeholder}
       />
       <TouchableOpacity style={styles.newButton} onPress={() => navigation.goBack()}>
-        {/*  navigation.navigate('Pedido de Crédito') -> virou navigation.goBack(), caso acabe dando ruim nos testes no mobile, deletar botão */}
         <Text style={styles.newButtonText}>+ Nova Solicitação</Text>
       </TouchableOpacity>
 

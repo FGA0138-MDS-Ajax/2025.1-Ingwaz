@@ -7,13 +7,12 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   Switch,
-  SafeAreaView,
 } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
-import { getWeatherList, getWeatherDetail } from "../services/api";
-import ScreenLayout from "../components/ScreenLayout";
+import { getWeatherList, getWeatherDetail } from "../../services/api";
+import ScreenLayout from "../../components/ScreenLayout";
 
 export default function WeatherScreen() {
   const route = useRoute();
@@ -61,7 +60,6 @@ export default function WeatherScreen() {
     setCarregandoDetalhe(true);
     setErro(null);
     try {
-      // Se o dia já está selecionado, esconde os detalhes
       if (selectedDay && selectedDay.time === date) {
         setSelectedDay(null);
         return;

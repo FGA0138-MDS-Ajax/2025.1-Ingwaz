@@ -1,22 +1,14 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  Alert,
-  ScrollView,
-} from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
 import { useContext } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { registerUser, loginUser } from "../services/api";
-import { AuthContext } from "../navigation/AuthContext";
-import ScreenLayout from "../components/ScreenLayout";
+import { registerUser, loginUser } from "../../services/api";
+import { AuthContext } from "../../navigation/AuthContext";
+import ScreenLayout from "../../components/ScreenLayout";
 
 export default function RegisterScreen() {
   const { setUser } = useContext(AuthContext);
@@ -57,14 +49,12 @@ export default function RegisterScreen() {
       const loginResult = await loginUser({ email, password: senha });
 
       if (loginResult.token) {
+        await AsyncStorage.setItem("userId", loginResult.id.toString());
         await AsyncStorage.setItem("token", loginResult.token);
-        setUser({
-          token: loginResult.token,
-          tipo: loginResult.tipo || loginResult.role,
-        });
-
+        await AsyncStorage.setItem("userTipo", loginResult.tipo);
+        await AsyncStorage.setItem("userNome", loginResult.nome);
+        setUser(loginResult);
         Alert.alert("Sucesso", "Usuário registrado e logado com sucesso!");
-        navigation.reset({ index: 0, routes: [{ name: "Home" }] });
       } else {
         Alert.alert(
           "Atenção",

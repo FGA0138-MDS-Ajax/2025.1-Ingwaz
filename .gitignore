@@ -4,8 +4,4 @@ node_modules/
 android/
 .expo/
 .expo-shared/
-<<<<<<< HEAD
 db.sqlite3
-=======
-
->>>>>>> feat/novo-frontend-integrado

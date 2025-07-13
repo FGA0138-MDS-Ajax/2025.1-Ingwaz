@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet } from "react-native";
+import { Text, TextInput, TouchableOpacity, Alert, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { API_URL } from "@env";
@@ -27,7 +27,7 @@ export default function RegistrarPropriedade() {
       longitude: longitude ? parseFloat(longitude) : null,
     };
 
-    const API_BASE = `${API_URL}/api`; // Usando a URL correta do backend
+    const API_BASE = `${API_URL}/api`;
 
     try {
       const response = await fetch(`${API_BASE}/propriedade/`, {
@@ -39,11 +39,9 @@ export default function RegistrarPropriedade() {
         body: JSON.stringify(payload),
       });
 
-      // Captura a resposta como texto
       const textResponse = await response.text();
-      console.log("Resposta da API (como texto):", textResponse); // Verifique o que está sendo retornado
+      console.log("Resposta da API (como texto):", textResponse); 
 
-      // Agora, tenta converter a resposta para JSON
       let responseData;
       try {
         responseData = JSON.parse(textResponse);
@@ -53,7 +51,6 @@ export default function RegistrarPropriedade() {
         return;
       }
 
-      // Verifica se a resposta foi bem-sucedida
       if (!response.ok) {
         throw new Error("Falha ao registrar propriedade");
       }
@@ -62,7 +59,6 @@ export default function RegistrarPropriedade() {
 
       Alert.alert("Sucesso", "Propriedade registrada com sucesso!");
 
-      // Limpar os campos após o sucesso
       setNome("");
       setAreaTotal("");
       setLatitude("");

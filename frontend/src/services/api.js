@@ -77,6 +77,7 @@ export async function getPerguntas(pergunta) {
 }
 
 const getAuthToken = async () => {
+  console.log(await AsyncStorage.getItem('token'));
   return await AsyncStorage.getItem('token');
 };
 
@@ -87,7 +88,7 @@ export const getProperties = async () => {
   }
 
   try {
-    const response = await fetch(`${API_BASE}/propriedade`, {
+    const response = await fetch(`${API_BASE}/propriedade/`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -102,7 +103,6 @@ export const getProperties = async () => {
       const errorData = await response.json();
       throw new Error(errorData.detail || `Erro na API: ${response.statusText}`);
     }
-
     return await response.json();
   } catch (error) {
     console.error("Erro em getProperties:", error);

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import ScreenLayout from "../components/ScreenLayout";
+
+import ScreenLayout from "../../components/ScreenLayout";
 
 import { API_URL } from "@env";
 const API_BASE = `${API_URL}/api`;

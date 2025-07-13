@@ -5,17 +5,14 @@ import {
   TextInput,
   StyleSheet,
   FlatList,
-  TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 import { getQuotes } from "../services/api";
 import ScreenLayout from "../components/ScreenLayout";
 
 export default function CotacoesScreen() {
-  const navigation = useNavigation();
   const [cotacoes, setCotacoes] = useState([]);
   const [carregando, setCarregando] = useState(true);
   const [busca, setBusca] = useState("");
