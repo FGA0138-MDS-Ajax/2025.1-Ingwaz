@@ -12,6 +12,8 @@ import PedirCredito from "../pages/SolicitarCreditoScreen";
 import RegistrarPlantio from "../pages/RegistrarPlantio";
 import AnaliseSolicitacoes from "../pages/AnaliseSolicitacoesScreen";
 import AgricultorSolicitacoes from "../pages/AgricultorSolicitacoesScreen";
+import ListarPlantiosScreen from "../pages/ListarPlantiosScreen";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +23,7 @@ export default function Routes() {
       <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
       <Stack.Screen name="Registrar Propriedades" component={RegistrarPropriedade} />
       <Stack.Screen name="Registrar Plantios" component={RegistrarPlantio} />
+      <Stack.Screen name="Plantios Registrados" component={ListarPlantiosScreen} />
       {/* <Stack.Screen name="Produção Atual" component={...} /> */}
       <Stack.Screen name="Solicitar Crédito" component={PedirCredito} />
       <Stack.Screen name="Solicitações de Crédito" component={AgricultorSolicitacoes} />
