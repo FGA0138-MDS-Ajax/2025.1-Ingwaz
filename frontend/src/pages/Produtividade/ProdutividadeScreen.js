@@ -214,7 +214,7 @@ const ProdutividadeScreen = () => {
                 noOfSections={5}
                 isAnimated
                 overflowTop={30}
-                endSpacing={85}
+                endSpacing={70}
                 yAxisLabelFormatter={(value) => `${Math.round(value / 1000)}`}
                 renderTooltip={(item) => (
                   <View style={styles.tooltip}>
