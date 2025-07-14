@@ -24,6 +24,18 @@ pytest
 
 ---
 
+### `test_api_calendario.py` – testes da API do calendário
+
+Testa os endpoints relacionados ao calendário.
+
+| Teste | O que é testado |
+|-------|------------------|
+| `test_crop_detail_view_retorna_cultura_existente` | Verifica se o detalhamento de uma cultura existente retorna os dados corretos. |
+| `test_crop_detail_view_nao_encontra_slug` | Garante que a busca por uma cultura inexistente retorna 404. |
+| `test_update_view_sem_autenticacao` | Garante que a atualização dos dados do calendário sem autenticação retorna 401. |
+
+---
+
 ### `test_api_credito.py` – testes da API de crédito
 
 Testa o endpoint /api/solicitacoes.
@@ -121,6 +133,19 @@ Testa o endpoint `/api/login`.
 ---
 
 ## Testes unitários
+
+---
+
+### `test_calendario.py` – testes unitários do calendário
+
+Testa diretamente os modelos e serializers do app calendário.
+
+| Teste | O que é testado |
+|-------|------------------|
+| `test_crop_str_and_slug` | Verifica o método string do modelo Crop e se o campo slug é gerado corretamente. |
+| `test_region_str_and_unique` | Verifica o método string do modelo Region e a unicidade de nome+crop. |
+| `test_state_str_and_unique` | Verifica o método string do modelo State e a unicidade de nome+region. |
+| `test_crop_serializer_output` | Garante que o serializer de Crop retorna os dados aninhados corretamente, incluindo regiões e estados. |
 
 ---
 
