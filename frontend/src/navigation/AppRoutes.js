@@ -14,6 +14,7 @@ import PedirCredito from "../pages/Credito/SolicitarCreditoScreen";
 import Home from "../pages/Homes";
 import EscolhaCulturaScreen from "../pages/Calendario/EscolhaCulturaScreen";
 import CalendarioScreen from "../pages/Calendario/CalendarioScreen";
+import ProdutividadeScreen from "../pages/ProdutividadeScreen"
 
 const Stack = createNativeStackNavigator();
 
@@ -23,7 +24,7 @@ export default function Routes() {
       <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
       <Stack.Screen name="Registrar Propriedades" component={RegistrarPropriedade} />
       <Stack.Screen name="Registrar Plantios" component={RegistrarPlantio} />
-      {/* <Stack.Screen name="Produção Atual" component={...} /> */}
+      <Stack.Screen name="Produtividade" component={ProdutividadeScreen} />
       <Stack.Screen name="Solicitar Crédito" component={PedirCredito} />
       <Stack.Screen name="Solicitações de Crédito" component={AgricultorSolicitacoes} />
       <Stack.Screen

@@ -20,7 +20,7 @@ export default function AgricultorHome() {
       name: "Registrar Plantios",
       icon: <FontAwesome5 name="seedling" size={45} color="#2e5339" />,
     },
-    { name: "Produção Atual", icon: <Entypo name="leaf" size={45} color="#2e5339" /> },
+    { name: "Produtividade", icon: <Entypo name="leaf" size={45} color="#2e5339" /> },
     {
       name: "Solicitar Crédito",
       icon: <FontAwesome6 name="sack-dollar" size={45} color="#2e5339" />,
