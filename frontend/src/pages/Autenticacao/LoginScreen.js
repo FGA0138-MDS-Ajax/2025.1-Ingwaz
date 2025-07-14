@@ -3,7 +3,7 @@ import { Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-nati
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { loginUser } from "../../services/api";
+import { loginUser } from "./api";
 import { AuthContext } from "../../navigation/AuthContext";
 import ScreenLayout from "../../components/ScreenLayout";
 

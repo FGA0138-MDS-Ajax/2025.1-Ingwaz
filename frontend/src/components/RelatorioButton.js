@@ -9,10 +9,10 @@ export default function RelatorioButton() {
   return (
     <TouchableOpacity
       style={styles.relatorioButton}
-      onPress={() => navigation.navigate("Relatório")}
+      onPress={() => navigation.navigate("Relatório de Produtividade")}
     >
       <Ionicons name="document-text-outline" size={40} color="#2e5339" />
-      <Text style={styles.relatorioText}>Relatórios</Text>
+      <Text style={styles.relatorioText}>Relatório de Produtividade</Text>
     </TouchableOpacity>
   );
 }

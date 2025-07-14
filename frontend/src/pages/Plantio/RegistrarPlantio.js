@@ -4,7 +4,7 @@ import { Picker } from "@react-native-picker/picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { API_URL } from "@env";
 
-import ScreenLayout from "../components/ScreenLayout";
+import ScreenLayout from "../../components/ScreenLayout";
 
 export default function RegistrarPlantio() {
   const [cultura, setCultura] = useState("");

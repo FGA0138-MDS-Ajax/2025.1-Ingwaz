@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { MaterialIcons } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
 import { useContext } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { registerUser, loginUser } from "../../services/api";
+import { registerUser, loginUser } from "./api";
 import { AuthContext } from "../../navigation/AuthContext";
 import ScreenLayout from "../../components/ScreenLayout";
 
@@ -20,7 +19,6 @@ export default function RegisterScreen() {
   const [role, setRole] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
-  const [aceitaTermos, setAceitaTermos] = useState(false);
 
   const handleCadastro = async () => {
     if (!nome || !cpf || !email || !senha || !confirmarSenha || !role) {
@@ -29,10 +27,6 @@ export default function RegisterScreen() {
 
     if (senha !== confirmarSenha) {
       return Alert.alert("Erro", "As senhas não coincidem.");
-    }
-
-    if (!aceitaTermos) {
-      return Alert.alert("Erro", "Você precisa aceitar os termos do aplicativo.");
     }
 
     const cpfNumerico = cpf.replace(/\D/g, "");
@@ -132,19 +126,6 @@ export default function RegisterScreen() {
         placeholder="********"
         placeholderTextColor="#999"
       />
-
-      <View style={styles.checkboxContainer}>
-        <TouchableOpacity onPress={() => setAceitaTermos(!aceitaTermos)}>
-          <MaterialIcons
-            name={aceitaTermos ? "check-box" : "check-box-outline-blank"}
-            size={24}
-            color="#66E266"
-          />
-        </TouchableOpacity>
-        <Text style={styles.checkboxLabel}>
-          Estou de acordo com os termos do aplicativo
-        </Text>
-      </View>
 
       <TouchableOpacity style={styles.botaoCriar} onPress={handleCadastro}>
         <Text style={styles.botaoTexto}>Criar</Text>

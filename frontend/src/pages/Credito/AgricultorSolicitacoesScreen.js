@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 
-import { getSolicitacoes } from "../../services/api";
+import { getSolicitacoes } from "./api";
 import ScreenLayout from "../../components/ScreenLayout";
 
 const themeColors = {
@@ -94,7 +94,7 @@ export default function AgricultorSolicitacoesScreen() {
   );
 
   return (
-    <ScreenLayout hasHeader={true}>
+    <ScreenLayout hasHeader={true} isList={true}>
       <TextInput
         placeholder="Buscar por finalidade ou status..."
         value={busca}

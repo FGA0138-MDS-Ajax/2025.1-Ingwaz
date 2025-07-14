@@ -1,11 +1,5 @@
 import React, { useContext } from "react";
-import {
-  Ionicons,
-  FontAwesome5,
-  MaterialIcons,
-  Entypo,
-  FontAwesome6,
-} from "@expo/vector-icons";
+import { Ionicons, FontAwesome5, MaterialIcons, FontAwesome6 } from "@expo/vector-icons";
 
 import HomeScreen from "../../components/Home";
 import RelatorioButton from "../../components/RelatorioButton";
@@ -20,7 +14,10 @@ export default function AgricultorHome() {
       name: "Registrar Plantios",
       icon: <FontAwesome5 name="seedling" size={45} color="#2e5339" />,
     },
-    { name: "Produtividade", icon: <Entypo name="leaf" size={45} color="#2e5339" /> },
+    {
+      name: "Plantios Registrados",
+      icon: <MaterialIcons name="agriculture" size={45} color="#2e5339" />,
+    },
     {
       name: "Solicitar Crédito",
       icon: <FontAwesome6 name="sack-dollar" size={45} color="#2e5339" />,
@@ -37,7 +34,10 @@ export default function AgricultorHome() {
       name: "Previsão do Tempo",
       icon: <Ionicons name="partly-sunny-outline" size={45} color="#2e5339" />,
     },
-    { name: "Calendário de Plantios", icon: <Ionicons name="calendar" size={45} color="#2e5339" /> },
+    {
+      name: "Calendário de Plantios",
+      icon: <Ionicons name="calendar" size={45} color="#2e5339" />,
+    },
   ];
 
   return (

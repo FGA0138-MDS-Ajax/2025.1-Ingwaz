@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import { solicitarCredito, avaliarCredito } from "../../services/api";
+import { solicitarCredito, avaliarCredito } from "./api";
 import { AuthContext } from "../../navigation/AuthContext";
 import ScreenLayout from "../../components/ScreenLayout";
 
@@ -99,7 +99,7 @@ export default function SolicitarCreditoScreen() {
   }
 
   return (
-    <ScreenLayout hasHeader={true} style={styles.container}>
+    <ScreenLayout hasHeader={true} style={styles.container} isList={true}>
       <View style={styles.card}>
         <Text style={styles.title}>Nova Solicitação</Text>
 

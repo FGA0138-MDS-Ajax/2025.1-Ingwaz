@@ -11,7 +11,7 @@ import {
 import { useRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
-import { getWeatherList, getWeatherDetail } from "../../services/api";
+import { getWeatherList, getWeatherDetail } from "./api";
 import ScreenLayout from "../../components/ScreenLayout";
 
 export default function WeatherScreen() {
@@ -150,7 +150,7 @@ export default function WeatherScreen() {
   );
 
   return (
-    <ScreenLayout hasHeader={true}>
+    <ScreenLayout hasHeader={true} isList={true}>
       {carregandoLista ? (
         <ActivityIndicator size="large" color="#2c6e49" style={{ marginTop: 50 }} />
       ) : erro ? (

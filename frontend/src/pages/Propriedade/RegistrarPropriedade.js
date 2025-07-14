@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { API_URL } from "@env";
 
-import ScreenLayout from "../components/ScreenLayout";
+import ScreenLayout from "../../components/ScreenLayout";
 
 export default function RegistrarPropriedade() {
   const [nome, setNome] = useState("");
@@ -40,7 +40,7 @@ export default function RegistrarPropriedade() {
       });
 
       const textResponse = await response.text();
-      console.log("Resposta da API (como texto):", textResponse); 
+      console.log("Resposta da API (como texto):", textResponse);
 
       let responseData;
       try {

@@ -13,8 +13,8 @@ import {
 import RenderHTML from "react-native-render-html";
 import { useNavigation } from "@react-navigation/native";
 
-import { getPerguntas } from "../services/api";
-import ScreenLayout from "../components/ScreenLayout";
+import { getPerguntas } from "./api";
+import ScreenLayout from "../../components/ScreenLayout";
 
 const renderersProps = {
   img: {
@@ -63,7 +63,7 @@ export default function PerguntasScreen() {
   );
 
   return (
-    <ScreenLayout hasHeader={true}>
+    <ScreenLayout hasHeader={true} isList={true}>
       {busca === "" && (
         <View style={styles.banner}>
           <Image

@@ -17,7 +17,7 @@ import {
   avaliarCredito,
   aprovarSolicitacao,
   rejeitarSolicitacao,
-} from "../../services/api";
+} from "./api";
 import ScreenLayout from "../../components/ScreenLayout";
 
 const themeColors = {
@@ -182,7 +182,7 @@ export default function AnaliseSolicitacoesScreen() {
   );
 
   return (
-    <ScreenLayout hasHeader={true}>
+    <ScreenLayout hasHeader={true} isList={true}>
       <TextInput
         placeholder="Buscar por usuário, finalidade ou status..."
         value={busca}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useLayoutEffect, useCallback, useMemo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import {
   View,
   Text,
@@ -7,10 +7,9 @@ import {
   FlatList,
   ActivityIndicator,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
-import { getQuotes } from "../services/api";
-import ScreenLayout from "../components/ScreenLayout";
+import { getQuotes } from "./api";
+import ScreenLayout from "../../components/ScreenLayout";
 
 export default function CotacoesScreen() {
   const [cotacoes, setCotacoes] = useState([]);
@@ -47,7 +46,7 @@ export default function CotacoesScreen() {
   );
 
   return (
-    <ScreenLayout hasHeader={true}>
+    <ScreenLayout hasHeader={true} isList={true}>
       <TextInput
         placeholder="Clique aqui para pesquisar um produto específico."
         value={busca}

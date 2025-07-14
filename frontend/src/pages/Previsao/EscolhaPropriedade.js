@@ -13,7 +13,7 @@ import {
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
-import { getProperties } from "../../services/api";
+import { getProperties } from "./api";
 import ScreenLayout from "../../components/ScreenLayout";
 
 export default function EscolhaPropriedadeScreen() {
@@ -99,7 +99,7 @@ export default function EscolhaPropriedadeScreen() {
   );
 
   return (
-    <ScreenLayout hasHeader={true}>
+    <ScreenLayout hasHeader={true} isList={true}>
       {carregando && !propriedades.length ? (
         <ActivityIndicator size="large" color="#2c6e49" style={styles.loader} />
       ) : erro ? (
