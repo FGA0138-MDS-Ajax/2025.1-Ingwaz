@@ -216,7 +216,7 @@ const ProdutividadeScreen = () => {
                 isAnimated
                 formatYLabel={(value) => (Math.round(value / 1000))}
                 overflowTop={30}
-                endSpacing={70}
+                endSpacing={100}
                 renderTooltip={(item) => (
                   <View style={styles.tooltip}>
                     <Text style={{ color: "white", fontWeight: "bold" }}>
