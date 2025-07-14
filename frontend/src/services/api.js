@@ -1,6 +1,8 @@
 import { API_URL, API_EMBRAPA_URL, API_EMBRAPA_KEY } from "@env";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
+
 const API_BASE = `${API_URL}/api`;
 
 export async function registerUser(data) {
@@ -55,15 +57,15 @@ export async function getPerguntas(pergunta) {
     };
     const response = await fetch(
       API_EMBRAPA_URL, {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${API_EMBRAPA_KEY}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload),
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${API_EMBRAPA_KEY}`,
+        "Content-Type": "application/json"
       },
+      body: JSON.stringify(payload),
+    },
     );
-    
+
     const data = await response.json();
     if (!response.ok) {
       console.error("Erro API:", data);
@@ -84,7 +86,7 @@ const getAuthToken = async () => {
 export const getProperties = async () => {
   const token = await getAuthToken();
   if (!token) {
-      return { error: "Usuário não autenticado." };
+    return { error: "Usuário não autenticado." };
   }
 
   try {
@@ -98,7 +100,7 @@ export const getProperties = async () => {
 
     if (!response.ok) {
       if (response.status === 401) {
-         return { error: "Sua sessão expirou. Por favor, faça login novamente." };
+        return { error: "Sua sessão expirou. Por favor, faça login novamente." };
       }
       const errorData = await response.json();
       throw new Error(errorData.detail || `Erro na API: ${response.statusText}`);
@@ -113,7 +115,7 @@ export const getProperties = async () => {
 export const getWeatherList = async (propriedadeId, useCache) => {
   const token = await getAuthToken();
   if (!token) {
-      return { error: "Usuário não autenticado." };
+    return { error: "Usuário não autenticado." };
   }
 
   try {
@@ -137,11 +139,11 @@ export const getWeatherList = async (propriedadeId, useCache) => {
 export const getWeatherDetail = async (propriedadeId, date) => {
   const token = await getAuthToken();
   if (!token) {
-      return { error: "Usuário não autenticado." };
+    return { error: "Usuário não autenticado." };
   }
 
   console.log(`Buscando detalhe para propriedade ${propriedadeId} na data ${date}`);
-  
+
   try {
     const response = await fetch(`${API_BASE}/weather/${propriedadeId}/${date}/`, {
       method: 'GET',
@@ -197,24 +199,24 @@ export async function getSolicitacoes() {
 }
 
 export async function avaliarCredito(solicitacaoId) {
-    const token = await AsyncStorage.getItem('token');
-    const response = await fetch(`${API_BASE}/solicitacoes/${solicitacaoId}/avaliar/`, {
-        method: 'GET', 
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Token ${token}`,
-        },
-    });
+  const token = await AsyncStorage.getItem('token');
+  const response = await fetch(`${API_BASE}/solicitacoes/${solicitacaoId}/avaliar/`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`,
+    },
+  });
 
-    const json = await response.json();
-    console.log(`Resultado da avaliação da solicitação #${solicitacaoId}:`, json);
-    return json;
+  const json = await response.json();
+  console.log(`Resultado da avaliação da solicitação #${solicitacaoId}:`, json);
+  return json;
 }
 
 export async function aprovarSolicitacao(solicitacaoId) {
   const token = await AsyncStorage.getItem('token');
   const response = await fetch(`${API_BASE}/solicitacoes/${solicitacaoId}/aprovar/`, {
-    method: 'POST', 
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Token ${token}`,
@@ -231,7 +233,7 @@ export async function aprovarSolicitacao(solicitacaoId) {
 export async function rejeitarSolicitacao(solicitacaoId) {
   const token = await AsyncStorage.getItem('token');
   const response = await fetch(`${API_BASE}/solicitacoes/${solicitacaoId}/rejeitar/`, {
-    method: 'POST', 
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Token ${token}`,
@@ -243,4 +245,18 @@ export async function rejeitarSolicitacao(solicitacaoId) {
     throw json;
   }
   return json;
+}
+
+export async function getPlantios() {
+  const token = await AsyncStorage.getItem('token');
+  const response = await fetch(`${API_BASE}/plantios/`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`,
+    },
+  });
+
+  const data = await response.json();
+  return data;
 }
