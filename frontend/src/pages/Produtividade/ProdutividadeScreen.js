@@ -138,7 +138,7 @@ const ProdutividadeScreen = () => {
     const chartData = Object.keys(totaisPorCultura)
       .filter((cultura) => totaisPorCultura[cultura].lucro > 0)
       .map((cultura) => ({
-        value: totaisPorCultura[cultura].lucro,
+        value: Number(totaisPorCultura[cultura].lucro),
         label: cultura,
         frontColor: colors.primary,
       }));
@@ -209,13 +209,14 @@ const ProdutividadeScreen = () => {
                   fontSize: 10,
                 }}
                 yAxisLabelSuffix="k"
+                yAxisLabelWidth={60}
                 yAxisThickness={0}
                 xAxisThickness={0}
                 noOfSections={5}
                 isAnimated
+                formatYLabel={(value) => (Math.round(value / 1000))}
                 overflowTop={30}
                 endSpacing={70}
-                yAxisLabelFormatter={(value) => `${Math.round(value / 1000)}`}
                 renderTooltip={(item) => (
                   <View style={styles.tooltip}>
                     <Text style={{ color: "white", fontWeight: "bold" }}>
@@ -282,8 +283,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    paddingHorizontal: 15,
-    paddingBottom: 40,
   },
   kpiRow: {
     flexDirection: "row",
