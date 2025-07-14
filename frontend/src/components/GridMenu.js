@@ -11,10 +11,10 @@ export default function GridMenu({ items }) {
         <TouchableOpacity
           key={index}
           style={styles.button}
-          onPress={() => navigation.navigate(item.route)}
+          onPress={() => navigation.navigate(item.label ? item.label : item.name, { ...item.params })}
         >
           {item.icon}
-          <Text style={styles.buttonText}>{item.label}</Text>
+          <Text style={styles.buttonText}>{item.name}</Text>
         </TouchableOpacity>
       ))}
     </View>

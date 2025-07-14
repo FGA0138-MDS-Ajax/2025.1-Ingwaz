@@ -26,6 +26,7 @@ urlpatterns = [
     path('api/', include('weather.urls')),
     path('api/', include('plantios.urls')),
     path('api/', include('credito.urls')),
+    path('api/', include('calendario.urls')),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
