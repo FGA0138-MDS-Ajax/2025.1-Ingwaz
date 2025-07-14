@@ -44,6 +44,7 @@ export default function AgricultorHome() {
     <HomeScreen
       items={items}
       subGreeting={"Veja o que está acontecendo na sua produção hoje."}
+      isAbove={true}
     >
       <RelatorioButton />
     </HomeScreen>

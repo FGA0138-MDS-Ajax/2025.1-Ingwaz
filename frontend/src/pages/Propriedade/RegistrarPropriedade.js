@@ -70,7 +70,7 @@ export default function RegistrarPropriedade() {
   };
 
   return (
-    <ScreenLayout hasHeader={true}>
+    <ScreenLayout hasHeader={true} isScrollable={true} isRegister={true}>
       <Text style={styles.label}>Nome da Propriedade</Text>
       <TextInput
         style={styles.input}

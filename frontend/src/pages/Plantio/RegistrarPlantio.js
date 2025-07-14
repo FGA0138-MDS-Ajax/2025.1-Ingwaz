@@ -1,18 +1,54 @@
 import React, { useEffect, useState } from "react";
-import { Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
+import { Text, TextInput, TouchableOpacity, StyleSheet, Alert, View } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import DateTimePicker from "@react-native-community/datetimepicker";
 import { API_URL } from "@env";
 
 import ScreenLayout from "../../components/ScreenLayout";
 
+const formatDateForAPI = (date) => {
+  if (!date) return "";
+  const d = new Date(date);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
+const formatDateForDisplay = (date) => {
+  if (!date) return "";
+  const d = new Date(date);
+  const day = String(d.getDate()).padStart(2, "0");
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const year = d.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
 export default function RegistrarPlantio() {
   const [cultura, setCultura] = useState("");
   const [area, setArea] = useState("");
-  const [data, setData] = useState("");
-  const [estimativaColheita, setEstimativaColheita] = useState("");
   const [propriedade, setPropriedade] = useState("");
   const [propriedades, setPropriedades] = useState([]);
+
+  const [dataPlantio, setDataPlantio] = useState(null);
+  const [estimativaColheita, setEstimativaColheita] = useState(null);
+  const [showDataPicker, setShowDataPicker] = useState(false);
+  const [showEstimativaPicker, setShowEstimativaPicker] = useState(false);
+
+  const onChangeData = (event, selectedDate) => {
+    setShowDataPicker(false);
+    if (selectedDate) {
+      setDataPlantio(selectedDate);
+    }
+  };
+
+  const onChangeEstimativa = (event, selectedDate) => {
+    setShowEstimativaPicker(false);
+    if (selectedDate) {
+      setEstimativaColheita(selectedDate);
+    }
+  };
 
   useEffect(() => {
     const fetchPropriedades = async () => {
@@ -37,7 +73,7 @@ export default function RegistrarPlantio() {
   }, []);
 
   const handleSubmit = async () => {
-    if (!cultura || !area || !data || !estimativaColheita || !propriedade) {
+    if (!cultura || !area || !dataPlantio || !estimativaColheita || !propriedade) {
       Alert.alert("Erro", "Preencha todos os campos.");
       return;
     }
@@ -46,8 +82,8 @@ export default function RegistrarPlantio() {
     const payload = {
       cultura,
       area: parseFloat(area),
-      data,
-      estimativa_colheita: estimativaColheita,
+      data: formatDateForAPI(dataPlantio),
+      estimativa_colheita: formatDateForAPI(estimativaColheita),
       propriedade: parseInt(propriedade),
     };
 
@@ -63,33 +99,25 @@ export default function RegistrarPlantio() {
         body: JSON.stringify(payload),
       });
 
-      const textResponse = await response.text();
-      console.log("Resposta da API (como texto):", textResponse);
-
-      let responseData;
-      try {
-        responseData = JSON.parse(textResponse);
-      } catch (error) {
-        console.error("Erro ao parsear JSON:", error);
-        Alert.alert("Erro", "A resposta do servidor não é válida.");
-        return;
-      }
-
       if (!response.ok) {
-        throw new Error("Falha ao registrar plantio");
+        const errorData = await response.json().catch(() => null);
+        console.error("Erro da API:", errorData);
+        throw new Error(errorData?.detail || "Falha ao registrar plantio");
       }
+
+      const responseData = await response.json();
 
       console.log("Resposta da API (JSON):", responseData);
       Alert.alert("Sucesso", "Plantio registrado com sucesso!");
 
       setCultura("");
       setArea("");
-      setData("");
-      setEstimativaColheita("");
+      setDataPlantio(null);
+      setEstimativaColheita(null);
       setPropriedade("");
     } catch (error) {
       console.error("Erro ao enviar dados:", error);
-      Alert.alert("Erro", "Não foi possível registrar o plantio.");
+      Alert.alert("Erro", error.message || "Não foi possível registrar o plantio.");
     }
   };
 
@@ -113,32 +141,54 @@ export default function RegistrarPlantio() {
       />
 
       <Text style={styles.label}>Data do plantio</Text>
-      <TextInput
-        style={styles.input}
-        value={data}
-        onChangeText={setData}
-        placeholder="YYYY-MM-DD"
-      />
+      <TouchableOpacity onPress={() => setShowDataPicker(true)} style={styles.input}>
+        <Text style={dataPlantio ? styles.dateText : styles.placeholderText}>
+          {dataPlantio ? formatDateForDisplay(dataPlantio) : "Selecione a data"}
+        </Text>
+      </TouchableOpacity>
+      {showDataPicker && (
+        <DateTimePicker
+          value={dataPlantio || new Date()}
+          mode="date"
+          display="default"
+          onChange={onChangeData}
+        />
+      )}
 
       <Text style={styles.label}>Estimativa de colheita</Text>
-      <TextInput
-        style={styles.input}
-        value={estimativaColheita}
-        onChangeText={setEstimativaColheita}
-        placeholder="YYYY-MM-DD"
-      />
-
-      <Text style={styles.label}>Propriedade</Text>
-      <Picker
-        selectedValue={propriedade}
-        onValueChange={(itemValue) => setPropriedade(itemValue)}
+      <TouchableOpacity
+        onPress={() => setShowEstimativaPicker(true)}
         style={styles.input}
       >
-        <Picker.Item label="Selecione..." value="" />
-        {propriedades.map((p) => (
-          <Picker.Item key={p.id} label={p.nome} value={p.id} />
-        ))}
-      </Picker>
+        <Text style={estimativaColheita ? styles.dateText : styles.placeholderText}>
+          {estimativaColheita
+            ? formatDateForDisplay(estimativaColheita)
+            : "Selecione a data"}
+        </Text>
+      </TouchableOpacity>
+      {showEstimativaPicker && (
+        <DateTimePicker
+          value={estimativaColheita || new Date()}
+          mode="date"
+          display="default"
+          onChange={onChangeEstimativa}
+          minimumDate={dataPlantio || undefined}
+        />
+      )}
+
+      <Text style={styles.label}>Propriedade</Text>
+      <View style={styles.pickerContainer}>
+        <Picker
+          selectedValue={propriedade}
+          onValueChange={(itemValue) => setPropriedade(itemValue)}
+          style={styles.picker}
+        >
+          <Picker.Item label="Selecione..." value="" />
+          {propriedades.map((p) => (
+            <Picker.Item key={p.id} label={p.nome} value={p.id.toString()} />
+          ))}
+        </Picker>
+      </View>
 
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Registrar Plantio</Text>
@@ -162,14 +212,34 @@ const styles = StyleSheet.create({
     marginTop: 12,
     marginBottom: 4,
     fontWeight: "600",
+    color: "#333",
   },
   input: {
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 8,
     paddingHorizontal: 12,
-    paddingVertical: 10,
+    height: 48,
     fontSize: 16,
+    justifyContent: "center",
+    backgroundColor: "#fff",
+  },
+  placeholderText: {
+    color: "#aaa",
+    fontSize: 16,
+  },
+  dateText: {
+    color: "#000",
+    fontSize: 16,
+  },
+  pickerContainer: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 8,
+    backgroundColor: "#fff",
+  },
+  picker: {
+    height: 52,
   },
   button: {
     backgroundColor: "#2E7D32",

@@ -81,7 +81,7 @@ export default function AgricultorSolicitacoesScreen() {
         <Text style={styles.cardTitle}>Solicitação #{item.id}</Text>
         <Text style={styles.cardSubtitle}>{item.finalidade}</Text>
         <Text style={styles.cardInfo}>
-          Data: {new Date(item.created_at).toLocaleDateString()}
+          Data: {new Date(item.created_at).toLocaleDateString("pt-Br")}
         </Text>
       </View>
       <View style={styles.cardRight}>
