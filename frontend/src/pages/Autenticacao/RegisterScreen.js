@@ -62,7 +62,9 @@ export default function RegisterScreen() {
   };
 
   return (
-    <ScreenLayout>
+    <ScreenLayout isScrollable={true} isRegister={true}>
+      <Text style={styles.subTitle}>Insira as seguintes informações  para criar sua conta</Text>
+
       <Text style={styles.label}>Nome Completo</Text>
       <TextInput
         style={styles.input}
@@ -106,7 +108,7 @@ export default function RegisterScreen() {
           <Picker.Item label="Analista" value="analista" />
         </Picker>
       </View>
-
+      
       <Text style={styles.label}>Senha</Text>
       <TextInput
         style={styles.input}
@@ -116,8 +118,8 @@ export default function RegisterScreen() {
         placeholder="********"
         placeholderTextColor="#999"
       />
-
-      <Text style={styles.label}>Confirmar senha</Text>
+      
+      <Text style={styles.label}>Repita sua senha</Text>
       <TextInput
         style={styles.input}
         secureTextEntry
@@ -126,7 +128,7 @@ export default function RegisterScreen() {
         placeholder="********"
         placeholderTextColor="#999"
       />
-
+      
       <TouchableOpacity style={styles.botaoCriar} onPress={handleCadastro}>
         <Text style={styles.botaoTexto}>Criar</Text>
       </TouchableOpacity>
@@ -139,32 +141,17 @@ export default function RegisterScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 24,
-    backgroundColor: "#fff",
-    flexGrow: 1,
-    justifyContent: "center",
-  },
-  voltar: {
-    position: "absolute",
-    top: 40,
-    left: 16,
-  },
-  seta: {
-    fontSize: 24,
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: "bold",
+  subTitle: {
+    fontSize: 14,
+    color: "#555",
     marginBottom: 24,
-    textAlign: "center",
   },
   selecione: {
     paddingVertical: 8,
     marginBottom: 16,
   },
   picker: {
-    height: 50,
+    height: 55,
     width: "100%",
   },
   label: {
@@ -178,20 +165,8 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     fontSize: 16,
   },
-  checkboxContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 24,
-  },
-  checkboxLabel: {
-    marginLeft: 8,
-    fontSize: 14,
-    color: "#333",
-    flex: 1,
-    flexWrap: "wrap",
-  },
   botaoCriar: {
-    backgroundColor: "#66E266",
+    backgroundColor: "#2E7D32",
     padding: 14,
     borderRadius: 6,
     alignItems: "center",

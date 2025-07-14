@@ -9,6 +9,7 @@ export default function ScreenLayout({
   isScrollable = false,
   hasHeader = false,
   isList = false,
+  isRegister = false,
 }) {
   const Container = isScrollable ? ScrollView : View;
 
@@ -27,7 +28,7 @@ export default function ScreenLayout({
         resetScrollToCoords={{ x: 0, y: 0 }}
         scrollEnabled={isScrollable}
         contentContainerStyle={styles.innerContainer}
-        extraScrollHeight={120}
+        extraScrollHeight={isRegister ? 150 : 0}
         enableOnAndroid={true}
         keyboardShouldPersistTaps="handled"
       >
@@ -48,6 +49,6 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     flexGrow: 1,
-    padding: 16,
+    padding: 12,
   },
 });

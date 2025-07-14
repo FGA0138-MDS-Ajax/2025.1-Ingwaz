@@ -41,7 +41,7 @@ export default function LoginScreen() {
 
   return (
     <ScreenLayout style={styles.container}>
-      <Text style={styles.title}>Entrar</Text>
+      <Text style={styles.subTitle}>Se já tem uma conta insira e-mail e senha</Text>
 
       <Text style={styles.label}>Email</Text>
       <TextInput
@@ -80,6 +80,11 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
+  subTitle: {
+    fontSize: 14,
+    color: "#555",
+    marginBottom: 24,
+  },
   container: {
     padding: 24,
     backgroundColor: "#fff",
@@ -104,7 +109,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   button: {
-    backgroundColor: "#66E266",
+    backgroundColor: "#2E7D32",
     padding: 14,
     borderRadius: 6,
     alignItems: "center",

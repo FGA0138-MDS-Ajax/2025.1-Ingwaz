@@ -41,7 +41,7 @@ export default function RecuperarSenha() {
 
   return (
     <ScreenLayout style={styles.container}>
-      <Text style={styles.subTitle}>Informe seu e-mail e CPF</Text>
+      <Text style={styles.subTitle}>Informe seu e-mail e CPF para trocar senha</Text>
 
       <Text style={styles.label}>Email</Text>
       <TextInput
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   botao: {
-    backgroundColor: "#66E266",
+    backgroundColor: "#2E7D32",
     paddingVertical: 12,
     borderRadius: 6,
     alignItems: "center",
