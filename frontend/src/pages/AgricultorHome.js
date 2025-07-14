@@ -32,7 +32,7 @@ export default function AgricultorHome() {
     {
       label: "Produção Atual",
       icon: <MaterialIcons name="agriculture" size={45} color="#2e5339" />,
-      route: "Produção Atual",
+      route: "Plantios Registrados",
     },
     {
       label: "Solicitar Crédito",
