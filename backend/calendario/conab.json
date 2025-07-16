@@ -1,0 +1,1627 @@
+[
+  {
+    "name": "Algodão",
+    "regions": [
+      {
+        "name": "Norte",
+        "states": [
+          {
+            "name": "RO",
+            "plantios": [1, 2],
+            "colheitas": [6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "TO",
+            "plantios": [12, 1, 2],
+            "colheitas": [6, 7, 8],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Nordeste",
+        "states": [
+          {
+            "name": "MA",
+            "plantios": [12, 1],
+            "colheitas": [6, 7, 8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PI",
+            "plantios": [12, 1],
+            "colheitas": [6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "CE",
+            "plantios": [2, 3],
+            "colheitas": [7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RN",
+            "plantios": [2, 3],
+            "colheitas": [7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PB",
+            "plantios": [3, 4],
+            "colheitas": [8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "BA",
+            "plantios": [11, 12, 1],
+            "colheitas": [5, 6, 7, 8],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Centro-Oeste",
+        "states": [
+          {
+            "name": "MT",
+            "plantios": [12, 1],
+            "colheitas": [5, 6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "MS",
+            "plantios": [10, 11, 12],
+            "colheitas": [4, 5, 6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "GO",
+            "plantios": [11, 12, 1],
+            "colheitas": [5, 6, 7, 8],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sudeste",
+        "states": [
+          {
+            "name": "MG",
+            "plantios": [11, 12],
+            "colheitas": [5, 6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SP",
+            "plantios": [10, 11],
+            "colheitas": [4, 5, 6],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Amendoim 1ª safra",
+    "regions": [
+      {
+        "name": "Sudeste",
+        "states": [
+          {
+            "name": "MG",
+            "plantios": [10, 11],
+            "colheitas": [2, 3],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SP",
+            "plantios": [9, 10, 11],
+            "colheitas": [1, 2, 3],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sul",
+        "states": [
+          {
+            "name": "PR",
+            "plantios": [9, 10],
+            "colheitas": [1, 2],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RS",
+            "plantios": [10, 11],
+            "colheitas": [2, 3],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Amendoim 2ª safra",
+    "regions": [
+      {
+        "name": "Norte",
+        "states": [
+          {
+            "name": "TO",
+            "plantios": [2, 3, 4],
+            "colheitas": [6, 7, 8],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Nordeste",
+        "states": [
+          {
+            "name": "CE",
+            "plantios": [3, 4],
+            "colheitas": [6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PB",
+            "plantios": [4, 5],
+            "colheitas": [7, 8],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sudeste",
+        "states": [
+          {
+            "name": "SP",
+            "plantios": [2, 3],
+            "colheitas": [6, 7, 8],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Arroz",
+    "regions": [
+      {
+        "name": "Norte",
+        "states": [
+          {
+            "name": "RR",
+            "plantios": [5, 6, 7, 8],
+            "colheitas": [9, 10, 11, 12, 1],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RO",
+            "plantios": [10, 11, 12],
+            "colheitas": [2, 3, 4, 5],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "AC",
+            "plantios": [10, 11, 12],
+            "colheitas": [2, 3, 4],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "AM",
+            "plantios": [10, 11],
+            "colheitas": [9, 1, 2, 3, 4],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "AP",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PA",
+            "plantios": [10, 11, 12],
+            "colheitas": [4, 5, 6, 7, 8],
+            "plantios-colheitas": [1, 2, 3]
+          },
+          {
+            "name": "TO",
+            "plantios": [10, 11],
+            "colheitas": [2, 3, 4, 5, 6],
+            "plantios-colheitas": [12, 1]
+          }
+        ]
+      },
+      {
+        "name": "Nordeste",
+        "states": [
+          {
+            "name": "MA",
+            "plantios": [11, 12],
+            "colheitas": [3, 4, 5, 6, 7],
+            "plantios-colheitas": [1, 2]
+          },
+          {
+            "name": "PI",
+            "plantios": [12, 1, 2],
+            "colheitas": [4, 5, 6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "CE",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RN",
+            "plantios": [3, 4, 5],
+            "colheitas": [6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PB",
+            "plantios": [3, 4],
+            "colheitas": [6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PE",
+            "plantios": [4, 5, 6],
+            "colheitas": [8, 9, 10],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "AL",
+            "plantios": [4, 5],
+            "colheitas": [8, 9, 10],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SE",
+            "plantios": [5, 6],
+            "colheitas": [9, 10],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Centro-Oeste",
+        "states": [
+          {
+            "name": "MT",
+            "plantios": [10, 11, 12],
+            "colheitas": [2, 3, 4, 5],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "MS",
+            "plantios": [10, 11],
+            "colheitas": [2, 3, 4],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "GO",
+            "plantios": [10, 11, 12],
+            "colheitas": [2, 3, 4, 5],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sudeste",
+        "states": [
+          {
+            "name": "MG",
+            "plantios": [10, 11],
+            "colheitas": [2, 3, 4],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "ES",
+            "plantios": [10, 11],
+            "colheitas": [2, 3, 4],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RJ",
+            "plantios": [10, 11],
+            "colheitas": [2, 3, 4],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SP",
+            "plantios": [10, 11],
+            "colheitas": [2, 3, 4],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sul",
+        "states": [
+          {
+            "name": "PR",
+            "plantios": [9, 10, 11],
+            "colheitas": [1, 2, 3],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SC",
+            "plantios": [9, 10, 11, 12],
+            "colheitas": [1, 2, 3, 4],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RS",
+            "plantios": [9, 10, 11, 12],
+            "colheitas": [1, 2, 3, 4, 5],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Feijão 1ª safra",
+    "regions": [
+      {
+        "name": "Norte",
+        "states": [
+          {
+            "name": "AM",
+            "plantios": [5, 6],
+            "colheitas": [8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PA",
+            "plantios": [4, 5],
+            "colheitas": [7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "TO",
+            "plantios": [11, 12],
+            "colheitas": [2, 3],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Nordeste",
+        "states": [
+          {
+            "name": "MA",
+            "plantios": [1, 2],
+            "colheitas": [4, 5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PI",
+            "plantios": [1, 2, 3],
+            "colheitas": [4, 5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "BA",
+            "plantios": [11, 12],
+            "colheitas": [2, 3, 4],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Centro-Oeste",
+        "states": [
+          {
+            "name": "MT",
+            "plantios": [10, 11],
+            "colheitas": [1, 2],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "GO",
+            "plantios": [10, 11, 12],
+            "colheitas": [1, 2, 3],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "DF",
+            "plantios": [10, 11],
+            "colheitas": [1, 2],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sudeste",
+        "states": [
+          {
+            "name": "MG",
+            "plantios": [10, 11, 12],
+            "colheitas": [1, 2, 3, 4],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "ES",
+            "plantios": [10, 11],
+            "colheitas": [1, 2, 3],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RJ",
+            "plantios": [10, 11],
+            "colheitas": [1, 2, 3],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SP",
+            "plantios": [9, 10, 11],
+            "colheitas": [12, 1, 2, 3],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sul",
+        "states": [
+          {
+            "name": "PR",
+            "plantios": [8, 9, 10],
+            "colheitas": [11, 12, 1, 2],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SC",
+            "plantios": [8, 9, 10, 11],
+            "colheitas": [12, 1, 2, 3],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RS",
+            "plantios": [8, 9, 10],
+            "colheitas": [12, 1, 2],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Feijão 2ª safra",
+    "regions": [
+      {
+        "name": "Norte",
+        "states": [
+          {
+            "name": "RO",
+            "plantios": [2, 3],
+            "colheitas": [5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "AC",
+            "plantios": [3, 4],
+            "colheitas": [6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "AP",
+            "plantios": [9, 10],
+            "colheitas": [12, 1],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "TO",
+            "plantios": [2, 3],
+            "colheitas": [5, 6],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Nordeste",
+        "states": [
+          {
+            "name": "MA",
+            "plantios": [3, 4],
+            "colheitas": [6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PI",
+            "plantios": [3, 4],
+            "colheitas": [6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "CE",
+            "plantios": [2, 3, 4],
+            "colheitas": [5, 6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RN",
+            "plantios": [4, 5],
+            "colheitas": [7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PB",
+            "plantios": [4, 5],
+            "colheitas": [7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PE",
+            "plantios": [4, 5],
+            "colheitas": [7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "BA",
+            "plantios": [3, 4, 5],
+            "colheitas": [6, 7, 8],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Centro-Oeste",
+        "states": [
+          {
+            "name": "MT",
+            "plantios": [1, 2, 3],
+            "colheitas": [4, 5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "MS",
+            "plantios": [2, 3],
+            "colheitas": [5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "GO",
+            "plantios": [1, 2, 3],
+            "colheitas": [4, 5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "DF",
+            "plantios": [2, 3],
+            "colheitas": [5, 6],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sudeste",
+        "states": [
+          {
+            "name": "MG",
+            "plantios": [1, 2, 3],
+            "colheitas": [4, 5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "ES",
+            "plantios": [2, 3, 4],
+            "colheitas": [5, 6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RJ",
+            "plantios": [2, 3, 4],
+            "colheitas": [5, 6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SP",
+            "plantios": [1, 2, 3],
+            "colheitas": [4, 5, 6],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sul",
+        "states": [
+          {
+            "name": "PR",
+            "plantios": [1, 2, 3],
+            "colheitas": [4, 5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SC",
+            "plantios": [1, 2],
+            "colheitas": [4, 5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RS",
+            "plantios": [1, 2],
+            "colheitas": [5, 6],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Feijão 3ª safra",
+    "regions": [
+      {
+        "name": "Norte",
+        "states": [
+          {
+            "name": "PA",
+            "plantios": [9, 10],
+            "colheitas": [12, 1],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "TO",
+            "plantios": [5, 6],
+            "colheitas": [8, 9],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Nordeste",
+        "states": [
+          {
+            "name": "CE",
+            "plantios": [4, 5],
+            "colheitas": [7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PB",
+            "plantios": [5, 6],
+            "colheitas": [8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PE",
+            "plantios": [5, 6, 7],
+            "colheitas": [8, 9, 10],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "AL",
+            "plantios": [6, 7],
+            "colheitas": [9, 10],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SE",
+            "plantios": [6, 7],
+            "colheitas": [9, 10],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "BA",
+            "plantios": [5, 6, 7],
+            "colheitas": [8, 9, 10],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Centro-Oeste",
+        "states": [
+          {
+            "name": "MT",
+            "plantios": [5, 6],
+            "colheitas": [8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "MS",
+            "plantios": [5, 6],
+            "colheitas": [8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "GO",
+            "plantios": [4, 5, 6],
+            "colheitas": [7, 8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "DF",
+            "plantios": [4, 5],
+            "colheitas": [7, 8],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sudeste",
+        "states": [
+          {
+            "name": "MG",
+            "plantios": [4, 5, 6],
+            "colheitas": [7, 8, 9, 10],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SP",
+            "plantios": [4, 5],
+            "colheitas": [7, 8, 9],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sul",
+        "states": [
+          {
+            "name": "PR",
+            "plantios": [5, 6],
+            "colheitas": [8, 9],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Girassol",
+    "regions": [
+      {
+        "name": "Centro-Oeste",
+        "states": [
+          {
+            "name": "MT",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "DF",
+            "plantios": [2, 3],
+            "colheitas": [6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "GO",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sudeste",
+        "states": [
+          {
+            "name": "MG",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sul",
+        "states": [
+          {
+            "name": "RS",
+            "plantios": [8, 9, 10],
+            "colheitas": [12, 1, 2],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Mamona",
+    "regions": [
+      {
+        "name": "Nordeste",
+        "states": [
+          {
+            "name": "CE",
+            "plantios": [2, 3, 4],
+            "colheitas": [7, 8, 9, 10, 11, 12],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "BA",
+            "plantios": [9, 10, 11, 12, 1],
+            "colheitas": [3, 4, 5, 6, 7, 8, 9, 10],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Milho 1ª safra",
+    "regions": [
+      {
+        "name": "Norte",
+        "states": [
+          {
+            "name": "RO",
+            "plantios": [10, 11, 12],
+            "colheitas": [2, 3, 4, 5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "AC",
+            "plantios": [10, 11, 12],
+            "colheitas": [2, 3, 4, 5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "AM",
+            "plantios": [10, 11, 12],
+            "colheitas": [8, 1, 2, 3, 4],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PA",
+            "plantios": [10, 11, 12],
+            "colheitas": [2, 3, 4, 5, 6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "TO",
+            "plantios": [10, 11, 12, 1],
+            "colheitas": [2, 3, 4, 5, 6, 7],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Nordeste",
+        "states": [
+          {
+            "name": "MA",
+            "plantios": [11, 12, 1],
+            "colheitas": [4, 5, 6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PI",
+            "plantios": [11, 12, 1],
+            "colheitas": [4, 5, 6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "BA",
+            "plantios": [10, 11, 12],
+            "colheitas": [2, 3, 4, 5, 6, 7, 8],
+            "plantios-colheitas": [1]
+          }
+        ]
+      },
+      {
+        "name": "Centro-Oeste",
+        "states": [
+          {
+            "name": "MT",
+            "plantios": [9, 10, 11, 12],
+            "colheitas": [2, 3, 4, 5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "MS",
+            "plantios": [9, 10, 11, 12],
+            "colheitas": [2, 3, 4, 5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "GO",
+            "plantios": [9, 10, 11, 12],
+            "colheitas": [3, 4, 5, 6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "DF",
+            "plantios": [10, 11],
+            "colheitas": [2, 3, 4, 5],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sudeste",
+        "states": [
+          {
+            "name": "MG",
+            "plantios": [10, 11, 12],
+            "colheitas": [2, 3, 4, 5, 6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "ES",
+            "plantios": [10, 11, 12],
+            "colheitas": [2, 3, 4, 5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RJ",
+            "plantios": [10, 11, 12],
+            "colheitas": [2, 3, 4, 5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SP",
+            "plantios": [9, 10, 11, 12],
+            "colheitas": [2, 3, 4, 5, 9],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sul",
+        "states": [
+          {
+            "name": "PR",
+            "plantios": [8, 9, 10, 11, 12],
+            "colheitas": [1, 2, 3, 4, 5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SC",
+            "plantios": [8, 9, 10, 11, 12],
+            "colheitas": [1, 2, 3, 4, 5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RS",
+            "plantios": [8, 9, 10, 11, 12],
+            "colheitas": [1, 2, 3, 4, 5, 6, 7],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Milho 2ª safra",
+    "regions": [
+      {
+        "name": "Norte",
+        "states": [
+          {
+            "name": "RO",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7, 8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "TO",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7, 8, 9],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Nordeste",
+        "states": [
+          {
+            "name": "MA",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7, 8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PI",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7, 8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "CE",
+            "plantios": [2, 3],
+            "colheitas": [6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RN",
+            "plantios": [3, 4],
+            "colheitas": [7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PB",
+            "plantios": [3, 4, 5],
+            "colheitas": [7, 8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PE",
+            "plantios": [3, 4, 5],
+            "colheitas": [7, 8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "BA",
+            "plantios": [1, 2, 3, 4],
+            "colheitas": [5, 6, 7, 8, 9],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Centro-Oeste",
+        "states": [
+          {
+            "name": "MT",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "MS",
+            "plantios": [1, 2, 3],
+            "colheitas": [6, 7, 8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "GO",
+            "plantios": [1, 2, 3],
+            "colheitas": [6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "DF",
+            "plantios": [2, 3, 4],
+            "colheitas": [6, 7, 8, 9],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sudeste",
+        "states": [
+          {
+            "name": "MG",
+            "plantios": [1, 2, 3],
+            "colheitas": [6, 7, 8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SP",
+            "plantios": [1, 2, 3],
+            "colheitas": [6, 7, 8, 9],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sul",
+        "states": [
+          {
+            "name": "PR",
+            "plantios": [1, 2, 3],
+            "colheitas": [6, 7, 8, 9, 10],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Milho 3ª safra",
+    "regions": [
+      {
+        "name": "Norte",
+        "states": [
+          {
+            "name": "RR",
+            "plantios": [4, 5, 6],
+            "colheitas": [8, 9, 10],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "AP",
+            "plantios": [4, 5, 6],
+            "colheitas": [8, 9, 10],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Nordeste",
+        "states": [
+          {
+            "name": "PE",
+            "plantios": [4, 5, 6],
+            "colheitas": [8, 9, 10, 11],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "AL",
+            "plantios": [4, 5, 6],
+            "colheitas": [8, 9, 10],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SE",
+            "plantios": [4, 5, 6],
+            "colheitas": [8, 9, 10],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "BA",
+            "plantios": [4, 5, 6],
+            "colheitas": [8, 9, 10],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Soja",
+    "regions": [
+      {
+        "name": "Norte",
+        "states": [
+          {
+            "name": "RR",
+            "plantios": [4, 5, 6],
+            "colheitas": [8, 9, 10],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RO",
+            "plantios": [10, 11, 12],
+            "colheitas": [1, 2, 3, 4],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PA",
+            "plantios": [10, 11, 12],
+            "colheitas": [4, 5, 6, 7, 8],
+            "plantios-colheitas": [1, 2, 3]
+          },
+          {
+            "name": "TO",
+            "plantios": [10, 11, 12],
+            "colheitas": [2, 3, 4, 5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "AP",
+            "plantios": [2, 3, 4],
+            "colheitas": [6, 7, 8],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Nordeste",
+        "states": [
+          {
+            "name": "MA",
+            "plantios": [10, 11, 12],
+            "colheitas": [3, 4, 5, 6, 7],
+            "plantios-colheitas": [1, 2]
+          },
+          {
+            "name": "PI",
+            "plantios": [10, 11, 12],
+            "colheitas": [2, 3, 4, 5, 6],
+            "plantios-colheitas": [1]
+          },
+          {
+            "name": "AL",
+            "plantios": [4, 5],
+            "colheitas": [8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "BA",
+            "plantios": [10, 11, 12],
+            "colheitas": [2, 3, 4, 5, 6],
+            "plantios-colheitas": [1]
+          }
+        ]
+      },
+      {
+        "name": "Centro-Oeste",
+        "states": [
+          {
+            "name": "MT",
+            "plantios": [9, 10, 11, 12],
+            "colheitas": [1, 2, 3, 4],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "MS",
+            "plantios": [9, 10, 11, 12],
+            "colheitas": [1, 2, 3, 4],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "GO",
+            "plantios": [9, 10, 11, 12],
+            "colheitas": [1, 2, 3, 4],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "DF",
+            "plantios": [10, 11, 12],
+            "colheitas": [1, 2, 3, 4],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sudeste",
+        "states": [
+          {
+            "name": "MG",
+            "plantios": [10, 11, 12],
+            "colheitas": [1, 2, 3, 4],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SP",
+            "plantios": [9, 10, 11, 12],
+            "colheitas": [1, 2, 3, 4],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sul",
+        "states": [
+          {
+            "name": "PR",
+            "plantios": [9, 10, 11, 12],
+            "colheitas": [1, 2, 3, 4, 5],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SC",
+            "plantios": [10, 11, 12],
+            "colheitas": [1, 2, 3, 4, 5],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RS",
+            "plantios": [10, 11, 12],
+            "colheitas": [1, 2, 3, 4, 5, 6],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Sorgo",
+    "regions": [
+      {
+        "name": "Norte",
+        "states": [
+          {
+            "name": "TO",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PA",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Nordeste",
+        "states": [
+          {
+            "name": "PI",
+            "plantios": [1, 2],
+            "colheitas": [5, 6],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RN",
+            "plantios": [3, 4],
+            "colheitas": [6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "PB",
+            "plantios": [3, 4],
+            "colheitas": [6, 7],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "BA",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Centro-Oeste",
+        "states": [
+          {
+            "name": "MT",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "MS",
+            "plantios": [2, 3],
+            "colheitas": [6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "GO",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "DF",
+            "plantios": [2, 3],
+            "colheitas": [6, 7],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sudeste",
+        "states": [
+          {
+            "name": "MG",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7, 8],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SP",
+            "plantios": [1, 2, 3],
+            "colheitas": [5, 6, 7, 8],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Aveia",
+    "regions": [
+      {
+        "name": "Centro-Oeste",
+        "states": [
+          {
+            "name": "MS",
+            "plantios": [3, 4, 5],
+            "colheitas": [7, 8, 9],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sul",
+        "states": [
+          {
+            "name": "PR",
+            "plantios": [3, 4, 5, 6],
+            "colheitas": [8, 9, 10],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RS",
+            "plantios": [5, 6, 7],
+            "colheitas": [9, 10, 11],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Canola",
+    "regions": [
+      {
+        "name": "Sul",
+        "states": [
+          {
+            "name": "PR",
+            "plantios": [3, 4, 5],
+            "colheitas": [8, 9, 10],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RS",
+            "plantios": [4, 5, 6],
+            "colheitas": [9, 10, 11],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Centeio",
+    "regions": [
+      {
+        "name": "Sul",
+        "states": [
+          {
+            "name": "PR",
+            "plantios": [5, 6, 7],
+            "colheitas": [9, 10, 11],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RS",
+            "plantios": [5, 6, 7],
+            "colheitas": [10, 11],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Cevada",
+    "regions": [
+      {
+        "name": "Sul",
+        "states": [
+          {
+            "name": "PR",
+            "plantios": [5, 6, 7],
+            "colheitas": [9, 10, 11, 12],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SC",
+            "plantios": [6, 7],
+            "colheitas": [10, 11],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RS",
+            "plantios": [5, 6, 7, 8],
+            "colheitas": [10, 11, 12],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Trigo",
+    "regions": [
+      {
+        "name": "Nordeste",
+        "states": [
+          {
+            "name": "BA",
+            "plantios": [4, 5, 6],
+            "colheitas": [8, 9, 10],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Centro-Oeste",
+        "states": [
+          {
+            "name": "MS",
+            "plantios": [4, 5],
+            "colheitas": [8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "GO",
+            "plantios": [3, 4, 5],
+            "colheitas": [7, 8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "DF",
+            "plantios": [3, 4],
+            "colheitas": [7, 8],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sudeste",
+        "states": [
+          {
+            "name": "MG",
+            "plantios": [3, 4, 5],
+            "colheitas": [7, 8, 9],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SP",
+            "plantios": [3, 4, 5],
+            "colheitas": [7, 8, 9],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sul",
+        "states": [
+          {
+            "name": "PR",
+            "plantios": [5, 6, 7],
+            "colheitas": [8, 9, 10, 11],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SC",
+            "plantios": [5, 6, 7],
+            "colheitas": [10, 11],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RS",
+            "plantios": [5, 6, 7, 8],
+            "colheitas": [9, 10, 11, 12],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Triticale",
+    "regions": [
+      {
+        "name": "Sudeste",
+        "states": [
+          {
+            "name": "SP",
+            "plantios": [4, 5, 6],
+            "colheitas": [8, 9, 10],
+            "plantios-colheitas": []
+          }
+        ]
+      },
+      {
+        "name": "Sul",
+        "states": [
+          {
+            "name": "PR",
+            "plantios": [4, 5, 6],
+            "colheitas": [9, 10, 11],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "SC",
+            "plantios": [5, 6],
+            "colheitas": [10, 11],
+            "plantios-colheitas": []
+          },
+          {
+            "name": "RS",
+            "plantios": [5, 6, 7],
+            "colheitas": [10, 11],
+            "plantios-colheitas": []
+          }
+        ]
+      }
+    ]
+  }
+]
